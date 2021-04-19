@@ -389,3 +389,112 @@ function ready(fn){
 - `addEventListener()`支持事件冒泡和事件捕获; - 而`attachEvent()`只支持事件冒泡
 - `addEventListener()`的第一个参数中,事件类型不需要添加`on`; `attachEvent()`需要添加`'on'`
 - 如果为同一个元素绑定多个事件, `addEventListener()`会按照事件绑定的顺序依次执行, `attachEvent()`会按照事件绑定的顺序倒序执行
+
+###  Javascript全局函数和全局变量
+
+**全局变量**
+
+- `Infinity` 代表正的无穷大的数值。
+- `NaN` 指示某个值是不是数字值。
+- `undefined` 指示未定义的值。
+
+**全局函数**
+
+- `decodeURI()` 解码某个编码的 `URI`。
+- `decodeURIComponent()` 解码一个编码的 `URI` 组件。
+- `encodeURI()` 把字符串编码为 URI。
+- `encodeURIComponent()` 把字符串编码为 `URI` 组件。
+- `escape()` 对字符串进行编码。
+- `eval()` 计算 `JavaScript` 字符串，并把它作为脚本代码来执行。
+- `isFinite()` 检查某个值是否为有穷大的数。
+- `isNaN()` 检查某个值是否是数字。
+- `Number()` 把对象的值转换为数字。
+- `parseFloat()` 解析一个字符串并返回一个浮点数。
+- `parseInt()` 解析一个字符串并返回一个整数。
+- `String()` 把对象的值转换为字符串。
+- `unescape()` 对由`escape()` 编码的字符串进行解码
+
+### 浏览器缓存
+
+> 浏览器缓存分为强缓存和协商缓存。当客户端请求某个资源时，获取缓存的流程如下
+
+- 先根据这个资源的一些 `http header` 判断它是否命中强缓存，如果命中，则直接从本地获取缓存资源，不会发请求到服务器；
+- 当强缓存没有命中时，客户端会发送请求到服务器，服务器通过另一些`request header`验证这个资源是否命中协商缓存，称为`http`再验证，如果命中，服务器将请求返回，但不返回资源，而是告诉客户端直接从缓存中获取，客户端收到返回后就会从缓存中获取资源；
+- 强缓存和协商缓存共同之处在于，如果命中缓存，服务器都不会返回资源； 区别是，强缓存不对发送请求到服务器，但协商缓存会。
+- 当协商缓存也没命中时，服务器就会将资源发送回客户端。
+- 当 `ctrl+f5` 强制刷新网页时，直接从服务器加载，跳过强缓存和协商缓存；
+- 当 `f5`刷新网页时，跳过强缓存，但是会检查协商缓存；
+
+**强缓存**
+
+- `Expires`（该字段是 `http1.0` 时的规范，值为一个绝对时间的 `GMT` 格式的时间字符串，代表缓存资源的过期时间）
+- `Cache-Control:max-age`（该字段是 `http1.1`的规范，强缓存利用其 `max-age` 值来判断缓存资源的最大生命周期，它的值单位为秒）
+
+**协商缓存**
+
+- `Last-Modified`（值为资源最后更新时间，随服务器response返回）
+- `If-Modified-Since`（通过比较两个时间来判断资源在两次请求期间是否有过修改，如果没有修改，则命中协商缓存）
+- `ETag`（表示资源内容的唯一标识，随服务器`response`返回）
+- `If-None-Match`（服务器通过比较请求头部的`If-None-Match`与当前资源的`ETag`是否一致来判断资源是否在两次请求之间有过修改，如果没有修改，则命中协商缓存）
+
+### 深浅拷贝
+
+### 防抖/节流
+
+### 实现效果，点击容器内的图标，图标边框变成border 1px solid red，点击空白处重置
+
+```js
+const box = document.getElementById('box');
+function isIcon(target) {
+  return target.className.includes('icon');
+}
+
+box.onClick = function(e) {
+  e.stopPropagation();
+  const target = e.target;
+  if (isIcon(target)) {
+    target.style.border = '1px solid red';
+  }
+}
+const doc = document;
+doc.onclick = function(e) {
+  const children = box.children;
+  for(let i; i < children.length; i++) {
+    if (isIcon(children[i])) {
+      children[i].style.border = 'none';
+    }
+  }
+}
+```
+
+### 请简单实现双向数据绑定`mvvm`
+
+###  前端面试之MVVM浅析
+
+### 实现Storage，使得该对象为单例，并对`localStorage`进行封装设置值setItem(key,value)和getItem(key)
+
+```js
+var instance = null;
+class Storage {
+  static getInstance() {
+    if (!instance) {
+      instance = new Storage();
+    }
+    return instance;
+  }
+  setItem = (key, value) => localStorage.setItem(key, value),
+  getItem = key => localStorage.getItem(key)
+}
+```
+
+### 说说`event loop`
+
+###  请手写实现一个`promise` 
+
+### 说说从输入URL到看到页面发生的全过程，越详细越好
+
+### 说一下浏览器的缓存机制
+
+### `caller`和`callee`的区别
+
+### ajax、axios、fetch区别
