@@ -964,3 +964,187 @@ console.log('script end');
   - 第四种情况是不合理的使用闭包，从而导致某些变量一直被留在内存当中。
 - `dom` 引用: `dom` 元素被删除时，内存中的引用未被正确清空
 - 控制台`console.log`打印的东西
+
+### Proxy代理
+
+> proxy在目标对象的外层搭建了一层拦截，外界对目标对象的某些操作，必须通过这层拦截
+
+```js
+var proxy = new Proxy(target, handler);
+```
+
+> `new Proxy()`表示生成一个Proxy实例，`target`参数表示所要拦截的目标对象，`handler`参数也是一个对象，用来定制拦截行为
+
+```js
+var target = {
+   name: 'poetries'
+ };
+ var logHandler = {
+   get: function(target, key) {
+     console.log(`${key} 被读取`);
+     return target[key];
+   },
+   set: function(target, key, value) {
+     console.log(`${key} 被设置为 ${value}`);
+     target[key] = value;
+   }
+ }
+ var targetWithLog = new Proxy(target, logHandler);
+ 
+ targetWithLog.name; // 控制台输出：name 被读取
+ targetWithLog.name = 'others'; // 控制台输出：name 被设置为 others
+ 
+ console.log(target.name); // 控制台输出: others
+```
+
+- `targetWithLog` 读取属性的值时，实际上执行的是 `logHandler.get` ：在控制台输出信息，并且读取被代理对象 `target` 的属性。
+- 在 `targetWithLog` 设置属性值时，实际上执行的是 `logHandler.set` ：在控制台输出信息，并且设置被代理对象 `target` 的属性的值
+
+```js
+// 由于拦截函数总是返回35，所以访问任何属性都得到35
+var proxy = new Proxy({}, {
+  get: function(target, property) {
+    return 35;
+  }
+});
+
+proxy.time // 35
+proxy.name // 35
+proxy.title // 35
+```
+
+**Proxy 实例也可以作为其他对象的原型对象**
+
+```js
+var proxy = new Proxy({}, {
+  get: function(target, property) {
+    return 35;
+  }
+});
+
+let obj = Object.create(proxy);
+obj.time // 35
+```
+
+> `proxy`对象是`obj`对象的原型，`obj`对象本身并没有`time`属性，所以根据原型链，会在`proxy`对象上读取该属性，导致被拦截
+
+**Proxy的作用**
+
+> 对于代理模式 `Proxy` 的作用主要体现在三个方面
+
+- 拦截和监视外部对对象的访问
+- 降低函数或类的复杂度
+- 在复杂操作前对操作进行校验或对所需资源进行管理
+
+**Proxy所能代理的范围--handler**
+
+> 实际上 handler 本身就是ES6所新设计的一个对象.它的作用就是用来 自定义代理对象的各种可代理操作 。它本身一共有13中方法,每种方法都可以代理一种操作.其13种方法如下
+
+```js
+// 在读取代理对象的原型时触发该操作，比如在执行 Object.getPrototypeOf(proxy) 时。
+handler.getPrototypeOf()
+
+// 在设置代理对象的原型时触发该操作，比如在执行 Object.setPrototypeOf(proxy, null) 时。
+handler.setPrototypeOf()
+
+ 
+// 在判断一个代理对象是否是可扩展时触发该操作，比如在执行 Object.isExtensible(proxy) 时。
+handler.isExtensible()
+
+ 
+// 在让一个代理对象不可扩展时触发该操作，比如在执行 Object.preventExtensions(proxy) 时。
+handler.preventExtensions()
+
+// 在获取代理对象某个属性的属性描述时触发该操作，比如在执行 Object.getOwnPropertyDescriptor(proxy, "foo") 时。
+handler.getOwnPropertyDescriptor()
+
+ 
+// 在定义代理对象某个属性时的属性描述时触发该操作，比如在执行 Object.defineProperty(proxy, "foo", {}) 时。
+andler.defineProperty()
+
+ 
+// 在判断代理对象是否拥有某个属性时触发该操作，比如在执行 "foo" in proxy 时。
+handler.has()
+
+// 在读取代理对象的某个属性时触发该操作，比如在执行 proxy.foo 时。
+handler.get()
+
+ 
+// 在给代理对象的某个属性赋值时触发该操作，比如在执行 proxy.foo = 1 时。
+handler.set()
+
+// 在删除代理对象的某个属性时触发该操作，比如在执行 delete proxy.foo 时。
+handler.deleteProperty()
+
+// 在获取代理对象的所有属性键时触发该操作，比如在执行 Object.getOwnPropertyNames(proxy) 时。
+handler.ownKeys()
+
+// 在调用一个目标对象为函数的代理对象时触发该操作，比如在执行 proxy() 时。
+handler.apply()
+
+ 
+// 在给一个目标对象为构造函数的代理对象构造实例时触发该操作，比如在执行new proxy() 时。
+handler.construct()
+```
+
+### Ajax
+
+**面试手写（原生）：**
+
+```js
+//1：创建Ajax对象
+var xhr = window.XMLHttpRequest?new XMLHttpRequest():new ActiveXObject('Microsoft.XMLHTTP');// 兼容IE6及以下版本
+//2：配置 Ajax请求地址
+xhr.open('get','index.xml',true);
+//3：发送请求
+xhr.send(null); // 严谨写法
+//4:监听请求，接受响应
+xhr.onreadysatechange=function(){
+     if(xhr.readySate==4&&xhr.status==200 || xhr.status==304 )
+          console.log(xhr.responsetXML)
+}
+```
+
+**promise 封装实现：**
+
+```js
+// promise 封装实现：
+
+function getJSON(url) {
+  // 创建一个 promise 对象
+  let promise = new Promise(function(resolve, reject) {
+    let xhr = new XMLHttpRequest();
+
+    // 新建一个 http 请求
+    xhr.open("GET", url, true);
+
+    // 设置状态的监听函数
+    xhr.onreadystatechange = function() {
+      if (this.readyState !== 4) return;
+
+      // 当请求成功或失败时，改变 promise 的状态
+      if (this.status === 200) {
+        resolve(this.response);
+      } else {
+        reject(new Error(this.statusText));
+      }
+    };
+
+    // 设置错误监听函数
+    xhr.onerror = function() {
+      reject(new Error(this.statusText));
+    };
+
+    // 设置响应的数据类型
+    xhr.responseType = "json";
+
+    // 设置请求头信息
+    xhr.setRequestHeader("Accept", "application/json");
+
+    // 发送 http 请求
+    xhr.send(null);
+  });
+
+  return promise;
+}
+```
