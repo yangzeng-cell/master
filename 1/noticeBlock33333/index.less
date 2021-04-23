@@ -1,0 +1,30 @@
+.bulletin__content {
+  margin: 0 16rpx 0 16rpx auto;
+  width: 359 * 2rpx;
+  background-color: rgba(0, 0, 0, 0.2);
+  border-radius: 16rpx 16rpx;
+  line-height: 40rpx;
+  padding: 20rpx 32rpx;
+  height: auto;
+  box-sizing: border-box;
+  font-family: PingFangSC-Medium;
+  font-size: 28rpx;
+  color: #ffffff;
+  letter-spacing: 0;
+  text-align: center;
+  z-index: 2;
+  overflow: hidden;
+  position: relative;
+  &.bulletin__content_click {
+    padding-right: 80rpx;
+  }
+  image {
+    position: absolute;
+    width: 24rpx;
+    height: 48rpx;
+    top: 50%;
+    right: 32rpx;
+    transform: translate(0, -50%);
+    opacity: 0.5;
+  }
+}
