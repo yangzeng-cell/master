@@ -709,7 +709,7 @@ git checkout -b newBrach origin/master # 取回远程主机的更新以后，在
 ### [#](http://interview.poetries.top/fe-blog-docs/blog-docs/comprehensive/-Git常用命令.html#连接)连接
 
 ```shell
-git branch --set-upstream dev origin/dev     # 将本地dev分支与远程dev分支之间建立链接  
+git branch --set-upstream-to=origin/dev dev     # 将本地dev分支与远程dev分支之间建立链接  
 git branch --set-upstream master origin/next # 手动建立追踪关系  
 ```
 
