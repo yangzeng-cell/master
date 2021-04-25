@@ -1,0 +1,10 @@
+<view class="lists__cover" hidden="{{!showListsConetnt}}" catchtouchmove="true" bindtap="closeListItem">
+  <view class="lists__content animated {{showCards ? 'animated_up' : 'animated_down'}}">
+    <view wx:for="{{syncInfo.listItems}}" wx:key="index" style="color:{{item.color}};font-size: {{item.fontSize}}" class="list {{index === syncInfo.listItems.length-1 ? 'no_bottom' : '' }}" hover-class="white_active" data-item="{{item}}" catchtap="emitEvent">
+      {{item.text}}
+      <view class="bottom__line"></view>
+    </view>
+    <view class="device__line"></view>
+    <view class="cancel" hover-class="white_active" catchtap="closeListItem" style="padding-bottom: {{isIphoneX ? 16 : 0}}px">取消</view>
+  </view>
+</view>

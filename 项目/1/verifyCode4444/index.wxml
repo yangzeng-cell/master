@@ -1,0 +1,82 @@
+<view class="phonePage">
+  <view wx:if="{{ errCodeTips }}" class="code_error {{ isIphoneX ? 'code_error_iphoneX' : '' }}">{{
+    errCodeTips
+  }}</view>
+  <view class="page__head">
+    <view class="title"> 验证手机号 </view>
+    <view class="area__content">
+      <view class="line-area phonenumber-area">
+        <text class="area__left">手机号</text>
+        <text class="area__right">{{ number }}</text>
+      </view>
+      <view class="line-area code-area">
+        <text class="area__left">验证码</text>
+        <input class="input-area-input {{ errCodeTips ? 'input_error' : '' }}" bindinput="bindInput" type="number"
+          maxlength="6" placeholder-class="placeholder" style="width: 128px" bindfocus="inputFocus"
+          bindblur="blurFocus" />
+        <view wx:if="{{ showSend }}" class="input-area-send" bindtap="sendClick" hover-class="gray_active">
+          获取验证码
+        </view>
+        <view wx:if="{{ !showSend }}" class="input-area-send resend"> 重新发送({{ second }}s) </view>
+      </view>
+    </view>
+    <view class="tips" bindtap="tipsClick" hover-class="text_active">收不到验证码</view>
+  </view>
+
+  <view class="next-button {{ isIphoneX ? 'next-button_iphonex' : '' }} {{ next ? 'next-button_active' : '' }}"
+    hover-class="{{ next ? 'green_active' : '' }}"
+    style="bottom:{{ bottomValue ? bottomValue + 'px' : isIphoneX ? '142px' : '128px' }}" focus="true"
+    bindtap="nextClick">
+    {{ buttonName }}
+  </view>
+  <view wx:if="{{ bottomTips }}" class="product-info {{ isIphoneX ? 'product-info_iphonex' : '' }}">
+    {{ bottomTips }}
+  </view>
+
+  <!-- <view class="tips__content" hidden="{{ !showTips }}">
+    <view class="tips___block">
+      <view class="title">收不到验证码</view>
+      <view class="tips__all">
+        <view class="tips__one">1.请确认手机号为当前使用号码，如已更换可返回上一页面修改。</view>
+        <view class="tips__one">2.由于运营商网络原因，可能存在短信延迟，请耐心等待或重新获取验证码。</view>
+        <view class="tips__one">3.请检查短信是否被手机安全软件拦截。</view>
+        <view class="tips__one">4.获取更多帮助，请拨打客服电话95017或访问腾讯客服公众号。</view>
+      </view>
+      <view class="know__button" bindtap="closeTips" hover-class="white_active">知道了</view>
+    </view>
+  </view> -->
+
+  <bulletBox id="bulletBox" showAlert="{{ showAlert }}" alertDetail="{{ alertDetail }}" bindcloseAlert="closeAlert"
+    bindchangePhoneNumber="changePhoneNumber">
+    <view slot="alertContent" class="alert_content">
+      {{ alertDetail.err_wording
+      }}<view class="url_text" bindtap="SeeSolution" hover-class="white_active">{{ alertDetail.tips }}</view>。</view>
+  </bulletBox>
+  <animationCards id="animationCards">
+    <view slot="cards__content" class="maintainCard_cards__content">
+      <text></text>
+      <view class="main__header">收不到验证码</view>
+      <view class="main__body">
+        <view class="text_box">
+          <view class="sigh">.</view>
+          <view class="text">请确认手机号为当前使用号码，如已更换可返回上一页面修改。</view>
+        </view>
+        <view class="text_box">
+          <view class="sigh">.</view>
+          <view class="text">由于运营商网络原因，可能存在短信延迟，请耐心等待或重新获取验证码。</view>
+        </view>
+        <view class="text_box">
+          <view class="sigh">.</view>
+          <view class="text">请检查短信是否被手机安全软件拦截。</view>
+        </view>
+        <view class="text_box">
+          <view class="sigh">.</view>
+          <view class="text">获取更多帮助，请拨打客服电话95017或访问腾讯客服公众号。</view>
+        </view>
+      </view>
+      <view class="main__footer">
+        <view class="g--btn g--btn-green" bindtap="closeTips" hover-class="gray_active">知道了</view>
+      </view>
+    </view>
+  </animationCards>
+</view>

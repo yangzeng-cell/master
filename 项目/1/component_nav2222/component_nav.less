@@ -1,0 +1,48 @@
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 9999;
+  &__navBar {
+    height: 44px;
+    display: flex;
+    align-items: center;
+  }
+}
+
+.navBar {
+  &__left {
+    width: 200rpx;
+    text-align: left;
+  }
+  &__middle {
+    flex: 1;
+    opacity: 0.9;
+    font-family: SFProDisplay-Medium;
+    text-align: center;
+    font-size: 34rpx;
+    line-height: 48rpx;
+    font-weight: bold;
+  }
+  &__right {
+    width: 200rpx;
+    text-align: right;
+    font-size: 34rpx;
+    line-height: 48rpx;
+    color: #ffffff;
+  }
+}
+
+.left__placeholder {
+  width: 24rpx;
+  height: 48rpx;
+  padding: 0 28rpx;
+}
+
+.right__placeholder {
+  display: inline-block;
+  width: 48rpx;
+  height: 48rpx;
+  padding: 0 28rpx;
+}

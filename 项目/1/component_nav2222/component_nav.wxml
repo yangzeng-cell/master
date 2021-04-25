@@ -1,0 +1,21 @@
+<view class="nav" style="background-color: {{backgroundColor}}">
+  <view class="nav__statusBar" style="height: {{statusBarHeight}}px; background-color: {{backgroundColor}}"></view>
+  <view class="nav__navBar">
+    <view class="navBar__left">
+      <navigator wx:if="{{isClose && !customLeftEvent}}" target="miniProgram" open-type="exit" hover-class="none">
+        <image class="left__placeholder" src="{{backIconType?'images/back_black@3x.png':'images/back_white@3x.png'}}"></image>
+      </navigator>
+      <view wx:else bindtap="tapLeftEvent">
+        <image class="left__placeholder" src="{{backIconType?'images/back_black@3x.png':'images/back_white@3x.png'}}"></image>
+      </view>
+    </view>
+
+    <view class="navBar__middle" style="color: {{titleColor ? titleColor : (backIconType ? '#000000': '#ffffff')}}">{{title}}</view>
+
+    <view class="navBar__right">
+      <image wx:if="{{navRight}}" class="right__placeholder" src="{{navRight}}" bindtap="tapRightEvent"></image>
+    </view>
+  </view>
+</view>
+
+<view style="height: {{statusBarHeight+44}}px;background-color: {{backgroundColor}}"></view>

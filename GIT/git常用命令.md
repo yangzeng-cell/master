@@ -709,7 +709,7 @@ git checkout -b newBrach origin/master # 取回远程主机的更新以后，在
 ### [#](http://interview.poetries.top/fe-blog-docs/blog-docs/comprehensive/-Git常用命令.html#连接)连接
 
 ```shell
-git branch --set-upstream-to=origin/dev dev     # 将本地dev分支与远程dev分支之间建立链接  
+git branch --set-upstream dev origin/dev     # 将本地dev分支与远程dev分支之间建立链接  
 git branch --set-upstream master origin/next # 手动建立追踪关系  
 ```
 
@@ -918,19 +918,3 @@ git config --global core.quotepath false
 ```
 
 ##  
-
-```
-Git报错解决：OpenSSL SSL_read: Connection was reset, errno 10054 错误解决
-
-危险、 2020-12-08 20:57:03  23635  收藏 48
-分类专栏： Git 文章标签： git git错误处理
-版权
-*首先，造成这个错误很有可能是网络不稳定，连接超时导致的，
-如果再次尝试后依然报错，可以执行下面的命令。
-
-打开Git命令页面，执行git命令脚本：修改设置，解除ssl验证
-
-git config --global http.sslVerify "false"
-
-```
-

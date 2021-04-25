@@ -1,0 +1,5 @@
+<!-- 公告模块 start-->
+<view wx:if="{{announce.desc}}" class="bulletin__content {{announce.can_click ? 'bulletin__content_click' : ''}}" style="background-color:{{bgColor}};color:{{fontColor}}" data-item="{{announce}}" bindtap="bulletinLocation"
+  >{{announce.desc}}
+  <image wx:if="{{announce.can_click}}" src="../../images/arrow-white.png"></image>
+</view>

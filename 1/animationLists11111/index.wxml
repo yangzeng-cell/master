@@ -1,0 +1,71 @@
+<wxs module="util" src="../../configs/moneyPattern.wxs"></wxs>
+<view class="listsContainder {{isIphoneX ? 'listsContainder_bottom' : ''}}">
+  <view class="scrollBlock">
+    <!-- 若列表之前还有其他内容，则放在headBlock的slot -->
+    <view class="headBlock">
+      <slot name="headBlock"></slot>
+    </view>
+    <block wx:if="{{singleType}}">
+      <view class="list__group" wx:for="{{animationLists}}" wx:key="index" id="{{'listGroup' + index}}" data-chooseItem="{{chooseItem}}" wx:if="{{animationLists[index].deposit_list && animationLists[index].deposit_list.length>0}}">
+        <view class="group__head group__head_show " style="top:{{difineCustom ? statusBarHeight+44 : 0}}px">
+          <view class="group__head_inner">
+            <image class="group__head__icon" src="{{item.bank_icon}}"></image>
+            <view class="group__head__text">
+              {{item.bank_name}}
+            </view>
+            <!-- <image class="arrow__icon" src="../../images/arrow-black.png"></image> -->
+          </view>
+        </view>
+        <view class="group__list__content_hidden group__list__content" data-length="{{animationLists[index].deposit_list.length}}" style="max-height: {{chooseItem === index ? 320*animationLists[index].deposit_list.length +150: 0}}rpx">
+          <view class="group__list" wx:for="{{item.deposit_list}}" wx:for-index="index2" wx:for-item="item2" wx:key="index2" data-item="{{item2}}" data-bankType="{{item.bank_type}}" bindtap="itemClick" hover-class="white_active">
+            <block wx:if="{{scene === 'history'}}">
+              <view class="list__money moneyFont">¥{{util.transferMoney(item2.amount)}}</view>
+              <view class="list__date">{{item2.end_date}}转出，共获得收益<text class="moneyFont">¥{{util.transferMoney(item2.total_profit)}}</text></view>
+            </block>
+            <block wx:else>
+              <view class="list__money moneyFont">¥{{util.transferMoney(item2.amount)}}<view class="contentTips" wx:if="{{item2.tips}}">{{item2.tips}}</view></view>
+              <view class="list__date">{{item2.term}}期，{{item2.end_date}}到期</view>
+            </block>
+          </view>
+          <view wx:if="{{!item.is_end && chooseItem === index && loading}}" class="loading__tips">
+            <image class="loading-img" src="../../images/loading.png"></image>
+          </view>
+          <view wx:if="{{item.is_end && chooseItem === index && !item.first_end && scene !== 'history'}}" class="loading__tips loading__tips__end">
+            <text>已加载所有存单</text>
+          </view>
+        </view>
+      </view>
+    </block>
+    <block wx:else>
+      <view class="list__group" wx:for="{{animationLists}}" wx:key="index" id="{{'listGroup' + index}}" data-chooseItem="{{chooseItem}}" wx:if="{{animationLists[index].deposit_list && animationLists[index].deposit_list.length>0}}">
+        <view class="group__head {{chooseItem === index ? 'group__head_show' : ''}}" style="top:{{difineCustom ? statusBarHeight+44 : 0}}px" bindtap="showList" data-index="{{index}}">
+          <view class="group__head_inner" hover-class="out_white_active">
+            <image class="group__head__icon" src="{{item.bank_icon}}"></image>
+            <view class="group__head__text">
+              {{item.bank_name}}
+            </view>
+            <image class="arrow__icon {{chooseItem === index && (animationLists[index].deposit_list && animationLists[index].deposit_list.length > 0) ? 'arrow__icon_showLists' : ''}}" src="../../images/arrow-black.png"></image>
+          </view>
+        </view>
+        <view class="group__list__content_hidden {{chooseItem === index ? 'group__list__content' : ''}}" data-length="{{animationLists[index].deposit_list.length}}" style="max-height: {{chooseItem === index ? 320*animationLists[index].deposit_list.length +150: 0}}rpx">
+          <view class="group__list" wx:for="{{item.deposit_list}}" wx:for-index="index2" wx:for-item="item2" wx:key="index2" data-item="{{item2}}" data-bankType="{{item.bank_type}}" bindtap="itemClick" hover-class="white_active">
+            <block wx:if="{{scene === 'history'}}">
+              <view class="list__money moneyFont">¥{{util.transferMoney(item2.amount)}}</view>
+              <view class="list__date">{{item2.end_date}}转出，共获得收益<text class="moneyFont">¥{{util.transferMoney(item2.total_profit)}}</text></view>
+            </block>
+            <block wx:else>
+              <view class="list__money moneyFont">¥{{util.transferMoney(item2.amount)}}<view class="contentTips" wx:if="{{item2.tips}}">{{item2.tips}}</view></view>
+              <view class="list__date">{{item2.term}}期，{{item2.end_date}}到期</view>
+            </block>
+          </view>
+          <view wx:if="{{!item.is_end && chooseItem === index && loading}}" class="loading__tips">
+            <image class="loading-img" src="../../images/loading.png"></image>
+          </view>
+          <view wx:if="{{item.is_end && chooseItem === index && !item.first_end && scene !== 'history'}}" class="loading__tips loading__tips__end">
+            <text>已加载所有存单</text>
+          </view>
+        </view>
+      </view>
+    </block>
+  </view>
+</view>
