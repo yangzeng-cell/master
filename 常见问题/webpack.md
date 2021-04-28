@@ -19,3 +19,7 @@ HtmlWebpackPlugin报错，要把webpack webpack-cli版本问题，
 
 
 npx webpack-dev-server在5版本不可以使用，必须降版本
+
+
+
+webpack4就要用相应的版本的plugins和loader。可以查看github
