@@ -1,5 +1,7 @@
 translate3d写代码细心点
 标题原点的创建使用伪类
+
+```
 &::before{
                     content: "";
                     position: absolute;
@@ -12,6 +14,10 @@ translate3d写代码细心点
                     top: 24rpx;
                     left: -24rpx;//左移负右移是正
                 }
+```
+
+子元素absolute父元素relative
+
 子元素absolute父元素relative
 
 小程序创建页面在js文件或者ts文件中加上page({})先，否则可能会无法使wxml文件中元素显示

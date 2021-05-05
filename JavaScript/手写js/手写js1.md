@@ -339,6 +339,12 @@ function timer(num){
         },1000*i)
     }
 }
+
+for(var i=0;i<10;i++){
+  setTimeout(function(j){
+    console.log(j)
+  },i*1000,i)
+}
 ```
 
 ### 实现一个函数，判断输入是不是回文字符串

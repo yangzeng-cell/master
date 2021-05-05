@@ -14,15 +14,7 @@
 
   
 
-### new操作符具体干了什么呢?
 
-- 创建一个空对象，并且 `this` 变量引用该对象，同时还继承了该函数的原型
-
-- 属性和方法被加入到 `this` 引用的对象中
-
-- 新创建的对象由 `this` 所引用，并且最后隐式的返回 `this`
-
-  
 
 ### Ajax
 
@@ -270,14 +262,26 @@ console.log({} instanceof Object);                   // true
 
   **数据类型转换**
 
+  ### 转化规则
+
+  - `-、*、/、%`：一律转换成数值后计算
+- +：
+    - 数字 + 字符串 = 字符串， 运算顺序是从左到右
+  - 数字 + 对象， 优先调用对象的`valueOf -> toString`
+    - 数字 + `boolean/null` -> 数字
+  - 数字 + `undefined` -> `NaN`
+  - `[1].toString() === '1'`
+  - `{}.toString() === '[object object]'`
+  - `NaN !== NaN` 、+`undefined` 为 `NaN`
+  
   > 在 `JS` 中类型转换只有三种情况，分别是：
-
+  
   - 转换为布尔值
-
+  
   - 转换为数字
-
+  
   - 转换为字符串
-
+  
     ![img](D:\memo\JavaScript\img\1.png)
 
 **转Boolean**
@@ -485,6 +489,39 @@ console.log(a == 1 && a == 2 && a ==3);  //true f规则 Object隐式转换
 - `Object` 是 `JavaScript` 中所有对象的父对象
 - 数据封装类对象：`Object`、`Array`、`Boolean`、`Number` 和 `String`
 - 其他对象：`Function`、`Arguments`、`Math`、`Date`、`RegExp`、`Error`
+
+### 对象转原始类型是根据什么流程运行的
+
+> 对象转原始类型，会调用内置的`[ToPrimitive]`函数，对于该函数而言，其逻辑如下：
+
+- 如果有`Symbol.toPrimitive()`方法，优先调用再返回
+- 调用`valueOf()`，如果转换为原始类型，则返回
+- 调用`toString()`，如果转换为原始类型，则返回
+- 如果都没有返回原始类型，会报错
+
+```js
+var obj = {
+  value: 3,
+  valueOf() {
+    return 4;
+  },
+  toString() {
+    return '5'
+  },
+  [Symbol.toPrimitive]() {
+    return 6
+  }
+}
+console.log(obj + 1); // 输出7
+```
+
+###  [] == ![]结果是什么？为什么？
+
+- `==` 中，左右两边都需要转换为数字然后进行比较
+- `[]`转换为数字为`0`
+- `![]` 首先是转换为布尔值，由于`[]`作为一个引用类型转换为布尔值为`true`
+- 因此`![]`为`false`，进而在转换成数字，变为`0`
+- `0 == 0` ， 结果为`true`
 
 ### 说几条写JavaScript的基本规范
 
