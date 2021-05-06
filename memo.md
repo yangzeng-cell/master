@@ -25,6 +25,8 @@ translate3d写代码细心点
 css设置沾满全屏：height: 100vh;
 
 伪类画线，不占用实际高度
+
+```
 .content-table{
   position: relative;
   margin-bottom:168*@rem ;
@@ -40,4 +42,5 @@ css设置沾满全屏：height: 100vh;
     background: rgba(0,0,0,0.10);
   }
 }
+```
 

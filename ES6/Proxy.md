@@ -3,6 +3,7 @@ Proxy 可以理解成，在目标对象之前架设一层“拦截”，外界�
 
 下面是 Proxy 支持的拦截操作一览，一共 13 种。
 
+```
 get(target, propKey, receiver)：拦截对象属性的读取，比如proxy.foo和proxy['foo']。
 set(target, propKey, value, receiver)：拦截对象属性的设置，比如proxy.foo = v或proxy['foo'] = v，返回一个布尔值。
 has(target, propKey)：拦截propKey in proxy的操作，返回一个布尔值。
@@ -16,6 +17,7 @@ isExtensible(target)：拦截Object.isExtensible(proxy)，返回一个布尔值�
 setPrototypeOf(target, proto)：拦截Object.setPrototypeOf(proxy, proto)，返回一个布尔值。如果目标对象是函数，那么还有两种额外操作可以拦截。
 apply(target, object, args)：拦截 Proxy 实例作为函数调用的操作，比如proxy(...args)、proxy.call(object, ...args)、proxy.apply(...)。
 construct(target, args)：拦截 Proxy 实例作为构造函数调用的操作，比如new proxy(...args)。
+```
 
 
 
@@ -630,7 +632,7 @@ let target = {
   a: 1,
   b: 2,
   c: 3,
-  [Symbol.for('secret')]: '4',
+[Symbol.for('secret')]: '4',
 };
 
 Object.defineProperty(target, 'key', {
