@@ -159,7 +159,7 @@ Function.prototype.bind = function(ctx) {
 };
 ```
 
-### *实现一个函数clone
+### 实现一个函数clone
 
 > 可以对`JavaScript`中的5种主要的数据类型,包括`Number`、`String`、`Object`、`Array`、`Boolean`）进行值复
 
@@ -280,7 +280,7 @@ var d = new Date();
 var iArray = [];
  funtion getRandom(istart, iend){
          var iChoice = istart - iend +1;
-         return Math.floor(Math.random() * iChoice + istart;
+         return Math.floor(Math.random() * iChoice + istart);
  }
  for(var i=0; i<10; i++){
          iArray.push(getRandom(10,100));
@@ -304,7 +304,7 @@ function serilizeUrl(url) {
  }
 ```
 
-### 写一个`function`，清除字符串前后的空格
+### *写一个`function`，清除字符串前后的空格
 
 > 使用自带接口`trim()`，考虑兼容性：
 
@@ -356,7 +356,7 @@ function run(input) {
 }
 ```
 
-### 数组扁平化处理
+### *数组扁平化处理
 
 > 实现一个`flatten`方法，使得输入一个数组，该数组里面的元素也可以是数组，该方法会输出一个扁平化的数组
 
