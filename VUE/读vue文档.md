@@ -24,7 +24,11 @@
 
 一般来说，`v-if` 有更高的切换开销，而 `v-show` 有更高的初始渲染开销。因此，如果需要非常频繁地切换，则使用 `v-show` 较好；如果在运行时条件很少改变，则使用 `v-if` 较好。
 
+## [`v-for` 与 `v-if` 一同使用](https://cn.vuejs.org/v2/guide/list.html#v-for-与-v-if-一同使用)
 
+注意我们**不**推荐在同一元素上使用 `v-if` 和 `v-for`。更多细节可查阅[风格指南](https://cn.vuejs.org/v2/style-guide/#避免-v-if-和-v-for-用在一起-必要)。
+
+当它们处于同一节点，`v-for` 的优先级比 `v-if` 更高，这意味着 `v-if` 将分别重复运行于每个 `v-for` 循环中
 
 ## [数组更新检测](https://vuejs.bootcss.com/guide/list.html#数组更新检测)
 
