@@ -1,0 +1,5 @@
+$nextTick的原理
+
+nextTick会将回调函数推迟到下一次DOM更新之后执行，会在更改了一些数据以等待DOM更新后立即使用它。nextTick的返回值是promise
+
+vue在更新DOM的时候是异步执行的，只要监听到数据的变化的时候，vue就会开启一一个队列，并缓冲同一事件循环中发生的所有数据变更，如果同一个watcher被多次触发的时候，只会被推入到队列中一次。这种在缓冲的时候去除重复的数据对于并不必要的计算和操作是非常重要的，然后再下一个事件循环tick中，vue刷新队列并执行实际工作，vue在内部对异步队列尝试使用原生的Promise.then,mutationOberver,和setImmediate来执行，对执行环境不支持的时候使用setTimeout(fn,0)来执行

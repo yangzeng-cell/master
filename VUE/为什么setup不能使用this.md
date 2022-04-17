@@ -1,0 +1,1 @@
+因为他找不到组件实例，setup的调用发生在data,computed,methods等被解析之前
