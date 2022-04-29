@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>banner</title>
+    <link rel="stylesheet" href="./../css/common.css" />
+    <style>
+      .main {
+        width: 1200px;
+        margin: 0 auto;
+        height: 342px;
+        display: flex;
+        margin-top: 50px;
+        background: url(../image/rotate_bg.png) left top no-repeat;
+      }
+      .main .news {
+        box-sizing: border-box;
+        flex: 1;
+        padding: 0 17px;
+        background: rgba(255, 255, 255, 0.15);
+        position: relative;
+      }
+      .main .news .tab-hd {
+        display: flex;
+        height: 48px;
+
+        border-bottom: #000 1px solid;
+      }
+      .main .news .news-list li a {
+        display: block;
+        margin-bottom: 11px;
+        font-size: 14px;
+        color: #b8b9c5;
+      }
+      .main .news .news-list li .news-txt {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 21px;
+      }
+      .main .news .news-list li .news-txt span {
+        display: inline-block;
+      }
+      .main .news .news-list li .news-txt .news-title {
+        width: 230px;
+        white-space: nowrap;
+        text-overflow: ellipsis;
+        overflow: hidden;
+        vertical-align: top;
+        height: 21px;
+      }
+      .main .news .news-list li .news-txt .announce {
+        color: #f4be19;
+        font-size: 12px;
+        border-radius: 2px;
+        border: 1px solid currentColor;
+        width: 32px;
+        text-align: center;
+        height: 16px;
+        line-height: 16px;
+      }
+      .main .news .news-list li .news-txt .news-time {
+        font-size: 12px;
+        color: #999;
+      }
+      .main .news .news-list li:first-child .news-title1 {
+        height: 36px;
+        margin-top: 18px;
+        padding: 0 15px;
+        background: #414046;
+        font-size: 18px;
+        color: #f3c258;
+        line-height: 36px;
+        vertical-align: top;
+      }
+      .main .news .tab-hd li a {
+        box-sizing: border-box;
+        color: #b1b2be;
+        display: block;
+        height: 48px;
+        width: 52px;
+        line-height: 48px;
+        text-align: center;
+      }
+      .main .news .tab-hd li a:hover,
+      .main .news .tab-hd li:first-child a {
+        border-bottom: 3px solid #f3c258;
+        color: #f3c258;
+      }
+      .main .news .tab_more {
+        position: absolute;
+        color: #b8b9c5;
+        width: 52px;
+        right: 10px;
+        top: 10px;
+      }
+      .main .banner {
+        width: 604px;
+        height: 100%;
+        position: relative;
+        background: #000;
+      }
+      .main .banner .adBtn {
+        height: 44px;
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        display: flex;
+      }
+      .main .banner .adBtn li {
+        width: 120.8px;
+      }
+      .main .banner .adBtn li a {
+        width: 120.8px;
+        height: 44px;
+        display: block;
+        text-align: center;
+        line-height: 44px;
+        color: #b1b2be;
+      }
+      .main .banner .adBtn li a:hover {
+        background: rgba(255, 255, 255, 0.15);
+        color: #f3c258;
+      }
+      .main .download_pannel {
+        width: 236px;
+      }
+
+      .main .download_pannel a {
+        display: block;
+        text-indent: -9999px;
+      }
+      .main .download_pannel .download_btn {
+        height: 128px;
+        background: url(./../image/index.png);
+        background-position: 0 -219px;
+      }
+      .main .download_pannel .guard_btn {
+        background: url(./../image/index.png);
+        height: 106px;
+        background-position: 0 -350px;
+      }
+      .main .download_pannel .experience {
+        background: url(./../image/index.png);
+        height: 108px;
+        background-position: 0 -461px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main">
+      <div class="banner">
+        <div>
+          <a href="">
+            <img src="./../image/baner1.jpeg" alt="" srcset="" />
+          </a>
+        </div>
+        <ul class="adBtn">
+          <li>
+            <a href="">五五动画短片</a>
+          </li>
+          <li><a href="">貂蝉语音抢先听</a></li>
+          <li><a href="">绝对王者</a></li>
+          <li><a href="">荣耀大话王</a></li>
+          <li><a href="">王者炸麦了</a></li>
+        </ul>
+      </div>
+      <div class="news">
+        <ul class="tab-hd">
+          <li>
+            <a title="热门" href="">热门</a>
+          </li>
+          <li>
+            <a title="新闻" href="">新闻</a>
+          </li>
+          <li>
+            <a title="公告" href="">公告</a>
+          </li>
+          <li>
+            <a title="活动" href="">活动</a>
+          </li>
+          <li>
+            <a title="赛事" href="">赛事</a>
+          </li>
+        </ul>
+        <a
+          href="http://"
+          class="tab_more"
+          title="更多"
+          target="_blank"
+          rel="noopener noreferrer"
+          >...</a
+        >
+        <ul class="news-list">
+          <li><a class="news-title1" href="">4月28日全服不停机更新公告</a></li>
+          <li>
+            <a class="news-txt" href=""
+              ><span class="announce">公告</span
+              ><span class="news-title"
+                >五五朋友节主题头像框方案票选结果公布</span
+              ><span class="news-time">04/27</span></a
+            >
+          </li>
+          <li>
+            <a class="news-txt" href=""
+              ><span class="announce">公告</span
+              ><span class="news-title">叮！新赛季攻略解读报告出炉</span
+              ><span class="news-time">04/27</span></a
+            >
+          </li>
+          <li>
+            <a class="news-txt" href=""
+              ><span class="announce">公告</span
+              ><span class="news-title"
+                >互动小任务第16期-五五朋友节主题头像框票选活动开启！</span
+              ><span class="news-time">04/27</span></a
+            >
+          </li>
+          <li>
+            <a class="news-txt" href=""
+              ><span class="announce">公告</span
+              ><span class="news-title">4月21日全服不停机更新公告</span
+              ><span class="news-time">04/27</span></a
+            >
+          </li>
+          <li>
+            <a class="news-txt" href=""
+              ><span class="announce">公告</span
+              ><span class="news-title"
+                >最新BUG修复进展【老亚瑟的答疑时间】</span
+              ><span class="news-time">04/27</span></a
+            >
+          </li>
+          <li>
+            <a class="news-txt" href=""
+              ><span class="announce">公告</span
+              ><span class="news-title">王者改娃达人言吾豪I 《营地·人物》</span
+              ><span class="news-time">04/27</span></a
+            >
+          </li>
+          <li>
+            <a class="news-txt" href=""
+              ><span class="announce">公告</span
+              ><span class="news-title">桑启上线峡谷 玩法攻略等你来取</span
+              ><span class="news-time">04/27</span></a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="download_pannel">
+        <a href="" class="download_btn">下载游戏</a
+        ><a href="" class="guard_btn">对局环境</a
+        ><a href="" class="experience">体验环境</a>
+      </div>
+    </div>
+  </body>
+</html>

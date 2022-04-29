@@ -1,0 +1,15 @@
+p,body,ul,li,h1{
+  margin: 0;
+  padding: 0;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+ul,li{
+  list-style: none;
+}
+body{
+  font: 14px/1.5 "Microsoft YaHei",Tahoma,"simsun",sans-serif;
+  color: #323235
+}

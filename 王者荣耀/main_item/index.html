@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <title>main_item</title>
+    <style>
+      .main_item {
+        display: flex;
+        margin: 0 auto;
+        width: 1200px;
+        justify-content: space-between;
+      }
+      .main_item .strategy_center {
+        width: 872px;
+        height: 528px;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+      .main_item .skin_center {
+        width: 295px;
+        height: 528px;
+        background: green;
+      }
+      .main_item .strategy_center .item_header {
+        height: 26px;
+        margin-bottom: 16px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .main_item .strategy_center .item_header .item_title {
+        width: 140px;
+        height: 26px;
+        background: url(../image/index.png) no-repeat 0 -106px;
+        font-size: 22px;
+        text-indent: 33px;
+        line-height: 25px;
+      }
+      .main_item .strategy_center .item_header .more_btn {
+        color: #999;
+        background: url(../image/index.png) no-repeat -252px 4px;
+        padding-left: 22px;
+        font-size: 14px;
+        line-height: 22px;
+      }
+      .main_item .strategy_center .item_header .more_btn:hover {
+        color: #f3c258;
+      }
+      .main_item .strategy_center .item_subnav {
+        margin-bottom: 5px;
+      }
+      .main_item .strategy_center .item_subnav ul {
+        display: flex;
+        background: #f5f5f5;
+      }
+      .main_item .strategy_center .item_subnav ul li {
+        width: 290.667px;
+        position: relative;
+      }
+      .main_item .strategy_center .item_subnav ul li:nth-child(-n + 2)::after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 20px;
+        background: #e1e1e1;
+        right: 0;
+        top: 0;
+        margin-top: 5px;
+      }
+      .main_item .strategy_center .item_subnav ul li a {
+        display: block;
+        height: 32px;
+        overflow: hidden;
+        box-sizing: border-box;
+        color: #999;
+        font-size: 14px;
+        text-align: center;
+        line-height: 29px;
+      }
+      .main_item .strategy_center .item_subnav ul li a:hover {
+        border-bottom: 3px solid #f3c258;
+        color: #333333;
+      }
+      .main_item .strategy_center .item-dotting {
+        padding: 8px 0 9px;
+      }
+      .main_item .strategy_center .item-dotting ul {
+        display: flex;
+        overflow: hidden;
+      }
+      .main_item .strategy_center .item-dotting ul li {
+        margin-right: 8px;
+      }
+      .main_item .strategy_center .item-dotting ul li a {
+        display: block;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 13px 0 8px;
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        font-size: 14px;
+        background: #f5f5f5;
+        text-indent: 8px;
+      }
+      .main_item .strategy_center .item-dotting ul li:first-child a,
+      .main_item .strategy_center .item-dotting ul li a:hover {
+        background: #f3c258;
+        border-color: #f3c258;
+        color: #fff;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main_item">
+      <div class="strategy_center">
+        <div class="item_header">
+          <div class="item_title">内容中心</div>
+          <a class="more_btn" href="">更多</a>
+        </div>
+        <div class="item_subnav">
+          <ul>
+            <li><a href="">精品栏目</a></li>
+            <li><a href="">赛事精品</a></li>
+            <li><a href="">英雄攻略</a></li>
+          </ul>
+        </div>
+        <div class="item-dotting">
+          <ul>
+            <li><a href="">最新</a></li>
+            <li><a href="">马菠萝奇闻录</a></li>
+            <li><a href="">王者克制论</a></li>
+            <li><a href="">王者视角</a></li>
+            <li><a href="">策见打</a></li>
+            <li><a href="">峡谷460</a></li>
+            <li><a href="">百星王者带你飞</a></li>
+            <li><a href="">狄仁杰封神榜</a></li>
+          </ul>
+        </div>
+        <div class="item-list"></div>
+      </div>
+      <div class="skin_center"></div>
+    </div>
+  </body>
+</html>

@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>顶部</title>
+    <link rel="stylesheet" href="./../css/common.css" />
+    <style>
+      .top_box {
+        height: 41px;
+        border-bottom: 1px solid #f5f5f5;
+        line-height: 41px;
+      }
+      .top_box .top_inner {
+        width: 990px;
+        margin: 0 auto;
+        justify-content: space-between;
+        display: flex;
+      }
+      .top_box .top_inner .left_box {
+        display: flex;
+      }
+      .top_box .top_inner .right_box {
+        display: flex;
+        color: #464646;
+        line-height: 41px;
+        font-size: 14px;
+        position: relative;
+      }
+      .top_box .top_inner .right_box .icon {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin: auto 0;
+        display: inline-block;
+        height: 30px;
+        width: 30px;
+        background: url(../image/title_sprite.png) -30px 0 no-repeat;
+      }
+      .top_box .top_inner .right_box .ost_czsh {
+        padding-left: 30px;
+        margin-right: 20px;
+      }
+      .top_box .top_inner .right_box .ost_czsh:hover {
+        color: #ff4e00;
+      }
+      .top_box .top_inner .left_box .ost_blnk {
+        display: block;
+        width: 150px;
+        background: url(../image/logo.png) top center no-repeat;
+        text-indent: -9999px;
+      }
+      .top_box .top_inner .right_box li .ost_title {
+        position: relative;
+        padding-right: 25px;
+      }
+      .top_box .top_inner .right_box li .ost_title::after {
+        position: absolute;
+        content: "";
+        height: 30px;
+        width: 30px;
+        top: 0;
+        bottom: 0;
+        right: 0;
+        margin: auto 0;
+        transform: rotate(90deg);
+        opacity: 0.1;
+        background: url(../image//title_sprite.png) 0 0 no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="top_box">
+      <div class="top_inner">
+        <div class="left_box">
+          <a class="ost_blnk" href="javascript:;">腾讯游戏logo</a>
+          <img class="recommond_img" src="../image/topImage.jpg" alt="" />
+        </div>
+        <ul class="right_box">
+          <li>
+            <i class="icon"></i>
+            <a
+              class="ost_czsh"
+              href="http://"
+              target="_blank"
+              rel="noopener noreferrer"
+              >成长守护平台</a
+            >
+          </li>
+          <li>
+            <a
+              class="ost_title"
+              href="http://"
+              target="_blank"
+              rel="noopener noreferrer"
+              >腾讯游戏排行榜</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </body>
+</html>
