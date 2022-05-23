@@ -1,0 +1,48 @@
+ul,li,body{
+  margin: 0;
+  padding: 0;
+}
+
+a{
+  text-decoration: none;
+  color: black;
+  display: block;
+}
+
+ul,li{
+  list-style: none;
+  display: block;
+}
+
+.rotation_map{
+  width: 604px;
+  height: 342px;
+  background: #000;
+  overflow: hidden;
+  margin: 100px auto;
+}
+.rotation_map .ad_pic{
+  display: flex;
+}
+.rotation_map .ad_pic li{
+  width: 604px;
+  height: 298px;
+}
+.rotation_map .ad_btn{
+  display: flex;
+  height: 44px;
+}
+.rotation_map .ad_btn li{
+  flex: 1;
+  height: 44px;
+  line-height: 44px;
+  text-align: center;
+}
+.rotation_map .ad_btn li a{
+  color: #b1b2be;
+  height: 100%;
+}
+.active{
+  background:rgba(255,255,255,0.15) !important;
+  color: #f3c258 !important;
+}

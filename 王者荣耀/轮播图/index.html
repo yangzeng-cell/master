@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./index.css" />
+  </head>
+  <body>
+    <div class="banner">
+      <div class="banner_image">
+        <a href="javascript:;">
+          <img src="./image/40909f4a9b48962b1c7921745e0453cb.jpeg" alt="" />
+        </a>
+        <a href="javascript:;">
+          <img src="./image/88d2a0b8d22f7eb68d656f0588b09295.jpeg" alt="" />
+        </a>
+        <a href="javascript:;">
+          <img src="./image/aacbe2551f9f3d617379bb98cc49bb64.jpeg" alt="" />
+        </a>
+        <a href="javascript:;">
+          <img src="./image/adb241072ce535538706a9674ef77f7e.jpeg" alt="" />
+        </a>
+        <a href="javascript:;">
+          <img src="./image/ee39b769db3955480511ef3bdf21a680.jpeg" alt="" />
+        </a>
+      </div>
+      <div class="navigation">
+        <a href="javascript:;" data-index="0">520皮肤</a>
+        <a href="javascript:;" data-index="1">女子赛开赛</a>
+        <a href="javascript:;" data-index="2">合作款香水上线</a>
+        <a href="javascript:;" data-index="3">第八届高校联赛</a>
+        <a href="javascript:;" data-index="4">520宠粉日</a>
+      </div>
+    </div>
+    <script>
+      const banner = document.querySelector(".banner_image");
+      const bannerList = banner.children;
+      const navigationList = document.querySelector(".navigation").children;
+      navigationList[0].classList.add("on");
+      let stop = 0;
+      for (let i = 0; i < bannerList.length; i++) {
+        bannerList[i].style.left = `${i * 100}%`;
+      }
+      function begin() {
+        const stop = setInterval(() => {
+          for (let i = 0; i < bannerList.length; i++) {
+            if (parseInt(bannerList[bannerList.length - 1].style.left) === 0) {
+              for (let i = 0; i < bannerList.length; i++) {
+                bannerList[i].style.left = `${i * 100}%`;
+                if (parseInt(bannerList[i].style.left) === 0) {
+                  navigationList[i].classList.add("on");
+                } else {
+                  navigationList[i].classList.remove("on");
+                }
+              }
+              break;
+            } else {
+              bannerList[i].style.left = `${
+                parseInt(bannerList[i].style.left) - 100
+              }% `;
+              if (parseInt(bannerList[i].style.left) === 0) {
+                navigationList[i].classList.add("on");
+              } else {
+                navigationList[i].classList.remove("on");
+              }
+            }
+          }
+        }, 2000);
+        return stop;
+      }
+
+      function onmouseoverChange(index) {
+        for (let i = 0; i < bannerList.length; i++) {
+          console.log(i * 100 - 100 * index);
+          bannerList[i].style.left = `${i * 100 - 100 * index}%`;
+        }
+      }
+      function removeClass(e) {
+        // 0e.target.classList.remove("on");
+        stop = begin();
+      }
+      stop = begin();
+      document.querySelector(".navigation").onmouseover = changeBanner;
+      function changeBanner(e) {
+        clearInterval(stop);
+        let index = e.target.dataset.index;
+        console.log(this);
+        for (let i = 0; i < navigationList.length; i++) {
+          if (i === index * 1) {
+            navigationList[i].classList.add("on");
+          } else {
+            navigationList[i].classList.remove("on");
+          }
+        }
+
+        onmouseoverChange(index);
+      }
+      document.querySelector(".navigation").onmouseout = removeClass;
+      banner.onmouseover = () => {
+        clearInterval(stop);
+      };
+      banner.onmouseout = () => {
+        stop = begin();
+      };
+    </script>
+  </body>
+</html>

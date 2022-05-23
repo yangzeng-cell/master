@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <style>
+      .fr {
+        float: right;
+      }
+      .fl {
+        float: left;
+      }
+      .clearfix::after {
+        content: "";
+        clear: both;
+        display: block;
+        visibility: hidden;
+        height: 0;
+      }
+      .clearfix {
+        *zoom: 1;
+      }
+      .news-txt {
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+      .news-txt:hover {
+        text-decoration: underline;
+      }
+      .another_main_item {
+        margin: 0 auto;
+        margin-bottom: 28px;
+        width: 1200px;
+        height: 1000px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .another_main_item .match_center {
+        width: 872px;
+      }
+      .another_main_item .match_center .item-header {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 16px;
+      }
+      .another_main_item .match_center .item-header .item_title {
+        background: url(../image/index.png) 0 -184px no-repeat;
+        width: 140px;
+        height: 24px;
+        font-size: 22px;
+        line-height: 25px;
+        text-indent: 33px;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+      .another_main_item .match_center .item-header .more_btn {
+        color: #999;
+        background: url(../image/index.png) -252px 4px no-repeat;
+        padding-left: 22px;
+      }
+      .another_main_item .match_center .item-header .more_btn:hover {
+        color: #f3c258;
+      }
+      .another_main_item .match_center .item_subnav {
+        display: flex;
+        overflow: hidden;
+        margin-bottom: 19px;
+        background: #f5f5f5;
+        height: 32px;
+        line-height: 29px;
+      }
+      .another_main_item .match_center .item_subnav a {
+        display: block;
+        padding: 0 27px;
+        font-size: 14px;
+        color: #999;
+        text-align: center;
+        position: relative;
+        box-sizing: border-box;
+      }
+      .another_main_item .match_center .item_subnav a:hover,
+      .another_main_item .match_center .item_subnav a:first-child {
+        border-bottom: 3px solid #f3c258;
+        color: #333333;
+      }
+      .another_main_item .match_center .item_subnav a::after {
+        position: absolute;
+        content: "";
+        top: 5px;
+        right: 0;
+        width: 1px;
+        height: 20px;
+        background: #e1e1e1;
+      }
+      .another_main_item .match_schedule {
+        width: 295px;
+      }
+      .another_main_item .match_schedule .item-header .item_title {
+        width: 140px;
+        height: 24px;
+        background-position: -157px -106px;
+      }
+      .another_main_item .match_schedule .item_subnav li {
+        font-size: 14px;
+        color: #999;
+        text-align: center;
+      }
+      .another_main_item .match_schedule .item_content {
+        margin-bottom: 21px;
+      }
+      .another_main_item .match_schedule .item_content li {
+        border-bottom: 1px solid #e5e5e5;
+      }
+      .another_main_item .match_schedule .item_content li span {
+        display: inline-block;
+        height: 67px;
+        text-align: center;
+      }
+      .another_main_item .match_schedule .match_adver {
+        margin-bottom: 15px;
+        height: 159px;
+        width: 293px;
+      }
+      .another_main_item .match_schedule .match_adver a {
+        display: block;
+      }
+      .another_main_item .match_schedule .match_adver a img {
+        display: block;
+        height: 159px;
+        width: 293px;
+      }
+      .another_main_item .match_schedule .item_content li .match_time {
+        width: 80px;
+        color: #333333;
+        font-size: 12px;
+        line-height: 67px;
+        vertical-align: top;
+      }
+      .another_main_item .match_schedule .item_content li .team_name {
+        width: 79px;
+        font-size: 14px;
+        color: #333333;
+      }
+      .another_main_item .match_schedule .item_content li .team_name em {
+        font-size: 12px;
+        line-height: 24px;
+      }
+      .another_main_item .match_schedule .item_content li .vs {
+        width: 43px;
+        font-size: 14px;
+        text-align: center;
+        color: #f3c258;
+        vertical-align: top;
+        line-height: 67px;
+      }
+      .another_main_item
+        .match_schedule
+        .item_content
+        li
+        .team_name
+        .team_name_icon {
+        width: 25px;
+        height: 25px;
+        display: block;
+        margin: 10px auto 0;
+      }
+      .another_main_item .match_center .item_content .match_news {
+        margin-bottom: 15px;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .another_main_item
+        .match_center
+        .item_content
+        .match_news
+        .match_news_pic
+        img {
+        width: 211px;
+        height: 260px;
+      }
+      .another_main_item .match_center .item_content .match_news .news-list {
+        width: 630px;
+      }
+      .another_main_item .match_center .item_content .match_news .news-list li {
+        margin-bottom: 9px;
+      }
+      .another_main_item
+        .match_center
+        .item_content
+        .match_news
+        .news-list
+        li
+        a {
+        display: block;
+      }
+      .another_main_item
+        .match_center
+        .item_content
+        .match_news
+        .news-list
+        .line-sp {
+        height: 66px;
+        line-height: 32px;
+        display: block;
+        margin-bottom: 0px;
+      }
+      .another_main_item
+        .match_center
+        .item_content
+        .match_news
+        .news-list
+        .line-sp
+        .news-txt {
+        width: 577px;
+        font-size: 24px;
+        color: #333;
+      }
+      .another_main_item
+        .match_center
+        .item_content
+        .match_news
+        .news-list
+        .line-sp
+        .news_sub_title {
+        width: 450px;
+        font-size: 14px;
+        color: #666666;
+        line-height: 23px;
+      }
+      .another_main_item
+        .match_center
+        .item_content
+        .match_news
+        .news-list
+        .line-sp
+        .news_sub_title:hover {
+        text-decoration: none;
+      }
+      .another_main_item
+        .match_center
+        .item_content
+        .match_news
+        .news-list
+        li
+        .news-type {
+        font-size: 12px;
+        display: block;
+        width: 48px;
+        height: 19px;
+        line-height: 19px;
+        overflow: hidden;
+        border-radius: 10px;
+        text-align: center;
+        color: #999999;
+        background: #e3e3e3;
+        margin-right: 12px;
+        text-indent: 2px;
+        border: 2px solid #e3e3e3;
+      }
+      .another_main_item
+        .match_center
+        .item_content
+        .match_news
+        .news-list
+        li
+        .news-txt1 {
+        width: 470px;
+        color: #333;
+        font-size: 14px;
+      }
+      .another_main_item
+        .match_center
+        .item_content
+        .match_news
+        .news-list
+        li
+        .news-time {
+        font-size: 12px;
+        color: #b8b9c5;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="another_main_item">
+      <div class="match_center">
+        <div class="item-header">
+          <span class="item_title">赛事中心</span>
+          <a href="" class="more_btn">更多</a>
+        </div>
+        <div class="item_subnav">
+          <a href="">KPL</a><a href="">挑战者杯</a><a href="">K甲联赛</a
+          ><a href="">城市赛</a><a href="">高校联赛</a><a href="">TGA</a
+          ><a href="">微信游戏邀请赛</a>
+        </div>
+        <div class="item_content">
+          <div class="match_news">
+            <a class="match_news_pic" href="">
+              <img src="../image/313681327135550.jpg" alt="" />
+            </a>
+            <ul class="news-list">
+              <li class="line-sp">
+                <a class="news-txt" href="">KPL总决赛战队第六人为主队加油！</a
+                ><a class="news-txt news_sub_title" href=""
+                  >武汉eStarPro第六人李知恩和重庆狼队第六人赖神为各自主队应援打call！</a
+                >
+              </li>
+              <li class="clearfix">
+                <span class="news-type fl">模拟战大师赛</span>
+                <a class="news-txt news-txt1 fl" href=""
+                  >巅峰对决，见证大师登顶！王者模拟战大师赛总决赛12月13日18：00热血开战</a
+                >
+                <em class="news-time fr">12-12</em>
+              </li>
+              <li class="clearfix">
+                <span class="news-type fl">模拟战大师赛</span>
+                <a class="news-txt news-txt1 fl" href=""
+                  >巅峰对决，见证大师登顶！王者模拟战大师赛总决赛12月13日18：00热血开战</a
+                >
+                <em class="news-time fr">12-12</em>
+              </li>
+              <li class="clearfix">
+                <span class="news-type fl">模拟战大师赛</span>
+                <a class="news-txt news-txt1 fl" href=""
+                  >巅峰对决，见证大师登顶！王者模拟战大师赛总决赛12月13日18：00热血开战</a
+                >
+                <em class="news-time fr">12-12</em>
+              </li>
+              <li class="clearfix">
+                <span class="news-type fl">模拟战大师赛</span>
+                <a class="news-txt news-txt1 fl" href=""
+                  >巅峰对决，见证大师登顶！王者模拟战大师赛总决赛12月13日18：00热血开战</a
+                >
+                <em class="news-time fr">12-12</em>
+              </li>
+              <li class="clearfix">
+                <span class="news-type fl">模拟战大师赛</span>
+                <a class="news-txt news-txt1 fl" href=""
+                  >巅峰对决，见证大师登顶！王者模拟战大师赛总决赛12月13日18：00热血开战</a
+                >
+                <em class="news-time fr">12-12</em>
+              </li>
+              <li class="clearfix">
+                <span class="news-type fl">模拟战大师赛</span>
+                <a class="news-txt news-txt1 fl" href=""
+                  >巅峰对决，见证大师登顶！王者模拟战大师赛总决赛12月13日18：00热血开战</a
+                >
+                <em class="news-time fr">12-12</em>
+              </li>
+            </ul>
+          </div>
+          <ul class="item-list">
+            <li>
+              <a
+                href=""
+                title="【马菠萝奇闻录】诸葛上手指南，一个大招贯穿整个峡谷"
+              >
+                <img src="../image/0.jpg" alt="" />
+                <div class="play-bar">
+                  <em class="icon-play">4225</em><em>2022-05-06</em>
+                </div>
+                <div class="mask">
+                  <div class="mask-play-ico"></div>
+                </div>
+                <div class="video-tit">
+                  【马菠萝奇闻录】诸葛上手指南，一个大招贯穿整个峡谷
+                </div>
+              </a>
+            </li>
+            <li>
+              <a
+                href=""
+                title="【狄仁杰封神榜】第85期 抓获草外狂徒 无视野乱杀疑点重重"
+                ><img src="../image/2.jpg" alt="" />
+                <div class="play-bar">
+                  <em class="icon-play">4225</em><em>2022-05-06</em>
+                </div>
+                <div class="mask">
+                  <div class="mask-play-ico"></div>
+                </div>
+                <div class="video-tit">
+                  【狄仁杰封神榜】第85期 抓获草外狂徒 无视野乱杀疑点重重
+                </div>
+              </a>
+            </li>
+            <li>
+              <a
+                href=""
+                title="【马菠萝奇闻录】第42期：转职成功，峡谷新晋野王报道！"
+                ><img src="../image/2.jpg" alt="" />
+                <div class="play-bar">
+                  <em class="icon-play">4225</em><em>2022-05-06</em>
+                </div>
+                <div class="mask">
+                  <div class="mask-play-ico"></div>
+                </div>
+                <div class="video-tit">
+                  【马菠萝奇闻录】第42期：转职成功，峡谷新晋野王报道！
+                </div>
+              </a>
+            </li>
+            <li>
+              <a
+                href=""
+                title="【狄仁杰封神榜】第84期 带着科技送外卖 隔壁典韦都馋哭了！"
+                ><img src="../image/3.jpg" alt="" />
+                <div class="play-bar">
+                  <em class="icon-play">4225</em><em>2022-05-06</em>
+                </div>
+                <div class="mask">
+                  <div class="mask-play-ico"></div>
+                </div>
+                <div class="video-tit">
+                  【狄仁杰封神榜】第84期 带着科技送外卖 隔壁典韦都馋哭了！
+                </div>
+              </a>
+            </li>
+            <li>
+              <a
+                href=""
+                title="【狄仁杰封神榜】第83期 一个举动 让队友集体锁定安琪拉"
+                ><img src="../image/4.jpg" alt="" />
+                <div class="play-bar">
+                  <em class="icon-play">4225</em><em>2022-05-06</em>
+                </div>
+                <div class="mask">
+                  <div class="mask-play-ico"></div>
+                </div>
+                <div class="video-tit">
+                  【狄仁杰封神榜】第83期 一个举动 让队友集体锁定安琪拉
+                </div>
+              </a>
+            </li>
+            <li>
+              <a
+                href=""
+                title="【马菠萝奇闻录】第41期：新赛季赢在起跑线，3分钟掌握分路和视野调整"
+                ><img src="../image/5.jpg" alt="" />
+                <div class="play-bar">
+                  <em class="icon-play">4225</em><em>2022-05-06</em>
+                </div>
+                <div class="mask">
+                  <div class="mask-play-ico"></div>
+                </div>
+                <div class="video-tit">
+                  【狄仁杰封神榜】第83期 一个举动 让队友集体锁定安琪拉
+                </div></a
+              >
+            </li>
+            <li>
+              <a
+                href=""
+                title="【狄仁杰封神榜】第82期 发生什么事了？全局例无虚发又双叒现峡谷"
+                ><img src="../image/6.jpg" alt="" />
+                <div class="play-bar">
+                  <em class="icon-play">4225</em><em>2022-05-06</em>
+                </div>
+                <div class="mask">
+                  <div class="mask-play-ico"></div>
+                </div>
+                <div class="video-tit">
+                  【狄仁杰封神榜】第83期 一个举动 让队友集体锁定安琪拉
+                </div></a
+              >
+            </li>
+            <li>
+              <a
+                href=""
+                title="【马菠萝奇闻录】第40期：KPL非BAN必选？职业选手教你玩转公孙离！"
+                ><img src="../image/7.jpg" alt="" />
+                <div class="play-bar">
+                  <em class="icon-play">4225</em><em>2022-05-06</em>
+                </div>
+                <div class="mask">
+                  <div class="mask-play-ico"></div>
+                </div>
+                <div class="video-tit">
+                  【狄仁杰封神榜】第83期 一个举动 让队友集体锁定安琪拉
+                </div></a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="match_schedule">
+        <div class="item-header">
+          <span class="item_title">KPL赛程</span>
+          <a href="" class="buy_ticket">购票</a>
+          <a href="" class="more_btn">更多</a>
+        </div>
+        <ul class="item_subnav">
+          <li class="col1">时间</li>
+          <li class="col1">战队</li>
+          <li class="col2"></li>
+          <li class="col1">战队</li>
+        </ul>
+        <ul class="item_content">
+          <li>
+            <span class="match_time">4-30 19:00</span>
+            <span class="team_name">
+              <img
+                src="../image/phpTZIft98263065261635408342.png"
+                alt=""
+                class="team_name_icon"
+              />
+              <em>重庆狼队</em>
+            </span>
+            <span class="vs">VS</span>
+            <span class="team_name">
+              <img
+                src="../image/phpURYAMN16670949481635413312.png"
+                alt=""
+                class="team_name_icon"
+              />
+              <em>佛山GK</em>
+            </span>
+          </li>
+        </ul>
+        <div class="match_adver">
+          <a href="">
+            <img src="../image/match_schedule.webp" alt="" />
+          </a>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
