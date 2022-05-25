@@ -14,13 +14,29 @@
   </body>
   <script>
     const btnList = document.querySelectorAll("button");
-    for (var i = 0; i < btnList.length; i++) {
-      (function (m) {
-        btnList[i].onclick = function () {
-          console.log(`
-          点击按钮${m + 1}`);
-        };
-      })(i);
-    }
+    // 方法1
+    // for (var i = 0; i < btnList.length; i++) {
+    //   (function (m) {
+    //     btnList[i].onclick = function () {
+    //       console.log(`
+    //       点击按钮${m + 1}`);
+    //     };
+    //   })(i);
+    // }
+    // 方法2
+    // for (let i = 0; i < btnList.length; i++) {
+    //   btnList[i].onclick = function () {
+    //     console.log(`
+    //       点击按钮${i + 1}`);
+    //   };
+    // }
+    // 方法3
+    // for (var i = 0; i < btnList.length; i++) {
+    //   btnList[i].index = i;
+    //   btnList[i].onclick = function () {
+    //     console.log(this.index);
+    //   };
+    // }
+    
   </script>
 </html>
