@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active {
+      color: #fff;
+      background-color: #f80;
+      font-size: 25px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="box">
+    我是box
+  </div>
+  <button class="btn">切换</button>
+
+  <script>
+
+    var boxEl = document.querySelector(".box")
+
+    // 1.方法一: className
+    // boxEl.className = "abc"
+
+    // var obj = {}
+    // obj.name = "abc"
+    // obj.class = "hahahaha"
+    // obj.var = 123
+    // console.log(obj)
+
+    // 2.方法二: classList操作class
+    boxEl.classList.add("abc")
+    boxEl.classList.add("active")
+    boxEl.classList.remove("abc")
+
+    // 需求: box在active之间切换
+    var btnEl = document.querySelector(".btn")
+    btnEl.onclick = function() {
+      // if (boxEl.classList.contains("active")) {
+      //   boxEl.classList.remove("active")
+      // } else {
+      //   boxEl.classList.add("active")
+      // }
+      boxEl.classList.toggle("active")
+    }
+
+  </script>
+
+</body>
+</html>

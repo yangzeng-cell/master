@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div class="box" style="background-color: aqua; color: white;">
+    我是box
+  </div>
+
+  <script>
+    var boxEl = document.querySelector(".box")
+
+    // 1.在property中使用的驼峰格式
+    // console.log(boxEl.style.backgroundColor)
+
+    // 2.如果将一个属性的值, 设置为空的字符串, 那么是使用默认值
+    // boxEl.style.display = ""
+    // boxEl.style.fontSize = ""
+
+    // 3.设置多个样式
+    // boxEl.style.fontSize = "30px"
+    // boxEl.style.color = "red"
+    boxEl.style.cssText = "font-size: 30px; color: red;"
+
+  </script>
+
+</body>
+</html>

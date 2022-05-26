@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 1.Object类型的基本使用
+    // var name = "why"
+    // var age = 18
+    // var height = 1.88
+    var person = {
+      name: "why",
+      age: 18,
+      height: 1.88
+    }
+    console.log(person)
+
+    // 2.对象类型中某一个属性
+    console.log(person.name)
+
+    // 3.Null类型
+    // 3.1. 其他类型的初始化
+    var age = 0
+    var num = 0
+    var message = "" // 空字符串
+    var isAdmin = false
+
+    // Null存在的意义就是对 对象进行初始化的, 并且在转成Boolean类型时, 会转成false
+    var book = null
+    console.log(typeof book) // object
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 100px;
+      height: 100px;
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="box" data-name="why" data-age="18"></div>
+
+  <script>
+
+    var boxEl = document.querySelector(".box")
+    // boxEl.className = "why abc"
+
+    // boxEl.style.width = "100px"
+    // boxEl.style.height = "50px"
+    // boxEl.style.backgroundColor = "red"
+
+    // boxEl.style.display = ""
+    // boxEl.style.cssText = `
+    //           width: 100px; 
+    //           height: 100px; 
+    //           background-color: red;`
+
+    // console.log(boxEl.style.width)
+    console.log(getComputedStyle(boxEl).width)
+    console.log(getComputedStyle(boxEl).height)
+    console.log(getComputedStyle(boxEl).backgroundColor)
+
+  </script>
+
+</body>
+</html>

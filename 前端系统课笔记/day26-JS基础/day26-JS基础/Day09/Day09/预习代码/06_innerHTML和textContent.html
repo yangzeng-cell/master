@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div class="box">
+    <h2>我是标题</h2>
+    <p>我是内容, 哈哈哈哈</p>
+    <p>我是内容, 哈哈哈哈</p>
+    <p>我是内容, 哈哈哈哈</p>
+  </div>
+
+  <script>
+
+    // var boxEl = document.querySelector(".box")
+    // // 1.获取innerHTML和textContent
+    // console.log(boxEl.innerHTML)
+    // console.log(boxEl.textContent)
+
+    // // 2.设置innerHTML和textContent
+    // boxEl.innerHTML = ` <a href="#">百度一下</a> `
+    // boxEl.textContent = ` <a href="#">百度一下</a> `
+
+    function clearElement(el) {
+      for (var i = 0; i < el.childNodes.length; i++) {
+        console.log("-----")
+        console.log(el.childNodes[i])
+      }
+    }
+
+    clearElement(document.querySelector(".box"))
+
+  </script>
+</body>
+</html>

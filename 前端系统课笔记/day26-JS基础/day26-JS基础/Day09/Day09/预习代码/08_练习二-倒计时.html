@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .countdown {
+      color: #f00;
+    }
+
+    .countdown .time {
+      padding: 3px 5px;
+      border-radius: 5px;
+      font-size: 14px;
+      color: #fff;
+      background-color: #f00;
+    }
+
+  </style>
+</head>
+<body>
+  
+  <div class="countdown">
+    <span class="time hour">03</span>
+    <span class="division">:</span>
+    <span class="time minute">05</span>
+    <span class="division">:</span>
+    <span class="time second">25</span>
+  </div>
+
+  <script>
+    // 1.获取当前的倒计时时间差
+    var currentDate = new Date()
+    var nextDate = new Date(currentDate.getFullYear(), currentDate.getMonth(), currentDate.getDate() + 1)
+    
+    setInterval(function() {
+      var currentDate = new Date()
+      var intervalTime = (nextDate - currentDate) / 1000
+      var hour = Math.floor(intervalTime / 3600)
+      var minute = Math.floor(intervalTime / 60 % 60)
+      var second = Math.floor(intervalTime % 60)
+
+      var hourEl = document.querySelector(".hour")
+      var minuteEl = document.querySelector(".minute")
+      var secondEl = document.querySelector(".second")
+      hourEl.textContent = String(hour).padStart(2, "0")
+      minuteEl.textContent = String(minute).padStart(2, "0")
+      secondEl.textContent = String(second).padStart(2, "0")
+    }, 1000);
+
+  </script>
+
+</body>
+</html>

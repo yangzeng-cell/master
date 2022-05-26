@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button class="out">取消setTimeout定时器</button>
+  <button class="itv">取消setInterval定时器</button>
+  
+  <script>
+
+    // 1.setTimeout
+    function foo(name, age, height) {
+      console.log("foo被调用----", name, age, height)
+    }
+    var timeoutID = setTimeout(foo, 3000, "why", 18, 1.88)
+
+    var timeoutBtn = document.querySelector(".out")
+    timeoutBtn.onclick = function() {
+      // 取消调度
+      clearTimeout(timeoutID)
+    }
+
+    // 2.setInterval
+    // function bar() {
+    //   console.log("bar被调用++++")
+    // }
+
+    // var itvID = setInterval(bar, 3000)
+
+    // var itvBtn = document.querySelector(".itv")
+    // itvBtn.onclick = function() {
+    //   clearInterval(itvID)
+    // }
+
+  </script>
+
+</body>
+</html>

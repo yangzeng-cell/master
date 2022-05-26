@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>王者荣耀-main-news</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <style>
+    .main {
+      height: 100px;
+    }
+
+    .news-section {
+      display: flex;
+      height: 342px;
+    }
+
+    .news-section .banner {
+      width: 605px;
+      background-color: #000;
+      overflow: hidden;
+    }
+
+    .news-section .banner .image-list {
+      display: flex;
+      width: 604px;
+      /* overflow: hidden; */
+    }
+
+    .news-section .banner .image-list .item {
+      flex-shrink: 0;
+      width: 100%;
+    }
+
+    .news-section .banner .image-list .item a {
+      display: block;
+    }
+
+    .news-section .banner .image-list .item a img {
+      width: 100%;
+    }
+
+    .news-section .banner .title-list {
+      display: flex;
+      height: 44px;
+      line-height: 44px;
+    }
+
+    .news-section .banner .title-list .item {
+      flex: 1;
+      text-align: center;
+    }
+
+    .news-section .banner .title-list .item a {
+      display: block;
+      font-size: 14px;
+      color: #b1b2be;
+    }
+    .news-section .banner .title-list .item.active a,
+    .news-section .banner .title-list .item a:hover {
+      color: #f3c258;
+      background-color: rgba(255,255,255,.15);
+    }
+
+    .news-section .news {
+      flex: 1;
+      background-color: purple;
+    }
+
+    .news-section .download {
+      width: 236px;
+      background-color: skyblue;
+    }
+
+    .news-section .download a {
+      display: block;
+      background: url(./img/main_sprite.png) no-repeat;
+    }
+
+    .news-section .download a.download-btn {
+      height: 128px;
+      background-position: 0 -219px;
+    }
+
+    .news-section .download a.guard-btn {
+      height: 106px;
+      background-position: 0 -350px;
+    }
+
+    .news-section .download a.experience-btn {
+      height: 108px;
+      background-position: 0 -461px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="main main_wrapper">
+    <div class="news-section">
+      <div class="banner">
+        <ul class="image-list">
+          <li class="item">
+            <a href="">
+              <img src="./img/banner_01.jpeg" alt="">
+            </a>
+          </li>
+          <li class="item">
+            <a href="">
+              <img src="./img/banner_02.jpeg" alt="">
+            </a>
+          </li>
+          <li class="item">
+            <a href="">
+              <img src="./img/banner_03.jpeg" alt="">
+            </a>
+          </li>
+          <li class="item">
+            <a href="">
+              <img src="./img/banner_04.jpeg" alt="">
+            </a>
+          </li>
+          <li class="item">
+            <a href="">
+              <img src="./img/banner_05.jpeg" alt="">
+            </a>
+          </li>
+        </ul>
+        <ul class="title-list">
+          <li class="item active">
+            <a href="#">桑启的旅途故事</a>
+          </li>
+          <li class="item">
+            <a href="#">启示之音抢先听</a>
+          </li>
+          <li class="item">
+            <a href="#">谁成为版本之子</a>
+          </li>
+          <li class="item">
+            <a href="#">观赛体验升级</a>
+          </li>
+          <li class="item">
+            <a href="#">季后赛开战</a>
+          </li>
+        </ul>
+      </div>
+      <div class="news"></div>
+      <div class="download">
+        <a class="download-btn" href="#"></a>
+        <a class="guard-btn" href="#"></a>
+        <a class="experience-btn" href="#"></a>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // 1.获取元素
+    var titleListEl = document.querySelector(".title-list")
+    var imageListEl = document.querySelector(".image-list")
+
+    // 定义变量保存一些的状态
+    var activeItemEl = document.querySelector(".active")
+    var currentIndex = 0
+
+    // 2.底部titles的切换, 同时进行轮播
+    titleListEl.onmouseover = function(event) {
+      // 1.1.确定发生鼠标进入的元素
+      var itemEl = event.target.parentElement
+      if (!itemEl.classList.contains("item")) return
+
+      // 1.2.获取对应的索引index
+      var index = Array.from(titleListEl.children).findIndex(function(item) {
+        return item === itemEl
+      })
+      currentIndex = index
+
+      // 1.3.调用切换的函数
+      switchBanner()
+    }
+
+    // 3.定时器: 定时轮播
+    setInterval(function() {
+      currentIndex++
+      if (currentIndex === titleListEl.children.length) {
+        currentIndex = 0
+      }
+
+      // 调用切换的函数
+      switchBanner()
+    }, 3000);
+
+
+    // 封装一个切换轮播的函数
+    function switchBanner() {
+      // 第一件事情: 让imageListEl滚动
+      // 1.1.让imageListEl修改transform
+      imageListEl.style.transform = `translateX(${-604 * currentIndex}px)`
+      imageListEl.style.transition = `all 300ms ease`
+
+      // 第二件事情: 改变title选中
+      // 1.2.移除之前的active
+      activeItemEl.classList.remove("active")
+
+      // 1.3.将active添加到鼠标进入的元素
+      var currentItemEl = titleListEl.children[currentIndex]
+      currentItemEl.classList.add("active")
+
+      // 1.4.让activeItemEl指向最新的元素
+      activeItemEl = currentItemEl
+    }
+  </script>
+
+</body>
+</html>

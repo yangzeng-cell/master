@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      padding: 100px;
+    }
+
+    .box {
+      width: 200px;
+      height: 200px;
+      /* box-sizing: border-box; */
+      border: 10px solid red;
+      padding: 20px;
+      background-color: orange;
+      color: #fff;
+      overflow: scroll;
+    }
+
+    .box span {
+      display: block;
+      background-color: green;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="box">
+    <h2>我是标题</h2>
+    <p>
+      我是一名在校大学生，学校安排我们到各个地方实习，实际上就是毕业前的一次旅行，出去见见世界。我最后一次在校已经彻底结束了一场爱情长跑，最后劳燕分飞。
+      美丽的西双版纳，我在这里找到了家，但这里似乎到处都是危险，毒品泛滥，未知的热带森林，这里地处缅甸，越南与泰国交界，传说中的金三角地区。我从90年代的电视剧上知道的。
+      阿露是个温柔善良的姑娘，虽然没念过什么书，却也是个小家碧玉，傣族姑娘个个能歌善舞。对我这个外来的客人，刚开始有点腼腆。
+      夜晚的篝火晚会，睡梦中的吊脚楼，还有熙熙攘攘的人群。我习惯在睡前翻看笔记，这是我出远门的一个习惯。实习结束后，我会把论文初稿交给指导老师。我就正式毕业了，这也意味着，我可以成为正式的导游了。
+      我本来计划从福建省城出发去的云南旅游团，这一天天气晴好。但是天有不测风云，在靠近云贵高原的地方，大巴车出了点状况，我一路上不是徒步旅行就是骑行穿越。结果误打误撞进入了死亡之谷……我还以为到了云南。结果发现自己闯入了缅甸边境的一个小城镇。
+      我还有个计划就是漂洋过海去台湾澎湖，那里有我的童年记忆。我本来是跟女友一起去的，由于台湾疫情爆发就搁置了……结果女友去了上海^_^。
+      回福建的路上我们经过香格里拉的时候遭遇了暴风雪，一场五月的雪，却演绎着风花雪月的浪漫旅行。我在风雨中奔跑，呐喊，到了昆明，春城无处不飞花。又回到厦门，一场暴雨，在夜色中的酒楼里，小楼一夜听春雨。原来春天早就过去了……可我怎么感觉是冬天！怎么出现了季节错乱感。
+    </p>
+
+    <span>我是span</span>
+
+  </div>
+  <br><br><br><br><br>
+  <br><br><br><br><br>
+  <br><br><br><br><br>
+  <br><br><br><br><br>
+  <br><br><br><br><br>
+  <br><br><br><br><br>
+
+  <script>
+
+    var boxEl = document.querySelector(".box")
+    var span = document.querySelector("span")
+
+    window.onclick = function() {
+      // 1.查看client属性
+      // console.log(boxEl.clientWidth)
+      // console.log(boxEl.clientHeight)
+      // console.log(boxEl.clientLeft)
+      // console.log(boxEl.clientTop)
+
+      // 2.查看offset属性
+      // console.log(boxEl.offsetWidth)
+      // console.log(boxEl.offsetHeight)
+      // console.log(boxEl.offsetTop)
+      // console.log(boxEl.offsetLeft)
+
+      // 3.查看scroll属性
+      // console.log(boxEl.scrollHeight)
+      // console.log(boxEl.scrollTop)
+
+
+      // 2.span元素
+      // console.log(span.offsetLeft)
+      // console.log(span.offsetTop)
+      // console.log(span.pageX)
+      // console.log(span.pageY)
+
+      console.log(window.innerWidth)
+      console.log(window.innerHeight)
+
+      console.log(document.documentElement.clientWidth)
+      console.log(document.documentElement.clientHeight)
+    }
+
+  </script>
+
+</body>
+</html>

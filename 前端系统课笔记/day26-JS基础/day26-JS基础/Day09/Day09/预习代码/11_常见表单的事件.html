@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <form action="">
+    <input type="text">
+    <button type="reset">重置</button>
+    <button type="submit">提交</button>
+  </form>
+
+  <script>
+    var inputEl = document.querySelector("input")
+    inputEl.oninput = function() {
+      console.log("oninput")
+    }
+    inputEl.onchange = function() {
+      console.log("onchange")
+    }
+    inputEl.onfocus = function() {
+      console.log("onfucs")
+    }
+    inputEl.onblur = function() {
+      console.log("onblur")
+    }
+
+    var formEl = document.querySelector("form")
+    formEl.onreset = function(event) {
+      console.log("点击了重置")
+      event.preventDefault()
+    }
+    formEl.onsubmit = function() {
+      console.log("点击了提交")
+    }
+
+  </script>
+
+</body>
+</html>

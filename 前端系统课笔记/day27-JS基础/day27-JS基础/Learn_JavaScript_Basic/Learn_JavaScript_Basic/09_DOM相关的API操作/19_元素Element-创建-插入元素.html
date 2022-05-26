@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <span>111111</span>
+
+  <div class="box">
+    <span class="box-first">呵呵呵呵</span>
+    <p>哈哈哈哈哈</p>
+  </div>
+  
+  <script>
+    var boxEl = document.querySelector(".box")
+
+    // 1.通过innerHTML(不推荐)
+    // boxEl.innerHTML = `
+    //   <h2 class="title">我是标题</h2>
+    // `
+
+    // 2.真实创建一个DOM对象
+    var h2El = document.createElement("h2")
+    h2El.className = "title"
+    h2El.classList.add("active")
+    h2El.textContent = "我是标题"
+
+    // 将元素插入boxEl
+    // boxEl.append(h2El)
+    // boxEl.prepend(h2El)
+    // boxEl.after(h2El)
+    // boxEl.before(h2El)
+    // boxEl.replaceWith(h2El, "abc")
+
+    // 插入到span和p元素之间
+    // var spanEl = document.querySelector("span")
+    // var spanEl = boxEl.children[0]
+    var spanEl = boxEl.querySelector("span")
+
+    spanEl.after(h2El)
+
+  </script>
+
+</body>
+</html>

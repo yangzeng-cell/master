@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div>哈哈哈</div>
+  <img src="https://ossweb-img.qq.com/upload/webplat/info/yxzj/20220510/28345686899485.jpg" alt="">
+  
+  <script>
+    window.addEventListener("DOMContentLoaded", function() {
+      var imgEl = document.querySelector("img")
+      console.log("页面内容加载完毕", imgEl.offsetWidth, imgEl.offsetHeight)
+    })
+    window.addEventListener("load", function() {
+      var imgEl = document.querySelector("img")
+      console.log("页面所有内容加载完毕", imgEl.offsetWidth, imgEl.offsetHeight)
+    })
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      padding: 100px;
+    }
+
+    .box {
+      width: 100px;
+      height: 100px;
+      padding: 20px;
+      border: 10px solid red;
+      /* box-sizing: border-box; */
+      background-color: orange;
+
+      overflow: auto;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="box">
+    你去过国内最美的地方是哪# 我去过国内最美的地方是新疆喀纳斯。喀纳斯是一个美丽而神秘的地方，这里群山环抱，森林密布，湖水清澈，风景奇特。为国家级5A级景区，国家地质公园，国家森林公园。
+  </div>
+
+  <script>
+
+    var boxEl = document.querySelector(".box")
+
+    // 1.获取样式(局限性很强)
+    // var boxStyle = getComputedStyle(boxEl)
+    // console.log(boxStyle.width, boxStyle.height)
+
+    // 2.获取更多信息
+    console.log(boxEl.clientWidth)
+    console.log(boxEl.clientHeight)
+
+    console.log(boxEl.clientLeft)
+    console.log(boxEl.clientTop)
+
+    console.log(boxEl.offsetWidth)
+    console.log(boxEl.offsetHeight)
+
+    console.log(boxEl.offsetLeft)
+    console.log(boxEl.offsetTop)
+
+    console.log(boxEl.scrollHeight)
+    console.log(boxEl.scrollTop)
+
+    // window对象
+    window.onclick = function() {
+      console.log(boxEl.scrollTop)
+    }
+
+  </script>
+
+</body>
+</html>

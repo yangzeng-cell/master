@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>王者荣耀-main-news</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <style>
+    .main .section-content {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .main .section-content .left-content {
+      width: 872px;
+      height: 1000px;
+    }
+    .main .section-content .right-content {
+      width: 295px;
+      height: 500px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="main main_wrapper">
+    <div class="section-content">
+      <div class="left-content">
+        <div class="content-center">
+          <div class="section_header">
+            <div class="header_left">
+              <h3 class="title">内容中心</h3>
+            </div>
+            <div class="header_right" href="#">
+              <a class="more" href="#">更多</a>
+            </div>
+          </div>
+          <div class="tab_control">
+            <div class="item active">精品栏目</div>
+            <div class="line"></div>
+            <div class="item">赛事精品</div>
+            <div class="line"></div>
+            <div class="item">英雄攻略</div>
+          </div>
+        </div>
+    </div>
+  </div>
+
+  <script>
+    // 1.获取元素
+    var tabControl = document.querySelector(".tab_control")
+
+    // 2.监听鼠标进入(事件委托)
+    var activeLiEl = tabControl.querySelector(".active")
+    tabControl.onmouseover = function(event) {
+      // 1.拿到事件发生的对象
+      var itemEl = event.target
+      if (itemEl.classList.contains("item")) {
+        // 其他的取消active
+        // 1.for循环所有的item
+        // 2.querySelector(".active")
+        // 3.记录当前的active对应的item
+        activeLiEl.classList.remove("active")
+
+        // 当前进入的item变成active
+        itemEl.classList.add("active")
+
+        // 将最新的itemEl变成activeLiEl
+        activeLiEl = itemEl
+      }
+    }
+
+  </script>
+</body>
+</html>

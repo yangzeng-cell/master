@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .tool-bar {
+      position: fixed;
+      top: 30%;
+      right: 0;
+
+      /* display: flex;
+      flex-direction: column;
+      align-items: center; */
+
+      width: 35px;
+    }
+
+    .item {
+      position: relative;
+      float: right;
+      width: 35px;
+      height: 35px;
+      margin-bottom: 1px;
+      
+      background-color: #7a6e6e;
+      border-radius: 3px 0 0 3px;
+    }
+
+    .icon {
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 35px;
+      height: 35px;
+      cursor: pointer;
+      background-image: url(./img/toolbars.png);
+      
+      /* 禁止鼠标交互 */
+      pointer-events: none;
+    }
+
+    /* .icon01 {
+      background-position: -48px 0;
+    }
+    .icon02 {
+      background-position: -48px -50px;
+    }
+    .icon03 {
+      background-position: -48px -100px;
+    }
+    .icon04 {
+      background-position: -48px -150px;
+    } */
+
+    .name {
+      position: absolute;
+      z-index: -1;
+      right: 35px;
+      top: 0;
+      
+      width: 0;
+      height: 35px;
+      line-height: 35px;
+
+      color: #fff;
+      text-align: center;
+      font-size: 12px;
+      background-color: #7a6e6e;
+      cursor: pointer;
+
+      border-radius: 3px 0 0 3px;
+      transition: width .2s ease;
+
+      /* 禁止鼠标交互 */
+      pointer-events: none;
+    }
+
+    .item:hover,
+    .item:hover .name {
+      background-color: #cd1926;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="tool-bar">
+    <div class="item">
+      <i class="icon icon01"></i>
+      <div class="name">购物车</div>
+    </div>
+    <div class="item">
+      <i class="icon icon02"></i>
+      <div class="name">收藏</div>
+    </div>
+    <div class="item">
+      <i class="icon icon03"></i>
+      <div class="name">限时活动</div>
+    </div>
+    <div class="item">
+      <i class="icon icon04"></i>
+      <div class="name">大礼包</div>
+    </div>
+  </div>
+
+  <script>
+    // 1.动态给icon设置backgroundPosition
+    var iconEls = document.querySelectorAll(".icon")
+    for (var i = 0; i < iconEls.length; i++) {
+      var iconEl = iconEls[i]
+      iconEl.style.backgroundPosition = `-48px -${50*i}px`
+    }
+
+    // 2.实现鼠标进入动画
+    var toolbarEl = document.querySelector(".tool-bar")
+    toolbarEl.onmouseover = function(event) {
+      var nameEl = event.target.children[1]
+      nameEl.style.width = "62px"
+      event.target.style.width = `${62 + 35}px`
+    }
+    toolbarEl.onmouseout = function(event) {
+      var nameEl = event.target.children[1]
+      nameEl.style.width = "0"
+      event.target.style.width = `${35}px`
+    }
+
+  </script>
+
+</body>
+</html>

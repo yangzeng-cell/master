@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 200px;
+      height: 200px;
+      background-color: orange;
+    }
+
+    .box span {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="box">
+    <span></span>
+  </div>
+
+  <script>
+    var boxEl = document.querySelector(".box")
+    var spanEl = document.querySelector("span")
+
+    // 1.第一组
+    boxEl.onmouseenter = function() {
+      console.log("box onmouseenter")
+    }
+    boxEl.onmouseleave = function() {
+      console.log("box onmouseleave")
+    }
+
+    spanEl.onmouseenter = function() {
+      console.log("span onmouseenter")
+    }
+    spanEl.onmouseleave = function() {
+      console.log("span onmouseleave")
+    }
+
+    // 第二组
+    // boxEl.onmouseover = function() {
+    //   console.log("box onmouseover")
+    // }
+    // boxEl.onmouseout = function() {
+    //   console.log("box onmouseout")
+    // }
+
+  </script>
+
+</body>
+</html>

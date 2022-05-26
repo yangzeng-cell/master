@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+
+    // 继承的概念
+    class Person {
+      constructor(name, age) {
+        this.name = name
+        this.age = age
+      }
+
+      running() {
+      }
+
+      eating() {
+      }
+    }
+
+    class Student extends Person {
+      studying() {
+
+      }
+    }
+
+    class SmallStudent extends Student {
+      dwzry() {
+      }
+    }
+
+    class BigStudent extends Student {
+      xwjf() {
+      }
+    }
+
+    class Teacher extends Person {
+    }
+
+    var stu = new Student("why", 18)
+    stu.running()
+    stu.eating()
+    stu.studying()
+
+    // 继承有什么好处:
+    // 1.增加代码复用
+
+    
+    // 2.继承是多态的前提(不用理解)
+
+  </script>
+
+</body>
+</html>

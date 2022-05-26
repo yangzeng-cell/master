@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var names = ["abc", "cba", "nba", "mba"]
+
+    // 1.属性length
+    // 获取数组的长度length
+    // console.log(names.length) // 4
+
+    // // length属性可写的(扩容)
+    // names.length = 10
+    // console.log(names)
+
+    // // 设置的length小于原来的元素个数
+    // names.length = 0
+    // console.log(names)
+
+    // 2.数组的遍历
+    // 2.1. 普通的for循环
+    for (var i = 0; i < names.length; i++) {
+      console.log(names[i])
+    }
+
+    // 2.2. for..in
+    for (var index in names) {
+      console.log(index, names[index])
+    }
+
+    // 2.3. for..of
+    for (var item of names) {
+      console.log(item)
+    }
+
+  </script>
+
+</body>
+</html>

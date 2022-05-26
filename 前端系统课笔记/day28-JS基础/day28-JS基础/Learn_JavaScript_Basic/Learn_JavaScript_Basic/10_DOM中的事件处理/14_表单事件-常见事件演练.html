@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <form action="/abc">
+    <input type="text">
+    <textarea name="" id="" cols="30" rows="10"></textarea>
+
+    <button type="reset">重置</button>
+    <button type="submit">提交</button>
+  </form>
+
+  <script>
+    var inputEl = document.querySelector("input")
+
+    // 1.获取焦点和失去焦点
+    // inputEl.onfocus = function() {
+    //   console.log("input获取到了焦点")
+    // }
+    // inputEl.onblur = function() {
+    //   console.log("input失去到了焦点")
+    // }
+
+    // 2.内容发生改变/输入内容
+    // 输入的过程: input
+    // 内容确定发生改变(离开): change
+    // inputEl.oninput = function() {
+    //   console.log("input事件正在输入内容", inputEl.value)
+    // }
+    // inputEl.onchange = function() {
+    //   console.log("change事件内容发生改变", inputEl.value)
+    // }
+
+    // 3.监听重置和提交
+    var formEl = document.querySelector("form")
+    formEl.onreset = function(event) {
+      console.log("发生了重置事件")
+      event.preventDefault()
+    }
+
+    formEl.onsubmit = function(event) {
+      console.log("发生了提交事件")
+      // axios库提交
+      event.preventDefault()
+    }
+
+  </script>
+
+</body>
+</html>

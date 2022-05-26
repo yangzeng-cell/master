@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var names = ["abc", "cba", "nba"]
+
+    // forEach函数: 可以帮助我遍历数组
+    // for (var i = 0; i < names.length; i++) {
+    //   console.log(names[i])
+    // }
+
+    // 1.hyForEach版本一(大部分同学掌握)
+    function hyForEach(fn) {
+      for (var i = 0; i < names.length; i++) {
+        fn(names[i], i, names)
+      }
+    }
+
+    hyForEach(function(item, index, names) {
+      console.log("-------", item, index, names)
+    })
+
+    // 2.hyForEach版本二
+    // function hyForEach(fn, arr) {
+    //   for (var i = 0; i < arr.length; i++) {
+    //     fn(arr[i], i, arr)
+    //   }
+    // }
+
+    // hyForEach(function(item, index, names) {
+    //   console.log("-------", item, index, names)
+    // }, names)
+
+    // hyForEach(function(item, index, names) {
+    //   console.log("-------", item, index, names)
+    // }, [123, 321, 111, 222])
+
+
+    // 3.hyForEach版本三
+    // names.hyForEach = function(fn) {
+    //   for (var i = 0; i < this.length; i++) {
+    //     fn(this[i], i, this)
+    //   }
+    // }
+
+    // names.hyForEach(function(item, index, names) {
+    //   console.log("-------", item, index, names)
+    // })
+
+    // names.forEach(function(item, index, names) {
+    //   console.log("-------", item, index, names)
+    // })
+    
+
+    // 4.hyForEach版本四(了解)
+    Array.prototype.hyForEach = function(fn, thisArgs) {
+      for (var i = 0; i < this.length; i++) {
+        fn(this[i], i, this)
+      }
+    }
+
+    // names.hyForEach(function(item, index, names) {
+    //   console.log("------", item, index, names)
+    // })
+
+    // var students = [
+    //   { id: 100, name: "why", age: 18 },
+    //   { id: 101, name: "kobe", age: 30 },
+    //   { id: 102, name: "james", age: 25 },
+    //   { id: 103, name: "why", age: 22 }
+    // ]
+
+    // students.hyForEach(function(item, index, stus) {
+    //   console.log("++++++", item, index, stus)
+    // })
+
+  </script>
+
+
+</body>
+</html>
