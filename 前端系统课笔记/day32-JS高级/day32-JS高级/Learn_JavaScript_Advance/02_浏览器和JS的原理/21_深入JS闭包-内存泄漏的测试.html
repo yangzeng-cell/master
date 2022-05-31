@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button class="create">创建一系列的数组对象</button>
+  <button class="destroy">销毁一系列的数组对象</button>
+  
+  <script>
+
+    function createArray() {
+      // 4 1024 -> 4kb * 1024 -> 4M
+      var arr = new Array(1024*1024).fill(1)
+
+      function test() {
+        console.log(arr)
+      }
+
+      return test
+    }
+
+
+    // 点击按钮
+    var totalArr = []
+
+    var createBtnEl = document.querySelector(".create")
+    var destroyBtnEl = document.querySelector(".destroy")
+    createBtnEl.onclick = function() {
+      for (var i = 0; i < 100; i++) {
+        totalArr.push(createArray())
+      }
+      console.log(totalArr.length)
+    }
+    destroyBtnEl.onclick = function() {
+      totalArr = []
+    }
+
+  </script>
+
+</body>
+</html>

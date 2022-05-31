@@ -215,8 +215,8 @@ export default RefDemo
  32.StrictMode 开启react的严格模式，只有开发环境下起作用
  	可以识别不安全的生命周期
  	过时的ref的警告
- 	检测意外的副作用
- 	检测过时的context api
+ 	检测意外的副作用。有些组件可能会调用两次
+ 	检测过时的context api 
  33.react中的css
  	1.内联样式
  	2.css modules
@@ -237,5 +237,74 @@ export default RefDemo
  40.react动画中<TransitionGroup>中需要再用<cssTransition>包裹,否则会报错
  41.react-router
  	默认是模糊匹配
+ 42.react-hook
+ 	import React from "react"//这个是在函数式组件和类组件都要写，因为jsx是React.createElement()的语法糖，会在内部调用
+ 	useState()
+ 	Hook的使用规则：
+ 		只能在函数最外层调用Hook,不要在循环，条件判断或者子函数中调用
+ 		只能在React的函数组件中调用Hook,不要再其他js函数中使用
+ 		
+ 	 const [count, setCount] = useState(() => 10);//useState可以传入一个函数
+
+  console.log("CounterHook渲染");
+
+  function handleBtnClick() {
+    // setCount(count + 10);
+  
+ 
+    setCount((prevCount) => prevCount + 10);//preCount是上一个count
+ 43.useEffect()
+ 	useEffect(() => {
+    console.log("订阅一些事件");
+
+    return () => {
+      console.log("取消订阅事件")
+    }
+  }, []);//通过返回一个函数来执行类似componmentwillumnount来清除副作用，[]这个可以作为优化，只有在组件切换时才执行
+  44.useEffect第二个参数
+   useEffect(() => {
+    console.log("修改DOM", count);
+  }, [count]);//useEffect可以让某个属性发生改变时才执行，这个属性必须在useEffect的回调函数中有使用到
+  如果想执行只运行一次的 effect（仅在组件挂载和卸载时执行），可以传递一个空数组（[]）作为第二个参数。这就告诉 React 你的 effect 不依赖于 props 或 state 中的任何值，所以它永远都不需要重复执行。这并不属于特殊情况 —— 它依然遵循依赖数组的工作方式。
+  45.useContext的使用
+  46.useCallback的使用
+  47.useMemo的使用
+  48.useCallback是针对回调函数进行优化，useMemo是对返回值进行优化
+  49.Refs的转发
+  		就是父组件想获取到子组件的ref,在高阶组件中转发refs
+  		可以使用React.forwardRef()
+  		const ref=useRef(initialValue)//初始化值后不会发生改变
+  		
+  		
+  		export default function RefHookDemo02() {
+  const [count, setCount] = useState(0);
+
+  const numRef = useRef(count);
+
+  useEffect(() => {
+    numRef.current = count;
+  }, [count])
+
+  return (
+    <div>
+      {/* <h2>numRef中的值: {numRef.current}</h2>
+      <h2>count中的值: {count}</h2> */}
+      <h2>count上一次的值: {numRef.current}</h2>
+      <h2>count这一次的值: {count}</h2>
+      <button onClick={e => setCount(count + 10)}>+10</button>
+    </div>
+  )
+}//useEffect和useRef结合使用可以修改numRef.current
+50.useImperativeHandle要和React.forwardRef()一起使用
+51.自定义hook：就是将react的hook封装成函数
+52.fiber的原理
+53.不要在条件表达式中使用hook
+54.使用normailze.css对项目进行初始化
+	使用@craco/craco修改react 配置
+		修改webpack的alias
+	使用react-config-router进行路由配置
+	使用styled-compoments进行写css样式
+		background:url(${reuire()})//需要使用require来引入图片
+		搜索框使用antDesign
 ```
 

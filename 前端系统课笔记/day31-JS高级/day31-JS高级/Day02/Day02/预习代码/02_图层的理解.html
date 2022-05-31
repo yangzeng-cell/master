@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+      background-color: #f00;
+    }
+
+    .container {
+      width: 150px;
+      height: 150px;
+      background-color: #0f0;
+
+      /* will-change: transform; */
+      /* opacity: 0.5; */
+      /* transform: translateZ(0); */
+
+      transition: transform 3s ease;
+      position: fixed;
+    }
+
+    .container:hover {
+      /* transform: scaleX(2); */
+      width: 300px;
+    }
+  </style>
+
+</head>
+<body>
+  
+  <div class="box">
+    <span>呵呵呵</span>
+    <p>我是内容</p>
+  </div>
+
+  <div class="container"></div>
+
+</body>
+</html>
