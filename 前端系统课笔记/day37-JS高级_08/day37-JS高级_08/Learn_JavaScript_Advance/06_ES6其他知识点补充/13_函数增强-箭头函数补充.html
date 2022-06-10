@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 1.function定义的函数是有两个原型的:
+    // function foo() {}
+    // console.log(foo.prototype) // new foo() -> f.__proto__ = foo.prototype
+    // console.log(foo.__proto__) // -> Function.prototype
+
+    // 2.箭头函数是没有显式原型
+    // 在ES6之后, 定义一个类要使用class定义
+    var bar = () => {}
+    // console.log(bar.__proto__ === Function.prototype)
+    // 没有显式原型
+    // console.log(bar.prototype)
+    // var b = new bar()
+
+  </script>
+
+</body>
+</html>

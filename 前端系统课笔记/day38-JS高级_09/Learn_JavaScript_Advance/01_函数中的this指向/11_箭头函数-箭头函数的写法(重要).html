@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 1.之前的方式
+    function foo1() {}
+    var foo2 = function(name, age) {
+      console.log("函数体代码", this, arguments)
+      console.log(name, age)
+    }
+
+    // 2.箭头函数完整写法
+    var foo3 = (name, age) => {
+      console.log("箭头函数的函数体")
+      console.log(name, age)
+    }
+
+    // 3.箭头函数的练习
+    // 3.1. forEach
+    var names = ["abc", "cba", "nba"]
+    names.forEach((item, index, arr) => {
+      console.log(item, index, arr)
+    })
+    // 3.2. setTimeout
+    setTimeout(() => {
+      console.log("setTimeout")
+    }, 3000)
+
+
+  </script>
+
+</body>
+</html>

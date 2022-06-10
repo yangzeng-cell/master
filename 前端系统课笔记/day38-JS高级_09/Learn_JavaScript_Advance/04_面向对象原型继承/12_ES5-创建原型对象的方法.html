@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // 工具函数
+    // 创建对象的过程
+    function createObject(o) {
+      function F() {}
+      F.prototype = o
+      return new F()
+    }
+
+    // 将Subtype和Supertype联系在一起
+    // 寄生式函数
+    function inherit(Subtype, Supertype) {
+      Subtype.prototype = createObject(Supertype.prototype)
+      Object.defineProperty(Subtype.prototype, "constructor", {
+        enumerable: false,
+        configurable: true,
+        writable: true,
+        value: Subtype
+      })
+    }
+
+    /*
+    满足什么条件:
+      1.必须创建出来一个对象
+      2.这个对象的隐式原型必须指向父类的显式原型
+      3.将这个对象赋值给子类的显式原型
+    */
+    function Person(name, age, height) {}
+    function Student() {}
+
+    inherit(Student, Person)
+    
+    // 1.之前的做法: 但是不想要这种做法
+    // var p = new Person()
+    // Student.prototype = p
+
+    // 2.方案一:
+    var obj = {}
+    // obj.__proto__ = Person.prototype
+    Object.setPrototypeOf(obj, Person.prototype)
+    Student.prototype = Person.prototype
+
+    // 3.方案二:
+    // function F() {}
+    // F.prototype = Person.prototype
+    // Student.prototype = new F()
+
+    // 4.方案三:
+    var obj = Object.create(Person.prototype)
+    console.log(obj.__proto__ === Person.prototype)
+    Student.prototype = obj
+
+  </script>
+
+</body>
+</html>

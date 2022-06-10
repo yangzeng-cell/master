@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // var nums = [20, 4, 10, 15, 100, 88]
+
+    // // sort: 排序
+    // nums.sort(function(item1, item2) {
+    //   // item1和item2进行比较
+    //   // 返回是 整数
+    //   // 谁小谁在前
+    //   // return item1 - item2
+    //   return item2 - item1
+    // })
+
+    // console.log(nums)
+    // console.log(nums.reverse())
+
+
+    // 复杂类型的排序
+    var students = [
+      { id: 100, name: "why", age: 18 },
+      { id: 101, name: "kobe", age: 30 },
+      { id: 102, name: "james", age: 25 },
+      { id: 103, name: "curry", age: 22 }
+    ]
+
+    students.sort(function(item1, item2) {
+      return item1.age - item2.age
+    })
+    console.log(students)
+
+  </script>
+
+</body>
+</html>

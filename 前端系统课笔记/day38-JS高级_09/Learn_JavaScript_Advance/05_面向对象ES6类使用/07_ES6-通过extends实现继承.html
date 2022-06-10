@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // 定义父类
+    class Person {
+      constructor(name, age) {
+        this.name = name
+        this.age = age
+      }
+
+      running() {
+        console.log("running~")
+      }
+      eating() {
+        console.log("eating~")
+      }
+
+    }
+
+    class Student extends Person {
+      constructor(name, age, sno, score) {
+        // this.name = name
+        // this.age = age
+        super(name, age)
+        this.sno = sno
+        this.score = score
+      }
+
+      // running() {
+      //   console.log("running~")
+      // }
+      // eating() {
+      //   console.log("eating~")
+      // }
+
+      studying() {
+        console.log("studying~")
+      }
+    }
+
+    var stu1 = new Student("why", 18, 111, 100)
+    stu1.running()
+    stu1.eating()
+    stu1.studying()
+
+    
+    class Teacher extends Person {
+      constructor(name, age, title) {
+        // this.name = name
+        // this.age = age
+        super(name, age)
+        this.title = title
+      }
+
+      // running() {
+      //   console.log("running~")
+      // }
+      // eating() {
+      //   console.log("eating~")
+      // }
+
+      teaching() {
+        console.log("teaching~")
+      }
+    }
+
+
+  </script>
+
+</body>
+</html>

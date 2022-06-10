@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+
+  <style>
+    .box button {
+      cursor: pointer;
+    }
+
+    .box button.active {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box">
+    <button>red</button>
+    <button>yellow</button>
+    <button>blue</button>
+  </div>
+
+  <div class="list"></div>
+  
+  <script>
+    // 1.默认大量的数量
+    var students = [
+      {name: "小明", colors: ["red", "blue", "green"]},
+      {name: "小王", colors: ["orange", "yellow", "red"]},
+      {name: "小龙", colors: ["purple", "yellow", "black"]},
+      {name: "小李", colors: ["red", "orange", "blue"]},
+    ]
+
+    // 2.点击按钮, 按钮变成选中
+    var boxEl = document.querySelector(".box")
+    var filters = ["red", "blue"]
+    var newStudents = students
+    for (var i = 0; i < boxEl.children.length; i++) {
+      var btnEl = boxEl.children[i]
+      btnEl.onclick = function() {
+        // 1.修改active
+        this.classList.toggle("active")
+
+        // 2.修改filters
+        if (this.classList.contains("active")) {
+          filters.push(this.textContent.trim())
+        } else {
+          var filterItem = this.textContent.trim()
+          var index = filters.indexOf(filterItem)
+          filters.splice(index, 1)
+        }
+
+        // 3.过滤数据
+        newStudents = []
+        for (var stu of students) {
+          var isFlag = true
+          for (var filterItem of filters) {
+            if (!stu.colors.includes(filterItem)) {
+              isFlag = false
+              break
+            }
+          }
+          if (isFlag) {
+            newStudents.push(stu)
+          }
+        }
+
+        // 4.展示newStudents
+        showStudentListAction()
+      }
+    }
+
+    var listEl = document.querySelector(".list")
+    showStudentListAction()
+    function showStudentListAction() {
+      listEl.innerHTML = ""
+      for (var i = 0; i < newStudents.length; i++) {
+        var newStu = newStudents[i]
+        var divEl = document.createElement("div")
+        divEl.textContent = newStu.name
+        listEl.append(divEl)
+      }
+    }
+    
+  </script>
+
+</body>
+</html>

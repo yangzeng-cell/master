@@ -306,5 +306,27 @@ export default RefDemo
 	使用styled-compoments进行写css样式
 		background:url(${reuire()})//需要使用require来引入图片
 		搜索框使用antDesign
+		数据都是用redux来管理
+		用redux-thunk进行异步请求
+		配置redux-devtool
+		将各个模块的redux分开写再各个文件中，然后进行合并，使用combineReducers
+		store使用Provider进行传递
+		所有组件用memo()包裹管理
+		使用redux的hook:useDispatch()
+					   useSelector(state=>({}),shallowEqual)
+					   shallowEqual//进行浅层比较,做优化
+		Immutablejs可以解决使用拷贝来决绝数据可变性的问题，带来的性能问题
+			const im=immutable
+			const info={}
+			const imfoIM=im(info)
+			imfoIm.set()
+			imfoIM.get()
+			imfoIm.list()
+			imfoim.fromJS()//深层次转换成immutable类型 
+			state.getIn(["a","b"])//相当于a.b
+			styled-components的传参
+			使用useCallback对需要传给子组件的函数进行包裹，可以有缓存，并提高性能
+			
+			使用 redux-immutable中的commineReducer来优化combineReducer,提高性能
 ```
 

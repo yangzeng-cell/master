@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    function inherit(SubType, SuperType) {
+      SubType.prototype = Object.create(SuperType.prototype)
+      Object.defineProperty(SubType.prototype, "constructor", {
+        enumerable: false,
+        configurable: true,
+        writable: true,
+        value: SubType
+      })
+    }
+
+    function Person(name, age) {
+      this.name = name
+      this.age = age
+    }
+
+    Person.prototype.running = function() {
+      console.log("running~")
+    }
+
+    function Student(name, age, sno, score) {
+      Person.call(this, name, age)
+      this.sno = sno
+      this.score = score
+    }
+
+    inherit(Student, Person)
+    
+    Student.prototype.studying = function() {
+      console.log("studying")
+    }
+
+
+    var stu = new Student("why", 18, 111, 100)
+    console.log(stu)
+    stu.running()
+    stu.studying()
+
+  </script>
+
+</body>
+</html>

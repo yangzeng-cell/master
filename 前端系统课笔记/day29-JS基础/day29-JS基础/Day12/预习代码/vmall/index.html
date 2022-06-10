@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <style>
+    .crumbs {
+      display: flex;
+      align-items: center;
+      height: 63px;
+      font-size: 12px;
+      color: #333;
+    }
+
+    .crumbs .item:last-child {
+      color: #000;
+      font-weight: 500;
+    }
+
+    .crumbs .split {
+      margin: 0 5px;
+    }
+
+    .menu {
+      background-color: #fff;
+      padding: 0 24px;
+    }
+
+    .menu .list {
+      display: flex;
+      font-size: 12px;
+      color: #000;
+    }
+
+    .menu .list .item {
+      width: 104px;
+      height: 48px;
+      line-height: 48px;
+      margin: 0 12px;
+    }
+
+    .menu .list .item.active {
+      color: #cf0a2c;
+    }
+
+    .menu .list .item:first-child {
+      color: #666;
+    }
+
+    .menu .list .item span {
+      display: block;
+      cursor: pointer;
+    }
+
+    .product {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-top: 15px;
+    }
+
+    .product .item {
+      width: 291px;
+      background-color: #fff;
+      margin-bottom: 12px;
+      font-size: 14px;
+    }
+
+    .product .item:hover {
+      box-shadow: 0 0 10px 10px rgba(0, 0, 0, .05);
+    }
+
+    .product .item.empty {
+      height: 0;
+    }
+
+    .product .item>a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .product .item .album {
+      width: 180px;
+      height: 180px;
+      margin: 30px 0;
+    }
+
+    .product .item .title {
+      color: #000;
+      font-weight: 700;
+    }
+
+    .product .item .discount {
+      margin-top: 8px;
+      display: flex;
+      height: 18px;
+      color: #666;
+    }
+
+    .product .item .price {
+      margin: 15px 0 10px;
+      font-size: 16px;
+      font-weight: 700;
+      color: #cf0a2c;
+    }
+
+    .product .item .welfare {
+      display: flex;
+      font-size: 12px;
+      color: #cf0a2c;
+    }
+
+    .product .item .welfare .tip {
+      border: 1px solid #cf0a2c;
+      margin: 0 3px;
+      padding: 0 3px;
+      border-radius: 3px;
+    }
+
+    .product .item .comment {
+      display: flex;
+      margin: 10px 0 15px;
+      font-size: 12px;
+    }
+
+    .product .item .comment .count {
+      margin-right: 8px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- 内容 -->
+  <div class="wrapper">
+    <div class="crumbs">
+      <a class="item" href="#">首页</a>
+      <span class="split">&gt;</span>
+      <a class="item" href="#">笔记本</a>
+    </div>
+
+    <div class="menu">
+      <div class="category list">
+        <div class="item">分类：</div>
+        <div class="item">
+          <span>笔记本</span>
+        </div>
+        <div class="item">
+          <span>台式机</span>
+        </div>
+        <div class="item">
+          <span>智慧屏</span>
+        </div>
+      </div>
+      <div class="discount list">
+        <div class="item">服务优惠：</div>
+        <div class="item">
+          <span>仅看有货</span>
+        </div>
+        <div class="item">
+          <span>分期免息</span>
+        </div>
+        <div class="item">
+          <span>优惠商品</span>
+        </div>
+      </div>
+      <div class="sort list">
+        <div class="item">排序：</div>
+        <div class="item active" data-key="default">
+          <span>综合</span>
+        </div>
+        <div class="item" data-key="new">
+          <span>最新</span>
+        </div>
+        <div class="item" data-key="rateCount">
+          <span>评论数</span>
+        </div>
+        <div class="item" data-key="price">
+          <span>价格</span>
+        </div>
+      </div>
+    </div>
+
+    <ul class="product">
+      <!-- <li class="item">
+        <a href="#">
+          <img class="album" src="./img/product_01.webp" alt="">
+          <div class="title">HUAWEI MateBook E 12.6英寸</div>
+          <div class="discount">
+            预订立省300元|12期免息
+          </div>
+          <div class="price">¥6499</div>
+          <div class="welfare">
+            <span class="tip">分期免息</span>
+            <span class="tip">赠送积分</span>
+          </div>
+          <div class="comment">
+            <span class="count">
+              6029人评价
+            </span>
+            <span class="rate">
+              97% 好评
+            </span> 
+          </div>
+        </a>
+      </li> -->
+    </ul>
+  </div>
+
+  <script src="./data/data.js"></script>
+  <script>
+    var baseURL = "https://res.vmallres.com/pimages"
+
+    // 获取元素
+    var productEl = document.querySelector(".product")
+    var filterResultList = [].concat(resultList)
+    var filterKeywords = []
+
+    // 遍历数据
+    function showResultList() {
+      productEl.innerHTML = ""
+      for (var item of filterResultList) {
+        // 1.顶层的item和a
+        var itemEl = document.createElement("li")
+        itemEl.classList.add("item")
+        var aEl = document.createElement("a")
+        aEl.href = "#"
+        itemEl.append(aEl)
+        productEl.append(itemEl)
+
+        // 2.添加内容
+        var imgEl = document.createElement("img")
+        // imgEl.src = "./img/product_01.webp"
+        imgEl.src = `${baseURL}${item.photoPath}428_428_${item.photoName}`
+        imgEl.classList.add("album")
+        aEl.append(imgEl)
+
+        var titleEl = document.createElement("div")
+        titleEl.textContent = item.name
+        titleEl.classList.add("title")
+        aEl.append(titleEl)
+
+        var discountEl = document.createElement("div")
+        discountEl.textContent = item.promotionInfo
+        discountEl.classList.add("discount")
+        aEl.append(discountEl)
+
+        var priceEl = document.createElement("div")
+        priceEl.textContent = `¥${item.price}`
+        priceEl.classList.add("price")
+        aEl.append(priceEl)
+
+        var welfareEl = document.createElement("div")
+        welfareEl.classList.add("welfare")
+        for (var tip of item.promoLabels) {
+          var tipEl = document.createElement("span")
+          tipEl.classList.add("tip")
+          tipEl.textContent = tip
+          welfareEl.append(tipEl)
+        }
+        aEl.append(welfareEl)
+
+        var commentEl = document.createElement("div")
+        commentEl.classList.add("comment")
+        aEl.append(commentEl)
+        var countEl = document.createElement("span")
+        countEl.classList.add("count")
+        countEl.textContent = `${item.rateCount}人评论`
+        commentEl.append(countEl)
+        var rateEl = document.createElement("span")
+        rateEl.classList.add("rate")
+        rateEl.textContent = `${item.goodRate}% 好评`
+        commentEl.append(rateEl)
+      }
+      for (var i = 0; i < 3; i++) {
+        var emptyLi = document.createElement("li")
+        emptyLi.className = "item empty"
+        productEl.append(emptyLi)
+      }
+    }
+
+    function updateFilterResult() {
+      filterResultList = resultList.filter(function(item) {
+        var itemDiscounts = item.services
+        var isFlag = true
+        for (var keyword of filterKeywords) {
+          if (!itemDiscounts.includes(keyword)) {
+            isFlag = false
+            break
+          }
+        }
+        return isFlag
+      })
+      console.log(filterResultList)
+      showResultList()
+    }
+
+    function sortFilterResult(sortKey) {
+      if (sortKey === "default") {
+        console.log("------")
+        updateFilterResult()
+      } else {
+        filterResultList.sort(function(item1, item2) {
+          return item2[sortKey] - item1[sortKey]
+        })
+        console.log(filterResultList, sortKey)
+        showResultList()
+      }
+    }
+
+    showResultList()
+
+    // 功能实现
+    var discountEl = document.querySelector(".discount")
+    for (var i = 1; i < discountEl.children.length; i++) {
+      var itemEl = discountEl.children[i]
+      itemEl.onclick = function () {
+        var discountInfo = this.textContent.trim()
+        this.classList.toggle("active")
+        if (this.classList.contains("active")) {
+          filterKeywords.push(discountInfo)
+        } else {
+          var keywordIndex = filterKeywords.indexOf(discountInfo)
+          filterKeywords.splice(keywordIndex, 1)
+        }
+        updateFilterResult()
+      }
+    }
+
+    var sortEl = document.querySelector(".sort")
+    var activeSortEl = sortEl.querySelector(".active")
+    for (var i = 1; i < sortEl.children.length; i++) {
+      var sortItemEl = sortEl.children[i]
+      sortItemEl.onclick = function() {
+        activeSortEl.classList.remove("active")
+        this.classList.add("active")
+        activeSortEl = this
+        
+        sortFilterResult(this.dataset.key)
+      }
+    }
+
+  </script>
+
+</body>
+
+</html>

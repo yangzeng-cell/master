@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 继承是多态的前提
+    // shape形状
+    class Shape {
+      getArea() {}
+    }
+
+    class Rectangle extends Shape {
+      constructor(width, height) {
+        super()
+        this.width = width
+        this.height = height
+      }
+
+      getArea() {
+        return this.width * this.height
+      }
+    }
+
+    class Circle extends Shape {
+      constructor(radius) {
+        super()
+        this.radius = radius
+      }
+
+      getArea() {
+        return this.radius * this.radius * 3.14
+      }
+    }
+
+    var rect1 = new Rectangle(100, 200)
+    var rect2 = new Rectangle(20, 30)
+    var c1 = new Circle(10)
+    var c2 = new Circle(15)
+
+    // 表现形式就是多态
+    /*
+      在严格意义的面向对象语言中, 多态的是存在如下条件的:
+        1.必须有继承(实现接口)
+        2.必须有父类引用指向子类对象
+    */
+    function getShapeArea(shape) {
+      console.log(shape.getArea())
+    }
+
+    getShapeArea(rect1)
+    getShapeArea(c1)
+
+    
+    var obj = {
+      getArea: function() {
+        return 10000
+      }
+    }
+
+    getShapeArea(obj)
+    getShapeArea(123)
+
+  </script>
+
+</body>
+</html>

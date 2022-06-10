@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    debugger
+
+    class Person {
+      address = "中国"
+      static totalCount = "70亿"
+
+      // 只能类内部访问
+      #sex = "male"
+      static #maleCount = "10亿"
+
+      constructor(name, age) {
+        this.name = name
+        this.age = age
+      }
+
+      static {
+        console.log("static block execution")
+      }
+
+      printInfo() {
+        console.log(this.address, this.#sex, Person.#maleCount)
+      }
+    }
+
+    const p1 = new Person("why", 18)
+    console.log(Person.totalCount)
+    console.log(p1)
+    p1.printInfo()
+
+  </script>
+
+</body>
+</html>

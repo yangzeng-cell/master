@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    /*
+    1.什么是函数的显式原型
+      * 区分和对象原型区别
+    2.函数的原型的作用
+      * 在通过new操作创建对象时, 将这个显式原型赋值给创建出来对象的隐式原型
+    3.案例Person, 将所有的函数定义放到了显式原型上
+    */
+
+    function Student(name, age, sno) {
+      this.name = name
+      this.age = age
+      this.sno = sno
+
+      // 1.方式一: 编写函数, 会创建很多个函数对象
+      // this.running = function() {
+      //   console.log(this.name + " running")
+      // }
+      // this.eating = function() {
+      //   console.log(this.name + " eating")
+      // }
+      // this.studying = function() {
+      //   console.log(this.name + " studying")
+      // }
+    }
+
+    // 当我们多个对象拥有共同的值时, 我们可以将它放到构造函数对象的显式原型
+    // 由构造函数创建出来的所有对象, 都会共享这些属性
+    Student.prototype.running = function() {
+      console.log(this.name + " running")
+    }
+    Student.prototype.eating = function() {
+      console.log(this.name + " eating")
+    }
+
+    // 1.创建三个学生
+    var stu1 = new Student("why", 18, 111)
+    var stu2 = new Student("kobe", 30, 112)
+    var stu3 = new Student("james", 18, 111)
+
+    // 隐式原型的作用
+    // 1> stu1的隐式原型是谁? Student.prototype对象
+    // 2> stu1.running查找:
+    //  * 先在自己身上查找, 没有找到
+    //  * 去原型去查找
+    stu1.running()
+    stu2.eating()
+
+  </script>
+
+</body>
+</html>

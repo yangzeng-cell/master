@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button class="btn">按钮1</button>
+  <button class="btn">按钮2</button>
+  <button class="btn">按钮3</button>
+  <button class="btn">按钮4</button>
+  
+  <script>
+    // 慢慢来, 反而是快的
+
+    // 1.获取一个按钮监听点击
+    // 1.拿到html元素
+    // var btnEl = document.querySelector(".btn")
+    // console.log(btnEl)
+    // // 2.监听对应按钮的点击
+    // btnEl.onclick = function() {
+    //   console.log("点击了按钮1")
+    // }
+
+    // 2.获取所有的按钮监听点击
+    // 没有使用立即执行函数
+    debugger
+    // var btnEls = document.querySelectorAll(".btn")
+    // for (var i = 0; i < btnEls.length; i++) {
+    //   var btn = btnEls[i];
+    //   btn.onclick = function() {
+    //     console.log(`按钮${i+1}发生了点击`)
+    //   }
+    // }
+
+    // 使用立即执行函数
+    var btnEls = document.querySelectorAll(".btn")
+    for (var i = 0; i < btnEls.length; i++) {
+      var btn = btnEls[i];
+      (function(m) {
+        btn.onclick = function() {
+          console.log(`按钮${m+1}发生了点击`)
+        }
+      })(i)
+    }
+
+    console.log(i)
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,118 @@
+.crumbs {
+  height: 63px;
+  line-height: 63px;
+  font-size: 12px;
+}
+
+.crumbs .item {
+  cursor: pointer;
+}
+
+.crumbs .item:last-child {
+  color: #000;
+}
+
+.operation {
+  padding: 0 24px;
+  background-color: #fff;
+}
+
+.operation > .row {
+  display: flex;
+}
+
+.operation > .row .item {
+  width: 104px;
+  height: 48px;
+  line-height: 48px;
+  font-size: 12px;
+  color: #000;
+  cursor: pointer;
+}
+
+.operation > .row .item:first-child {
+  color: #666;
+  cursor: auto;
+}
+
+.operation > .row .item.active {
+  color: red;
+}
+
+/* 商品列表 */
+.products {
+  margin-top: 20px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.products > .item {
+  width: 291px;
+  background-color: #fff;
+  margin-bottom: 12px;
+}
+
+.products > .item.empty {
+  height: 0;
+}
+
+.products > .item:hover {
+  box-shadow: 0 0 10px 5px rgba(0,0,0,.1);
+}
+
+.products > .item a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.products > .item .album {
+  width: 180px;
+  height: 180px;
+  margin: 30px 0;
+}
+
+.products > .item .name {
+  font-weight: 700;
+  color: #000;
+}
+
+.products > .item .discount {
+  height: 19px;
+  margin: 10px 0 16px;
+  color: #666;
+}
+
+.products > .item .price {
+  font-size: 16px;
+  font-weight: 700;
+  color: red;
+}
+
+.products > .item .service {
+  display: flex;
+  justify-content: center;
+  margin: 10px 0;
+}
+
+.products > .item .service .tip {
+  margin: 0 3px;
+  padding: 0 3px;
+  border: 1px solid red;
+  border-radius: 3px;
+  font-size: 12px;
+  color: red;
+}
+
+.products > .item .comment {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.products > .item .comment span {
+  margin: 0 5px;
+  font-size: 12px;
+  color: #666;
+}

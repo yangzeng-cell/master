@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 浏览器中存在一个全局对象object -> window
+    // 作用一: 查找变量时, 最终会找到window头上
+    // 作用二: 将一些浏览器全局提供给我们的变量/函数/对象, 放在window对象上面
+    // 作用三(了解): 使用var定义的变量会被默认添加到window上面
+    console.log(window)
+
+    // 使用var定义变量
+    var message = "Hello World"
+
+    function foo() {
+      // 自己的作用域
+      // abc()
+      // alert("Hello World")
+      console.log(window.console === console)
+
+      // 创建一个对象
+      // var obj = new Object()
+      console.log(window.Object === Object)
+
+      // DOM
+      console.log(document)
+
+      // window.message
+      console.log(window.message)
+    }
+    foo()
+
+  </script>
+
+</body>
+</html>

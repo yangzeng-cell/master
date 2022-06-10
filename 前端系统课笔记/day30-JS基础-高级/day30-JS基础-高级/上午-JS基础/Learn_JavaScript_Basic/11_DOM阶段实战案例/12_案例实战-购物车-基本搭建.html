@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    thead {
+      background-color: #f5f5f5;
+    }
+
+    th, td {
+      border: 1px solid #aaa;
+      padding: 8px 12px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+
+  <table>
+    <thead>
+      <tr>
+        <th>编号</th>
+        <th>书籍名称</th>
+        <th>出版日期</th>
+        <th>价格</th>
+        <th>购买数量</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+    </tbody>
+  </table>
+  <h2 class="price">
+    总价格: ¥<span class="price-count">0</span>
+  </h2>
+  
+  <script>
+    // 1.从服务器获取数据 ajax/fetch
+    var books = [
+      {
+        id: 1,
+        name: '《算法导论》',
+        date: '2006-09',
+        price: 85.00,
+        count: 3
+      },
+      {
+        id: 2,
+        name: '《UNIX编程艺术》',
+        date: '2006-02',
+        price: 59.00,
+        count: 2
+      },
+      {
+        id: 3,
+        name: '《编程珠玑》',
+        date: '2008-10',
+        price: 39.00,
+        count: 5
+      },
+      {
+        id: 4,
+        name: '《代码大全》',
+        date: '2006-03',
+        price: 128.00,
+        count: 8
+      }
+    ]
+
+
+    // 2.对数据展示
+    // 到底通过html直接编写, 还是通过JavaScriptDOM操作创建元素
+    // 1> 对于固定的, 直接通过html编写(能通过html编写, 尽量通过html直接编写)
+    // 2> 对于哪些大量的数据, 有规律的数据, 可以通过JavaScript编写
+    var tbodyEl = document.querySelector("tbody")
+    
+    // 2.2. 动态添加tr以及内部数据
+    for (var i = 0; i < books.length; i++) {
+      var trowEl = document.createElement("tr")
+
+      // 2.3. 放具体数据
+      var book = books[i]
+      var bookKeys = Object.keys(book)
+      for (var m = 0; m < bookKeys.length; m++) {
+        var key = bookKeys[m]
+        var value = book[key]
+        var tdEl = document.createElement("td")
+        if (key === "price") {
+          value = "¥" + value
+        }
+        tdEl.textContent = value
+        trowEl.append(tdEl)
+      }
+
+      // 2.4. 添加删除按钮
+      var deleteTdEl = document.createElement("td")
+      var deleteBtnEl = document.createElement("button")
+      deleteBtnEl.textContent = "删除"
+      deleteTdEl.append(deleteBtnEl)
+      trowEl.append(deleteTdEl)
+
+
+      tbodyEl.append(trowEl)
+    }
+
+    
+    // 3.计算总价格
+    var priceCountEl = document.querySelector(".price-count")
+    // var totalPrice = 0
+    // for (var i = 0; i < books.length; i++) {
+    //   totalPrice += books[i].count * books[i].price
+    // }
+    var totalPrice = books.reduce(function(preValue, item) {
+      return preValue + item.count * item.price
+    }, 0)
+    priceCountEl.textContent = totalPrice
+
+  </script>
+
+</body>
+</html>

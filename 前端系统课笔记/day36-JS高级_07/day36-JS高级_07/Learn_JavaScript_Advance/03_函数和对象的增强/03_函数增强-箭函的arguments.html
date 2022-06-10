@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    // 1.箭头函数不绑定arguments
+    // var bar = () => {
+    //   console.log(arguments)
+    // }
+
+    // bar(11, 22, 33)
+
+
+    // 2.函数的嵌套箭头函数
+    function foo() {
+      var bar = () => {
+        console.log(arguments)
+      }
+      bar()
+    }
+
+    foo(111, 222)
+
+  </script>
+
+</body>
+</html>

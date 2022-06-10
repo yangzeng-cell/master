@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    var infos = [
+      { name: "why", friends: ["abc", "cba"] },
+      { name: "kobe", friends: ["nba", "cba"] },
+      { name: "james", friends: ["nba", "cba", "abc"] },
+    ]
+
+    var filters = ["abc"]
+
+    // 展示的内容
+    var showInfos = infos.filter(function(item) {
+      var friends = item.friends
+      var isFlag = true
+      for (var filterItem of filters) {
+        if (!friends.includes(filterItem)) {
+          isFlag = false
+          break
+        }
+      }
+      return isFlag
+    })
+    console.log(showInfos)
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+  </style>
+</head>
+<body>
+  <div class="box">
+    <h2>我是标题</h2>
+    <div class="container">
+      <p>
+        我是段落, <span class="keyword">coderwhy</span> 哈哈哈哈
+      </p>
+      <p>
+        我也是段落, <span class="keyword">kobe</span> 呵呵呵呵额
+      </p>
+
+      <div class="article">
+        <h3 id="title">我是小标题</h3>
+        <p>
+          我是文章的内容, 嘿嘿嘿嘿嘿
+        </p>
+      </div>
+    </div>
+  </div>
+  
+  <script>
+
+    // 一. 通过导航获取
+    // // 1.拿到body
+    // var bodyEl = document.body
+
+    // // 2.拿到box
+    // var boxEl = bodyEl.firstElementChild
+
+    // // 3.拿container
+    // var containerEl = boxEl.children[1]
+
+    // // 4.拿p
+    // var pEl = containerEl.children[0]
+
+    // // 5.拿到keyword
+    // var spanEl = pEl.children[0]
+    // spanEl.style.color = "red"
+
+    // 二. getElementBy*
+    // 1.通过className获取元素
+    // var keywordEls = document.getElementsByClassName("keyword")
+    // // 修改第一个
+    // // keywordEls[0].style.color = "red"
+    // // 修改所有的
+    // for (var i = 0; i < keywordEls.length; i++) {
+    //   keywordEls[i].style.color = "red"
+    // }
+
+    // 2. 通过id获取元素
+    // var titleEl = document.getElementById("title")
+    // titleEl.style.color = "orange"
+
+
+    // 三.querySelector: 通过选择器查询
+    var keywordEl = document.querySelector(".keyword")
+    // keywordEls是对象, 可迭代的
+    // 可迭代对象: String/数组/节点的列表
+    var keywordEls = document.querySelectorAll(".keyword")
+    for (var el of keywordEls) {
+      el.style.color = "red"
+    }
+    console.log(keywordEls)
+
+    var titleEl = document.querySelector("#title")
+    titleEl.style.color = "orange"
+
+  </script>
+
+</body>
+</html>

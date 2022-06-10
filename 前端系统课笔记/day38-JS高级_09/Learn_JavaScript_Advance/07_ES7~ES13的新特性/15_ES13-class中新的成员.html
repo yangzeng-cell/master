@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    
+    class Person {
+      // 1.实例属性
+      // 对象属性: public 公共 -> public instance fields
+      height = 1.88
+
+      // 对象属性: private 私有: 程序员之间的约定
+      // _intro = "name is why"
+      
+      // ES13对象属性: private 私有: 程序员之间的约定
+      #intro = "name is why"
+
+
+      // 2.类属性(static)
+      // 类属性: public
+      static totalCount = "70亿"
+
+      // 类属性: private
+      static #maleTotalCount = "20亿"
+
+      constructor(name, age) {
+        // 对象中的属性: 在constructor通过this设置
+        this.name = name
+        this.age = age
+        this.address = "广州市"
+      }
+
+      // 3.静态代码块
+      static {
+        console.log("Hello World")
+        console.log("Hello Person")
+      }
+    }
+
+    const p = new Person("why", 18)
+    console.log(p)
+    // console.log(p.name, p.age, p.height, p.address, p.#intro)
+
+    // console.log(Person.#maleTotalCount)
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+
+    // 1.普通函数中是有this的标识符
+    // function foo() {
+    //   console.log("foo", this)
+    // }
+
+    // foo()
+    // foo.apply("aaa")
+
+    // 2.箭头函数中, 压根没有this
+    // var bar = () => {
+    //   console.log("bar:", this)
+    // }
+    // bar()
+    // 通过apply调用时, 也是没有this
+    // bar.apply("aaaa")
+
+    // console.log("全局this:", this)
+    // var message = "global message"
+
+    // 3.this的查找规则
+    // var obj = {
+    //   name: "obj",
+    //   foo: () => {
+    //     var bar = () => {
+    //       console.log("bar:", this)
+    //     }
+    //     return bar
+        
+    //   }
+    // }
+    // var fn = obj.foo()
+    // fn.apply("bbb")
+
+    
+
+  </script>
+
+</body>
+</html>

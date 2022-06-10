@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <input type="text">
+  <button>搜索</button>
+
+  <script>
+
+    var inputEl = document.querySelector("input")
+    var btnEl = document.querySelector("button")
+
+    // inputEl.onkeydown = function() {
+    //   console.log("onkeydown")
+    // }
+    // inputEl.onkeypress = function() {
+    //   console.log("onkeypress")
+    // }
+    // inputEl.onkeyup = function(event) {
+    //   console.log(event.key, event.code)
+    // }
+
+    // 1.搜索功能
+    btnEl.onclick = function() {
+      console.log("进行搜索功能", inputEl.value)
+    }
+
+    inputEl.onkeyup = function(event) {
+      if (event.code === "Enter") {
+        console.log("进行搜索功能", inputEl.value)
+      }
+    }
+
+    // 2.按下s的时候, 搜索自动获取焦点
+    document.onkeyup = function(event) {
+      if (event.code === "KeyS") {
+        inputEl.focus()
+      }
+    }
+
+  </script>
+
+</body>
+</html>

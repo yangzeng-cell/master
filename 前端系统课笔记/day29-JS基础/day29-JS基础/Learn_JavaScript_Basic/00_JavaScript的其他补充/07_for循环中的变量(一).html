@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <button>按钮</button>
+
+  <script>
+
+    var btnEl = document.querySelector("button")
+    var message = "Hello World"
+
+    /*
+      for1: var name = kobe + 0
+      for2: var name = kobe + 1
+      for3: var name = kobe + 2
+      for4: var name = kobe + 3
+      for5: var name = kobe + 4
+    */
+
+    for (var i = 0; i < 5; i++) {
+
+      console.log("---------")
+      var name = "kobe" + i
+      
+      btnEl.onclick = function() {
+        console.log(i)
+        console.log(message)
+        console.log(name)
+      }
+    }
+
+    message = "哈哈哈哈哈"
+    console.log(i) // 5
+    console.log(name)
+    
+  </script>
+
+</body>
+</html>

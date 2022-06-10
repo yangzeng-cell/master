@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/product.css">
+</head>
+<body>
+  <!-- 商品展示的部分 -->
+  <div class="wrapper">
+    <!-- 面包屑的导航 -->
+    <div class="crumbs">
+      <span class="item">首页</span>
+      <span>&gt;</span>
+      <span class="item">笔记本</span>
+    </div>
+
+    <!-- 对内容进行操作 -->
+    <div class="operation">
+      <ul class="row category">
+        <li class="item">分类：</li>
+        <li class="item">笔记本</li>
+        <li class="item">台式机</li>
+        <li class="item">智慧屏</li>
+      </ul>
+      <ul class="row discount">
+        <li class="item">服务优惠：</li>
+        <li class="item">仅看有货</li>
+        <li class="item">分期免息</li>
+        <li class="item">优惠商品</li>
+      </ul>
+      <ul class="row sort">
+        <li class="item">排序：</li>
+        <li class="item active" data-key="default">综合</li>
+        <li class="item" data-key="goodRate">好评</li>
+        <li class="item" data-key="rateCount">评论数</li>
+        <li class="item" data-key="price">价格</li>
+      </ul>
+    </div>
+
+    <!-- 商品列表部分 -->
+    <ul class="products">
+    </ul>
+  </div>
+
+
+  <script src="./json/product_data.js"></script>
+  <script src="./js/utils.js"></script>
+  <script>
+    /*
+      1.监听排序item的点击
+      2.排他效果
+       * 点击item的active
+       * 之前的item取消active
+      3.获取点击的信息(比如评论数/好评/价格)
+      4.根据点击信息, 对数据进行排序
+       * default情况
+       * 有key的情况
+       * 特别注意: 不能修改源数组
+      5.根据排序之后的数据, 重新展示页面
+    */
+
+    // 0.资源服务器的地址
+    var serverURL = "https://res.vmallres.com/pimages"
+
+    // 1.动态的展示商品列表
+    var productsEl = document.querySelector(".products")
+    
+    
+    // 2.服务优惠的赛选
+    var operationEl = document.querySelector(".operation")
+    var discountEl = operationEl.querySelector(".discount")
+    // 定义变量, 用户记录选中的服务
+    var discountFilters = []
+    for (var i = 1; i < discountEl.children.length; i++) {
+      // 获取对应的discountItemEl
+      var discountItemEl = discountEl.children[i]
+
+      // 监听discountItemEl
+      discountItemEl.onclick = function() {
+        // 在active和非active切换
+        this.classList.toggle("active")
+
+        // 判断是否将关键字添加或者从discountFilters移除掉
+        if (this.classList.contains("active")) {
+          discountFilters.push(this.textContent.trim())
+        } else {
+          var filterItem = this.textContent.trim()
+          var filterIndex = discountFilters.findIndex(function(item) {
+            return item === filterItem
+          })
+          discountFilters.splice(filterIndex, 1)
+        }
+
+        // 过滤resultList
+        filterResultListAction()
+      }
+    }
+
+    // 3.监听排序功能
+    var sortEl = document.querySelector(".sort")
+    var activeItemEl = sortEl.querySelector(".active")
+    // var sortKeys = ["default", "goodRate", "rateCount", "price"]
+    for (var i = 1; i < sortEl.children.length; i++) {
+      var sortItemEl = sortEl.children[i]
+      sortItemEl.index = i
+
+      sortItemEl.onclick = function() {
+        // 1.取消之前的, 添加新的active
+        activeItemEl.classList.remove("active")
+        this.classList.add("active")
+        activeItemEl = this
+
+        // 2.获取信息
+        var sortKey = this.dataset.key
+
+        // 3.根据key, 对数据进行排序
+        sortResultListAction(sortKey)
+      }
+    }
+
+
+    // 封装函数: 过滤resultList数据
+    var showResultList = [].concat(resultList)
+    function filterResultListAction() {
+      // 1.过滤数据
+      showResultList = resultList.filter(function(item) {
+        var isFlag = true
+        for (var filterItem of discountFilters) {
+          if (!item.services.includes(filterItem)) {
+            isFlag = false
+            break
+          }
+        }
+        return isFlag
+      })
+
+      // 2.重新展示数据
+      showResultListAction()
+    }
+
+    // 封装函数: 通过for循环, 展示数据
+    showResultListAction()
+    function showResultListAction() {
+      productsEl.innerHTML = ""
+      for (var i = 0; i < showResultList.length; i++) {
+        // 获取一条数据
+        var resultItem = showResultList[i]
+
+        // 将一条数据转成界面一个item
+        var itemEl = document.createElement("li")
+        itemEl.classList.add("item")
+
+        // item里面的内容
+        var serviceString = ""
+        for (var label of resultItem.promoLabels) {
+          serviceString += `<span class="tip">${label}</span>`
+        }
+
+        itemEl.innerHTML = `
+          <a href="#">
+            <img class="album" src="${serverURL}${resultItem.photoPath}428_428_${resultItem.photoName}" alt="">
+            <div class="name">${resultItem.name}</div>
+            <div class="discount">${resultItem.promotionInfo}</div>
+            <div class="price">¥${resultItem.price}</div>
+            <div class="service">
+              ${serviceString}
+            </div>
+            <div class="comment">
+              <span>${resultItem.rateCount}人评论</span>
+              <span>${resultItem.goodRate}% 好评</span>
+            </div>
+          </a>
+        `
+        productsEl.append(itemEl)
+      }
+
+      // 添加空的item
+      addProductsEmptyItem()
+    }
+  
+    // 封装函数: 通过key进行排序
+    function sortResultListAction(key) {
+      if (key === "default") {
+        filterResultListAction()
+      } else {
+        showResultList.sort(function(item1, item2) {
+          return item2[key] - item1[key]
+        })
+      }
+      
+      showResultListAction()
+    }
+  </script>
+</body>
+</html>

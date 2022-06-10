@@ -1,0 +1,123 @@
+.crumbs {
+  display: flex;
+  align-items: center;
+  height: 63px;
+  font-size: 12px;
+  color: #333;
+}
+
+.crumbs .item:last-child {
+  color: #000;
+  font-weight: 500;
+}
+
+.crumbs .split {
+  margin: 0 5px;
+}
+
+.menu {
+  background-color: #fff;
+  padding: 0 24px;
+}
+
+.menu .list {
+  display: flex;
+  font-size: 12px;
+  color: #000;
+}
+
+.menu .list .item {
+  width: 104px;
+  height: 48px;
+  line-height: 48px;
+  margin: 0 12px;
+}
+
+.menu .list .item.active {
+  color: #cf0a2c;
+}
+
+.menu .list .item:first-child {
+  color: #666;
+}
+
+.menu .list .item span {
+  display: block;
+  cursor: pointer;
+}
+
+.product {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  margin-top: 15px;
+}
+
+.product .item {
+  width: 291px;
+  background-color: #fff;
+  margin-bottom: 12px;
+  font-size: 14px;
+}
+
+.product .item:hover {
+  box-shadow: 0 0 10px 10px rgba(0, 0, 0, .05);
+}
+
+.product .item.empty {
+  height: 0;
+}
+
+.product .item>a {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.product .item .album {
+  width: 180px;
+  height: 180px;
+  margin: 30px 0;
+}
+
+.product .item .title {
+  color: #000;
+  font-weight: 700;
+}
+
+.product .item .discount {
+  margin-top: 8px;
+  display: flex;
+  height: 18px;
+  color: #666;
+}
+
+.product .item .price {
+  margin: 15px 0 10px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #cf0a2c;
+}
+
+.product .item .welfare {
+  display: flex;
+  font-size: 12px;
+  color: #cf0a2c;
+}
+
+.product .item .welfare .tip {
+  border: 1px solid #cf0a2c;
+  margin: 0 3px;
+  padding: 0 3px;
+  border-radius: 3px;
+}
+
+.product .item .comment {
+  display: flex;
+  margin: 10px 0 15px;
+  font-size: 12px;
+}
+
+.product .item .comment .count {
+  margin-right: 8px;
+}

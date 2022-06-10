@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // var num1 = 123
+    // var num2 = 123
+    // console.log(num1 === num2)
+
+    // 1.现象一: 两个对象的比较
+    // var obj1 = {}
+    // var obj2 = {}
+    // console.log(obj1 === obj2)
+    
+
+    // // 2.现象二: 引用的赋值
+    // var info = {
+    //   name: "why",
+    //   friend: {
+    //     name: "kobe"
+    //   }
+    // }
+
+    // var friend = info.friend
+    // friend.name = "james"
+    // console.log(info.friend.name) // james
+
+
+    // 3.现象三: 值传递
+    // function foo(a) {
+    //   a = 200
+    // }
+    // var num = 100
+    // foo(num)
+    // console.log(num) // 100
+
+
+    // 4.现象四: 引用传递, 但是在函数中创建了一个新对象, 没有对传入对象进行修改
+    // function foo(a) {
+    //   a = {
+    //     name: "why"
+    //   }
+    
+    // }
+    var obj = {
+      name: "obj" 
+    }
+    foo(obj)
+    console.log(obj)
+
+    // 5.现象五: 引用传递, 但是对传入的对象进行修改
+    function foo(a) {
+      a.name = "why"
+    }
+
+    var obj = {
+      name: "obj"
+    }
+    foo(obj)
+    console.log(obj)
+
+  </script>
+
+</body>
+</html>

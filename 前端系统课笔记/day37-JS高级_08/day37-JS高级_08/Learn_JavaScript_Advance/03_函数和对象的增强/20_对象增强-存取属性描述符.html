@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // vue2响应式原理
+    var obj = {
+      name: "why"
+    }
+
+    // 对obj对象中的name添加描述符(存取属性描述符)
+    var _name = ""
+    Object.defineProperty(obj, "name", {
+      configurable: true,
+      enumerable: false,
+      set: function(value) {
+        console.log("set方法被调用了", value)
+        _name = value
+      },
+      get: function() {
+        console.log("get方法被调用了")
+        return _name
+      }
+    })
+
+    obj.name = "kobe"
+    obj.name = "jame"
+    obj.name = "curry"
+    obj.name = "coderwhy"
+
+    // 获取值
+    console.log(obj.name)
+
+  </script>
+
+</body>
+</html>

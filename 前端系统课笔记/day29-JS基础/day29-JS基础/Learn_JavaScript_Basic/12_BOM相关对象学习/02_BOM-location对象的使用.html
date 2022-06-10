@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button>打开新的网页</button>
+  <button>替换新的网页</button>
+  <button>网页重新加载</button>
+  
+  <script>
+
+    // 1.完整的URL
+    console.log(location.href)
+    // 2.获取URL信息
+    console.log(location.hostname)
+    console.log(location.host)
+    console.log(location.protocol)
+    console.log(location.port)
+    console.log(location.pathname)
+    console.log(location.search)
+    console.log(location.hash)
+
+
+    // 3.location方法
+    var btns = document.querySelectorAll("button")
+    btns[0].onclick = function() {
+      location.assign("http://www.baidu.com")
+    }
+    btns[1].onclick = function() {
+      location.replace("http://www.baidu.com")
+    }
+    btns[2].onclick = function() {
+      location.reload()
+    }
+
+
+    // 4.URLSearchParams
+    var urlSearchString = "?name=why&age=18&height=1.88"
+    var searchParams = new URLSearchParams(urlSearchString)
+    console.log(searchParams.get("name"))
+    console.log(searchParams.get("age"))
+    console.log(searchParams.get("height"))
+
+    searchParams.append("address", "广州市")
+    console.log(searchParams.get("address"))
+    console.log(searchParams.toString())
+
+  </script>
+
+</body>
+</html>

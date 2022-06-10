@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 普通的函数
+    function foo1(x, y, z) {
+      console.log(x + y + z)
+    }
+
+    // foo1(10, 20, 30)
+    // foo1(20, 33, 55)
+
+
+    // 因为foo不是一个柯里化的函数, 所以目前是不能这样调用
+    // 柯里化函数
+    function foo2(x) {
+      return function(y) {
+        return function(z) {
+          console.log(x + y + z)
+        }
+      }
+    }
+
+    foo2(10)(20)(30)
+    foo2(20)(33)(55)
+
+
+    // 另外一种写法: 箭头函数的写法
+    // function foo3(x) {
+    //   return y => {
+    //     return z => {
+    //       console.log(x + y + z)
+    //     }
+    //   }
+    // }
+
+    var foo3 = x => y => z => {
+      console.log(x + y + z)
+    }
+
+    foo3(10)(20)(30)
+
+
+  </script>
+
+</body>
+</html>

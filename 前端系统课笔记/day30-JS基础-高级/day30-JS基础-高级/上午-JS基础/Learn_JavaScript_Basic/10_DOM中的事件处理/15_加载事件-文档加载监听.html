@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+</head>
+<body>
+  
+  <script>
+
+    // 注册事件监听
+    window.addEventListener("DOMContentLoaded", function() {
+      // 1.这里可以操作box, box已经加载完毕
+      // var boxEl = document.querySelector(".box")
+      // boxEl.style.backgroundColor = "orange"
+      // console.log("HTML内容加载完毕")
+
+      // 2.获取img对应的图片的宽度和高度
+      var imgEl = document.querySelector("img")
+      console.log("图片的宽度和高度:", imgEl.offsetWidth, imgEl.offsetHeight)
+    })
+
+    window.onload = function() {
+      console.log("文档中所有资源都加载完毕")
+      // var imgEl = document.querySelector("img")
+      // console.log("图片的宽度和高度:", imgEl.offsetWidth, imgEl.offsetHeight)
+    }
+
+    window.onresize = function() {
+      console.log("创建大小发生改变时")
+    }
+
+  </script>
+
+  <div class="box">
+    <p>哈哈哈啊</p>
+  </div>
+  <a href="#">百度一下</a>
+  <img src="../images/kobe01.jpg" alt="">
+
+</body>
+</html>

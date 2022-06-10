@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    
+    const obj = {
+      name: "why",
+      age: 18,
+      height: 1.88
+    }
+
+
+    // 1.创建一个Proxy对象
+    const objProxy = new Proxy(obj, {
+      set: function(target, key, newValue) {
+        console.log(`监听: 监听${key}的设置值: `, newValue)
+        target[key] = newValue
+      },
+      get: function(target, key) {
+        console.log(`监听: 监听${key}的获取`)
+        return target[key]
+      },
+
+      deleteProperty: function(target, key) {
+        console.log(`监听: 监听删除${key}属性`)
+        delete obj.name
+      },
+
+      has: function(target, key) {
+        console.log(`监听: 监听in判断 ${key}属性`)
+        return key in target
+      }
+    })
+
+    delete objProxy.name
+
+    console.log("age" in objProxy)
+
+  </script>
+
+</body>
+</html>
