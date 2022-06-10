@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <a href="/a">跳转a</a>
+    <a href="/b">跳转b</a>
+    <a href="/c">跳转c</a>
+    <a href="/d">跳转d</a>
+    <a href="/e">跳转e</a>
+    <div class="text"></div>
+    <script>
+      const eles = document.querySelectorAll("a");
+      const text = document.querySelector(".text");
+      for (let i = 0; i < eles.length; i++) {
+        eles[i].addEventListener("click", (e) => {
+          e.preventDefault();
+          const href = e.target.href;
+
+          history.pushState({}, "", href);
+          changeText();
+        });
+      }
+      window.addEventListener("popstate", changeText);
+      // window.addEventListener("go", changeText);
+      function changeText() {
+        console.log(location);
+        switch (location.pathname) {
+          case "/a":
+            text.innerHTML = "a";
+            break;
+          case "/b":
+            text.innerHTML = "b";
+            break;
+        }
+      }
+    </script>
+  </body>
+</html>
