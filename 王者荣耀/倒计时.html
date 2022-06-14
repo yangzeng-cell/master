@@ -23,6 +23,11 @@
         var minutes = (Math.floor((last % 3600) / 60) + "").padStart(2, "0");
         time.innerHTML = `${hour}:${minutes}:${sencond}`;
       }, 1000);
+
+      const comput = window.getComputedStyle(time);
+      console.log(comput);
+      const bunding = time.getBoundingClientRect();
+      console.log(bunding);
     </script>
   </body>
 </html>
