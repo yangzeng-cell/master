@@ -575,7 +575,7 @@ console.log(obj + 1); // 输出7
 - `[1, NaN, NaN]`因为 `parseInt` 需要两个参数 `(val, radix)`，其中`radix` 表示解析时用的基数。
 - `map`传了 `3`个`(element, index, array)`，对应的 `radix` 不合法导致解析失败。
 
-### SON 的了解
+### JSON 的了解
 
 - `JSON(JavaScript Object Notation)` 是一种轻量级的数据交换格式
 - 它是基于`JavaScript`的一个子集。数据格式简单, 易于读写, 占用带宽小
@@ -596,8 +596,14 @@ var last=JSON.stringify(obj);
 
 ### defer和async
 
-- `defer`并行加载`js`文件，会按照页面上`script`标签的顺序执行
-- `async`并行加载`js`文件，下载完成立即执行，不会按照页面上`script`标签的顺序执行
+	defer js的下载和执行不阻塞Dom tree的构建
+	defer代码执行的时候Dom构建完成，defer会在DomContentLoad以后执行
+	多个defer顺序执行
+	defer推荐放在head中
+	defer仅适用于外部脚本，对script的内容会忽略
+	
+	async 多个async不能保证顺序执行，不会组设Dom渲染。不能保证DOMContentLoaded之前或者之后执行行
+	async用于独立脚本，没有外部依赖
 
 ### 说说严格模式的限制
 
@@ -701,11 +707,6 @@ var b = new Date();
 console.log(Array.isArray(a)); //true
 console.log(Array.isArray(b)); //false
 ```
-
-### map与forEach的区别
-
-- `forEach`方法，是最基本的方法，就是遍历与循环，默认有3个传参：分别是遍历的数组内容`item`、数组索引`index`、和当前遍历数组`Array`
-- `map`方法，基本用法与`forEach`一致，但是不同的，它会返回一个新的数组，所以在callback需要有`return`值，如果没有，会返回`undefined`
 
 ### 谈一谈箭头函数与普通函数的区别？
 

@@ -1,0 +1,8 @@
+/* @import url(./other.css); */
+@import "./other.css";
+
+.title {
+  color: red;
+  font-size: 30px;
+  background-color: skyblue;
+}

@@ -31,3 +31,14 @@ function throttle(fn, interval, options = { leading: true, trailing: false }) {
   };
   return _throttle;
 }
+
+function throttle(fn, interval) {
+  let lastTime = 0;
+  return function (...arg) {
+    let nowTime = new Date().getTime();
+    if (nowTime - lastTime >= interval) {
+      fn.apply(this, arg);
+      lastTime = nowTime;
+    }
+  };
+}

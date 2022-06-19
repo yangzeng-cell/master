@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 1.基本演练
+    // ES6
+    const names = ["abc", "cba", "nba", "mba"]
+    const str = "Hello"
+
+    // const newNames = [...names, "aaa", "bbb"]
+    // console.log(newNames)
+
+    function foo(name1, name2, ...args) {
+      console.log(name1, name2, args)
+    }
+
+    foo(...names)
+    foo(...str)
+
+    // ES9(ES2018)
+    const obj = {
+      name: "why",
+      age: 18
+    }
+    // 不可以这样来使用
+    // foo(...obj) // 在函数的调用时, 用展开运算符, 将对应的展开数据, 进行迭代
+    // 可迭代对象: 数组/string/arguments
+
+    const info = {
+      ...obj,
+      height: 1.88,
+      address: "广州市"
+    }
+    console.log(info)
+
+  </script>
+
+</body>
+</html>

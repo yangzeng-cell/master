@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var obj = {
+      name: "why",
+      "my friend": "kobe",
+      "eating something": function() {
+        console.log("eating~")
+      }
+    }
+
+    console.log(obj["my friend"])
+    console.log(obj.name)
+    console.log(obj["name"])
+
+    // obj["eating something"]()
+    var eatKey = "eating something"
+    obj[eatKey]()
+    
+
+  </script>
+
+</body>
+</html>

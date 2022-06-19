@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button class="nav-btn">nav button</button>
+  
+  <script>
+
+    // 类EventBus -> 事件总线对象
+    class HYEventBus {
+      constructor() {
+        this.eventMap = {}
+      }
+
+      on(eventName, eventFn) {
+        let eventFns = this.eventMap[eventName]
+        if (!eventFns) {
+          eventFns = []
+          this.eventMap[eventName] = eventFns
+        }
+        eventFns.push(eventFn)
+      }
+      
+      off(eventName, eventFn) {
+        let eventFns = this.eventMap[eventName]
+        if (!eventFns) return
+        for (let i = 0; i < eventFns.length; i++) {
+          const fn = eventFns[i]
+          if (fn === eventFn) {
+            eventFns.splice(i, 1)
+            break
+          }
+        }
+
+        // 如果eventFns已经清空了
+        if (eventFns.length === 0) {
+          delete this.eventMap[eventName]
+        }
+      }
+
+      emit(eventName, ...args) {
+        let eventFns = this.eventMap[eventName]
+        if (!eventFns) return
+        eventFns.forEach(fn => {
+          fn(...args)
+        })
+      }
+    }
+
+
+    // 使用过程
+    const eventBus = new HYEventBus()
+
+    // aside.vue组件中监听事件
+    eventBus.on("navclick", (name, age, height) => {
+      console.log("navclick listener 01", name, age, height)
+    })
+
+    const click =  () => {
+      console.log("navclick listener 02")
+    }
+    eventBus.on("navclick", click)
+
+    setTimeout(() => {
+      eventBus.off("navclick", click)
+    }, 5000);
+
+    eventBus.on("asideclick", () => {
+      console.log("asideclick listener")
+    })
+
+
+    // nav.vue
+    const navBtnEl = document.querySelector(".nav-btn")
+    navBtnEl.onclick = function() {
+      console.log("自己监听到")
+      eventBus.emit("navclick", "why", 18, 1.88)
+    }
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* 重置代码 */
+    a {
+      text-decoration: none;
+      color: #333;
+    }
+
+    /* 公共的CSS */
+    .sprite_01 {
+      background-image: url(../images/music_sprite_01.png);
+      display: inline-block;
+    }
+
+    .sprite_02 {
+      background-image: url(../images/music_sprite_02.png);
+      display: inline-block;
+    }
+
+    .sprite_02_icon_music {
+      width: 14px;
+      height: 11px;
+      background-position: 0 -24px;
+    }
+
+    .sprite_02_icon_play {
+      width: 16px;
+      height: 17px;
+      background-position: 0 0;
+    }
+
+    /* 布局代码 */
+    .item {
+      width: 140px;
+      margin: 0 auto;
+    }
+
+    .item .top {
+      position: relative;
+    }
+
+    .item .top img {
+      /* 将图片下面的多出来的区域去除 */
+      vertical-align: top;
+      /* display: block; */
+    }
+
+    .item .top .cover {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+
+      background-image: url(../images/music_sprite_01.png);
+      background-position: 0 0;
+    }
+
+    .item .top .info {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      height: 27px;
+      padding-left: 10px;
+      line-height: 27px;
+
+      font-size: 12px;
+      color: #ccc;
+
+      background-image: url(../images/music_sprite_01.png);
+      background-position: 0 -537px;
+    }
+
+    .item .top .info .icon-music {
+      position: relative;
+      top: 1px;
+      /* display: inline-block; */
+      /* width: 14px;
+      height: 11px; */
+
+      /* background-image: url(../images/music_sprite_02.png); */
+      /* background-position: 0 -24px; */
+    }
+
+    .item .top .info .count {
+      margin-left: 4px;
+    }
+
+    .item .top .info .icon-play {
+      position: absolute;
+      top: 0;
+      bottom: 0;
+      right: 10px;
+      margin: auto 0;
+
+      /* display: inline-block; */
+      /* width: 16px;
+      height: 17px; */
+      /* background-image: url(../images/music_sprite_02.png); */
+      /* background-position: 0 0; */
+    }
+
+
+    /* 底部的样式 */
+    .item .bottom {
+      display: block;
+      margin-top: 8px;
+      font-size: 14px;
+    }
+
+    .item .bottom:hover {
+      text-decoration: underline;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="item">
+    <div class="top">
+      <img src="../images/music_album01.jpg" alt="音乐封面">
+      <a class="cover" href="#"></a>
+      <div class="info">
+        <i class="sprite_02 sprite_02_icon_music icon-music"></i>
+        <span class="count">62万</span>
+        <i class="sprite_02 sprite_02_icon_play icon-play"></i>
+      </div>
+    </div>
+    <a class="bottom" href="#">
+      天气好的话，把耳机分给我一半吧
+    </a>
+    <i class="sprite_02 sprite_02_icon_play"></i>
+    <i class="sprite_02 sprite_02_icon_music"></i>
+  </div>
+
+</body>
+</html>

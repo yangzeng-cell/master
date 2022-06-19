@@ -146,19 +146,6 @@ function GetBytes(str){
 alert(GetBytes("你好,as"));
 ```
 
-### *bind的用法，以及如何实现bind的函数和需要注意的点
-
-- `bind`的作用与`call`和`apply`相同，区别是`call`和`apply`是立即调用函数，而`bind`是返回了一个函数，需要调用的时候再执行。 一个简单的`bind`函数实现如下
-
-```javascript
-Function.prototype.bind = function(ctx) {
-    var fn = this;
-    return function() {
-        fn.apply(ctx, arguments);
-    };
-};
-```
-
 ### 实现一个函数clone
 
 > 可以对`JavaScript`中的5种主要的数据类型,包括`Number`、`String`、`Object`、`Array`、`Boolean`）进行值复

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    function compose(...fns) {
+      // 校验参数
+      var length = fns.length
+      for (var i = 0; i < length; i++) {
+        var fn = fns[i]
+        if (typeof fn !== "function") {
+          throw new TypeError("")
+        }
+      }
+
+      // 去除所有的函数执行一次
+      return function(...args) {
+        var index = 0
+        var result = length ? fns[index].apply(this, args): args
+        while(++index < length) {
+          result = fns[index].call(this, result)
+        }
+        return result
+      }
+    }
+
+  </script>
+
+</body>
+</html>

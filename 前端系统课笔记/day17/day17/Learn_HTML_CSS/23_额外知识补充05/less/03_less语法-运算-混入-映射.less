@@ -1,0 +1,45 @@
+// 1.运算
+// .box {
+//   font-size: 20px;
+//   width: 10% + 50px;
+//   height: 100px;
+//   background-color: #ff0000 + #00ff00;
+// }
+
+// px to rem
+
+// 2.混入
+// 2.1. 混入的基本使用
+.nowrap_ellipsis {
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+// 2.2.混入是可以传递参数(定义变量)的
+.box_border(@borderWidth: 5px, @borderColor: purple) {
+  border: @borderWidth solid @borderColor;
+}
+
+// 2.3.混入和映射(Map)结合使用
+// 作用: 弥补less中不能自定义函数的缺陷
+.box_size {
+  width: 100px;
+  height: 100px;
+}
+
+.box1 {
+  width: .box_size()[width];
+  background-color: #f00;
+
+  .nowrap_ellipsis();
+  .box_border();
+}
+
+.box2 {
+  width: 150px;
+  background-color: #0f0;
+
+  .nowrap_ellipsis();
+  .box_border(10px, orange);
+}

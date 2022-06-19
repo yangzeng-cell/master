@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    function getData(url) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          // resolve(url+"-result")
+          reject("aaaa")
+        }, 2000);
+      })
+    }
+
+    function bar() {
+      console.log("bar function")
+      return 123
+    }
+
+    async function foo() {
+      const res0 = await bar()
+      console.log("res0----:", res0)
+
+      // 1.请求第一次结果
+      const res1 = await getData("why")
+      console.log("-----", res1)
+      const res2 = await getData("kobe")
+      console.log("+++++", res2)
+    }
+
+    Promise.resolve("aaa").then(res => {
+      console.log("res:", res)
+    })
+
+    foo()
+
+    console.log("哈哈哈")
+
+  </script>
+
+</body>
+</html>

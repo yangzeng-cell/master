@@ -1,0 +1,34 @@
+.product {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  .item {
+    width: 46.6667vw;
+    margin-top: 1.6vw;
+    border-radius: 1.3333vw;
+    overflow: hidden;
+    background-color: #fff;
+    color: #666;
+
+    &:nth-child(2n) {
+      margin-left: 1.6vw;
+    }
+
+
+    .album {
+      img {
+        width: 100%;
+      }
+    }
+
+    .info {
+      padding: 2.6667vw;
+
+      .company {
+        text-indent: 4.8vw;
+        background: url(../img/company_01.png) no-repeat left center/4vw 4vw;
+      }
+    }
+  }
+}

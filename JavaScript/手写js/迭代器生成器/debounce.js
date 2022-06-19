@@ -26,3 +26,16 @@ function debounce(fn, delay, immediate = false) {
   };
   return _debounce;
 }
+
+function debounce1(fn, delay) {
+  let timer = null;
+  return function (...arg) {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+      fn.apply(this, arg);
+      timer = null;
+    }, delay);
+  };
+}

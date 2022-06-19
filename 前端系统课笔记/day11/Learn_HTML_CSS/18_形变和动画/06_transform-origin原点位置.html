@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      text-align: center;
+      padding-top: 200px;
+    }
+
+    .container {
+      display: inline-block;
+      border: 10px solid #f00;
+    }
+
+    .box {
+      width: 200px;
+      height: 100px;
+      background-color: orange;
+
+      /* 修改当前元素的形变的原点位置 */
+      /* transform-origin: center top; */
+      /* transform-origin: 20px 20px; */
+      transform-origin: 10% 10%;
+    }
+
+    .box:hover {
+      transform: rotate(45deg) scale(0.5);
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <div class="box"></div>
+  </div>
+
+</body>
+</html>

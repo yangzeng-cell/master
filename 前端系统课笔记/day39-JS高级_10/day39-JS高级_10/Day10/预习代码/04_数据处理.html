@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    function execCode(url) {
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(url)
+        }, 2000)
+      })
+    }
+
+    // execCode("why").then(res => {
+    //   console.log("第一次结果:", res)
+    //   execCode(res + "aaa").then(res => {
+    //   console.log("第二次结果:", res)
+    //     execCode(res + "bbb").then(res => {
+    //       console.log("第三次结果:", res)
+    //     })
+    //   })
+    // })
+
+    // execCode("why").then(res => {
+    //   console.log("第一次结果:", res)
+    //   return execCode(res + "aaa")
+    // }).then(res => {
+    //   console.log("第二次结果:", res)
+    //   return execCode(res + "bbb")
+    // }).then(res => {
+    //   console.log("第三次结果:", res)
+    // })
+
+    function* getData() {
+      const res = yield execCode("why")
+      console.log("第一次结果:", res)
+      const res2 = yield execCode(res + "aaa")
+      console.log("第二次结果:", res2)
+      const res3 = yield execCode(res + "bbb")
+      console.log("第三次结果:", res3)
+    }
+
+    // const generator = getData()
+    // generator.next().value.then(res => [
+    //   generator.next(res).value.then(res => {
+    //     generator.next(res).value.then(res => {
+    //       generator.next(res)
+    //     })
+    //   })
+    // ])
+    function execGenerator(genFn) {
+      const generator = genFn()
+      function exec(res) {
+        const result = generator.next(res)
+        if (result.done) {
+          return result.value
+        } else {
+          result.value.then(res => {
+            exec(res)
+          })
+        }
+      }
+      exec()
+    }
+    execGenerator(getData)
+
+  </script>
+
+</body>
+</html>

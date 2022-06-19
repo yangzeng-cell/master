@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // JavaScript只支持单继承(不支持多继承)
+    function mixinAnimal(BaseClass) {
+      return class extends BaseClass {
+        running() {
+          console.log("running~")
+        }
+      }
+    }
+
+    function mixinRunner(BaseClass) {
+      return class extends BaseClass {
+        flying() {
+          console.log("flying~")
+        }
+      }
+    }
+
+    class Bird {
+      eating() {
+        console.log("eating~")
+      }
+    }
+
+    // var NewBird = mixinRunner(mixinAnimal(Bird))
+    class NewBird extends mixinRunner(mixinAnimal(Bird)) {
+    }
+    var bird = new NewBird()
+    bird.flying()
+    bird.running()
+    bird.eating()
+
+  </script>
+
+</body>
+</html>

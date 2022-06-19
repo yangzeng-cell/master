@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    const obj = {
+      _name: "why",
+      set name(newValue) {
+        console.log("this:", this) // 默认是obj
+        this._name = newValue
+      },
+      get name() {
+        return this._name
+      }
+    }
+
+
+    // obj.name = "aaaa"
+
+    // console.log(obj.name)
+    // obj.name = "kobe"
+
+    const objProxy = new Proxy(obj, {
+      set: function(target, key, newValue, receiver) {
+        // target[key] = newValue
+        // 1.好处一: 代理对象的目的: 不再直接操作原对象
+        // 2.好处二: Reflect.set方法有返回Boolean值, 可以判断本次操作是否成功
+        /*
+           3.好处三:
+             > receiver就是外层Proxy对象
+             > Reflect.set/get最后一个参数, 可以决定对象访问器setter/getter的this指向
+        */
+        console.log("proxy中设置方法被调用")
+        const isSuccess = Reflect.set(target, key, newValue, receiver)
+
+        if (!isSuccess) {
+          throw new Error(`set ${key} failure`)
+        }
+      },
+      get: function(target, key, receiver) {
+        console.log("proxy中获取方法被调用")
+        return Reflect.get(target, key, receiver)
+      }
+    })
+
+
+    // 操作代理对象
+    objProxy.name = "kobe"
+    console.log(objProxy.name)
+
+  </script>
+
+</body>
+</html>

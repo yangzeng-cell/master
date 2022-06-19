@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      width: 500px;
+      height: 500px;
+      background-color: orange;
+      /* padding: 0 10px; */
+      box-sizing: border-box;
+
+      display: flex;
+
+      flex-wrap: wrap;
+
+      /* 切换justify-content */
+      /* flex-end: 让元素和main end对齐 */
+      /* center: 居中对齐 */
+      /* space-between: 两端个放一个元素, 其他多余的元素一定要空间等分 */
+      /* space-evenly: 两端也有间距, 并且所有的空间进行等分 */
+      /* space-around: 两端也有间距, 两端的间距是items之间的间距一半 */
+      justify-content: space-between;
+    }
+
+    .item {
+      width: 120px;
+      height: 120px;
+
+      background-color: #f00;
+
+      /* margin-left: 20px; */
+      /* margin: 0 20px; */
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <div class="item item1">1</div>
+    <div class="item item2">2</div>
+    <div class="item item3">3</div>
+    <div class="item item4">4</div>
+  </div>
+
+  <script src="./js/itemRandomColor.js"></script>
+</body>
+</html>

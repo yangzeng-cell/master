@@ -603,3 +603,498 @@ Document节点表示的整个载入的网页，他的实例是全局的document�
 ​		对DOM的所有操作是从document对象开始的
 
 ​		它是DOM的入口点，可以从document开始去访问任何节点信息
+
+## 52.浏览器内核是什么？有哪些常见的浏览器内核？
+
+```
+浏览器的渲染引擎也被称为浏览器内核
+trident：IE,360安全,搜狗
+Gecko:firefox
+Presto->blink:opera
+webkit:Safari,360高速，移动端的浏览器都是
+webkit->blink:chrome
+```
+
+## 53.元素的结构是什么？有哪些单标签元素、双标签元素？
+
+```
+元素的主要组成部分
+	开始标签，结束标签，内容，元素组成
+	
+单标签元素：
+	br,hr,img,meta,input
+双标签元素：
+	html,body,head,h2,p,a元素
+```
+
+## 54.说出div元素和span元素的作用和区别
+
+```
+div元素是块级元素，可以设置宽高，默认会独占一行，默认高度由内容撑起
+span是行内非替换元素，不可以设置宽高，由内容撑起宽高
+div一般是作为容器把元素包裹起来，多个span包裹的内容会在同一行显示
+多个div包裹的内容是在多行显示
+```
+
+## 55. HTML全局属性有哪些？分别是什么作用
+
+常见的全局属性有：id,class,style,title
+
+## 56.说说你对元素语义化的理解
+
+元素语义化就用正确的元素做正确的事情。虽然在理论上，所有的HTML元素都可以通过CSS来实现，但是,这么做会使事情复杂话，所以需要元素语义化来降低复杂度
+
+标签语义化的好处
+
+​	方便代码维护
+
+​	减少让开发者之间的沟通成本
+
+​	能让语音合成工具正确识别网页元素的用途，以便做出正确的反应
+
+​	有利于SEO
+
+## 57.说说你对SEO的理解
+
+SEO就是搜索引擎优化，SEO通过了解搜索引擎的运行规则来调整网站，提升网站的曝光度和排名
+
+Google 搜索引擎的工作流程主要分为三个阶段：
+
+**抓取**：Google 会使用名为“抓取工具”的自动程序搜索网络，以查找新网页或更新后的网页。Google 会将这些网页的地址（即网址）存储在一个大型列表中，以便日后查看。我们会通过许多不同的方法查找网页，但主要方法是跟踪我们已知的网页中的链接。
+
+**编入索引**：Google 会访问它通过抓取得知的网页，并会尝试分析每个网页的主题。Google 会分析网页中的内容、图片和视频文件，尝试了解网页的主题。这些信息存储在 Google 索引中，而 Google 索引是一个存储在海量计算机中的巨大数据库。
+
+**呈现搜索结果**：当用户在 Google 上进行搜索时，Google 会尝试确定最优质的搜索结果。“最佳”结果取决于许多因素，包括用户的位置、语言、设备（桌面设备或手机）以及先前用过的搜索查询。例如，在用户搜索“自行车维修店”后，Google 向巴黎用户显示的答案与向香港用户显示的答案有所不同。支付费用不能提高网页在 Google 搜索结果中的排名，网页排名是完全依靠算法完成的。
+
+## 58.CSS编写样式的方式以及应用场景
+
+三种常见的编写样式的方式：内联样式，内部样式，外部样式
+
+## 59.具体说明text-align居中的条件
+
+text-align：center可以让行内元素例如图片文字，等水平居中
+
+如果需要让块级元素水平居中，可以设置display:inline-block准换成行内块元素，再设置text-align:center
+
+## 60.line-height为什么可以让文字居中？
+
+line-height表示一行文字的高度，也是两行文字基线之间的距离
+
+当line-height=height,就可以使这行文字在div内部垂直居中
+
+这是因为行高-文本高度就是行距，而行距平均分成上下两块，就会使文本垂直居中了
+
+## 61.总结目前所学过的所有选择器？思考它们的应用场景
+
+通用选择器 *
+
+简单选择器
+
+​	类选择器  .box{}
+
+​	id选择器 #box{}
+
+​	class选择器  .box{}
+
+后代选择器
+
+​	所有后代选择器 .box span{}
+
+​	直接子代选择器 .box>span{}
+
+属性选择器
+
+​	拥有某个属性 [attr]{}
+
+​	属性等于某个值 [att=val]{}
+
+​	属性包含某个值[attr^=val]{}
+
+兄弟选择器
+
+​	相邻兄弟选择器  .one+div{}
+
+​	普遍兄弟选择器  .one~div{}
+
+选择器组
+
+​	交集选择器  .box.one
+
+​	并集选择器  .box,.one
+
+伪类选择器：
+
+​	动态伪类：:link,:visited,:hover,:active,:focus
+
+​	目标伪类：:target,
+
+​	语言伪类：:lang()
+
+​	元素状态伪类：:enabled,:disabled,:checked
+
+​	结构伪类：
+
+​	:nth-child(n);:nth-last-child,:nth-of-type(n),:nth-last-of-type(n),:first-child,:last-child,first-of-type,:last-of-type,:root,:only-child,:only-of-child,:empty
+
+​	否定伪类：
+
+​	:not
+
+## 62.总结元素隐藏的方法，并且说出他们的区别
+
+```
+display:none//元素不显示，也不占据任何空间
+visibility:hidden//元素不显示，但是会占据空间
+rgba设置透明度，会占据空间，但是不会影响子元素
+opacity:0//占据空间，会影响到子元素
+```
+
+## 63.说说你对margin的传递和折叠的理解
+
+上下margin的传递
+
+​	margin-top的传递
+
+​	如果块级元素的顶部线和父元素的顶部线重叠，那么这个块级元素的margin-top会传递到父元素
+
+​	margin-bottom的传递
+
+​	如果块级元素的底部线和父元素的底部线重叠，并且父元素的高度是auto,那么块级元素的margin-bottm会传递给父元素
+
+解决方法
+
+​	父元素设置padding而不要子元素设置margin
+
+​	给父元素设置border
+
+​	触发BFC,例如设置overflow：auto
+
+上下margin的折叠
+
+​	垂直方向上相邻的两个margin(margin-bottom,margin-top)会出现折叠，会取较大的那个值
+
+​	水平方向上永远不会重叠
+
+解决方式：只设置一个margin
+
+兄弟块级元素之间以及父子块级元素之间都会出现margin的折叠
+
+## 64.行内非替换元素在设置padding/border的上下时，有什么特殊的地方？
+
+​	上下会被撑起来，但是不会占据空间
+
+## 65.写出盒子模型包含的内容以及如何设置
+
+```
+盒模型包括：标准盒模型和IE盒模型
+标准盒模型：content+margin+padding+border
+IE盒模型: content包括content+padding+border
+box-sizing:border-box和box-sizing:content-box来相互转换
+```
+
+## 66.说出元素水平居中的方案以及对应的场景
+
+```
+行内块元素
+	text-align:center
+块级元素
+	margin：0,auto
+```
+
+## 67.说出表单元素什么情况下使用name和value？
+
+name属性的作用是后台接受数据时使用的键值对中的key随着表单的提交而提交，表单中不可或缺的元素，一个form表单中该元素的名称对应不同类型的input也是不同的
+
+value是后台接受数据时使用的键值对中的值。value可以有默认值
+
+## 68.说出form提交时的属性作用
+
+```
+action
+	处理表单提交的url,一般填写表单提交的路径
+method
+	用于提交方法,默认是get
+target
+	如何跳转
+	_blank 新开页面跳转
+	_self 当前页面跳转
+	_parent 当前父级页面跳转
+	_top 当前顶层跳转
+```
+
+## 69.说出结构伪类的nth-child和nth-of-type的区别，并且写出案例练习
+
+:nth-child  只计算父元素的第几个子元素 ,不管是否是同种类型,也不会排除干扰项.
+
+:nth-of-type  计数时只计算同种类型的元素,会排除所有的干扰项
+
+```
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /* 获取box 的第3个div元素 */
+      .box div:nth-child(3) {
+        color: red;
+      }
+      /* 父元素下的3个孩子 */
+      .box :nth-child(3) {
+        color: pink;
+      }
+      /* 需求: 选择box中的第三个div元素(排除所有的干扰项) */
+      .box div:nth-of-type(3) {
+        font-weight: 700;
+        color: green;
+      }
+      .box div:nth-of-type(2n) {
+        background-color: pink;
+      }
+      .box div:nth-of-type(2n + 1) {
+        background-color: blue;
+      }
+      /* 前几个 */
+      .box div:nth-of-type(-n + 4) {
+        color: purple;
+        font-weight: 700;
+      }
+      /* 会找ul下的子元素同类型的第几个 */
+      ul :nth-of-type(3) {
+        color: pink;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <div>第1个元素</div>
+      <span>干扰项1</span>
+      <span>干扰项2</span>
+      <span>干扰项3</span>
+      <span>干扰项4</span>
+      <span>干扰项5</span>
+      <div>第2个元素</div>
+      <div>第3个元素</div>
+      <div>第4个元素</div>
+      <div>第5个元素</div>
+      <div>第6个元素</div>
+      <div>第7个元素</div>
+      <div>第8个元素</div>
+      <p>干扰项6</p>
+      <div>第9个元素</div>
+      <div>第10个元素</div>
+    </div>
+    <ul>
+      <li>第1个li元素</li>
+      <li>第2个li元素</li>
+      <span>干扰项3</span>
+      <span>干扰项4</span>
+      <span>干扰项5</span>
+      <li>第3个li元素</li>
+      <li>第4个li元素</li>
+      <li>第5个li元素</li>
+      <li>第6个li元素</li>
+      <li>第7个li元素</li>
+      <li>第8个li元素</li>
+      <li>第9个li元素</li>
+      <li>第10个li元素</li>
+    </ul>
+  </body>
+</html>
+```
+
+# 70.总结绝对定位的相对元素以及常见的解决方案
+
+子绝父相
+
+​	子元素绝对定位
+
+​	父元素相对定位
+
+子绝父绝
+
+​	子元素绝对定位
+
+​	父元素相对定位
+
+ 子绝父固
+
+​	子元素绝对定位
+
+​	父元素相对定位
+
+## 71.总结浮动常见的规则内容
+
+规则1
+
+​	元素一旦浮动后就会脱离标准流，朝向左或者向右移动吗，直到自己的边界紧贴包含块(一般是父元素)或者其他浮动元素的边界为止，定位元素会层叠在浮动元素上面
+
+规则2
+
+​	元素向左或者向右浮动，浮动元素的左右边界不可以超过包含快的左右边界
+
+规则三
+
+​	浮动元素之间不能层叠
+
+​	如果一个元素浮动，另一个浮动元素已经在那个位置了，后面的浮动元素会津贴者前面的浮动元素(左浮找左浮，又浮找又浮)	
+
+​	如果水平方向剩余的空间不够显示的话他会向下移动寻找合适的空间
+
+规则4
+
+​	浮动元素不能与行内级元素内容层叠，行内元素会被推出
+
+规则5
+
+行内级元素，inline-block元素浮动后，其顶部将于所在行的顶部对齐
+
+浮动元素会出现高度塌陷的问题
+
+因为浮动元素会脱离标准流，变成脱标元素，不在向父元素汇报高度，父元素计算高度的时候，就不会计算子元素的高度，导致高度塌陷问题
+
+解决父元素高度塌陷的问题称为请浮动
+
+目的是让父元素计算总高度时，把子元素的告诉计算在内
+
+```
+1.在子元素浮动，可以在父元素上面设置clear:both
+2.给父元素设置固定的高度
+3.在父元素最后添加一个空的块级元素,并且设置clear:both
+4.使用伪元素
+	.clearfix::after{
+		content:""
+		clear:both;
+		display:block;
+		visibility:hidden;
+		hidden:0;
+	}
+	.clearfix{
+	*zoom:1;
+	}
+```
+
+## 72.总结flex布局container和item的属性以及作用（重要）
+
+```
+flex container
+	flex-flow//flex-direction，flex-wrap的语法糖
+	flex-direction
+	flex-wrap
+	justify-content
+	align-items
+	align-content//决定多行flex items在cross axis上的对齐方式与justify-content属性值相同
+	
+flex-item
+	order 决定了flex items的排布顺序
+	align-self 可以覆盖align-items进行单独设置
+	flex-grow 如何拉伸。
+	flex-shrink 如何收缩
+	flex-basis 水平方向上的宽度
+	flex简写
+```
+
+## 73.说出常见的CSS Transform形变有哪些
+
+```
+transform:translate(x,y)//平移
+transform:rotate(deg)//旋转
+transform：scale(x,y)//缩放
+transform:skew(deg,deg)//倾斜
+```
+
+## 74.说出CSS Transition和Animation动画的区别
+
+transition:
+
+​	只能定义两个状态:开始状态和结束状态，不可以定义中间态
+
+​	不能够重复执行动画，除非一再触发动画
+
+​	需要在特定状态触发后才能执行，比如属性的修改
+
+animation
+
+​	可以用@keyframes来定义动画序列(每一帧如何执行)
+
+​	通过设置animation-iteration-count来规定动画执行的次数
+
+​	不需要触发特定状态既可以执行
+
+animation动画比transition多了animation-iterator-count,animation-direction,animation-fill-mode,
+
+animation-play-state属性
+
+## 75.理解vertical-align的作用以及应用场景
+
+vartical-align影响行内级元素在一个行盒中垂直方向的位置，默认位置为baseline对齐
+
+​	baseline:基线对齐
+
+​	top:把行内级盒子的顶部和line-boxes顶部对齐
+
+​	middle:行内级盒子的中心点和父盒子基线加上x-height一半的线对齐
+
+​	bottom:把行内级盒子的底部和line box底部对齐
+
+不同的场景分析
+
+​	只有文字时，行盒包裹内容，文字的bottom-line和行盒底部对齐
+
+​	有图片和文字时，图片底部和文字的baseline对齐
+
+​	有图片，有文字，有inline-block(比图片要大：图片的底部，行内块的底部，文字的baseline对齐)
+
+​	有图片，有文字，有inline-block(比图片大)而且设置了margin-bottom:图片底部，行内块margin-bottom底部和文字的baseline对齐
+
+​	有图片，文字，inline-block(比图片要大)而且设置了margin-bottom并且有文字，文字的baseline和图片的底部，行内块的最后一行文字baseline对齐
+
+## 76.说说你对BFC的理解（面试题）
+
+bfc就是块级格式化上下文
+
+​	是页面的一块渲染区域，并且有一套渲染规则，来决定了子元素如何定位，以及与其他元素之间的排列布局之间的关系
+
+​	BFC是一个独立的环境相当于是一个容器，在其中按照一定的规则对块级元素进行摆放，并且不会影响其他的布局环境中的盒子，如果一个元素触发BFC，则BFC中的元素布局不受外界影响
+
+块级元素在标准流中的布局是属于BFC的
+
+创建BFC的条件
+
+​	根元素
+
+​	浮动元素(元素的float不是none)
+
+​	绝对定位元素(元素的position为absolute或者fixed)
+
+​	行内块元素(display:inline-block)
+
+​	表格单元格
+
+​	匿名表格单元格元素
+
+​	overflow计算值不为visible的块元素
+
+​	display:flex的子元素、
+
+​	网格元素
+
+​	display:flow-root的元素
+
+在BFC中，box会在垂直方向上一个挨着一个排布
+
+垂直方向上的间距由margin属性决定
+
+在同一个BFC中，相邻两个box之间的margin会折叠(collapse)
+
+在BFC中，每个元素元素的左边缘是紧挨着包含块的左边缘的、
+
+
+
+BFC可以解决margin的折叠问题
+
+解决浮动元素父元素高度塌陷的问题
+
+​	给父元素触发BFC，并且给浮动元素的父元素的高度设置为auto

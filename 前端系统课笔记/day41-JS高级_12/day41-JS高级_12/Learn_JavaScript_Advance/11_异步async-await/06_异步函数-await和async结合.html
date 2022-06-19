@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+
+    // 1.定义一些其他的异步函数
+    function requestData(url) {
+      console.log("request data")
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve(url)
+        }, 3000)
+      })
+    }
+
+    async function test() {
+      console.log("test function")
+      return "test"
+    }
+
+    async function bar() {
+      console.log("bar function")
+
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          resolve("bar")
+        }, 2000);
+      })
+    }
+
+    async function demo() {
+      console.log("demo function")
+      return {
+        then: function(resolve) {
+          resolve("demo")
+        }
+      }
+    }
+
+
+    // 2.调用的入口async函数
+    async function foo() {
+      console.log("foo function")
+
+      const res1 = await requestData("why")
+      console.log("res1:", res1)
+
+      const res2 = await test()
+      console.log("res2:", res2)
+
+      const res3 = await bar()
+      console.log("res3:", res3)
+
+      const res4 = await demo()
+      console.log("res4:", res4)
+    }
+
+    foo()
+
+  </script>
+
+</body>
+</html>

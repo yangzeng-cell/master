@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .before {
+      color: red;
+    }
+
+    .after {
+      color: blue;
+    }
+
+    /* 伪元素 */
+    .item::before {
+      content: "321";
+      color: orange;
+      font-size: 20px;
+    }
+
+    .item::after {
+      /* content: "cba"; */
+      content: url("../images/hot_icon.svg");
+      color: green;
+      font-size: 20px;
+
+      /* 位置不是很好看(以后) */
+      position: relative; /* 相对定位 */
+      left: 5px;
+      top: 2px;
+    }
+
+    /* .new::after {
+      content: url("../images/new_icon.svg");
+    } */
+
+    /* 额外的补充 */
+    /* ::after是一个行内级元素 */
+    .box5::after {
+      /* 使用伪元素的过程中, 不要将content省略 */
+      content: "";
+
+      display: inline-block;
+      width: 8px;
+      height: 8px;
+      background-color: #f00;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="box">
+    <span class="before">123</span>
+    我是div元素
+    <span class="after">abc</span>
+  </div>
+
+  <div class="box2">
+    <span class="before">123</span>
+    我是box2
+    <span class="after">abc</span>
+  </div>
+
+  <!-- 伪元素方案 -->
+  <div class="box3 item">我是box3</div>
+  <div class="box4 item">我是box4</div>
+
+  <!-- 伪元素的补充 -->
+  <div class="box5">我是box5</div>
+
+</body>
+</html>

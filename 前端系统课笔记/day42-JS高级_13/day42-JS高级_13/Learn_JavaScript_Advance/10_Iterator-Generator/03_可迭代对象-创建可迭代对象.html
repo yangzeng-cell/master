@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 将infos变成一个可迭代对象
+    /*
+      1.必须实现一个特定的函数: [Symbol.iterator]
+      2.这个函数需要返回一个迭代器(这个迭代器用于迭代当前的对象)
+    */
+    const infos = {
+      friends: ["kobe", "james", "curry"],
+      [Symbol.iterator]: function() {
+        let index = 0
+        const infosIterator = {
+          next: function() {
+            // done: Boolean
+            // value: 具体值/undefined
+            if (index < infos.friends.length) {
+              return { done: false, value: infos.friends[index++] }
+            } else {
+              return { done: true }
+            }
+          }
+        }
+        return infosIterator
+      }
+    }
+
+    // 给infos创建一个迭代器, 迭代infos中的friends
+    // console.log(infosIterator.next())
+    // console.log(infosIterator.next())
+    // console.log(infosIterator.next())
+    // console.log(infosIterator.next())
+
+
+    // 可迭代对象必然具备下面的特点
+    // const iterator = infos[Symbol.iterator]()
+    // console.log(iterator.next())
+    // console.log(iterator.next())
+    // console.log(iterator.next())
+    // console.log(iterator.next())
+
+    // 可迭对象可以进行for of操作
+    for (const item of infos) {
+      console.log(item)
+    }
+
+
+    // 可迭代对象必然有一个[Symbol.iterator]函数
+    // 数组是一个可迭代对象
+    const students = ["张三", "李四", "王五"]
+    console.log(students[Symbol.iterator])
+    const studentIterator = students[Symbol.iterator]()
+    console.log(studentIterator.next())
+    console.log(studentIterator.next())
+    console.log(studentIterator.next())
+    console.log(studentIterator.next())
+
+  </script>
+
+</body>
+</html>

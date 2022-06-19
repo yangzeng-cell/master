@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script src="./js/inherit_utils.js"></script>
+  <script>
+
+    var obj = {
+      name: "why",
+      age: 18
+    }
+
+    var info = createObject(obj)
+    info.address = "中国"
+    info.intro = "中国大好河山"
+
+    console.log(info.name, info.address)
+    console.log(info)
+
+    // 1.hasOwnProperty
+    // console.log(info.hasOwnProperty("name")) // false
+    // console.log(info.hasOwnProperty("address")) // true
+
+    // 2.in操作符
+    console.log("name" in info)
+    console.log("address" in info)
+    // 注意: for in遍历不仅仅是自己对象上的内容, 也包括原型对象上的内容
+    for (var key in info) {
+      console.log(key)
+    }
+
+    // 3.instanceof
+    // instanceof用于判断对象和类(构造函数)之间的关系
+    function Person() {}
+    function Student() {}
+    inherit(Student, Person)
+
+    // stu实例(instance)对象
+    var stu = new Student()
+    console.log(stu instanceof Student)
+    console.log(stu instanceof Person)
+    console.log(stu instanceof Object)
+    console.log(stu instanceof Array)
+
+    // 4.isPrototypeOf
+    console.log(Student.prototype.isPrototypeOf(stu))
+    console.log(Person.prototype.isPrototypeOf(stu))
+    
+    // 可以用于判断对象之间的继承
+    console.log(obj.isPrototypeOf(info))
+
+  </script>
+
+</body>
+</html>

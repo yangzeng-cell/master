@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // 1.对象
+    // const obj = {
+    //   name: "why",
+    //   age: 18,
+    //   height: 1.88
+    // }
+
+    // const entries = Object.entries(obj)
+    // const info = Object.fromEntries(entries)
+    // console.log(info)
+
+    // 2.应用
+    const searchString = "?name=why&age=18&height=1.88"
+    const params = new URLSearchParams(searchString)
+    console.log(params.get("name"))
+    console.log(params.get("age"))
+    console.log(params.entries())
+
+    // for (const item of params.entries()) {
+    //   console.log(item)
+    // }
+
+    const paramObj = Object.fromEntries(params)
+    console.log(paramObj)
+
+  </script>
+
+</body>
+</html>

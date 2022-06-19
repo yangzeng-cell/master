@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      background-color: #f00;
+
+      /* width */
+      /* auto 交给浏览器来决定 */
+      /* 块级元素: 独占一行(父元素) */
+      width: auto;
+    }
+
+    .title {
+      /* 行内级: 包裹内容 */
+      display: inline-block;
+      width: auto;
+    }
+
+    img {
+      width: auto;
+      width: 200px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="box">我是box</div>
+  <span class="title">我是span元素</span>
+  <img src="../images/gouwujie01.jpg" alt="">
+
+</body>
+</html>

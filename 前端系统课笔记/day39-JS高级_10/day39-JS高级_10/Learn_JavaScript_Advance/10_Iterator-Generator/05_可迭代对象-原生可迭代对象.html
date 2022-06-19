@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // 1.数组
+    // const names = ["abc", "cba", "nba"]
+    // for (const name of names) {
+    //   console.log(name)
+    // }
+    // console.log(names[Symbol.iterator]())
+
+    // 2.Set
+    // const set = new Set(["abc", "cba", "nba"])
+    // for (const item of set) {
+    //   console.log(item)
+    // }
+    // const setIterator = set[Symbol.iterator]()
+    // console.log(setIterator.next())
+    // console.log(setIterator.next())
+    // console.log(setIterator.next())
+    // console.log(setIterator.next())
+
+    // 3.arguments
+    function foo() {
+      for (const arg of arguments) {
+        console.log(arg)
+      }
+    }
+
+    foo(123, 321, 111, 222)
+
+  </script>
+
+</body>
+</html>

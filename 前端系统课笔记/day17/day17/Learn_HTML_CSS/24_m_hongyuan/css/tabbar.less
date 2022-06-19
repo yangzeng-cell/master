@@ -1,0 +1,20 @@
+.tabbar {
+  position: fixed;
+  z-index: 99;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  height: calc(env(safe-area-inset-bottom) + 50px);
+  border-top: 1px solid #ddd;
+  background-color: #fff;
+
+  .item {
+    flex: 1;
+    text-align: center;
+
+    img {
+      width: 48px;
+    }
+  }
+}

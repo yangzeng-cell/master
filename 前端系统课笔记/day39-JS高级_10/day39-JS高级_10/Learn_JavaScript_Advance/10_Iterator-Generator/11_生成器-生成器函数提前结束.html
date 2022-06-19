@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    function* foo(name1) {
+      console.log("执行内部代码:1111", name1)
+      console.log("执行内部代码:2222", name1)
+      const name2 = yield "aaaa"
+      console.log("执行内部代码:3333", name2)
+      console.log("执行内部代码:4444", name2)
+      const name3 = yield "bbbb"
+      // return "bbbb"
+      console.log("执行内部代码:5555", name3)
+      console.log("执行内部代码:6666", name3)
+      yield "cccc"
+
+      console.log("最后一次执行")
+      return undefined
+    }
+
+    const generator = foo("next1")
+
+    // 1.generator.return提前结束函数
+    // console.log(generator.next())
+    // console.log(generator.return("next2"))
+    // console.log("-------------------")
+    // console.log(generator.next("next3"))
+    // console.log(generator.next("next4"))
+
+    // 2.generator.throw向函数抛出一个异常
+    console.log(generator.next())
+    console.log(generator.throw(new Error("next2 throw error")))
+    console.log("-------------------")
+    console.log(generator.next("next3"))
+    console.log(generator.next("next4"))
+
+  </script>
+
+</body>
+</html>

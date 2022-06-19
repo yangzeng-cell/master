@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 1.量词的使用
+    const re = /a{3,5}/ig
+    const message = "fdaaa2fdaaaaaasf42532fdaagjkljlaaaaf"
+
+    const results = message.match(re)
+    console.log(results)
+
+    // 2.常见的符号: +/?/*
+    // +: {1,}
+    // ?: {0,1}
+    // *: {0,}
+
+    // 3.案例: 字符串的html元素, 匹配出来里面所有的标签
+    const htmlElement = "<div><span>哈哈哈</span><h2>我是标题</h2></div>"
+    const tagRe = /<\/?[a-z][a-z0-9]*>/ig
+    const results2 = htmlElement.match(tagRe)
+    console.log(results2)
+
+  </script>
+
+</body>
+</html>

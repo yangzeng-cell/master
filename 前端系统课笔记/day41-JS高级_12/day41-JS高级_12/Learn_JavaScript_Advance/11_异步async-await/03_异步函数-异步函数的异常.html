@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // "abc".filter()
+
+    // 什么情况下异步函数的结果是rejected
+
+    // 如果异步函数中有抛出异常(产生了错误), 这个异常不会被立即浏览器处理
+    // 进行如下处理: Promise.reject(error)
+    async function foo() {
+      console.log("---------1")
+      console.log("---------2")
+      // "abc".filter()
+      throw new Error("coderwhy async function error")
+      console.log("---------3")
+
+      // return new Promise((resolve, reject) => {
+      //   reject("err rejected")
+      // })
+
+      return 123
+    }
+
+    // promise -> pending -> fulfilled/rejected
+    foo().then(res => {
+      console.log("res:", res)
+    }).catch(err => {
+      console.log("coderwhy err:", err)
+      console.log("继续执行其他的逻辑代码")
+    })
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    function formatDate(time, formatString) {
+      const date = new Date(time)
+      // 定义正则和值之间的关系
+      const obj = {
+        "y+": date.getFullYear(),
+        "M+": date.getMonth() + 1,
+        "d+": date.getDate(),
+        "h+": date.getHours(),
+        "m+": date.getMinutes(),
+        "s+": date.getSeconds()
+      }
+      // 替换
+      for (const key in obj) {
+        if (new RegExp(`(${key})`).test(formatString)) {
+          const value = (obj[key] + "").padStart(2, "0")
+          formatString = formatString.replace(RegExp.$1, value)
+        }
+      }
+      return formatString
+    }
+
+    const result = formatDate(1332322323, "yyyy-MM-dd hh:mm:ss")
+    console.log(result)
+
+  </script>
+
+</body>
+</html>

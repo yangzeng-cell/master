@@ -1,0 +1,25 @@
+.main {
+  background: url(../img/main_bg.jpg) no-repeat center top/100% auto;
+}
+
+.main .link {
+  display: block;
+  width: 1200px;
+  height: 440px;
+  margin: 8px auto 12px;
+}
+
+/* 内容区域 */
+.main .section-content {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 30px;
+}
+
+.main .section-content .left-content {
+  width: 872px;
+}
+
+.main .section-content .right-content {
+  width: 295px;
+}

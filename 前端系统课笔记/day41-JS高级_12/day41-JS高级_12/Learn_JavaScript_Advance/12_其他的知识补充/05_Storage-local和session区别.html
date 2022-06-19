@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <a href="./static/about.html" target="_blank">关于</a>
+
+  <script>
+
+    // 1.验证一: 关闭网页
+    // 1.1.localStorage的存储保持
+    // localStorage.setItem("name", "localStorage")
+
+    // 1.2.sessionStorage的存储会消失
+    // sessionStorage.setItem("name", "sessionStorage")
+
+
+    // 2.验证二: 打开新的网页
+    // localStorage.setItem("info", "local")
+    // sessionStorage.setItem("info", "session")
+
+    
+    // 3.验证三: 打开新的页面, 并且是在新的标签中打开
+    localStorage.setItem("infoTab", "local")
+    sessionStorage.setItem("infoTab", "session")
+
+  </script>
+
+</body>
+</html>

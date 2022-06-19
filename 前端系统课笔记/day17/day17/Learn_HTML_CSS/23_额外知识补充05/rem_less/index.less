@@ -1,0 +1,14 @@
+.pxToRem(@px) {
+  result: 1rem * (@px / 37.5);
+}
+
+.box {
+  width: .pxToRem(100)[result];
+  height: .pxToRem(100)[result];
+  background-color: orange;
+}
+
+p {
+  font-size: .pxToRem(14)[result];
+}
+

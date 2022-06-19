@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 1.创建一个新的类, 继承自Array进行扩展
+    class HYArray extends Array {
+      get lastItem() {
+        return this[this.length - 1]
+      }
+
+      get firstItem() {
+        return this[0]
+      }
+    }
+
+    var arr = new HYArray(10, 20, 30)
+    console.log(arr)
+    console.log(arr.length)
+    console.log(arr[0])
+    console.log(arr.lastItem)
+    console.log(arr.firstItem)
+
+    // 2.直接对Array进行扩展
+    Array.prototype.lastItem = function() {
+      return this[this.length - 1]
+    }
+
+    var arr = new Array(10, 20, 30)
+    console.log(arr.__proto__ === Array.prototype)
+    console.log(arr.lastItem())
+
+    // 函数apply/call/bind方法 -> Function.prototype
+
+  </script>
+
+</body>
+</html>

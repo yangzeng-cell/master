@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    function foo(m, n) {
+      // arguments 类似数组对象
+      console.log(arguments)
+      // 1.默认用法:
+      // 通过索引获取内容
+      // console.log(arguments[0])
+      // console.log(arguments[1])
+
+      // // 遍历
+      // for (var i = 0; i < arguments.length; i++) {
+      //   console.log(arguments[i])
+      // }
+      // for (var arg of arguments) {
+      //   console.log(arg)
+      // }
+
+      // 2.需求获取所有参数中的偶数
+      // 数组 filter
+      // for (var arg of arguments) {
+      //   if (arg % 2 === 0) {
+      //     console.log(arg)
+      //   }
+      // }
+      // var evenNums = arguments.filter(item => item % 2 === 0)
+      // console.log(eventNums)
+
+      // 2.1.将arguments转成数组方式一:
+      // var newArguments = []
+      // for (var arg of arguments) {
+      //   newArguments.push(arg)
+      // }
+      // console.log(newArguments)
+
+      // 2.2.将arguments转成数组方式三: ES6中方式
+      // var newArgs1 = Array.from(arguments)
+      // console.log(newArgs1)
+      // var newArgs2 = [...arguments]
+      // console.log(newArgs2)
+
+      // 2.3.将arguments转成数组方式二: 调用slice方法
+      var newArgs = [].slice.apply(arguments)
+      // var newArgs = Array.prototype.slice.apply(arguments)
+      console.log(newArgs)
+    }
+
+    foo(10, 25, 32, 41)
+
+
+    // slice方法的回顾: 了解细节
+    // var names = ["abc", "cba", "nba", "mba"]
+    // var newNames = names.slice() // this -> names
+
+    // // slice方法 -> 函数
+    // console.log(newNames)
+    // obj.foo() // this -> obj
+
+
+  </script>
+
+</body>
+</html>

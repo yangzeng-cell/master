@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // 1.yield*替换之前的方案
+    // const names = ["abc", "cba", "nba"]
+    // const nums = [100, 22, 66, 88, 55]
+
+    // function* createArrayIterator(arr) {
+    //   yield* arr
+    // }
+
+    // const namesIterator = createArrayIterator(names)
+    // console.log(namesIterator.next())
+    // console.log(namesIterator.next())
+    // console.log(namesIterator.next())
+    // console.log(namesIterator.next())
+
+    // 2.yield替换类中的实现
+    class Person {
+      constructor(name, age, height, friends) {
+        this.name = name
+        this.age = age
+        this.height = height
+        this.friends = friends
+      }
+
+      // 实例方法
+      *[Symbol.iterator]() {
+        yield* this.friends
+      }
+    }
+
+    const p = new Person("why", 18, 1.88, ["kobe", "james", "curry"])
+    for (const item of p) {
+      console.log(item)
+    }
+
+    const pIterator = p[Symbol.iterator]()
+    console.log(pIterator.next())
+    console.log(pIterator.next())
+    console.log(pIterator.next())
+    console.log(pIterator.next())
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <button>按钮</button>
+
+  <script>
+    // 内置函数(第三方库): 根据一些经验
+    // 1.定时器
+    // setTimeout(function() {
+    //   console.log("定时器函数:", this)
+    // }, 1000)
+
+    // 2.按钮的点击监听
+    // var btnEl = document.querySelector("button")
+    // btnEl.onclick = function() {
+    //   console.log("btn的点击:", this)
+    // }
+
+    // btnEl.addEventListener("click", function() {
+    //   console.log("btn的点击:", this)
+    // })
+
+    // // 3.forEach
+    var names = ["abc", "cba", "nba"]
+    names.forEach(function(item) {
+      console.log("forEach:", this)
+    }, "aaaa")
+
+  </script>
+
+</body>
+</html>

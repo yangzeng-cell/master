@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // ES6之前存在的问题
+    // const obj = {
+    //   name: "why",
+    //   fn: "aaa"
+    // }
+
+    // // 添加一个新的属性 name
+    // function foo(obj) {
+    //   obj.why = function() {}
+    // }
+    // foo(obj)
+    // console.log(obj.fn)
+
+
+    // ES6之后可以使用Symbol生成一个独一无二的值
+    const s1 = Symbol()
+    // const info = { name: "why" }
+    const obj = {
+      [s1]: "aaa" 
+    }
+    console.log(obj)
+
+    const s2 = Symbol()
+    obj[s2] = "bbb"
+    console.log(obj)
+
+    function foo(obj) {
+      const sKey = Symbol()
+      obj[sKey] = function() {}
+      delete obj[sKey]
+    }
+
+    foo(obj)
+
+  </script>
+
+</body>
+</html>

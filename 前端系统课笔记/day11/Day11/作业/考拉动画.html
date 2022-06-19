@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>考拉动画</title>
+  <style>
+    ul, li, p, h3 {
+      padding: 0;
+      margin: 0;
+    }
+
+    ul, li {
+      list-style: none;
+    }
+
+    a {
+      text-decoration: none;
+      font-size: 14px;
+      color: #999;
+    }
+
+    .container {
+      width: 1100px;
+      margin: 50px auto;
+    }
+
+    .container .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 14px;
+      color: #999;
+      height: 68px;
+      box-sizing: border-box;
+      border-top: 1px solid #e9e9e9;
+    }
+
+    .container .header-l .title {
+      font-size: 22px;
+      color: #333;
+      font-weight: 700;
+      margin-right: 10px;
+    }
+
+    .container .header-r {
+      padding-right: 15px;
+    }
+
+    .container .content {
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .container .content-r .change:hover{
+      text-decoration: underline;
+    }
+
+    .container .content-l {
+      width: 219px;
+      height: 355px;
+    }
+
+    .container .content-l a {
+      display: block;
+      color: #fff;
+      height: 100%;
+    }
+
+    .container .content-l img {
+      vertical-align: top;
+      width: 219px;
+      height: 219px;
+    }
+
+    .container .content-l a .text {
+      background-color: #151515;
+      opacity: 0.8;
+      height: 136px;
+    }
+    .container .content-l a .title {
+      margin: 0 12px;
+      padding-top: 41px;
+      padding-bottom: 4px;
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .container .content-l a .desc {
+      margin: 0 12px;
+      text-align: center;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .container .content-r {
+      width: 880px;
+    }
+
+    .container .content-r .item-list {
+      display: flex;
+      flex-wrap: wrap;
+      margin-left: -1px;
+      border-top: 1px solid #e9e9e9;
+      border-left: 1px solid #e9e9e9;
+    }
+    .container .content-r .item {
+      position: relative;
+      width: 219px;
+      height: 176px;
+      text-align: center;
+      border-right: 1px solid #e9e9e9;
+      border-bottom: 1px solid #e9e9e9;
+    }
+
+    .container .content-r .item .info img{
+      position: relative;
+      top: 0;
+      transform: scale(1);
+      transition: top .3s ease,transform .3s ease;
+    }
+
+    .container .content-r .item:hover .info img {
+      top: -19px;
+      transform: scale(.66);
+    }
+
+    .container .content-r .item .info .desc {
+      margin: 10px -90px 0;
+      text-align: center;
+      white-space: nowrap;
+      overflow: hidden;
+      font-size: 14px;
+      font-weight: 700;
+      transition: opacity .2s ease .08s;
+    }
+
+    .container .content-r .item:hover .info .desc {
+      opacity: 0;
+    }
+
+    .container .content-r .item .action {
+      position: absolute;
+      text-align: center;
+      color: #fff;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      opacity: 0;
+      transition: all .3s ease;
+    }
+
+    .container .content-r .item:hover .action {
+      opacity: 1;
+    }
+
+    .container .content-r .item .action .followers {
+      margin: 99px 0 8px;
+      text-align: center;
+      font-size: 12px;
+      color: #999;
+    }
+
+    .container .content-r .item .action .enter {
+      display: block;
+      margin: 0 auto;
+      width: 80px;
+      height: 36px;
+      box-sizing: border-box;
+      line-height: 32px;
+      color: #ff1e3c;
+      background-color: #fff;
+      border-radius: 32px;
+      border: 2px solid #ff1e3c;
+      font-size: 14px;
+    }
+
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="header">
+      <div class="header-l">
+        <span class="title">热门品牌</span>
+        全球精选,一网打尽
+      </div>
+      <div class="header-r">
+        <a class="change" href="">换一批</a>
+      </div>
+    </div>
+    <div class="content">
+      <div class="content-l">
+        <a href=""><img src="https://kaola-haitao.oss.kaolacdn.com/1dh5r4aeq99_400_400.jpg?x-oss-process=image/resize,w_181/quality,q_90" alt="">
+        <div class="text">
+        <h3 class="title">threesquirrels 三只松鼠</h3>
+        <p class="desc">好吃的都在三只松鼠</p>
+        </div>
+        </a>
+        
+      </div>
+      <div class="content-r">
+        <ul class="item-list">
+          <li class="item">
+            <div class="info">
+              <img src="https://kaola-haitao.oss.kaolacdn.com/ibwy31cv78.jpg?x-oss-process=image/resize,w_120/quality,q_90" alt="">
+              <p class="desc">科学配方 优质原材料</p>
+            </div>
+            <div class="action">
+              <p class="followers">2297340人关注该品牌</p>
+              <a class="enter" href="">进入品牌</a>
+            </div>
+          </li>
+          <li class="item">
+            <div class="info">
+              <img src="https://kaola-haitao.oss.kaolacdn.com/ig1o83dv34_120_120.jpg?x-oss-process=image/resize,w_120/quality,q_90" alt="">
+              <p class="desc">国际知名母婴用品品牌</p>
+            </div>
+            <div class="action">
+              <p class="followers">928725人关注该品牌</p>
+              <a class="enter" href="">进入品牌</a>
+            </div>
+          </li>
+          <li class="item">
+            <div class="info">
+              <img src="https://kaola-haitao.oss.kaolacdn.com/icc1uivj43.jpg?x-oss-process=image/resize,w_120/quality,q_90" alt="">
+              <p class="desc">法兰西的浪漫玫瑰</p>
+            </div>
+            <div class="action">
+              <p class="followers">1721604人关注该品牌</p>
+              <a class="enter" href="">进入品牌</a>
+            </div>
+          </li>
+          <li class="item">
+            <div class="info">
+              <img src="https://kaola-haitao.oss.kaolacdn.com/iglzia3975_120_120.jpg?x-oss-process=image/resize,w_120/quality,q_90" alt="">
+              <p class="desc">"妈妈之选"大奖得主</p>
+            </div>
+            <div class="action">
+              <p class="followers">1538064人关注该品牌</p>
+              <a class="enter" href="">进入品牌</a>
+            </div>
+          </li>
+          <li class="item">
+            <div class="info">
+              <img src="https://kaola-pop.oss.kaolacdn.com/526bf50df2744a3489624dcce94c2bb2_120_120.jpg?x-oss-process=image/resize,w_120/quality,q_90" alt="">
+              <p class="desc">合法合规的多用途预付费卡</p>
+            </div>
+            <div class="action">
+              <p class="followers">4人关注该品牌</p>
+              <a class="enter" href="">进入品牌</a>
+            </div>
+          </li>
+          <li class="item">
+            <div class="info">
+              <img src="https://kaola-haitao.oss.kaolacdn.com/1big11i8t69_120_120.jpg?x-oss-process=image/resize,w_120/quality,q_90" alt="">
+              <p class="desc">追求卓越的性能、安全和易用性</p>
+            </div>
+            <div class="action">
+              <p class="followers">319727人关注该品牌</p>
+              <a class="enter" href="">进入品牌</a>
+            </div>
+          </li>
+          <li class="item">
+            <div class="info">
+              <img src="https://kaola-haitao.oss.kaolacdn.com/1btojibaa14_120_120.jpg?x-oss-process=image/resize,w_120/quality,q_90" alt="">
+              <p class="desc">每日修复肌肤微损伤</p>
+            </div>
+            <div class="action">
+              <p class="followers">529498人关注该品牌</p>
+              <a class="enter" href="">进入品牌</a>
+            </div>
+          </li>
+          <li class="item">
+            <div class="info">
+              <img src="https://kaola-haitao.oss.kaolacdn.com/1ceqdbo4i20_120_120.jpg?x-oss-process=image/resize,w_120/quality,q_90" alt="">
+              <p class="desc">复函益生元GOS保护肠道健康</p>
+            </div>
+            <div class="action">
+              <p class="followers">1523445人关注该品牌</p>
+              <a class="enter" href="">进入品牌</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

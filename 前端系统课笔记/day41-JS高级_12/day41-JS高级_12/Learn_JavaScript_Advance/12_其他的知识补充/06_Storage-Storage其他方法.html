@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    const ACCESS_TOKEN = "token"
+
+    console.log(localStorage.length)
+    // 常见的方法:
+    localStorage.setItem(ACCESS_TOKEN, "whytoken")
+    console.log(localStorage.getItem(ACCESS_TOKEN))
+
+    // 其他方法
+    console.log(localStorage.key(0))
+    console.log(localStorage.key(1))
+    console.log(localStorage.removeItem("infoTab"))
+    localStorage.clear()
+
+  </script>
+
+</body>
+</html>

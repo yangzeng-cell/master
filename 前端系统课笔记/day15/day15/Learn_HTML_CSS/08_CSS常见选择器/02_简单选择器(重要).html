@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    div {
+      color: red;
+    }
+
+    .box {
+      color: blue;
+    }
+
+    #home {
+      color: green;
+    }
+  </style>
+</head>
+<body>
+  <!-- 强调: 在同一个HTML文档中, id不要重复, 应该是唯一 -->
+  
+  <div>我是div1</div>
+  <div class="box">我是div2</div>
+  <div id="home">我是div3</div>
+
+  <p class="box">我是p元素</p>
+
+  <h2 id="div">我是h2标题</h2>
+
+  <!-- class/id的名称比较复杂 -->
+  <div class="box one"></div>
+  <div class="box-one box-first"></div>
+  <div class="box_one box_first"></div>
+  <!-- 大驼峰/小驼峰 -->
+  <!-- <div class="boxOne BoxFirst"></div> -->
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+
+    :root {
+      /* 定义了一个变量(CSS属性) */
+      /* 只有后代元素可以使用 */
+      --main-color: #f00;
+    }
+    
+    .box {
+      color: var(--main-color);
+    }
+
+    .title {
+      color: var(--main-color);
+    }
+
+  </style>
+</head>
+<body>
+  
+  <div class="box">
+    我是box
+  </div>
+
+  <h1 class="title">
+    我是标题
+  </h1>
+
+</body>
+</html>

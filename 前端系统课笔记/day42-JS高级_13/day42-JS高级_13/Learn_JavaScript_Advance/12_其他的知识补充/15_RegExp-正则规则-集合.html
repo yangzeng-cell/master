@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // 手机号的规则: 1[3456789]033334444
+    const phoneStarts = ["132", "130", "110", "120", "133", "155"]
+    const phoneStartRe = /^1[3456789]\d/
+    const filterPhone = phoneStarts.filter(phone => phoneStartRe.test(phone))
+    console.log(filterPhone)
+
+    const phoneNum = "133888855555"
+    const phoneRe = /^1[3-9]\d{9}$/
+    console.log(phoneRe.test(phoneNum))
+
+    // 了解: 排除范围
+    // \d -> [0-9]
+    // \D -> [^0-9]
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 剩余参数: rest parameters
+    function foo(num1, num2, ...otherNums) {
+      // otherNums数组
+      console.log(otherNums)
+    }
+
+    foo(20, 30, 111, 222, 333)
+
+
+    // 默认一个函数只有剩余参数
+    function bar(...args) {
+      console.log(args)
+    }
+
+    bar("abc", 123, "cba", 321)
+
+    // 注意事项: 剩余参数需要写到其他的参数最后
+
+  </script>
+
+</body>
+</html>

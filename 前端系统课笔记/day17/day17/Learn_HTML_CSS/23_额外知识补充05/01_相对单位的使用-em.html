@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      font-size: 15px;
+    }
+
+    .box {
+      /* font-size: 20px; */
+      /* 如果自己没有设置, 那么会继承父元素的font-size */
+
+      /* 
+      如果font-size中有写em单位, 可以理解成相对于父元素
+      但是更准确的理解依然是相对于自己的
+       */
+      font-size: 1em;
+
+      /* 1.em: 相对自己的font-size */
+      width: 10em;
+      height: 5em;
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="container">
+    <div class="box">我是box</div>
+  </div>
+
+</body>
+</html>

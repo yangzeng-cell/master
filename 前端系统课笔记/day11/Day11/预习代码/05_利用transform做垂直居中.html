@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      position: relative;
+      /* display: flex;
+      align-items: center; */
+      height: 300px;
+      background-color: orange;
+    }
+
+    .box1 {
+      position: absolute;
+      width: 100px;
+      /* height: 100px; */
+      left: 0px;
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      background-color: #f00;
+    }
+
+    .box2 {
+      background-color: #0f0;
+    }
+
+    .box3 {
+      position: relative;
+      top: 50%;
+      transform: translate(0, -50%);
+      width: 100px;
+      height: 100px;
+      background-color: #f00;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- 方法一: 定位 -->
+  <!-- 前提: 必须有固定的高度 -->
+  <!-- <div class="container">
+    <div class="box1">aaaaa</div>
+  </div> -->
+
+  <!-- 方法二: flex -->
+  <!-- <div class="container">
+    <div class="box2">aaaaa</div>
+  </div> -->
+
+  <!-- 方法三: translate -->
+  <div class="container">
+    <div class="box3"></div>
+  </div>
+
+</body>
+</html>

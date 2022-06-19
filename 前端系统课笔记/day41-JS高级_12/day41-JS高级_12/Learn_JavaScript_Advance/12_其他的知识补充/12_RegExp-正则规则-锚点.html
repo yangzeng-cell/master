@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    const message = "My name is WHY."
+
+    // 字符串方法
+    if (message.startsWith("my")) {
+      console.log("以my开头")
+    }
+    if (message.endsWith("why")) {
+      console.log("以why结尾")
+    }
+
+    // 正则: 锚点
+    if (/^my/i.test(message)) {
+      console.log("以my开头")
+    }
+
+    if (/why\.$/i.test(message)) {
+      console.log("以why结尾")
+    }
+
+
+    const re = /^coder$/
+    const info = "codaaaer"
+    console.log(re.test(info)) // false
+
+  </script>
+
+</body>
+</html>

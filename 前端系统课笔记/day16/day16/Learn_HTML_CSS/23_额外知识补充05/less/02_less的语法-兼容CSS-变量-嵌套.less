@@ -1,0 +1,77 @@
+// 1.兼容CSS代码
+// .box {
+//   width: 100px;
+//   height: 100px;
+//   background-color: orange;
+//   font-size: 20px;
+//   color: #fff;
+// }
+
+// 2.定义变量
+@mainColor: #a40011;
+
+@smallFontSize: 12px;
+@normalFontSize: 14px;
+@bigFontSize: 18px;
+
+// .box .pel {
+//   color: @mainColor;
+//   font-size: @normalFontSize;
+// }
+
+// .box h1 .keyword .section .list .item a .desc {
+//   color: @mainColor;
+//   font-size: @bigFontSize;
+// }
+
+// .box p .link {
+//   color: @mainColor;
+//   font-size: @smallFontSize;
+// }
+
+// 3.选择器的嵌套
+.box {
+  .pel {
+    color: @mainColor;
+    font-size: @normalFontSize;
+  }
+
+  h1 {
+    .keyword {
+      color: @mainColor;
+      font-size: @bigFontSize;
+    }
+  }
+
+  p {
+    a.link {
+      color: @mainColor;
+      font-size: @smallFontSize;
+
+      background-color: #0f0;
+      
+      &:hover {
+        color: #00f;
+      }
+    }
+  }
+}
+
+// &符号的练习
+.list {
+  .item {
+    font-size: 20px;
+
+    &:hover {
+      color: @mainColor;
+    }
+
+    &:nth-child(1) {
+      color: orange;
+    }
+
+    &:nth-child(2) {
+      color: #00f;
+    }
+  }
+}

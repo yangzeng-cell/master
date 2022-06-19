@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // const message = "CSS2.5"
+    // const pattern = /CSS\d(\.\d)?/i
+    // console.log(message.match(pattern))
+
+    // const message = "My name is why"
+    // if (/^my/i.test(message)) {
+    //   console.log("以my开头")
+    // }
+    // if (/why$/.test(message)) {
+    //   console.log("以why结尾")
+    // }
+
+    const message = "now time 22:45, number is 123.456"
+    const timePattern = /\b\d\d:\d\d\b/g
+    console.log(message.match(timePattern))
+
+    const fileNames = ["abc.js", "cba.java", "nba.html", "mba.js", "aaa.jsx"]
+    const newNames = fileNames.filter(item => {
+      return /\.jsx?$/.test(item)
+    })
+    console.log(newNames)
+
+    const phonePettern = /^1[356789]\d{9}$/
+
+    const htmlElement = "<div><p>哈哈哈</p><span>呵呵</span></div>"
+    const tagPattern = /<\/?[a-z][a-z0-9]*>/ig
+    console.log(htmlElement.match(tagPattern))
+
+
+  </script>
+
+</body>
+</html>

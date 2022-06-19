@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    const names = ["abc", "cba", "nba"]
+    
+    // 给数组names创建一个迭代器(迭代器: names的跌大气)
+    let index = 0
+    const namesIterator = {
+      next: function() {
+        // done: Boolean
+        // value: 具体值/undefined
+        if (index < names.length) {
+          return { done: false, value: names[index++] }
+        } else {
+          return { done: true }
+        }
+      }
+    }
+
+    console.log(namesIterator.next())
+    console.log(namesIterator.next())
+    console.log(namesIterator.next())
+    console.log(namesIterator.next())
+
+    // 数组nums
+    const nums = [100, 24, 55, 66, 86]
+    
+    let indexNum = 0
+    const numsIterator = {
+      next: function() {
+        // done: Boolean
+        // value: 具体值/undefined
+        if (indexNum < nums.length) {
+          return { done: false, value: nums[indexNum++] }
+        } else {
+          return { done: true }
+        }
+      }
+    }
+
+  </script>
+
+</body>
+</html>

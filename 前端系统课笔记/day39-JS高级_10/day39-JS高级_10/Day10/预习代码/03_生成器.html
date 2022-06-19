@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    function* foo(value1) {
+      console.log("foo第一次执行~")
+      console.log("foo第一次执行~")
+      const value2 = yield 100 + value1
+
+      console.log("foo第二次执行~ value2:", value2, value1)
+      console.log("foo第二次执行~")
+      const value3 = yield 200
+      
+      console.log("foo第二次执行~", value3)
+      console.log("foo第二次执行~")
+      const value4 = yield 300
+
+      console.log("value4:", value4)
+
+      return 400
+    }
+
+    const result = foo("abc")
+    console.log(result.next("cba"))
+    console.log(result.next("nba"))
+    console.log(result.next("mba"))
+    console.log(result.next("aaa"))
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    Function.prototype.hyapply = function(thisArg, args) {
+      return this.hyexec(thisArg, args)
+    }
+
+    Function.prototype.hycall = function(thisArg, ...args) {
+      return this.hyexec(thisArg, args)
+    }
+
+    Function.prototype.hyexec = function(thisArg, args) {
+      thisArg = thisArg ? Object(thisArg): window
+      thisArg.fn = this
+      args = args || []
+
+      var result = thisArg.fn(...args)
+      delete thisArg.fn
+
+      return result
+    }
+
+    Function.prototype.hybind = function(thisArg, ...argArray) {
+      thisArg = thisArg ? Object(thisArg): window
+      thisArg.fn = this
+
+      return function(...newArray) {
+        var args = [...argArray, ...newArray]
+        return thisArg.fn(...args)
+      }
+    }
+
+    function foo(name1, name2) {
+      console.log("foo", this, name1, name2)
+      return "aaa"
+    }
+
+    foo.bind()
+
+    console.log(foo.hyapply("abc", ["aaa"]))
+    console.log(foo.hycall("abc", "aaa"))
+
+    var bar = foo.hybind("why", "aaa")
+    console.log(bar("bbb"))
+
+  </script>
+
+</body>
+</html>

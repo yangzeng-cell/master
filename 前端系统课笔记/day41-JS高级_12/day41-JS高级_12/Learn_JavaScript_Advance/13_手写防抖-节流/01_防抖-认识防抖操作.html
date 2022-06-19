@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <input type="text">
+  
+  <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.4/underscore-umd-min.js"></script>
+  <script>
+
+    // 1.获取input元素
+    const inputEl = document.querySelector("input")
+
+    // 2.监听input元素的输入
+    // let counter = 1
+    // inputEl.oninput = function() {
+    //   console.log(`发送网络请求${counter++}:`, this.value)
+    // }
+    
+    // 3.防抖处理代码
+    let counter = 1
+    inputEl.oninput = _.debounce(function() {
+      console.log(`发送网络请求${counter++}:`, this.value)
+    }, 10000)
+
+  </script>
+
+</body>
+</html>

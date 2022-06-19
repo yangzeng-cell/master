@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>小米商城商品布局</title>
+  <style>
+    /* 重置样式 */
+    body {
+      font-family: "Helvetica Neue", Helvetica, Arial, "Microsoft Yahei", "Hiragino Sans GB", "Heiti SC", "WenQuanYi Micro Hei", sans-serif;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    a {
+      text-decoration: none;
+      color: #333;
+      font-size: 12px;
+    }
+
+    /* 清除浮动 */
+    .clearfix::after {
+      content: "";
+      display: block;
+      clear: both;
+      visibility: hidden;
+      height: 0;
+    }
+
+    .clearfix {
+      *zoom: 1
+    }
+
+    /* 布局 */
+    .title {
+      height: 58px;
+      width: 1226px;
+      background-color: #eee;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .title h2 {
+      margin: 0;
+      font-size: 22px;
+      font-weight: 200;
+      line-height: 58px;
+      color: #333;
+    }
+
+    .title .more{
+      position: absolute;
+      top: 0;
+      right: 0;
+      font-size: 16px;
+      color: #424242;
+      margin: 0;
+      line-height: 58px;
+      /* padding: 16px 0 0; */
+    }
+
+    .title .more .hot:hover, .wear:hover, .active { 
+      margin: 0 0 0 30px;
+      color: #ff6700;
+      padding-bottom: 3px;
+      border-bottom: 2px solid #ff6700;
+    }
+
+    .title .more .wear {
+      margin: 0 10px 0 30px;
+      padding-bottom: 3px;
+    }
+
+    .container {
+    width: 1226px;
+    margin: 0 auto;
+    background-color: #eee;
+    }
+
+    .container .item-l {
+      height: 614px;
+      position: relative;
+      float: left;
+      width: 234px;
+      background: #fff;
+      transition: all 0.2s linear;
+    }
+
+    .container .item-l:hover ,.container .item:hover,.container .lastitem:hover {
+      transform:translateY(-3px);
+      box-shadow: 0 15px 30px rgba(0, 0, 0, .1);
+    }
+
+    .container .item {
+      float: left;
+      margin-left: 14px;
+      margin-bottom: 14px;
+      width: 234px;
+      height: 300px;
+      padding: 20px 10px;
+      text-align: center;
+      background-color: #fff;
+      box-sizing: border-box;
+      transition: all 0.2s linear;
+    }
+
+    .container .item img {
+      width: 160px;
+      height: 160px;
+    }
+
+    .container .item .name {
+
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+      margin-top: 14px;
+    }
+
+    .container .item .desc {
+      color: #999;
+      margin-top: 8px;
+
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+
+    .container .item .price {
+      margin-top: 14px;
+      font-size: 14px;
+    }
+
+    .container .item .new-price {
+      color: #ff6700;
+    }
+
+    .container .item .old-price {
+      color: #999;
+      text-decoration: line-through;
+      margin-left: 5px;
+    }
+
+
+    .container .lastitem {
+      position: relative;
+      height: 93px;
+      padding-top: 50px;
+      float: left;
+      width: 234px;
+      margin-bottom: 14px;
+      margin-left: 14px;
+      background: #fff;
+      transition: all 0.2s linear;
+    }
+
+    .container .lastitem img {
+      position: absolute;
+      right: 20px;
+      top: 32px;
+      width: 80px;
+      height: 80px;
+    }
+
+    .container .lastitem h3 {
+      width: 94px;
+      height: 42px;
+      margin: -10px 110px 5px 30px;
+      font-size: 14px;
+      font-weight: 400;
+    }
+
+    .container .lastitem .price {
+      margin: 0 110px 0 30px;
+      font-size: 14px;
+      color: #ff6700;
+    }
+  
+
+  </style>
+
+  <div class="title">
+    <h2>智能穿戴</h2>
+    <div class="more">
+      <span class="hot active">热门</span>
+      <span class="wear">穿戴</span>
+    </div>
+  </div>
+  <div class="container clearfix">
+
+    <a class="item-l" href="https://www.mi.com/xiaomiwatchcolor2" tabindex="_blank"><img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/9895c56a7b792fb9053e3085fc261072.jpg?thumb=1&w=468&h=1228&f=webp&q=90" width="234px" alt=""></a>
+
+    <a class="item" href="">
+      <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cfec307342eb35ee4a437f664004c50f.jpg?thumb=1&w=400&h=400&f=webp&q=90" alt="">
+      <h3 class="name">Xiaomi Watch S1</h3>
+      <p class="desc">腕事具备</p>
+      <div class="price">
+        <span class="new-price">1099元起</span>
+      </div>
+    </a>
+    
+    <a class="item" href="">
+      <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0b271a074e087848357aa61ae665b214.jpg?thumb=1&w=400&h=400&f=webp&q=90" alt="">
+      <h3 class="name">Xiaomi真无线降噪耳机3</h3>
+      <p class="desc">静听好声音</p>
+      <div class="price">
+        <span class="new-price">409元</span>
+        <span class="old-price">499元</span>
+      </div>
+    </a>
+
+    <a class="item" href="">
+      <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/f84503dbf5adbdf17111c61d4a7cf893.jpg?thumb=1&w=400&h=400&f=webp&q=90" alt="">
+      <h3 class="name">Redmi 手表 2</h3>
+      <p class="desc">AMOLED高清大屏</p>
+      <div class="price">
+        <span class="new-price">399元</span>
+      </div>
+    </a>
+
+    <a class="item" href="">
+      <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/b28153b80cb2c67564608e56d5c2f3f3.jpg?thumb=1&w=400&h=400&f=webp&q=90" alt="">
+      <h3 class="name">小米手环6 NFC版</h3>
+      <p class="desc">全屏实力</p>
+      <div class="price">
+        <span class="new-price">249元</span>
+        <span class="old-price">279元</span>
+      </div>
+    </a>
+
+    <a class="item" href="">
+      <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/cfec307342eb35ee4a437f664004c50f.jpg?thumb=1&w=400&h=400&f=webp&q=90" alt="">
+      <h3 class="name">Redmi 手表</h3>
+      <p class="desc">35g超轻/1.4"大屏/多功能NFC/7天长续航</p>
+      <div class="price">
+        <span class="new-price">299元</span>
+      </div>
+    </a>
+
+    <a class="item" href="">
+      <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/0cc4e8e58d7288cd8dff13b98bdc3ea8.jpg?thumb=1&w=400&h=400&f=webp&q=90" alt="">
+      <h3 class="name">Xiaomi 真无线降噪耳机 3 Pro</h3>
+      <p class="desc">动态降噪 静听曼妙</p>
+      <div class="price">
+        <span class="new-price">649元起</span>
+        <span class="old-price">699元</span>
+      </div>
+    </a>
+
+    <a class="item" href="">
+      <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/11570d5371f16d2d9b19f504e09d01f0.jpg?thumb=1&w=400&h=400&f=webp&q=90" alt="">
+      <h3 class="name">Redmi Buds 3半入耳真无线蓝牙耳机</h3>
+      <p class="desc">轻巧半入耳，舒适有天分</p>
+      <div class="price">
+        <span class="new-price">179元</span>
+        <span class="old-price">199元</span>
+      </div>
+    </a>
+
+
+    <a class="lastitem" href="">
+      <h3 class="name">Redmi Buds 3 青春版
+      </h3>
+      <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2fcf24e40ff09a254857ac8b4ace25b8.jpg?thumb=1&w=200&h=200&f=webp&q=90" width="80px" alt="">
+      <div class="price">
+        <span class="new-price">99元</span>
+      </div>
+    </a>
+
+    <a class="lastitem" href="#">
+      <h3 class="name">Redmi Buds 3 青春版
+      </h3>
+      <img src="https://cdn.cnbj1.fds.api.mi-img.com/mi-mall/2fcf24e40ff09a254857ac8b4ace25b8.jpg?thumb=1&w=200&h=200&f=webp&q=90" width="80px" alt="">
+      <div class="price">
+        <span class="new-price">99元</span>
+      </div>
+    </a>
+ 
+  </div>
+
+</head>
+
+<body>
+  
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script src="./js/is_object.js"></script>
+  <script>
+    // 深拷贝函数
+    function deepCopy(originValue) {
+      // 1.如果是原始类型, 直接返回
+      if (!isObject(originValue)) {
+        return originValue
+      }
+
+      // 2.如果是对象类型, 才需要创建对象
+      const newObj = Array.isArray(originValue) ? []: {}
+      for (const key in originValue) {
+        newObj[key] = deepCopy(originValue[key]);
+      }
+      return newObj
+    }
+
+    const books = [
+      { name: "黄金时代", price: 28, desc: { intro: "这本书不错", info: "这本书讲了一个很有意思的故事" } },
+      { name: "你不知道JavaScript", price: 99 },
+    ]
+
+    // const newBooks = [...books]
+    // newBooks[0].price = 88
+    // console.log(books[0].price)
+
+    const newBooks = deepCopy(books)
+    console.log(newBooks)
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    const names = ["abc", "cba", "nba"]
+    // const namesIterator = {
+    //   index: 0,
+    //   next: function() {
+    //     if (this.index < names.length) {
+    //       return { done: false, value: names[this.index++] }
+    //     } else {
+    //       return { done: false, value: null }
+    //     }
+    //   }
+    // }
+
+    // console.log(namesIterator.next())
+    // console.log(namesIterator.next())
+    // console.log(namesIterator.next())
+    // console.log(namesIterator.next())
+
+    function* createArrayIterator(arr) {
+      // let index =0
+      // return {
+      //   next: function() {
+      //     if (index < arr.length) {
+      //       return { done: false, value: arr[index++] }
+      //     } else {
+      //       return { done: true, value: undefined }
+      //     }
+      //   }
+      // }
+      yield *arr
+    }
+
+    const nameIterator = createArrayIterator(names)
+    console.log(nameIterator.next())
+    console.log(nameIterator.next())
+    console.log(nameIterator.next())
+    console.log(nameIterator.next())
+
+    const info = {
+      names: ["abc", "cba", "nba"],
+      [Symbol.iterator]: function* () {
+        // let index =0
+        // return {
+        //   next: () => {
+        //     if (index < this.names.length) {
+        //       return { done: false, value: this.names[index++] }
+        //     } else {
+        //       return { done: true, value: undefined }
+        //     }
+        //   }
+        // }
+        // yield* this.names
+      }
+    }
+
+    for (const name of info) {
+      console.log(name)
+    }
+
+  </script>
+
+</body>
+</html>

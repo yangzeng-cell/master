@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    class Classroom {
+      constructor(name, address, initialStudents) {
+        this.name = name
+        this.address = address
+        this.initialStudents = initialStudents
+      }
+
+      *[Symbol.iterator]() {
+        yield *this.initialStudents
+        // let index = 0
+        // return {
+        //   next: () => {
+        //     if (index < this.initialStudents.length) {
+        //       return { done: false, value: this.initialStudents[index++] }
+        //     } else {
+        //       return { done: true, value: undefined }
+        //     }
+        //   },
+        //   return() {
+        //     console.log("迭代器提前终止")
+        //     return { done: true }
+        //   }
+        // }
+      }
+    }
+
+    const c1 = new Classroom("1101", "3幢222", ["abc", "cba", "nba", "mba"])
+    function foo() {
+      for (const stu of c1) {
+        console.log(stu)
+        // if (stu === "cba") {
+        //   throw new Error("aaaa")
+        // }
+      }
+    }
+    foo()
+
+  </script>
+
+</body>
+</html>

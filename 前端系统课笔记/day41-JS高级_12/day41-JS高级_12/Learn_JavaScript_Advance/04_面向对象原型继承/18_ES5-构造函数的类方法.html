@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // var obj = {
+    //   friend: {
+    //     play: function() {
+    //       console.log("play~")
+    //     }
+    //   }
+    // }
+
+    // obj.play()
+
+    function Person(name, age) {
+      this.name = name
+      this.age = age
+    }
+
+    Person.totalCounter = "70亿"
+
+    // 添加Person原型上的方法也成为 实例方法
+    Person.prototype.running = function() {
+      console.log(this.name + "running~")
+    }
+    Person.prototype.eating = function() {
+      console.log("eating~")
+    }
+
+    // 添加Person对象本身的方法成为 类方法
+    var names = ["abc", "cba", "nba", "mba"]
+    Person.randomPerson = function() {
+      var randomName = names[Math.floor(Math.random() * names.length)]
+      return new Person(randomName, Math.floor(Math.random() * 100))
+    }
+
+    // 实例对象
+    var p1 = new Person("why", 18)
+    var p2 = new Person("kobe", 30)
+    p1.running()
+
+    // 没有实例对象的情况下, 能不能调用函数? 不可以调用
+    var p = Person.randomPerson()
+    console.log(p)
+
+  </script>
+
+</body>
+</html>

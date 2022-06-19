@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <style>
+    a {
+      display: block;
+    }
+
+    .item {
+      width: 300px;
+      margin: 0 auto;
+    }
+
+    .item .album img {
+      width: 100%;
+      border-radius: 8px;
+    }
+
+    .item .info p {
+      font-size: 15px;
+      margin-top: 8px;
+
+      /* 显示一行 */
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      /* display: -webkit-box;
+      -webkit-line-clamp: 3;
+      -webkit-box-orient: vertical; */
+    }
+
+    .item .info .anchor {
+      font-size: 13px;
+      color: #888;
+      margin-top: 5px;
+    }
+
+    .item .info .anchor::before {
+      content: url(../images/widget-up.svg);
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      position: relative;
+      top: 1px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="item">
+    <div class="album">
+      <a href="#">
+        <img src="https://i0.hdslb.com/bfs/archive/9c763bf06b7765462eac62cc0a9a34b260d3f9c8.jpg@672w_378h_1c.webp" referrerpolicy="no-referrer" alt="">
+      </a>
+    </div>
+    <div class="info">
+      <a href="#">
+        <p>萌化了！谁会不喜欢毛茸茸的小懒懒呢？萌化了！谁会不喜欢毛茸茸的小懒懒呢？萌化了！谁会不喜欢毛茸茸的小懒懒呢？萌化了！谁会不喜欢毛茸茸的小懒懒呢？</p>
+      </a>
+      <a class="anchor" href="#">
+        <span class="nickname">Muxi慕喜咩</span>
+        <span class="time">3-20</span>
+      </a>
+    </div>
+  </div>
+
+</body>
+</html>

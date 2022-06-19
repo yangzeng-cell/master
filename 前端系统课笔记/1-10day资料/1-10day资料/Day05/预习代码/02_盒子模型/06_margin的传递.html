@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 300px;
+      height: 300px;
+      background-color: #f00;
+    }
+
+    .child {
+      width: 200px;
+      height: 200px;
+      background-color: #0f0;
+
+      margin-left: 10px;
+
+      /* 上下非常特殊 */
+      margin-top: 50px;
+    }
+
+    .box1 {
+      width: 300px;
+      /* height: 300px; */
+      background-color: #00f;
+    }
+
+    .child1 {
+      width: 200px;
+      height: 300px;
+      background-color: #0ff;
+
+      margin-bottom: 200px;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- 父子元素: margin-top -->
+  <div class="box">
+    <div class="child"></div>
+  </div>
+
+  <!-- margin-bottom -->
+  <div class="box1">
+    <div class="child1"></div>
+  </div>
+
+  <div>我是div元素</div>
+
+</body>
+</html>

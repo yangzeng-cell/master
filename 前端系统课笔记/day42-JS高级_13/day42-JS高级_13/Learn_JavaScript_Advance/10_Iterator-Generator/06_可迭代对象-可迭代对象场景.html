@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // 1.用在特定的语法上
+    const names = ["abc", "cba", "nba"]
+    const info = {
+      name: "why",
+      age: 18,
+      height: 1.88,
+      [Symbol.iterator]: function() {
+        const values = Object.values(this)
+        let index = 0
+        const iterator = {
+          next: function() {
+            if (index < values.length) {
+              return { done: false, value: values[index++] }
+            } else {
+              return { done: true }
+            }
+          }
+        }
+        return iterator
+      }
+    }
+
+    function foo(arg1, arg2, arg3) {
+      console.log(arg1, arg2, arg3)
+    }
+
+    foo(...info)
+
+    // 2.一些类的构造方法中, 也是传入的可迭代对象
+    const set = new Set(["aaa", "bbb", "ccc"])
+    const set2 = new Set("abc")
+    console.log(set2)
+    const set3 = new Set(info)
+    console.log(set3)
+
+
+    // 3.一些常用的方法
+    const p1 = Promise.resolve("aaaa")
+    const p2 = Promise.resolve("aaaa")
+    const p3 = Promise.resolve("aaaa")
+    const pSet = new Set()
+    pSet.add(p1)
+    pSet.add(p2)
+    pSet.add(p3)
+    Promise.all(pSet).then(res => {
+      console.log("res:", res)
+    })
+
+    function bar() {
+      // console.log(arguments)
+      // 将arguments转成Array类型
+      const arr = Array.from(arguments)
+      console.log(arr)
+    }
+
+    bar(111, 222, 333)
+
+  </script>
+
+</body>
+</html>

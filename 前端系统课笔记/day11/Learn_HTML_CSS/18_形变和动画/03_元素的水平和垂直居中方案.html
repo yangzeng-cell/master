@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .container {
+      /* position: relative; */
+      /* display: flex;
+      align-items: center; */
+
+      height: 300px;
+      background-color: orange;
+    }
+
+    .box1 {
+      position: absolute;
+      width: 100px;
+      /* height: 100px; */
+      top: 0;
+      bottom: 0;
+      margin: auto 0;
+      background-color: #f00;
+    }
+
+    .box2 {
+      background-color: #f00;
+    }
+
+    .box3 {
+      display: inline-block;
+      height: 100px;
+      background-color: #f00;
+
+      /* 两件事情:
+          1.让元素向下位移父元素的50%
+          2.让元素向上位移自身的50% 
+      */
+      /* margin-top的百分比是相对于包含块(父元素)的宽度 */
+      /* margin-top: 50%; */
+      position: relative;
+      top: 50%;
+      transform: translate(0, -50%);
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- 
+    水平居中:
+      1.行内级元素: 
+        * 设置父元素的text-align: center
+      2.块级元素:
+        * 设置当前块级元素(宽度) margin: 0 auto;
+      3.绝对定位
+        * 元素有宽度情况下, left0/right0/margin: 0 auto;
+      4.flex
+        * justify-content: center
+   -->
+
+  <!--
+    垂直居中:
+      1.绝对定位
+        * 元素有高度情况下, top0/bottom0/margin: auto 0;
+  -->
+  <!-- 
+    1.垂直居中: 绝对定位
+    弊端:
+      1> 必须使用定位(脱离标准流)
+      2> 必须给元素设置高度
+   -->
+  <!-- <div class="container">
+    <div class="box1">coderwhy</div>
+  </div> -->
+
+  <!-- 
+    2.垂直居中: flex布局(直接使用flex)
+    弊端:
+      1> 当前flex局部中所有的元素都会被垂直居中
+      2> 相对来说, 兼容性差一点点(基本可以忽略)
+   -->
+   <!-- <div class="container">
+     <div class="box2">flex布局的居中</div>
+     aaaa
+   </div> -->
+
+   <!-- 
+    3.垂直居中: top/translate(个人推荐, 不好理解)
+  -->
+  <div class="container">
+    <div class="box3">coderwhy</div>
+    aaaaa
+  </div>
+
+</body>
+</html>

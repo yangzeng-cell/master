@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var obj = {} // new Object()
+    obj.__proto__ // Object.prototype
+
+    function foo() {} // new Function()
+    console.log(foo.length, foo.name)
+    console.log(foo.__proto__) // Function.prototype
+
+    function Person() { // Person.__proto === Function.prototype
+
+    }
+
+    console.log(foo.__proto__ === Function.prototype)
+    console.log(Person.__proto__ === Function.prototype)
+    console.log(foo.__proto__ === Person.__proto__)
+    console.log(Object.__proto__ === Function.prototype)
+    console.log(Function.__proto__ === Function.prototype)
+
+    var p1 = new Person()
+    var p2 = new Person()
+
+    console.log(Object.prototype)
+
+  </script>
+
+
+</body>
+</html>

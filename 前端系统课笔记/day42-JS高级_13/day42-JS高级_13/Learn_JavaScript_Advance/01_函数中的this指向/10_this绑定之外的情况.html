@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <script>
+    // 1.情况一: 显式绑定null/undefined, 那么使用的规则是默认绑定
+    // function foo() {
+    //   console.log("foo:", this)
+    // }
+
+    // foo.apply("abc")
+    // foo.apply(null)
+    // foo.apply(undefined)
+
+
+    // 2.情况二: 间接函数引用
+    var obj1 = {
+      name: "obj1",
+      foo: function() {
+        console.log("foo:", this)
+      }
+    }
+    var obj2 = {
+      name: "obj2"
+    };
+
+    // {}[]()
+
+    // obj2.foo = obj1.foo
+    // obj2.foo()
+    (obj2.foo = obj1.foo)()
+
+  </script>
+
+</body>
+</html>

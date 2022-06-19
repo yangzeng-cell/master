@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script src="./js/inherit_utils.js"></script>
+  <script>
+
+    function Person() {}
+    function Student() {}
+    function Teacher() {}
+
+    inherit(Student, Person)
+    console.log(Person.prototype.__proto__ === Object.prototype)
+
+    // 在Object的原型上添加属性
+    Object.prototype.message = "coderwhy"
+    var stu = new Student()
+    console.log(stu.message)
+
+    // Object原型上本来就已经存放一些方法
+    console.log(Object.prototype)
+    console.log(stu.toString())
+
+    // 函数对象也是最终继承自Object
+    function foo() {}
+    console.log(foo.message)
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // 1.暂时性死区
+    // function foo() {
+    //   console.log(bar, baz)
+
+    //   console.log("Hello World")
+    //   console.log("你好 世界")
+    //   let bar = "bar"
+    //   let baz = "baz"
+    // }
+    // foo()
+
+    // 2.暂时性死区和定义的位置没有关系, 和代码执行的顺序有关系
+    // function foo() {
+    //   console.log(message)
+    // }
+
+    // let message = "Hello World"
+    // foo()
+    // console.log(message)
+
+    // 3.暂时性死区形成之后, 在该区域内这个标识符不能访问
+    let message = "Hello World"
+    function foo() {
+      console.log(message)
+
+      const message = "哈哈哈哈"
+    }
+
+    foo()
+
+  </script>
+
+</body>
+</html>
