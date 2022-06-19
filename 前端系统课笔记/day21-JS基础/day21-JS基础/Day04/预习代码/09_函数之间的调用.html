@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // function test(fn) {
+    //   console.log("test函数执行")
+    //   fn()
+    // }
+
+    var name = "why"
+
+    function foo() {
+      console.log("foo函数执行")
+      name = "foo"
+      setTimeout(function() {
+        console.log("Hello World")
+        name = "kobe"
+      }, 2000);
+    }
+
+    function bar() {
+      console.log("bar函数执行")
+      name = "bar"
+      foo()
+    }
+
+    debugger
+    bar()
+
+  </script>
+
+</body>
+</html>

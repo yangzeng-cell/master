@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 1.Number类型的基本使用
+    var age = 18
+    var height = 1.88
+
+    // 2.特殊的数值
+    // Infinity
+    var num1 = Infinity
+    var num2 = 1 / 0
+    console.log(num1, num2)
+
+    // NaN: not a number(不是一个数字)
+    var result = 3 * "abc"
+    console.log(result)
+    console.log(isNaN(result))
+
+    // 3.进制表示
+    var num3 = 100 // 十进制
+    // 了解
+    var num4 = 0x100 // 十六进制
+    var num5 = 0o100 // 八进制
+    var num6 = 0b100 // 二进制
+    console.log(num4, num5, num6)
+
+    // 5.数字可以表示的范围
+    var max = Number.MAX_VALUE
+    var min = Number.MIN_VALUE
+    console.log(max, min)
+
+  </script>
+
+</body>
+</html>

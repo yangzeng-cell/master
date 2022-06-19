@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 创建Date对象
+    var date1 = new Date() // 当前时间 Fri May 13 2022 15:22:53 GMT+0800 ()
+    var date2 = new Date(1000) // 传入的是毫秒数, 表示从1970-01-01 00:00:00 UTC 经过的毫秒数
+    var date3 = new Date("2022-08-08") // 传入的是dateString, 日期的字符串值
+    var date4 = new Date(2022, 08, 08, 08, 08, 08, 08) // new Date(year, monthIndex [, day [, hours [, minutes [, seconds [, milliseconds]]]]])
+    console.log(date4)
+
+    console.log(new Date().toISOString())
+    console.log(new Date().toISOString())
+
+    var startTime = Date.now()
+    for (var i = 0; i < 10000; i++) {
+      console.log(i)
+    }
+    var endTime = Date.now()
+    console.log(endTime - startTime)
+
+    var time1 = Date.parse("2022-08-08T08:08:08.666Z")
+    console.log(time1)
+
+    function formatDate(time, fmt) {
+      let date = new Date(time);
+      if (/(y+)/.test(fmt)) {
+        fmt = fmt.replace(RegExp.$1, (date.getFullYear() + '').substr(4 - RegExp.$1.length));
+      }
+      let o = {
+        'M+': date.getMonth() + 1,
+        'd+': date.getDate(),
+        'h+': date.getHours(),
+        'm+': date.getMinutes(),
+        's+': date.getSeconds()
+      };
+      for (let k in o) {
+        if (new RegExp(`(${k})`).test(fmt)) {
+          let str = o[k] + '';
+          fmt = fmt.replace(RegExp.$1, (RegExp.$1.length === 1) ? str : padLeftZero(str));
+        }
+      }
+      return fmt;
+    };
+
+    function padLeftZero(str) {
+      return ('00' + str).substr(str.length);
+    };
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  coderwhy
+  <!-- 注释内容 -->
+
+  <div class="box">哈哈哈哈</div>
+
+  <script>
+    var box = document.querySelector(".box")
+    box.hidden = true
+  </script>
+
+  <script>
+    var text = document.body.firstChild
+    console.log(text.nodeValue)
+
+    var comment = text.nextSibling
+    console.log(comment.nodeValue)
+
+    var message = "Hello World"
+    for (var c of message) {
+      console.log(c)
+    }
+  </script>
+
+</body>
+</html>

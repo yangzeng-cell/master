@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button class="btn">按钮1</button>
+  <button class="btn">按钮2</button>
+  <button class="btn">按钮3</button>
+  <button class="btn">按钮4</button>
+  
+  <script>
+
+    var btns = document.querySelectorAll(".btn")
+    for (var i = 0; i < btns.length; i++) {
+      (function(m) {
+        btns[m].onclick = function() {
+          console.log(`第${m}个按钮被点击了`)
+        }
+      })(i)
+    }
+
+    (function foo() {
+      console.log("立即执行函数")
+    }())
+
+    function bar() {
+      console.log("bar函数执行")
+    };
+
+  </script>
+
+</body>
+</html>
