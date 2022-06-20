@@ -253,6 +253,16 @@ export default RefDemo
   
  
     setCount((prevCount) => prevCount + 10);//preCount是上一个count
+    
+    如果你的更新函数返回值与当前 state 完全相同，则随后的重渲染会被完全跳过。
+    与 class 组件中的 setState 方法不同，useState 不会自动合并更新对象。你可以用函数式的 	setState 结合展开运算符来达到合并更新对象的效果。
+    setState(prevState => {
+      // 也可以使用 Object.assign
+      return {...prevState, ...updatedValues};
+    });
+    useReducer 是另一种可选方案，它更适合用于管理包含多个子值的 state 对象。
+
+
  43.useEffect()
  	useEffect(() => {
     console.log("订阅一些事件");
@@ -260,7 +270,7 @@ export default RefDemo
     return () => {
       console.log("取消订阅事件")
     }
-  }, []);//通过返回一个函数来执行类似componmentwillumnount来清除副作用，[]这个可以作为优化，只有在组件切换时才执行
+  }, []);//通过返回一个函数来执行类似componmentwillumnount来清除副作用，[]这个可以作为优化，只有在组件切换时才执行，[]只会执行一次，相当于是componentDiMount,componentWillUnmount
   44.useEffect第二个参数
    useEffect(() => {
     console.log("修改DOM", count);
@@ -322,11 +332,23 @@ export default RefDemo
 			imfoIm.set()
 			imfoIM.get()
 			imfoIm.list()
-			imfoim.fromJS()//深层次转换成immutable类型 
+			imfoim.fromJS()//深层次转换
+		2.只能再react函数中调用成immutable类型 
 			state.getIn(["a","b"])//相当于a.b
 			styled-components的传参
 			使用useCallback对需要传给子组件的函数进行包裹，可以有缓存，并提高性能
 			
 			使用 redux-immutable中的commineReducer来优化combineReducer,提高性能
+			
+55 Hook的本质就是javascript函数，他要遵循两条规则
+	1.只在最顶层使用hook
+		不要再循环，条件或者嵌套函数中调用hook,确保总是再你的react函数的最顶层去调用他们
+		遵守这条规则，你就能确保 Hook 在每一次渲染中都按照同样的顺序被调用。这让 React 能够在多次的 useState 和 useEffect 调用之间保持 hook 状态的正确
+	2.只能再react函数中调用Hook
+	  不要在普通的javascript中调用hook,可以在reat函数组件中调用hook,也可以在在定义hook中调用其他hook
+56.自定义HOOK一定要以use开头
+57.在两个组件中使用相同的 Hook 会共享 state 吗？不会。自定义 Hook 是一种重用状态逻辑的机制(例如设置为订阅并存储当前值)，所以每次使用自定义 Hook 时，其中的所有 state 和副作用都是完全隔离的。
+58.自定义 Hook 如何获取独立的 state？每次调用 Hook，它都会获取独立的 state
+	由于我们直接调用了 useFriendStatus，从 React 的角度来看，我们的组件只是调用了 useState 和 useEffect
 ```
 
