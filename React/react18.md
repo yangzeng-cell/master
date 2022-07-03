@@ -233,6 +233,17 @@ export default RefDemo
  36.react纯函数
  37.node中对ES6模块化的支持 在13.2.0以后对es6的支持，需要在package.json中添加属性"type":"module",导入文件时要跟上.js后缀名
  38.redux
+ 	redux主要是负责状态管理
+ 	store:createStore(reducer,..)
+ 	state:通过store.getState()来获取当前state
+ 	react的组成
+ 		action:是用来更新数据，所有的数据变化，必须通过dispatch来派发action来更新，action可以是一个对象，也可以是一个函数，函数必须返回一个对象
+ 		reducer：是将state和action连接起来，reducer是一个纯函数，reducer是将传入的reducer和action整和成为一个新的state
+ 		dispatch:用来派发action
+ 	redux的三大原则
+ 		1.单一数据源
+ 		2.state是只读的
+ 		3.使用纯函数来执行修改
  39.单向数据流
  40.react动画中<TransitionGroup>中需要再用<cssTransition>包裹,否则会报错
  41.react-router
@@ -350,5 +361,279 @@ export default RefDemo
 57.在两个组件中使用相同的 Hook 会共享 state 吗？不会。自定义 Hook 是一种重用状态逻辑的机制(例如设置为订阅并存储当前值)，所以每次使用自定义 Hook 时，其中的所有 state 和副作用都是完全隔离的。
 58.自定义 Hook 如何获取独立的 state？每次调用 Hook，它都会获取独立的 state
 	由于我们直接调用了 useFriendStatus，从 React 的角度来看，我们的组件只是调用了 useState 和 useEffect
+59.惰性初始化state
 ```
 
+`initialState` 参数只会在组件的初始渲染中起作用，后续渲染时会被忽略。如果初始 state 需要通过复杂计算获得，则可以传入一个函数，在函数中计算并返回初始的 state，此函数只在初始渲染时被调用：
+
+```
+const [state, setState] = useState(() => {
+  const initialState = someExpensiveComputation(props);
+  return initialState;
+});
+```
+
+#### 60.useEffect是在每一轮渲染结束后执行
+
+61.组件卸载时需要清除effect创建的订阅，定时器等，useEffect函数需要返回一个清理函数
+
+```
+useEffect(() => {
+  const subscription = props.source.subscribe();
+  return () => {
+    // 清除订阅
+    subscription.unsubscribe();
+  };
+});
+```
+
+为防止内存泄漏，清除函数会在组件卸载之前执行。另外，如果组件多次渲染，则会在子啊个effect之前，上一个effect就会被清除
+
+###### 62.effect的执行时机
+
+与componentDidMount,cimponentDidUpadate不同的是，在浏览器完成布局与绘制之后，
+
+传给useEffect的函数会延迟调用，这使得它适用于许多常见的副作用场景，比如设置订阅和事件处理情况，因此不应在函数值执行阻塞浏览器更新的操作
+
+###### 63.useContext
+
+​	
+
+```
+const MyContext= React.createContext(value)
+
+const value = useContext(MyContext);
+
+```
+
+myContext是React.createContext的返回值，并返回该context的当前值，当前的value值由
+
+他的上层组件距离当前组件最近的<MyContext.Provider>的value prop决定的
+
+当Provider中的value发生更新的时候，useContext就会出发重新渲染，即使组件时使用React.emo包裹，或者使用shouldComponentUpdat生命周期，该组件都会重新渲染
+
+只要MyConetext里面的值发生改变，使用了useContext的组件都会重新渲染，如果重新渲染开销大，可以使用memoization来优化
+
+useContext(MyContext)===>class中的static contextType=MyContext或者<MyContext.Consumer>
+
+`useContext(MyContext)` 只是让你能够*读取* context 的值以及订阅 context 的变化。你仍然需要在上层组件树中使用 `<MyContext.Provider>` 来为下层组件*提供* context。
+
+###### 64.`useReducer`
+
+```
+const [state, dispatch] = useReducer(reducer, initialArg, init);
+
+useState的替代方案
+在某些场合会比useState更加适用，例如 state 逻辑较复杂且包含多个子值，或者下一个 state 依赖于之前的 state 等。并且，使用 useReducer 还能给那些会触发深更新的组件做性能优化，因为你可以向子组件传递 dispatch 而不是回调函数 。
+```
+
+```
+const initialState = {count: 0};
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return {count: state.count + 1};
+    case 'decrement':
+      return {count: state.count - 1};
+    default:
+      throw new Error();
+  }
+}
+
+function Counter() {
+  const [state, dispatch] = useReducer(reducer, initialState);
+  return (
+    <>
+      Count: {state.count}
+      <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
+    </>
+  );
+}
+```
+
+#### 惰性初始化
+
+useReducer的第三个参数传入一个函数，这样初始state将设置为传入函数的返回值
+
+可以通过外部来传入
+
+```
+function init(initialCount) {
+  return {count: initialCount};
+}
+
+function reducer(state, action) {
+  switch (action.type) {
+    case 'increment':
+      return {count: state.count + 1};
+    case 'decrement':
+      return {count: state.count - 1};
+    case 'reset':
+      return init(action.payload);
+    default:
+      throw new Error();
+  }
+}
+
+function Counter({initialCount}) {
+  const [state, dispatch] = useReducer(reducer, initialCount, init);
+  return (
+    <>
+      Count: {state.count}
+      <button
+        onClick={() => dispatch({type: 'reset', payload: initialCount})}>
+        Reset
+      </button>
+      <button onClick={() => dispatch({type: 'decrement'})}>-</button>
+      <button onClick={() => dispatch({type: 'increment'})}>+</button>
+    </>
+  );
+}
+
+```
+
+如果 Reducer Hook 的返回值与当前 state 相同，React 将跳过子组件的渲染及副作用的执行。（React 使用 [`Object.is` 比较算法](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Object/is#Description) 来比较 state。）
+
+如果你在渲染期间执行了高开销的计算，则可以使用 `useMemo` 来进行优化。
+
+useReducer不可以作为redux的替代方案，不可以进行数据共享
+
+65.使用memo包裹函数，可以进行性能优化，会对props进行浅层比较，如果props没有发生更新，则不会重新渲染
+
+66.没有优化以前。父组件发生改变子组件也会重新渲染
+
+67.useCallback
+
+返回一个 [memoized](https://en.wikipedia.org/wiki/Memoization) 回调函数。
+
+把内联回调函数及依赖项数组作为参数传入 `useCallback`，它将返回该回调函数的 memoized 版本，该回调函数仅在某个依赖项改变时才会更新。当你把回调函数传递给经过优化的并使用引用相等性去避免非必要渲染（例如 `shouldComponentUpdate`）的子组件时，它将非常有用。
+
+![](C:\Users\10152\Desktop\study\memo\React\QQ截图20220620112711.png)
+
+![QQ截图20220620112901](C:\Users\10152\Desktop\study\memo\React\QQ截图20220620112901.png)
+
+68.useMeno
+
+​	`useCallback(fn, deps)` 相当于 `useMemo(() => fn, deps)`。
+
+useCallback是返回[memoized](https://en.wikipedia.org/wiki/Memoization) 回调函数。useMeno是返回一个memoized值
+
+useMemo只会在依赖项发生改变时才会重新计算执行，返回新的值，避免每次渲染时都进行高开销的计算
+
+记住，传入 `useMemo` 的函数会在渲染期间执行。请不要在这个函数内部执行与渲染无关的操作，诸如副作用这类的操作属于 `useEffect` 的适用范畴，而不是 `useMemo`。
+
+如果没有提供依赖项数组，`useMemo` 在每次渲染时都会计算新的值
+
+![](C:\Users\10152\Desktop\study\memo\React\QQ截图20220620131653.png)
+
+![QQ截图20220620131701](C:\Users\10152\Desktop\study\memo\React\QQ截图20220620131701.png)
+
+69.useRef
+
+useRef返回一个ref对象，返回的ref对象在组件的整个生命周期保持不变
+
+最常用的ref是两种用法
+
+​	1.引入DOM(或者是class组件)元素，不可以用在函数组件中
+
+​	2.保存一个数据，这个对象在整个生命周期中可以保持不变
+
+![](C:\Users\10152\Desktop\study\memo\React\QQ截图20220620143141.png)
+
+![QQ截图20220620143158](C:\Users\10152\Desktop\study\memo\React\QQ截图20220620143158.png)
+
+70.`useImperativeHandle`
+
+useImperativeHandle要和forwardRef结合使用，使用useImperativeHandle可以使父元素不可以对子组件中的ref进行随意操作
+
+![](C:\Users\10152\Desktop\study\memo\React\QQ截图20220620143648.png)
+
+![QQ截图20220620143735](C:\Users\10152\Desktop\study\memo\React\QQ截图20220620143735.png)
+
+71.useLayoutEffect
+
+​	和useEffect的区别是
+
+​	useEffect会在渲染的内容更新到DOM之后再执行，而不会阻塞DOM的更新
+
+​	useLayoutEffect会在渲染的内容更新到DOM上之前执行，会阻塞DOM的更新
+
+​	![](C:\Users\10152\Desktop\study\memo\React\QQ截图20220620144244.png)
+
+![QQ截图20220620144253](C:\Users\10152\Desktop\study\memo\React\QQ截图20220620144253.png)
+
+72.redux-thunk
+
+​	 使用中间件目的是再dispatch的action和reducer之间扩展自己的代码，例如日志记录，调用异步接口，添加代码调试功能等等
+
+​	可以使用redux-thunk发送异步请求
+
+​	1.通常情况下。dispatch(action),actionn余姚是一个javascript对象
+
+​	2.redux-thunk可以让dispatch(action函数)，action可以是一个函数
+
+​	3.这个函数被调用的时候，会返回一个函数并给这个函数传一个patch,getState函数
+
+​				dispatch函数用于再次派发action
+
+​				getState函数获取到之前的状态
+
+![](C:\Users\10152\Desktop\study\memo\React\QQ截图20220620161818.png)
+
+![](C:\Users\10152\Desktop\study\memo\React\QQ截图20220620162945.png)
+
+###### 73.redux-devtools
+
+是用来对redux中的状态进行跟踪调试
+
+![](C:\Users\10152\Desktop\study\memo\React\QQ截图20220620163435.png)
+
+##### 74.combineReducers
+
+redux中提供了一个函数combineReducers来合并多个reducer
+
+combinerReducer的实现
+
+​	它会将reducer合并，并且返回一个combation函数相当于是新的reducer
+
+​	在执行combination函数的过程中，它会通过判断前后返回的数据是否相同来决定返回之前的state还是新的state；
+
+   新的state会触发订阅者发生对应的刷新，而旧的state可以有效的组织订阅者发生刷新；
+
+![](C:\Users\10152\Desktop\study\memo\React\QQ截图20220620163958.png)
+
+##### 75.useSelector()
+
+```
+import React from 'react'
+import { shallowEqual, useSelector } from 'react-redux'
+
+export const CounterComponent = () => {
+  const counter = useSelector((state) => state.counter,shallowEqual)
+  return <div>{counter}</div>
+}
+//在hook中使用redux,使用useSlectore来获取state
+```
+
+##### 76.`useDispatch()`
+
+```
+const dispatch = useDispatch()//派发action
+```
+
+```
+export const Todos = () => {
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(fetchTodos())
+    // Safe to add dispatch to the dependencies array
+  }, [dispatch])
+}
+```
+
+##### 77.`useStore()`
+
+替代createStore()
