@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // console.log(typeof Number) // function
+    // var num = new Number()
+
+    // Math -> 对象
+    // window/obj/console
+    // console.log(typeof Math)
+    // var math = new Math()
+
+    // Math对象的属性
+    // console.log(Math.PI)
+
+    // Math对象的方法
+    // var num = 3.55
+    // console.log(Math.floor(num)) // 3
+    // console.log(Math.ceil(num)) // 4
+    // console.log(Math.round(num)) // 4
+
+    // 另外方法
+    // random: 随机生成 [0, 1)
+    console.log(Math.random())
+    // 需求: [5~50)的随机数
+    // [a, b)
+    // y = a
+    // x = b - a
+    // Math.floor(Math.random() * x) + y
+    for (var i = 0; i < 1000; i++) {
+      var randomNum = Math.floor(Math.random() * 45) + 5
+      console.log(randomNum)
+    }
+
+    // Math.pow(x, y)
+    console.log(Math.pow(2, 4))
+
+  </script>
+
+</body>
+</html>

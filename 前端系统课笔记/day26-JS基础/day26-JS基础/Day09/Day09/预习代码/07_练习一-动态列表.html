@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <h1>动态创建的列表</h1>
+
+  
+  <script>
+
+    var ulEl = document.createElement("ul")
+    document.body.append(ulEl)
+
+    while (true) {
+      var data = prompt("请输入列表的内容:")
+      if (!data) break
+      var liEl = document.createElement("li")
+      liEl.textContent = data
+      ulEl.append(liEl)
+    }
+
+  </script>
+
+</body>
+</html>

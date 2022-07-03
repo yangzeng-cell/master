@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var names = ["abc", "cba", "nba"]
+    var nums = [20, 30, 11, 15, 111]
+
+    // 1.优化一: 如果箭头函数只有一个参数, 那么()可以省略
+    // names.forEach(item => {
+    //   console.log(item)
+    // })
+    // var newNums = nums.filter(item => {
+    //   return item % 2 === 0
+    // })
+
+    // 2.优化二: 如果函数体中只有一行执行代码, 那么{}可以省略
+    // names.forEach(item => console.log(item))
+
+    // 一行代码中不能带return关键字, 如果省略, 需要带return一起省略(下一条规则)
+    // var newNums = nums.filter(item => {
+    //   return item % 2 === 0
+    // })
+
+    // 3.优化三: 只有一行代码时, 这行代码的表达式结果会作为函数的返回值默认返回的
+    // var newNums = nums.filter(item => item % 2 === 0)
+    // var newNums = nums.filter(item => item % 2 === 0)
+
+
+    // 4.优化四: 如果默认返回值是一个对象, 那么这个对象必须加()
+    // 注意: 在react中我会经常使用 redux
+
+    // var arrFn = () => ["abc", "cba"]
+    // var arrFn = () => {} // 注意: 这里是{}执行体
+    // var arrFn = () => ({ name: "why" })
+    // console.log(arrFn())
+
+    // 箭头函数实现nums的所有偶数平方的和
+    var nums = [20, 30, 11, 15, 111]
+    var result = nums.filter(item => item % 2 === 0)
+                     .map(item => item * item)
+                     .reduce((prevValue, item) => prevValue + item)
+    console.log(result)
+
+  </script>
+
+</body>
+</html>

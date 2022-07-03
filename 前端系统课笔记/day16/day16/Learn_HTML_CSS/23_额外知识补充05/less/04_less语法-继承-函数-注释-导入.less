@@ -1,0 +1,45 @@
+// 1.extend
+// .box_border {
+//   border: 5px solid #f00;
+// }
+
+// .box {
+//   width: 100px;
+//   background-color: orange;
+
+//   // .box_border();
+//   &:extend(.box_border);
+// }
+
+// 2.内置函数
+// .box {
+//   color: color(skyblue);
+//   width: convert(100px, "in");
+//   font-size: ceil(18.5px);
+//   background-color: orange;
+// }
+
+
+// 3.作用域(scope)
+@mainColor: #f00;
+
+.box_mixin {
+  @mainColor: orange;
+}
+
+.box {
+  // @mainColor: #0f0;
+
+  .item {
+    span {
+      color: @mainColor;
+
+      .box_mixin();
+      // @mainColor: #00f;
+    }
+  }
+}
+
+// 4.注释(comment)
+// 单行注释
+/* 多行注释 */ 

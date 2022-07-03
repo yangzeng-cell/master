@@ -1,0 +1,3 @@
+vscode ctrl+s 保存格式化 在设置里搜索找到settings.json文件，添加"editor.formatOnSave": true,或者直接搜editor.formatOnSave
+
+vscode自动回车是因为有插件和自动保存发生冲突，可以将自动保存关闭

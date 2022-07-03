@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      /* width: 2000px; */
+      height: 100px;
+      background-color: orange;
+    }
+
+    .scroll-btn {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      /* display: none; */
+    }
+  </style>
+</head>
+<body>
+
+  <div class="box"></div>
+  <button class="scroll-btn">回到顶部</button>
+
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+  <script>
+    // window大小
+    console.log(window.outerWidth)
+    console.log(window.outerHeight)
+
+    console.log(window.innerWidth)
+    console.log(window.innerHeight)
+
+    console.log(document.documentElement.offsetWidth)
+    console.log(document.documentElement.offsetHeight)
+
+    // 获取window的滚动区域
+    window.onclick = function() {
+      console.log(window.scrollX)
+      console.log(window.scrollY)
+    }
+
+    var scrollBtnEl = document.querySelector(".scroll-btn")
+    scrollBtnEl.hidden = true
+    window.onscroll = function() {
+      var scrollY = window.scrollY
+      if (scrollY > 600) {
+        // scrollBtnEl.style.display = "block"
+        scrollBtnEl.hidden = false
+      } else {
+        // scrollBtnEl.style.display = "none"
+        scrollBtnEl.hidden = true
+      }
+    }
+
+    // 点击按钮后滚动到某个位置
+    scrollBtnEl.onclick = function() {
+      // window.scrollBy(0, 100)
+      window.scrollTo(0, 0)
+    }
+
+  </script>
+
+</body>
+</html>

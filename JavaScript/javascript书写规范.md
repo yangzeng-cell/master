@@ -9,3 +9,4 @@
 - 尽量不要使用var,可以使用let和const来代替
 - 在js中尽量使用exports和export default，import不要使用require和exports，module export
 - 不要使用for in 来遍历数组和对象，因为会遍历原型链上的属性和对象，要使用for of 来遍历数组和对象
+- 减少定义全局变量，避免重名变量

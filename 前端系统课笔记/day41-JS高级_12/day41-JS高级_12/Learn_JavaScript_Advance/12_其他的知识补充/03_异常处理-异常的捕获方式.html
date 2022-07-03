@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    function foo() {
+      console.log("foo function1")
+      // throw new Error("我是错误信息")
+      console.log("foo function2")
+      console.log("foo function3")
+      console.log("foo function4")
+    }
+
+    function test() {
+      // 自己捕获了异常的话, 那么异常就不会传递给浏览器, 那么后续的代码可以正常执行
+      try {
+        foo()
+        console.log("try后续的代码")
+      } catch(error) {
+        console.log("catch中的代码")
+        // console.log(error)
+      } finally {
+        console.log("finally代码")
+      }
+    }
+
+    function bar() {
+      test()
+    }
+
+    bar()
+
+    console.log("--------")
+
+  </script>
+
+</body>
+</html>

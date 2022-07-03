@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+
+  <script>
+    
+    // 1.注意一: 有默认参数的形参尽量写到后面
+    // 2.有默认参数的形参, 是不会计算在length之内(并且后面所有的参数都不会计算在length之内)
+    // 3.剩余参数也是放到后面(默认参数放到剩余参数的前面)
+    function foo(age, name = "why", ...args) {
+      console.log(name, age, args)
+    }
+
+    foo(18, "abc", "cba", "nba")
+
+    console.log(foo.length)
+
+  </script>
+
+</body>
+</html>

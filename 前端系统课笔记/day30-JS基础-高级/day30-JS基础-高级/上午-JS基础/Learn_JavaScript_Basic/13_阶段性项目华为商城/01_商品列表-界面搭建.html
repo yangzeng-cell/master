@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <style>
+    .crumbs {
+      height: 63px;
+      line-height: 63px;
+      font-size: 12px;
+    }
+
+    .crumbs .item {
+      cursor: pointer;
+    }
+
+    .crumbs .item:last-child {
+      color: #000;
+    }
+
+    .operation {
+      padding: 0 24px;
+      background-color: #fff;
+    }
+
+    .operation > .row {
+      display: flex;
+    }
+
+    .operation > .row .item {
+      width: 104px;
+      height: 48px;
+      line-height: 48px;
+      font-size: 12px;
+      color: #000;
+      cursor: pointer;
+    }
+
+    .operation > .row .item:first-child {
+      color: #666;
+      cursor: auto;
+    }
+
+    .operation > .row .item.active {
+      color: red;
+    }
+
+    /* 商品列表 */
+    .products {
+      margin-top: 20px;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+
+    .products > .item {
+      width: 291px;
+      background-color: #fff;
+      margin-bottom: 12px;
+    }
+
+    .products > .item a {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .products > .item .album {
+      width: 180px;
+      height: 180px;
+      margin: 30px 0;
+    }
+
+    .products > .item .name {
+      font-weight: 700;
+      color: #000;
+    }
+
+    .products > .item .discount {
+      margin: 10px 0 16px;
+      color: #666;
+    }
+
+    .products > .item .price {
+      font-size: 16px;
+      font-weight: 700;
+      color: red;
+    }
+
+    .products > .item .service {
+      display: flex;
+      justify-content: center;
+      margin: 10px 0;
+    }
+
+    .products > .item .service .tip {
+      margin: 0 3px;
+      padding: 0 3px;
+      border: 1px solid red;
+      border-radius: 3px;
+      font-size: 12px;
+      color: red;
+    }
+
+    .products > .item .comment {
+      display: flex;
+      justify-content: center;
+      margin-bottom: 12px;
+    }
+
+    .products > .item .comment span {
+      margin: 0 5px;
+      font-size: 12px;
+      color: #666;
+    }
+
+  </style>
+</head>
+<body>
+  
+  <!-- 商品展示的部分 -->
+  <div class="wrapper">
+    <!-- 面包屑的导航 -->
+    <div class="crumbs">
+      <span class="item">首页</span>
+      <span>&gt;</span>
+      <span class="item">笔记本</span>
+    </div>
+
+    <!-- 对内容进行操作 -->
+    <div class="operation">
+      <ul class="row category">
+        <li class="item">分类：</li>
+        <li class="item">笔记本</li>
+        <li class="item">台式机</li>
+        <li class="item">智慧屏</li>
+      </ul>
+      <ul class="row discount">
+        <li class="item">服务优惠：</li>
+        <li class="item">仅看有货</li>
+        <li class="item">分期免息</li>
+        <li class="item">优惠商品</li>
+      </ul>
+      <ul class="row sort">
+        <li class="item">排序：</li>
+        <li class="item active">综合</li>
+        <li class="item">最新</li>
+        <li class="item">评论数</li>
+        <li class="item">价格</li>
+      </ul>
+    </div>
+
+    <!-- 商品列表部分 -->
+    <ul class="products">
+      <li class="item">
+        <a href="#">
+          <img class="album" src="./img/product_01.webp" alt="">
+          <div class="name">HUAWEI MateBook E 12.6英寸</div>
+          <div class="discount">预订立省300元|12期免息</div>
+          <div class="price">¥6499</div>
+          <div class="service">
+            <span class="tip">分期免息</span>
+            <span class="tip">赠送积分</span>
+          </div>
+          <div class="comment">
+            <span>3190人评论</span>
+            <span>96% 好评</span>
+          </div>
+        </a>
+      </li>
+      <li class="item">
+        <a href="#">
+          <img class="album" src="./img/product_01.webp" alt="">
+          <div class="name">HUAWEI MateBook E 12.6英寸</div>
+          <div class="discount">预订立省300元|12期免息</div>
+          <div class="price">¥6499</div>
+          <div class="service">
+            <span class="tip">分期免息</span>
+            <span class="tip">赠送积分</span>
+          </div>
+          <div class="comment">
+            <span>3190人评论</span>
+            <span>96% 好评</span>
+          </div>
+        </a>
+      </li>
+      <li class="item">
+        <a href="#">
+          <img class="album" src="./img/product_01.webp" alt="">
+          <div class="name">HUAWEI MateBook E 12.6英寸</div>
+          <div class="discount">预订立省300元|12期免息</div>
+          <div class="price">¥6499</div>
+          <div class="service">
+            <span class="tip">分期免息</span>
+            <span class="tip">赠送积分</span>
+          </div>
+          <div class="comment">
+            <span>3190人评论</span>
+            <span>96% 好评</span>
+          </div>
+        </a>
+      </li>
+      <li class="item">
+        <a href="#">
+          <img class="album" src="./img/product_01.webp" alt="">
+          <div class="name">HUAWEI MateBook E 12.6英寸</div>
+          <div class="discount">预订立省300元|12期免息</div>
+          <div class="price">¥6499</div>
+          <div class="service">
+            <span class="tip">分期免息</span>
+            <span class="tip">赠送积分</span>
+          </div>
+          <div class="comment">
+            <span>3190人评论</span>
+            <span>96% 好评</span>
+          </div>
+        </a>
+      </li>
+    </ul>
+  </div>
+
+
+</body>
+</html>

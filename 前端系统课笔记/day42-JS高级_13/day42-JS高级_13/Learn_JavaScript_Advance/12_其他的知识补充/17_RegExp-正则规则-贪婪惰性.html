@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 1.贪婪模式/惰性模式
+    const message = "我最喜欢的两本书: 《黄金时代》和《沉默的大多数》、《一只特立独行的猪》"
+
+    // 默认.+采用贪婪模式
+    // const nameRe = /《.+》/ig
+    
+    // const result1 = message.match(nameRe)
+    // console.log(result1)
+
+    // 使用惰性模式
+    const nameRe = /《.+?》/ig
+    
+    const result1 = message.match(nameRe)
+    console.log(result1)
+
+  </script>
+
+</body>
+</html>

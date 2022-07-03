@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 1.创建一个Promise对象
+    const promise = new Promise((resolve, reject) => {
+      // 注意: Promise的状态一旦被确定下来, 就不会再更改, 也不能再执行某一个回调函数来改变状态
+      // 1.待定状态 pending
+      console.log("111111")
+      console.log("222222")
+      console.log("333333")
+
+      // 2.兑现状态 fulfilled
+      resolve()
+
+      // 3.拒绝状态 rejected
+      reject()
+    })
+
+    promise.then(value => {
+      console.log("成功的回调")
+    }).catch(err => {
+      console.log("失败的回调")
+    })
+
+    // executor
+    const promise2 = new Promise((resolve, reject) => {
+
+    })
+
+  </script>
+
+</body>
+</html>

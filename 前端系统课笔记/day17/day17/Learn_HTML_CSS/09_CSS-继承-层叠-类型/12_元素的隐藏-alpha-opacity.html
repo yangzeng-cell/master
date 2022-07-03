@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* alpha: 只是设置当前color/bgc其中的颜色透明度为某一个值, 不会影响子元素 */
+    .box1 {
+      /* 不是很推荐 */
+      /* color module */
+      /* color: #ff000088; */
+      /* webpack -> postcss -> browserslist -> rgba() */
+      /* 推荐下面的写法 a -> alpha 0~1 */
+      /* color: rgba(255, 0, 0, 0.5); */
+
+      /* 通过颜色来隐藏 */
+      /* color: rgba(0, 0, 0, 0) */
+
+      /* 通过背景颜色透明度来隐藏 */
+      /* background-color: rgba(0, 0, 0, 0); */
+      background-color: transparent; /* rgba(0,0,0,0) */
+    }
+
+    /* opacity: 设置透明度, 并且会携带所有的子元素都有一定的透明度 */
+    .box2 {
+      opacity: 0.5;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="box1">
+    我是box1
+    <img src="../images/gouwujie01.jpg" alt="">
+  </div>
+  <div class="box2">
+    我是box2
+    <img src="../images/gouwujie01.jpg" alt="">
+  </div>
+
+</body>
+</html>

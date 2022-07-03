@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <!-- 1.嵌入html内部 -->
+  <a href="javascript:alert('百度一下')" onclick="alert('点击百度一下')">百度一下</a>
+
+  <!-- 2.写到script元素中 -->
+  <a class="google" href="#">Google一下</a>
+  <script>
+    const googleEl = document.querySelector(".google")
+    googleEl.onclick = function() {
+      alert("Google一下")
+    }
+  </script>
+
+  <!-- 3.单独的JavaScript文件 -->
+  <a class="bing" href="#">Bing一下</a>
+  <script src="./bing.js"></script>
+
+</body>
+</html>

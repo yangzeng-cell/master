@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button>按钮</button>
+
+  <input type="text">
+  
+  <!-- CDN引入: 网络的js文件 -->
+  <!-- <script src="https://cdn.jsdelivr.net/npm/underscore@1.13.4/underscore-umd-min.js"></script> -->
+  <!-- 本地引入: 下载js文件, 并且本地引入 -->
+  <script src="./js/underscore.js"></script>
+  <script>
+    // 1.获取input元素
+    const inputEl = document.querySelector("input")
+
+    // 2.监听input元素的输入
+    // let counter = 1
+    // inputEl.oninput = function() {
+    //   console.log(`发送网络请求${counter++}:`, this.value)
+    // }
+    
+    // 3.防抖处理代码
+    // let counter = 1
+    // inputEl.oninput = _.debounce(function() {
+    //   console.log(`发送网络请求${counter++}:`, this.value)
+    // }, 3000)
+
+    // 4.节流处理代码
+    let counter = 1
+    inputEl.oninput = _.throttle(function() {
+      console.log(`发送网络请求${counter++}:`, this.value)
+    }, 1000)
+
+  </script>
+
+</body>
+</html>

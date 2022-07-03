@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <form action="">
+      <input type="text" name="tel1" id="txtTel1" maxlength="3" />
+      <input type="text" name="tel2" id="txtTel2" maxlength="3" />
+      <input type="text" name="tel3" id="txtTel3" maxlength="4" />
+    </form>
+    <script>
+      function tabForward(event) {
+        let target = event.target;
+        console.log(target.value.length, target.maxLength);
+        if (target.value.length == target.maxLength) {
+          let form = target.form;
+          for (let i = 0, len = form.elements.length; i < len; i++) {
+            if (form.elements[i] == target) {
+              if (form.elements[i + 1]) {
+                form.elements[i + 1].focus();
+              }
+              return;
+            }
+          }
+        }
+      }
+      let inputIds = ["txtTel1", "txtTel2", "txtTel3"];
+      for (let id of inputIds) {
+        let textbox = document.getElementById(id);
+        textbox.addEventListener("keyup", tabForward);
+      }
+      // let textbox1 = document.getElementById("txtTel1");
+      // let textbox2 = document.getElementById("txtTel2");
+      // let textbox3 = document.getElementById("txtTel3");
+    </script>
+  </body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    /* a元素的链接从来没有被访问过 */
+    a:link {
+      color: red;
+    }
+
+    /* a元素被访问过了颜色 */
+    a:visited {
+      color: green;
+    }
+
+    /* a/input元素聚焦(获取焦点) */
+    a:focus {
+      color: yellow;
+    }
+
+    /* a元素鼠标放到上面 */
+    a:hover {
+      color: blue;
+    }
+
+    /* 点下去了, 但是还没有松手 */
+    a:active {
+      color: purple;
+    }
+
+    /* 所有的状态下同样的样式 */
+    a {
+      color: orange;
+    }
+  </style>
+</head>
+<body>
+  
+  <a href="http://www.mi.com">小米</a>
+  <a href="http://www.baidu.com">百度一下</a>
+
+  <input type="text">
+
+  <div>我是div元素</div>
+
+</body>
+</html>

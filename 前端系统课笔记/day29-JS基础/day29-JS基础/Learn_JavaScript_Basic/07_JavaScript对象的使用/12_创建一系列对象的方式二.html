@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // for循环
+    // for (var i = 0; i < 3; i++) {
+    //   var stu = {
+    //     name: "why",
+    //     age: 18,
+    //     height: 1.88,
+    //     running: function() {
+
+    //     }
+    //   }
+    // }
+
+
+    var obj1 = {}
+    var obj2 = {}
+
+    // 工厂函数(工厂生产student对象) -> 一种设计模式
+    // 通过工厂设计模式, 自己来定义了一个这样的函数
+    function createStudent(name, age, height) {
+      var stu = {}
+      stu.name = name
+      stu.age = age
+      stu.height = height
+      stu.running = function() {
+        console.log("running~")
+      }
+      return stu
+    }
+
+    var stu1 = createStudent("why", 18, 1.88)
+    var stu2 = createStudent("kobe", 30, 1.98)
+    var stu3 = createStudent("james", 25, 2.05)
+    console.log(stu1)
+    console.log(stu2)
+    console.log(stu3)
+
+  </script>
+
+</body>
+</html>

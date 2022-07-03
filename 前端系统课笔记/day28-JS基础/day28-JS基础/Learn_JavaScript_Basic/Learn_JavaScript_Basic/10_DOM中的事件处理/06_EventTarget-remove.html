@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button>按钮</button>
+  
+  <script>
+
+    var btnEl = document.querySelector("button")
+
+    // 1.将监听函数移除的过程
+    // var foo = function() {
+    //   console.log("监听到按钮的点击")
+    // }
+    // btnEl.addEventListener("click", foo)
+
+    // // 需求: 过5s钟后, 将这个事件监听移除掉
+    // setTimeout(function() {
+    //   btnEl.removeEventListener("click", foo)
+    // }, 5000)
+
+    // 这种做法是无法移除的
+    btnEl.addEventListener("click", function() {
+      console.log("btn监听的处理函数~")
+    })
+
+    setTimeout(function() {
+      btnEl.removeEventListener("click", function() {})
+    }, 5000)
+
+    // 举个栗子
+    var obj1 = {name: "obj1"}
+    var obj2 = {name: "obj2"}
+    var obj3 = {name: "obj3"}
+    var arr = [obj1, obj2, obj3]
+    
+    function removeArr(obj) {
+      var index = arr.findIndex(function(item) {
+        return item === {}
+      })
+      arr.splice(index, 1)
+    }
+    removeArr({})
+
+  </script>
+
+</body>
+</html>

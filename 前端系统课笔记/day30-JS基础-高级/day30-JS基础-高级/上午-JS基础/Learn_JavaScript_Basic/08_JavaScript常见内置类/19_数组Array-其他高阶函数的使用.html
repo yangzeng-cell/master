@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 1.forEach函数
+    var names = ["abc", "cba", "nba", "mba"]
+
+    // 三种方式, 新增一种方式
+    names.forEach(function(item) {
+      console.log(item, this)
+    }, { name: "why" })
+
+    // 2.filter函数: 过滤
+    // var nums = [11, 20, 55, 100, 88, 32]
+    // 2.1. for循环实现
+    // var newNums = []
+    // for (var item of nums) {
+    //   if (item % 2 === 0) {
+    //     newNums.push(item)
+    //   }
+    // }
+    // 2.2. filter实现
+    // var newNums = nums.filter(function(item) {
+    //   return item % 2 === 0
+    // })
+    // console.log(newNums)
+
+
+    // 3.map函数: 映射
+    // var nums = [11, 20, 55, 100, 88, 32]
+    // var newNums = nums.map(function(item) {
+    //   return item * item
+    // })
+    // console.log(newNums)
+
+    // 4.reduce
+    // var nums = [11, 20, 55, 100, 88, 32]
+    // var result = 0
+    // for (var item of nums) {
+    //   result += item
+    // }
+    // console.log(result)
+    // 第一次执行: preValue->0 item->11
+    // 第二次执行: preValue->11 item->20
+    // 第三次执行: preValue->31 item->55
+    // 第四次执行: preValue->86 item->100
+    // 第五次执行: preValue->186 item->88
+    // 第六次执行: preValue->274 item->32
+    // 最后一次执行的时候 preValue + item, 它会作为reduce的返回值
+
+    // initialValue: 初始化值, 第一次执行的时候, 对应的preValue
+    // 如果initialValue没有传呢?
+    // var result = nums.reduce(function(preValue, item) {
+    //   console.log(`preValue:${preValue} item:${item}`)
+    //   return preValue + item
+    // }, 0)
+    // console.log(result)
+
+    // reduce练习
+    // var products = [
+    //   { name: "鼠标", price: 88, count: 3 },
+    //   { name: "键盘", price: 200, count: 2 },
+    //   { name: "耳机", price: 9.9, count: 10 },
+    // ]
+    // var totalPrice = products.reduce(function(preValue, item) {
+    //   return preValue + item.price * item.count
+    // }, 0)
+    // console.log(totalPrice)
+
+
+    // 综合练习: 
+    var nums = [11, 20, 55, 100, 88, 32]
+
+    // 过滤所有的偶数, 映射所有偶数的平方, 并且计算他们的和
+    // var total = nums.filter(function(item) {
+    //   return item % 2 === 0
+    // }).map(function(item) {
+    //   return item * item
+    // }).reduce(function(preValue, item) {
+    //   return preValue + item
+    // }, 0)
+    // console.log(total)
+
+    // var total = nums.filter(item => item % 2 === 0)
+    //                 .map(item => item * item)
+    //                 .reduce((preValue, item) => preValue + item, 0)
+    // console.log(total)
+
+  </script>
+
+</body>
+</html>

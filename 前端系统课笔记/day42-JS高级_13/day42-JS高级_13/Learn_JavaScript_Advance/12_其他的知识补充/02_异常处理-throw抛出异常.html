@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    class HYError {
+      constructor(message, code) {
+        this.errMessage = message
+        this.errCode = code
+      }
+    }
+
+    // throw抛出一个异常
+    // 1.函数中的代码遇到throw之后, 后续的代码都不会执行
+    // 2.throw抛出一个具体的错误信息
+    function foo() {
+      console.log("foo function1")
+      // 1.number/string/boolean
+      // throw "反正就是一个错误"
+
+      // 2.抛出一个对象
+      // throw { errMessage: "我是错误信息", errCode: -1001 }
+      // throw new HYError("错误信息", -1001)
+
+      // 3.Error类: 错误函数的调用栈以及位置信息
+      throw new Error("我是错误信息")
+
+      console.log("foo function2")
+      console.log("foo function3")
+      console.log("foo function4")
+    }
+
+    function bar() {
+      foo()
+    }
+
+    bar()
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,7 @@
+$defaultFontSize: 37.5px;
+
+@function pxTorem($px){
+  @return $px / $defaultFontSize * 1rem;
+}
+
+

@@ -1,0 +1,53 @@
+a{
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+}
+body{
+  position: relative;
+  height: 100vh;
+}
+.banner{
+  height: 342px;
+  width: 604px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  margin: auto;
+  background-color: #363636;
+}
+.banner .banner_image{
+  display: flex;
+  overflow: hidden;
+  width: 604px;
+  height: 298px;
+  position: relative;
+  top: 0;
+  left: 0;
+}
+.banner .banner_image a{
+  height: 100%;
+  width: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  transition: left 300ms;
+}
+.banner .navigation{
+  display: flex;
+}
+.banner .navigation a{
+  flex: 1;
+  text-align: center;
+  line-height: 44px;
+  color: #b1b2be;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow:ellipsis;
+}
+.on{
+  background:rgba(255,255,255,0.15);
+  color: #f3c258 !important;
+}

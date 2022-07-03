@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <style>
+    .banner .images {
+      position: relative;
+    }
+
+    .banner .images .item {
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      overflow: hidden;
+
+      opacity: 0;
+    }
+
+    .banner .images .item.active {
+      opacity: 1;
+    }
+
+    .banner .images .item img {
+      position: relative;
+      transform: translate(-50%);
+      left: 50%;
+      width: 1920px;
+      height: 550px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="banner">
+    <ul class="images">
+    </ul>
+    <div class="control">
+      <button>上一个</button>
+      <button>下一个</button>
+    </div>
+    <div class="indicator"></div>
+  </div>
+
+  <script src="./json/banner_data.js"></script>
+  <script>
+    // 0.banner的serverURL
+    var bannerServerURL = "https://res.vmallres.com/"
+
+    // 1.动态添加轮播图图片数据
+    var imagesEl = document.querySelector(".images")
+    var activeItemEl = null
+    for (var i = 0; i < banners.length; i++) {
+      // 获取数据
+      var banner = banners[i]
+
+      // 创建li元素
+      var itemEl = document.createElement("li")
+      itemEl.classList.add("item")
+      if (i === 0) {
+        itemEl.classList.add("active")
+        activeItemEl = itemEl
+      }
+      imagesEl.append(itemEl)
+
+      // 创建img元素
+      var imgEl = document.createElement("img")
+      imgEl.src = `${bannerServerURL}${banner.imgUrl}`
+      itemEl.append(imgEl)
+    }
+
+  </script>
+
+</body>
+</html>

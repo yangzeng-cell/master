@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var num = 100
+
+    // 第一步对数字*2
+    function double(num) {
+      return num * 2
+    }
+
+    // 第二步对数字**2
+    function pow(num) {
+      return num ** 2
+    }
+
+    console.log(pow(double(num)))
+    console.log(pow(double(55)))
+    console.log(pow(double(22)))
+
+    // 将上面的两个函数组合在一起, 生成一个新的函数
+    function composeFn(num) {
+      return pow(double(num))
+    }
+
+    console.log(composeFn(100))
+    console.log(composeFn(55))
+    console.log(composeFn(22))
+
+  </script>
+
+</body>
+</html>

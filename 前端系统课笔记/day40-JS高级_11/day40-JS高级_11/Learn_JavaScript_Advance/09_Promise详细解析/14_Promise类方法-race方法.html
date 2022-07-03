@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // 创建三个Promise
+    const p1 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("p1 resolve")
+        // reject("p1 reject error")
+      }, 3000)
+    })
+
+    const p2 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        // resolve("p2 resolve")
+        reject("p2 reject error")
+      }, 2000)
+    })
+    
+    const p3 = new Promise((resolve, reject) => {
+      setTimeout(() => {
+        resolve("p3 resolve")
+      }, 5000)
+    })
+
+
+    // 类方法: race方法
+    // 特点: 会等到一个Promise有结果(无论这个结果是fulfilled还是rejected)
+    Promise.race([p1, p2, p3]).then(res => {
+      console.log("race promise:", res)
+    }).catch(err => {
+      console.log("race promise err:", err)
+    })
+
+
+  </script>
+
+</body>
+</html>

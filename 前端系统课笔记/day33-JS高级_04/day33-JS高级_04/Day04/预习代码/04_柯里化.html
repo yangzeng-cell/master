@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    function hyCurrying(fn) {
+      function curried(...args) {
+        if (args.length >= fn.length) {
+          return fn(...args)
+        } else {
+          return function(...newArgs) {
+            return curried(...args.concat(newArgs))
+          }
+        }
+      }
+      return curried
+    }
+
+    function foo(a, b, c) {
+      return a + b + c
+    }
+
+    var fooCurry = hyCurrying(foo)
+    console.log(fooCurry(10)(20)(30))
+
+  </script>
+
+</body>
+</html>

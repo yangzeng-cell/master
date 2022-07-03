@@ -1,0 +1,1 @@
+vnode全称就是virtual Node，就是虚拟节点，就是将元素或者组件抽象成javascript对象，可以进行多平台适配

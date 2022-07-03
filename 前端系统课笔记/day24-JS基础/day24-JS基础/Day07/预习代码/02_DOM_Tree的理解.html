@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>My Title</title>
+</head>
+<body>
+  <h1>A Heading</h1>
+  <a href="#">Link Text</a>
+
+  <script>
+
+    var name = ""
+    var nickname = ""
+    var defaultName = "默认名称"
+
+    var showName = name || nickname || defaultName
+
+    var info = {
+      name: "why",
+      age: 18,
+      friend: {
+        running: function() {
+          console.log("朋友在跑步")
+        }
+      }
+    }
+
+    info.friend.running()
+
+  </script>
+
+</body>
+</html>

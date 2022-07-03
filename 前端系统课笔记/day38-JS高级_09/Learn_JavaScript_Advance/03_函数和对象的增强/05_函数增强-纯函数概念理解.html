@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    function sum(num1, num2) {
+      return num1 + num2
+    }
+
+    // 不是一个纯函数
+    var address = "广州市"
+    function printInfo(info) {
+      console.log(info.name, info.age, info.message)
+      info.flag = "已经打印结束"
+      address = info.address
+    }
+
+    var obj = {
+      name: "why",
+      age: 18,
+      message: "哈哈哈哈"
+    }
+
+    printInfo(obj)
+
+    console.log(obj)
+    if (obj.flag) {
+      
+    }
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // const xhr = new XMLHttpRequest();
+
+      // xhr.onload = function () {};
+
+      // xhr.responseType = "json";
+
+      // xhr.open();
+
+      // xhr.send();
+      httpRequest({
+        url: "http://localhost:9901/users",
+        method: "post",
+        data: {
+          name: "zhangsan",
+          password: "123",
+        },
+      });
+      function httpRequest({
+        url,
+        method = "get",
+        timeout = 10000,
+        data = {},
+        headers = {},
+        success,
+        failure,
+      } = {}) {
+        const xhr = new XMLHttpRequest();
+
+        xhr.onload = function () {
+          if (xhr.status >= 200 && xhr.status < 300) {
+            success && success(xhr.response);
+          } else {
+            failure &&
+              failure({
+                status: xhr.status,
+                message: xhr.statusText,
+              });
+          }
+        };
+        xhr.timeout = timeout;
+        xhr.responseType = "json";
+
+        if (method.toUpperCase() === "GET") {
+          const queryString = [];
+          for (const key in data) {
+            if (data.hasOwnProperty(key)) {
+              queryString.push(`${key}=${data[key]}`);
+            }
+          }
+          url =
+            url.indexOf("?") > 0
+              ? url + "&" + queryString.join("&")
+              : url + "?" + queryString.join("&");
+          xhr.open(method, url);
+          xhr.send();
+        } else if (method.toUpperCase() === "POST") {
+          xhr.open(method, url);
+          xhr.setRequestHeader("Content-type", "application/json");
+          xhr.send(JSON.stringify(data));
+        }
+        return xhr; //返回xhr用于取消请求
+      }
+    </script>
+  </body>
+</html>

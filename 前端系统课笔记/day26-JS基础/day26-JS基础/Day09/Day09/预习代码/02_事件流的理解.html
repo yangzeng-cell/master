@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="box">
+    <span class="word">哈哈哈哈</span>
+  </div>
+  
+  <script>
+    // 1.获取元素
+    var spanEl = document.querySelector(".word")
+    var divEl = document.querySelector(".box")
+    var bodyEl = document.body
+
+    // 2.添加监听
+    spanEl.addEventListener("click", function(event) {
+      console.log("span被点击~")
+    })
+    divEl.addEventListener("click", function(event) {
+      console.log("div被点击~")
+    })
+    bodyEl.addEventListener("click", function() {
+      console.log("body被点击~")
+    })
+    
+    spanEl.addEventListener("click", function(event) {
+      console.log("span被点击~")
+    }, true)
+    divEl.addEventListener("click", function(event) {
+      console.log("div被点击~")
+    }, true)
+    bodyEl.addEventListener("click", function(event) {
+      console.log("body被点击~")
+      event.stopPropagation()
+    }, true)
+
+  </script>
+
+</body>
+</html>

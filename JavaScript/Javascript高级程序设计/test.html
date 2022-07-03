@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1 id="name"></h1>
+    <button>按钮</button>
+
+    <script>
+      const buttom = document.getElementsByTagName("button")[0];
+      buttom.addEventListener("click", function (e) {
+        console.log(this);
+        document.getElementById("name").innerHTML = "hello world";
+      });
+    </script>
+  </body>
+</html>

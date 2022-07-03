@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  输入账号: <input type="text">
+  <p class="tip">请输入账号</p>
+  
+  <script>
+
+    // 创建正则
+    const re1 = /abc/ig
+    const message = "fdabc123 faBC323 dfABC222 A2324aaBc"
+
+    // 1.使用正则对象上的实例方法
+    // webpack -> loader -> test: 匹配文件名
+    // 正则 -> 拿到文件 -> loader操作
+    // 1.1.test方法: 检测某一个字符串是否符合正则的规则
+    // if (re1.test(message)) {
+    //   console.log("message符合规则")
+    // } else {
+    //   console.log("message不符合规则")
+    // }
+
+    // 1.2.exec方法: 使用正则执行一个字符串
+    // const res1 = re1.exec(message)
+    // console.log(res1)
+
+
+    // 2.使用字符串的方法, 传入一个正则表达式
+    // 2.1. match方法:
+    // const result2 = message.match(re1)
+    // console.log(result2)
+
+    // 2.2. matchAll方法
+    // 注意: matchAll传入的正则修饰符必须加g
+    // const result3 = message.matchAll(re1)
+    // // console.log(result3.next())
+    // // console.log(result3.next())
+    // // console.log(result3.next())
+    // // console.log(result3.next())
+    // for (const item of result3) {
+    //   console.log(item)
+    // }
+
+    // 2.3. replace/replaceAll方法
+
+    // 2.4. split方法
+    // const result4 = message.split(re1)
+    // console.log(result4)
+
+    // 2.5. search方法
+    const result5 = message.search(re1)
+    console.log(result5)
+
+
+    // 案例: 让用户输入的账号必须是aaaaa以上
+    // const inputEl = document.querySelector("input")
+    // const tipEl = document.querySelector(".tip")
+
+    // inputEl.oninput = function() {
+    //   const value = this.value
+    //   if (/^a{5,8}$/.test(value)) {
+    //     tipEl.textContent = "输入的内容符合规则要求"
+    //   } else {
+    //     tipEl.textContent =  "输入的内容不符合规则要求, 请重新输入"
+    //   }
+    // }
+
+  </script>
+
+</body>
+</html>

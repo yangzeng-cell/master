@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    var obj = {
+      name: "why",
+      age: 18,
+      friend: {
+        name: "kobe"
+      },
+      toJSON: function() {
+        return "123"
+      }
+    }
+
+    // 1.replacer参数
+    // var objJSONString = JSON.stringify(obj, function(key, value) {
+    //   if (key === "name") {
+    //     return "coderwhy"
+    //   }
+    //   return value
+    // }, "")
+    // console.log(objJSONString)
+
+    // 2.space参数
+    // var objJSONString = JSON.stringify(obj, null, 4)
+    // console.log(objJSONString)
+
+    // 3.如果对象本身有显示toJSON方法, 那么直接调用toJSON方法
+    var objJSONString = JSON.stringify(obj)
+    console.log(objJSONString)
+
+
+
+  </script>
+
+</body>
+</html>

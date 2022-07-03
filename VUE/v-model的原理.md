@@ -1,0 +1,5 @@
+v-model的实现原理：
+
+1. input和textarea是使用value属性和监听input事件
+2. checkbox和radio是使用checked属性和监听change事件
+3. select是使用value属性和监听change事件

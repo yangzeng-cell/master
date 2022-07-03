@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // apply/call
+    function foo(name, age, height, address) {
+      console.log(this, name, age, height, address)
+    }
+
+    // Function.prototype
+    // var newFoo = foo.bind({ name: "why" }, "why", 18)
+    // newFoo(1.88)
+
+    // 实现hybind函数
+    Function.prototype.hybind = function(thisArg, ...otherArgs) {
+      // console.log(this) // -> foo函数对象
+      thisArg = thisArg === null || thisArg === undefined ? window: Object(thisArg)
+      Object.defineProperty(thisArg, "fn", {
+        enumerable: false,
+        configurable: true,
+        writable: false,
+        value: this
+      })
+
+      return (...newArgs) => {
+        // var allArgs = otherArgs.concat(newArgs)
+        var allArgs = [...otherArgs, ...newArgs]
+        thisArg.fn(...allArgs)
+      }
+    }
+
+    var newFoo = foo.hybind("abc", "kobe", 30)
+    newFoo(1.88, "广州市")
+    newFoo(1.88, "广州市")
+    newFoo(1.88, "广州市")
+    newFoo(1.88, "广州市")
+
+  </script>
+
+</body>
+</html>

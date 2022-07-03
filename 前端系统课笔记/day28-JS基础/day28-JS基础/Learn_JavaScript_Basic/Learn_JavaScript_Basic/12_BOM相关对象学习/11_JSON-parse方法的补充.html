@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var obj = {
+      name: "why",
+      age: 18
+    }
+
+    var objJSONString = JSON.stringify(obj)
+    console.log(objJSONString)
+
+    var newObj = JSON.parse(objJSONString, function(key, value) {
+      if (key === "age") {
+        return value + 2
+      }
+      return value
+    })
+    console.log(newObj)
+
+  </script>
+
+</body>
+</html>

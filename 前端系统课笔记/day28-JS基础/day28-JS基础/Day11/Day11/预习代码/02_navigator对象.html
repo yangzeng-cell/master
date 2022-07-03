@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    console.log(navigator.userAgent)
+    console.log(navigator.vendor)
+    console.log(navigator.platform)
+
+    var urlsearch = new URLSearchParams("name=why&age=18&height=1.88")
+    console.log(urlsearch.get("name")) // why
+    console.log(urlsearch.toString()) // name=why&age=18&height=1.88
+
+    urlsearch.set("name", "kobe")
+    urlsearch.set("address", "广州市")
+    console.log(urlsearch.toString())
+
+  </script>
+
+</body>
+</html>

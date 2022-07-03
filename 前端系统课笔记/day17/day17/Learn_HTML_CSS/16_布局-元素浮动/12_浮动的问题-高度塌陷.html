@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .content {
+      width: 1190px;
+      margin: 0 auto;
+      background: #f00;
+    }
+
+    .wrapper {
+      margin-right: -10px;
+    }
+
+    .item {
+      width: 290px;
+      background-color: purple;
+      margin-bottom: 10px;
+
+      float: left;
+      margin-right: 10px;
+    }
+
+    .item.left {
+      height: 370px;
+    }
+
+    .item.right {
+      height: 180px;
+    }
+
+    /* 其他的内容 */
+    .other {
+      height: 100px;
+      background: #0f0;
+    }
+
+    .line {
+      /* height: 10px; */
+      /* background: blue; */
+      clear: both;
+    }
+
+    /* 最终的解决方案 */
+    .clear_fix::after {
+      content: "";
+      clear: both;
+      display: block;
+
+      /* 浏览器兼容 */
+      visibility: hidden;
+      height: 0;
+    }
+
+    .clear_fix {
+      /* IE6/7 */
+      *zoom: 1;
+    }
+  </style>
+</head>
+<body>
+  
+  <!-- 因为所有的后代item元素都是浮动的, 脱离标准流 -->
+  <!-- 不会向父元素汇报高度, 那么content元素压根就没有高度 -->
+  <div class="content">
+    <div class="wrapper clear_fix">
+      <div class="item left"></div>
+      <div class="item left"></div>
+      <div class="item right"></div>
+      <div class="item right"></div>
+      <div class="item right"></div>
+      <div class="item right"></div>
+      <div class="item right"></div>
+      <div class="item right"></div>
+
+      <!-- <div class="line"></div> -->
+    </div>
+  </div>
+  
+  <div class="content">
+    <div class="wrapper clear_fix">
+      <div class="item left"></div>
+      <div class="item left"></div>
+      <div class="item right"></div>
+      <div class="item right"></div>
+      <div class="item right"></div>
+      <div class="item right"></div>
+      <div class="item right"></div>
+      <div class="item right"></div>
+
+      <!-- <div class="line"></div> -->
+    </div>
+  </div>
+
+  <!-- 我认为content没有高度, 那么我们就会直接在上面显示 -->
+  <div class="other"></div>
+
+</body>
+</html>

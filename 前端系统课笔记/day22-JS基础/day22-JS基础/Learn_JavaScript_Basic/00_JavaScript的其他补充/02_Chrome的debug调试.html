@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 终极技巧: debug
+    // 代码出问题的时候, 产生bug, debug找出bug
+
+    // chrome中调试技巧 debug
+    function foo(name) {
+      console.log("foo函数执行:", name)
+    }
+
+    function bar() {
+      console.log("bar函数执行~")
+      var name = "kobe"
+
+      function hi() {
+        console.log("hi " + name)
+      }
+
+      foo()
+      return hi
+    }
+
+    // debugger标识符就是在代码中打断点方式
+    debugger
+    var fn = bar()
+    fn()
+
+    // setTimeout(fn, duration)
+    // fn可以传入一个匿名函数
+    // setTimeout 高阶函数
+    // 浏览器内部会在duration时间之后, 主动的调用传入fn, fn的回调
+    setTimeout(function() {
+      console.log("匿名函数2秒后执行~")
+    }, 2000);
+
+
+    for (var i = 0; i < 10; i++) {
+      console.log(i)
+    }
+
+  </script>
+
+</body>
+</html>

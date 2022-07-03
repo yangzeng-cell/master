@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <!-- 直接在html中编写JavaScript代码(了解) -->
+  <button onclick="console.log('按钮1发生了点击~');">按钮1</button>
+
+  <button class="btn2">按钮2</button>
+  <button class="btn3">按钮3</button>
+
+  <script>
+
+    // 1.获取元素对象
+    var btn2El = document.querySelector(".btn2")
+    var btn3El = document.querySelector(".btn3")
+
+    // 2.onclick属性
+    // function handleClick01() {
+    //   console.log("按钮2发生了点击~")
+    // }
+    // function handleClick02() {
+    //   console.log("按钮2的第二个处理函数")
+    // }
+    // btn2El.onclick = handleClick01
+    // btn2El.onclick = handleClick02
+
+    // 3.addEventListener(推荐)
+    btn3El.addEventListener("click", function() {
+      console.log("第一个btn3的事件监听~")
+    })
+    btn3El.addEventListener("click", function() {
+      console.log("第二个btn3的事件监听~")
+    })
+    btn3El.addEventListener("click", function() {
+      console.log("第三个btn3的事件监听~")
+    })
+
+  </script>
+
+</body>
+</html>

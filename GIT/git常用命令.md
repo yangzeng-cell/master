@@ -641,7 +641,7 @@ git cherry-pick -n commit # 拣选多个提交，合并完后可以继续拣选�
 ### [#](http://interview.poetries.top/fe-blog-docs/blog-docs/comprehensive/-Git常用命令.html#rebase)rebase
 
 ```shell
-git rebase master   # 将master分之上超前的提交，变基到当前分支  
+git rebase master   # 将master分支上超前的提交，变基到当前分支  
 git rebase --onto master 169a6  # 限制回滚范围，rebase当前分支从169a6以后的提交  
 git rebase --interactive # 交互模式，修改commit   
 git rebase --continue    # 处理完冲突继续合并   

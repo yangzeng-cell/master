@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 1.捕获组
+    const message = "我最喜欢的两本书: 《黄金时代》和《沉默的大多数》、《一只特立独行的猪》"
+
+    // 使用惰性模式
+    const nameRe = /(?:《)(?<why>.+?)(?:》)/ig
+    const iterator = message.matchAll(nameRe)
+    for (const item of iterator) {
+      console.log(item)
+    }
+
+    // 2.将捕获组作为整体
+    const info = "dfabcabcfabcdfdabcabcabcljll;jk;j"
+    const abcRe = /(abc){2,}/ig
+    console.log(info.match(abcRe))
+
+  </script>
+
+</body>
+</html>

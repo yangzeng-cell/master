@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <h1 class="time">2022-05-19 11:14:30</h1>
+
+  <script>
+
+    // 封装了工具函数
+    function padLeft(content, count, padStr) {
+      count = count || 2
+      padStr = padStr || "0"
+
+      content = String(content)
+      return content.padStart(count, padStr)
+    }
+
+    // 1.获取时间的元素
+    var timeEl = document.querySelector(".time")
+
+    setInterval(function() {
+      // 2.获取具体的时间并且进行格式化
+      var date = new Date()
+      var year = date.getFullYear()
+      var month = padLeft(date.getMonth() + 1)
+      var day = padLeft(date.getDate())
+      var hour = padLeft(date.getHours())
+      var minute = padLeft(date.getMinutes())
+      var second = padLeft(date.getSeconds())
+
+      // 3.将时间放到timeEl中
+      timeEl.textContent = `${year}-${month}-${day} ${hour}:${minute}:${second}`
+    }, 1000);
+
+
+    // 补充String方法
+    // var str = "124"
+    // console.log(str.padStart(4, "0"))
+
+  </script>
+
+</body>
+</html>

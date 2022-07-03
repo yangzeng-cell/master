@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .countdown {
+      color: #f00;
+      font-size: 20px;
+    }
+
+    .countdown .time {
+      background-color: #f00;
+      color: #fff;
+      display: inline-block;
+      padding: 5px;
+      border-radius: 3px;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="countdown">
+    <span class="time hour">03</span>
+    <span class="split">:</span>
+    <span class="time minute">25</span>
+    <span class="split">:</span>
+    <span class="time second">43</span>
+  </div>
+
+  <script src="./js/format.js"></script>
+  <script>
+    // 1.获取元素
+    var hourEl = document.querySelector(".hour")
+    var minuteEl = document.querySelector(".minute")
+    var secondEl = document.querySelector(".second")
+    
+    var endDate = new Date()
+    endDate.setHours(24)
+    endDate.setMinutes(0)
+    endDate.setSeconds(0)
+    endDate.setMilliseconds(0)
+
+    setInterval(function() {
+      // 获取倒计时的小时-分钟-秒钟
+      // 11:53:22 => 24:00:00
+      var nowDate = new Date()
+      var intervalTime = Math.floor((endDate.getTime() - nowDate.getTime()) / 1000)
+      // console.log(intervalTime)
+
+      // 43324: x小时x分钟x秒钟
+      var hour = Math.floor(intervalTime / 3600)
+      var minute = Math.floor(intervalTime / 60) % 60
+      var second = intervalTime % 60
+
+      // 2.设置内容
+      hourEl.textContent = formatPadLeft(hour)
+      minuteEl.textContent = formatPadLeft(minute)
+      secondEl.textContent = formatPadLeft(second)
+    }, 1000)
+
+
+    
+    // 125: x百x十x个
+    // var num = 125
+    // console.log(Math.floor(num / 10 * 10))
+    // console.log(Math.floor(num / 10) % 10)
+    // console.log(num % 10)
+
+  </script>
+
+</body>
+</html>

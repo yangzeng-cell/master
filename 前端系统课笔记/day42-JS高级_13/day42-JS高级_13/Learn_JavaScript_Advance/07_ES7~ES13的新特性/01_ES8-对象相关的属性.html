@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    const obj = {
+      name: "why",
+      age: 18,
+      height: 1.88,
+      address: "广州市"
+    }
+
+    // 1.获取所有的key
+    const keys = Object.keys(obj)
+    console.log(keys)
+
+    // 2.ES8 Object.values
+    const values = Object.values(obj)
+    console.log(values)
+
+    // 3.ES8 Object.entries
+    // 3.1. 对对象操作
+    const entries = Object.entries(obj)
+    console.log(entries)
+    for (const entry of entries) {
+      const [key, value] = entry
+      console.log(key, value)
+    }
+
+    // 3.2. 对数组/字符串操作(了解)
+    console.log(Object.entries(["abc", "cba"]))
+    console.log(Object.entries("Hello"))
+
+  </script>
+
+</body>
+</html>

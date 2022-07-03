@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="box">
+    <button>按钮1</button>
+    <button>按钮2</button>
+    <button>按钮3</button>
+    <button>按钮4</button>
+  </div>
+  
+  <script>
+
+    // 强调: 代码的执行顺序
+
+    var btnEls = document.querySelectorAll("button")
+
+    // [btn1, btn2, btn3, btn4]
+
+    /*
+      for1: var btnItemEl = btnEls[0]
+            btn1.index = 0
+            btnItemEl.onclick = function() {}
+      for2: var btnItemEl = btnEls[1]
+            btn2.index = 1
+      for3: var btnItemEl = btnEls[2]
+            btn3.index = 2
+      for4: var btnItemEl = btnEls[3]
+            btn4.index = 3
+    */
+
+    // 对每一个按钮的点击进行监听
+    for (var i = 0; i < btnEls.length; i++) {
+      var btnItemEl = btnEls[i]
+      btnItemEl.index = i
+      
+      debugger
+
+      btnItemEl.onclick = function() {
+        debugger
+        console.log(i)
+        console.log(btnItemEl)
+
+        // 怎么样在这里能拿到对应的btnItemEl
+        // 方案一: 直接获取this
+        console.log(this)
+
+        // 方案二: 先获取索引
+        console.log(this.index)
+      }
+    }
+
+    console.log(i) // 4
+    console.log(btnItemEl)
+
+
+
+  </script>
+
+</body>
+</html>

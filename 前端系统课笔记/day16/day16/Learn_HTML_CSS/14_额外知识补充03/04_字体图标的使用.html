@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    @font-face {
+      font-family: "iconfont";
+      src: url("./fonts03/iconfont.ttf");
+    }
+
+    .iconfont {
+      font-family: "iconfont";
+      font-style: normal;
+    }
+
+    .music::before {
+      content: "\e664";
+    }
+
+    .icon {
+      display: inline-block;
+      width: 20px;
+      height: 20px;
+    }
+
+  </style>
+</head>
+<body>
+  
+  <!-- 直接通过内容(字符实体) -->
+  <i class="iconfont">&#xe654;</i>
+  <i class="iconfont">&#xe664;</i>
+
+  <i class="icon"></i>
+
+  <!-- 不使用字符实体的方式展示出来(伪元素) -->
+  <i class="iconfont music"></i>
+
+</body>
+</html>

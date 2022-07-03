@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    
+    var [name1 = "aaa", name2, ...newNames] = names
+
+    var {name : varName = "why", ...rest} = object
+
+    var names = ["abc", "cba", undefined, "mba"]
+
+    var [name1, name2, ...newNames] = names
+    console.log(newNames, name1, name2)
+
+    
+    var [name1, name2, name3 = "aaa", name4, name5] = names
+    console.log(name3)
+
+    var obj = {
+      name: "why",
+      age: 18
+    }
+
+    var { age, name: wName } = obj
+    console.log(age, name)
+
+  </script>
+
+</body>
+</html>

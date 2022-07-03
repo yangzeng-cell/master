@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <a href="http://www.baidu.com" target="_blank">百度一下</a>
+  <button>百度一下</button>
+
+  <button class="close">关闭窗口</button>
+  
+  <script>
+
+    // 1.window的查看角度
+    // ECMAScript规范: 全局对象 -> globalThis
+    // 对于浏览器 -> window
+    // 对于Node -> global
+    console.log(window)
+    console.log(globalThis === window)
+
+    // 浏览器窗口
+    console.log(window.outerHeight)
+
+
+    // 2.补充的方法
+    var openBtnEl = document.querySelector("button")
+    var closeBtnEl = document.querySelector(".close")
+    openBtnEl.onclick = function() {
+      window.open("./page/new.html", "_blank")
+    }
+    closeBtnEl.onclick = function() {
+      window.close()
+    }
+
+    // 3.常见的事件
+    // window.onfocus = function() {
+    //   console.log("窗口获取到焦点")
+    // }
+    // window.onblur = function() {
+    //   console.log("窗口失去了焦点")
+    // }
+
+    window.onhashchange = function() {
+      console.log("hash值发生改变")
+    }
+    
+
+  </script>
+
+</body>
+</html>

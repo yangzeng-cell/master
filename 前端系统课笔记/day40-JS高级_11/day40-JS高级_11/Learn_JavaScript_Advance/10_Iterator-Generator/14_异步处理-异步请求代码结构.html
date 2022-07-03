@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 封装请求的方法: url -> promise(result)
+    function requestData(url) {
+      return new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve(url)
+        }, 2000)
+      })
+    }
+
+    // 1.发送一次网络请求
+    // requestData("http://why").then(res => {
+    //   console.log("res:", res)
+    // })
+
+    /*
+      需求: 
+        1.发送一次网络请求, 等到这次网络请求的结果
+        2.发送第二次网络请求, 等待这次网络请求的结果
+        3.发送第三次网络请求, 等待这次网络请求的结果
+    */
+    // 方式一: 层层嵌套(回调地狱 callback hell)
+    // function getData() {
+    //   // 1.第一次请求
+    //   requestData("why").then(res1 => {
+    //     console.log("第一次结果:", res1)
+
+    //     // 2.第二次请求
+    //     requestData(res1 + "kobe").then(res2 => {
+    //       console.log("第二次结果:", res2)
+
+    //       // 3.第三次请求
+    //       requestData(res2 + "james").then(res3 => {
+    //         console.log("第三次结果:", res3)
+    //       })
+    //     })
+    //   })
+    // }
+
+    // 方式二: 使用Promise进行重构(解决回调地狱)
+    // 链式调用
+    // function getData() {
+    //   requestData("why").then(res1 => {
+    //     console.log("第一次结果:", res1)
+    //     return requestData(res1 + "kobe")
+    //   }).then(res2 => {
+    //     console.log("第二次结果:", res2)
+    //     return requestData(res2 + "james")
+    //   }).then(res3 => {
+    //     console.log("第三次结果:", res3)
+    //   })
+    // }
+
+    // 方式三: 最终代码
+    // function* getData() {
+    //   const res1 = yield requestData("why")
+    //   console.log("res1:", res1)
+
+    //   const res2 = yield requestData(res1 + "kobe")
+    //   console.log("res2:", res2)
+
+    //   const res3 = yield requestData(res2 + "james")
+    //   console.log("res3:", res3)
+    // }
+
+    // const generator = getData()
+    // generator.next().value.then(res1 => {
+    //   generator.next(res1).value.then(res2 => {
+    //     generator.next(res2).value.then(res3 => {
+    //       generator.next(res3)
+    //     })
+    //   })
+    // })
+
+    // 方式四: async/await的解决方案
+    async function getData() {
+      const res1 = await requestData("why")
+      console.log("res1:", res1)
+
+      const res2 = await requestData(res1 + "kobe")
+      console.log("res2:", res2)
+
+      const res3 = await requestData(res2 + "james")
+      console.log("res3:", res3)
+    }
+
+    const generator = getData()
+
+  </script>
+
+</body>
+</html>

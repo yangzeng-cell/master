@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    /*
+      indexOf方式.
+      手动for循环
+      数组的find方法
+    */
+
+    // 1.数组中存放的是原始类型
+    var names = ["abc", "cba", "nba", "mba"]
+
+    // 1.1. indexOf
+    // 可以找到, 返回对应的索引
+    // 没有找到, 返回-1
+    // console.log(names.indexOf("nbb"))
+
+
+    // 2.数组中存放的是对象类型
+    // var students = [
+    //   { id: 100, name: "why", age: 18 },
+    //   { id: 101, name: "kobe", age: 30 },
+    //   { id: 102, name: "james", age: 25 },
+    //   { id: 103, name: "why", age: 22 }
+    // ]
+
+    // 查找的是id为101的学生信息
+    // 2.1. 自己写一个for循环
+    // var stu = null
+    // for (var i = 0; i < students.length; i++) {
+    //   if (students[i].id === 101) {
+    //     stu = students[i]
+    //     break
+    //   }
+    // }
+
+    // // 判断上面的算法有没有找到对应的学生
+    // if (stu) {
+    //   console.log("找到了对应的101学生", stu)
+    // } else {
+    //   console.log("没有找到对应的101学生")
+    // }
+
+    // 2.2. find方法: 高阶函数
+    var students = [
+      { id: 100, name: "why", age: 18 },
+      { id: 101, name: "kobe", age: 30 },
+      { id: 102, name: "james", age: 25 },
+      { id: 103, name: "why", age: 22 }
+    ]
+    
+    var stu = students.find(function(item) {
+      if (item.id === 101) return true
+    })
+    console.log(stu)
+
+  </script>
+
+</body>
+</html>

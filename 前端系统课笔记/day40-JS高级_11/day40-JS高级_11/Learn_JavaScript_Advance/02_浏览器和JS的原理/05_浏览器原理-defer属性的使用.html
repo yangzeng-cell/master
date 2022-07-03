@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <script src="./js/test.js" defer></script>
+  <script src="./js/demo.js" defer></script>
+</head>
+<body>
+  
+  <div id="app">app</div>
+  <div class="box"></div>
+  <div id="title">title</div>
+  <div id="nav">nav</div>
+  <div id="product">product</div>
+
+  <!-- 1.下载需要很长的事件, 并且执行也需要很长的时间 -->
+  <!-- 总结一: 加上defer之后, js文件的下载和执行, 不会影响后面的DOM Tree的构建 -->
+  <script>
+    // 总结三: defer代码是在DOMContentLoaded事件发出之前执行
+    window.addEventListener("DOMContentLoaded", () => {
+      console.log("DOMContentLoaded")
+    })
+  </script>
+  
+  <h1>哈哈哈哈啊</h1>
+
+</body>
+</html>

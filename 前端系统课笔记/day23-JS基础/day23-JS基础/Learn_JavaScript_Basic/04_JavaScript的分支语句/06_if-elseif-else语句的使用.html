@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 案例: score评级
+    // 1.获取用户输入的分数
+    var score = prompt("请输入您的分数:")
+    score = Number(score)
+
+    // 2.判断等级
+    // 使用if else的方式来实现
+    // if (score > 90) {
+    //   alert("您的评级是优秀!")
+    // } else {
+    //   if (score > 80) {
+    //     alert("您的评级是良好!")
+    //   } else {
+    //   }
+    // }
+    
+    // edge case
+    // if (score > 100 || score < 0) {
+    //   alert("您输入的分数超过了正常范围")
+    // } 
+    
+    if (score > 90) {
+      alert("您的评级是优秀!")
+    } else if (score > 80) {
+      alert("您的评级是良好!")
+    } else if (score >= 60) {
+      alert("您的评级是合格!")
+    } else {
+      alert("不及格!!!")
+    }
+
+  </script>
+
+</body>
+</html>

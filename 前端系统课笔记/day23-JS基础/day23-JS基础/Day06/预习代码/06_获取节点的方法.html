@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button class="btn">+1</button>
+  <div class="item" name="item">1</div>
+  <div class="item" name="item">2</div>
+  <div class="item" name="item">3</div>
+  <div class="item" name="item">4</div>
+
+  
+  <script>
+
+    var itemEls1 = document.body.querySelectorAll(".item")
+    var itemEls2 = document.body.getElementsByClassName("item")
+    var itemEls3 = document.getElementsByName("item")
+
+    document.querySelector(".btn").onclick = function() {
+      var itemEl = document.createElement("div")
+      itemEl.className = "item"
+      itemEl.innerHTML = "new"
+      itemEl.setAttribute("name", "item")
+      document.body.appendChild(itemEl)
+      console.log(itemEls1)
+      console.log(itemEls2)
+      console.log(itemEls3)
+    }
+
+    var textNode = document.body.firstChild
+    var itemNode = document.body.childNodes[3]
+    console.log(textNode.nodeName)
+    console.log(itemNode.nodeName)
+    console.log(itemNode.tagName)
+
+  </script>
+
+</body>
+</html>

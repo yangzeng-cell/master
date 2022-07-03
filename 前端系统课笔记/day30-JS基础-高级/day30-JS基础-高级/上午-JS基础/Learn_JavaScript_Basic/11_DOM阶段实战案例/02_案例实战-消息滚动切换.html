@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .tip-bar {
+      display: inline-flex;
+      align-items: center;
+      height: 30px;
+      background-color: rgba(0,0,0,.4);
+      border-radius: 16px;
+    }
+    img {
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      margin-right: 5px;
+    }
+    span {
+      font-size: 13px;
+      color: white;
+      margin-right: 8px;
+    }
+  </style>
+</head>
+<body>
+  
+  
+  <div class="tip-bar">
+    <img src="https://bfs.biyao.com/group1/M01/A2/67/rBACVGA_iOuAYaTxAAAPbted3yE165.png" alt="">
+    <span>183***138对这件商品感兴趣</span>
+  </div>
+
+  <script>
+    // 1.从服务器拿到数据ajax/fetch请求
+    let tipList = [
+      {
+        icon: 'https://bfs.biyao.com/group1/M01/A6/97/rBACYWBCHqyAFH5tAAANZXX5Eww646.png',
+        title: 'coderwhy对这件商品感兴趣'
+      },
+      {
+        icon: 'https://bfs.biyao.com/group1/M01/A2/67/rBACVGA_iOuAYaTxAAAPbted3yE165.png',
+        title: '123***814对这件商品感兴趣'
+      },
+      {
+        icon: 'https://bfs.biyao.com/group1/M00/7F/4E/rBACYV16HseAP-PnAAAW9bbVoKE463.png',
+        title: '刘军对这件商品感兴趣'
+      }
+    ]
+
+    // 2.动态的切换数据
+    // 2.1.获取元素
+    var tipBar = document.querySelector(".tip-bar")
+    var imgEl = tipBar.querySelector("img")
+    var spanEl = tipBar.querySelector("span")
+
+    // 2.2.3s切换一次数据
+    var currentIndex = 0 // 记录当前展示到的索引位置
+    setInterval(function() {
+      // 1> 根据索引获取item
+      var tipItem = tipList[currentIndex]
+
+      // 2> 给DOM设置内容
+      imgEl.src = tipItem.icon
+      spanEl.textContent = tipItem.title
+      
+      // 3> 重新计算索引
+      currentIndex++
+      if (currentIndex === tipList.length) {
+        currentIndex = 0
+      }
+    }, 3000)
+
+    // 随机
+    // Math.floor(Math.random() * tipList.length)
+
+  </script>
+
+</body>
+</html>

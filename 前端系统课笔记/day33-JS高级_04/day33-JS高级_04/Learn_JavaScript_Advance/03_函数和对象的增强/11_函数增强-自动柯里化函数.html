@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    function foo(x, y, z) {
+      console.log(x + y + z)
+    }
+
+    function sum(num1, num2) {
+      return num1 + num2
+    }
+
+    function logInfo(date, type, message) {
+      console.log(`时间:${date} 类型:${type} 内容:${message}`)
+    }
+
+    // 手动转化
+
+    // 封装函数: 自动转化柯里化过程(有一点难度)
+    function hyCurrying(fn) {
+      function curryFn(...args) {
+        // 两类操作:
+        // 第一类操作: 继续返回一个新的函数, 继续接受参数
+        // 第二类操作: 直接执行fn的函数
+        if (args.length >= fn.length) { // 执行第二类
+          // return fn(...args)
+          return fn.apply(this, args)
+        } else { // 执行第一类
+          return function(...newArgs) {
+            // return curryFn(...args.concat(newArgs))
+            return curryFn.apply(this, args.concat(newArgs))
+          }
+        }
+      }
+
+      return curryFn
+    }
+
+    // 对其他的函数进行柯里化
+    var fooCurry = hyCurrying(foo)
+    fooCurry(10)(20)(30)
+    fooCurry(55, 12, 56)
+
+    var sumCurry = hyCurrying(sum)
+    var sum5 = sumCurry(5)
+    console.log(sum5(10))
+    console.log(sum5(15))
+    console.log(sum5(18))
+
+    var logInfoCurry = hyCurrying(logInfo)
+    logInfoCurry("2022-06-01")("DEBUG")("我发现一个bug, 哈哈哈哈")
+
+
+    // 举个栗子
+    // var names = ["abc", "cba", "nba"]
+    // // spread
+    // console.log(...names)
+
+  </script>
+
+</body>
+</html>

@@ -196,18 +196,32 @@
 
 ### 重绘和回流（重排）是什么，如何避免？
 
-- 重绘：当渲染树中的元素外观（如：颜色）发生改变，不影响布局时，产生重绘
-- 回流：当渲染树中的元素的布局（如：尺寸、位置、隐藏/状态状态）发生改变时，产生重绘回流
-- 注意：JS获取Layout属性值（如：`offsetLeft`、`scrollTop`、`getComputedStyle`等）也会引起回流。因为浏览器需要通过回流计算最新值
-- 回流必将引起重绘，而重绘不一定会引起回流
-- **如何最小化重绘(repaint)和回流(reflow)**：
-  - 需要要对元素进行复杂的操作时，可以先隐藏(`display:"none"`)，操作完成后再显示
-  - 需要创建多个`DOM`节点时，使用`DocumentFragment`创建完后一次性的加入`document`
-  - 缓存`Layout`属性值，如：`var left = elem.offsetLeft;` 这样，多次使用 `left` 只产生一次回流
-  - 尽量避免用`table`布局（`table`元素一旦触发回流就会导致table里所有的其它元素回流）
-  - 避免使用`css`表达式(`expression`)，因为每次调用都会重新计算值（包括加载页面）
-  - 尽量使用 `css` 属性简写，如：用 `border` 代替 `border-width`, `border-style`, `border-color`
-  - 批量修改元素样式：`elem.className` 和 `elem.style.cssText` 代替 `elem.style.xxx`
+**回流**：
+
+触发条件：当我们对 DOM 结构的修改引发 DOM 几何尺寸变化的时候，会发生`回流`的过程。
+
+例如以下操作会触发回流：
+
+1.一个 DOM 元素的几何属性变化，常见的几何属性有`width`、`height`、`padding`、`margin`、`left`、`top`、`border` 等等, 这个很好理解。 2. 使 DOM 节点发生`增减`或者`移动`。 3. 读写 `offset`族、`scroll`族和`client`族属性的时候，浏览器为了获取这些值，需要进行回流操作。 4. 调用 `window.getComputedStyle` 方法。
+
+> 回流过程：由于DOM的结构发生了改变，所以需要从生成DOM这一步开始，重新经过`样式计算`、`生成布局树`、`建立图层树`、再到`生成绘制列表`以及之后的显示器显示这整一个渲染过程走一遍，开销是非常大的。
+
+**重绘**：
+
+触发条件：
+
+- 当 DOM 的修改导致了样式的变化，并且没有影响几何属性的时候，会导致`重绘`(`repaint`)。
+- 重绘过程：由于没有导致 DOM 几何属性的变化，因此元素的位置信息不需要更新，所以当发生重绘的时候，会跳过`生存布局树`和`建立图层树`的阶段，直接到`生成绘制列表`，然后继续进行分块、生成位图等后面一系列操作。
+
+**如何避免触发回流和重绘**：
+
+1. 避免频繁使用 style，而是采用修改`class`的方式。
+2. 将动画效果应用到`position`属性为`absolute`或`fixed`的元素上。
+3. 也可以先为元素设置`display: none`，操作结束后再把它显示出来。因为在`display`属性为`none`的元素上进行的DOM操作不会引发回流和重绘
+4. 使用`createDocumentFragment`进行批量的 DOM 操作。
+5. 对于 resize、scroll 等进行防抖/节流处理。
+6. 避免频繁读取会引发回流/重绘的属性，如果确实需要多次使用，就用一个变量缓存起来。
+7. 利用 CSS3 的`transform`、`opacity`、`filter`这些属性可以实现合成的效果，也就是`CPU`加速。
 
 ### 如何实现小于12px的字体效果
 
@@ -386,3 +400,303 @@ transform: scale(0.7);
 - 方案3：
   - `.container { display:flex; flex-direction:column; }`
   - `.sub { flex:1; }`
+
+## 盒模型
+
+
+
+content（元素内容） + padding（内边距） + border（边框） + margin（外边距）
+
+> 页面渲染时，`dom` 元素所采用的 布局模型。可通过`box-sizing`进行设置。根据计算宽高的区域可分为
+
+**box-sizing**
+
+- `content-box`：默认值，总宽度 = `margin` + `border` + `padding` + `width`
+- `border-box`：盒子宽度包含 `padding` 和 `border`，`总宽度 = margin + width`
+- `inherit`：从父元素继承 `box-sizing` 属性
+
+## BFC
+
+
+
+> 块级格式化上下文，是一个独立的渲染区域，让处于 `BFC` 内部的元素与外部的元素相互隔离，使内外元素的定位不会相互影响。
+
+> IE下为 `Layout`，可通过 `zoom:1` 触发
+
+**触发条件:**
+
+- 根元素
+- `position: absolute/fixed`
+- `display: inline-block / table`
+- `float` 元素
+- `ovevflow !== visible`
+
+**规则:**
+
+- 属于同一个 `BFC` 的两个相邻 `Box` 垂直排列
+- 属于同一个 `BFC` 的两个相邻 `Box` 的 `margin` 会发生重叠
+- `BFC` 中子元素的 `margin box` 的左边， 与包含块 (BFC) `border box`的左边相接触 (子元素 `absolute` 除外)
+- `BFC` 的区域不会与 `float` 的元素区域重叠
+- 计算 `BFC` 的高度时，浮动子元素也参与计算
+- 文字层不会被浮动层覆盖，环绕于周围
+
+**应用:**
+
+- 阻止`margin`重叠
+
+- 可以包含浮动元素 —— 清除内部浮动(清除浮动的原理是两个`div`都位于同一个 `BFC` 区域之中)
+
+- 自适应两栏布局
+
+- 可以阻止元素被浮动元素覆盖
+
+  
+
+## 层叠上下文
+
+
+
+> 元素提升为一个比较特殊的图层，在三维空间中 (z轴) 高出普通元素一等。
+
+**触发条件**
+
+- 根层叠上下文(`html`)
+
+- `position`
+
+- ```
+  css3
+  ```
+
+  属性
+
+  - `flex`
+  - `transform`
+  - `opacity`
+  - `filter`
+  - `will-change`
+  - `webkit-overflow-scrolling`
+
+**层叠等级：层叠上下文在z轴上的排序**
+
+- 在同一层叠上下文中，层叠等级才有意义
+- `z-index`的优先级最高
+
+![img](https://poetries1.gitee.io/img-repo/2020/09/111.png)
+
+## link 与 @import 的区别
+
+
+
+- `link`功能较多，可以定义 `RSS`，定义 `Rel` 等作用，而`@import`只能用于加载 `css`
+- 当解析到`link`时，页面会同步加载所引的 `css`，而`@import`所引用的 `css` 会等到页面加载完才被加载
+- `@import`需要 `IE5` 以上才能使用
+- `link`可以使用 `js` 动态引入，`@import`不行
+
+## 有哪些方式（CSS）可以隐藏页面元素
+
+
+
+- `opacity:0`：本质上是将元素的透明度将为0，就看起来隐藏了，但是依然占据空间且可以交互
+- `visibility:hidden`: 与上一个方法类似的效果，占据空间，但是不可以交互了
+- `overflow:hidden`: 这个只隐藏元素溢出的部分，但是占据空间且不可交互
+- `display:none`: 这个是彻底隐藏了元素，元素从文档流中消失，既不占据空间也不交互，也不影响布局
+- `z-index:-9999`: 原理是将层级放到底部，这样就被覆盖了，看起来隐藏了
+- `transform: scale(0,0)`: 平面变换，将元素缩放为0，但是依然占据空间，但不可交互
+
+## calc函数
+
+
+
+> calc函数是css3新增的功能，可以使用`calc()`计算`border、margin、pading、font-size`和width等属性设置动态值
+
+```css
+#div1 {
+    position: absolute;
+    left: 50px;
+    width: calc( 100% / (100px * 2) );
+    /* 兼容写法 */
+    width: -moz-calc( 100% / (100px * 2) );
+    width: -webkit-calc( 100% / (100px * 2) );
+    border: 1px solid black;
+}
+```
+
+**注意点：**
+
+- 需要注意的是，运算符前后都需要保留一个空格，例如：`width: calc(100% - 10px)`;
+
+- `calc()`函数支持 `"+"`, "`-"`, `"*"`, `"/"` 运算;
+
+- 对于不支持 `calc()`的浏览器，整个属性值表达式将被忽略。不过我们可以对那些不支持`calc()`的浏览器，使用一个固定值作为回退。
+
+  
+
+## CSS加载问题
+
+
+
+根据页面渲染流程可得知：
+
+- `css`加载不会阻塞DOM树的解析;
+- `css`加载会阻塞DOM树的渲染；
+- `css`加载会阻塞后面js语句的执行
+
+## 文字单超出显示省略号
+
+
+
+```css
+div {
+	width: 200px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+```
+
+**文字多行超出显示省略号**
+
+```css
+div {
+	width: 200px;
+	display: -webkit-box;
+	-webkit-box-orient: vertical;
+	-webkit-line-clamp: 3;
+	overflow: hidden;
+}
+```
+
+该方法适用于WebKit浏览器及移动端。
+
+**跨浏览器兼容方案：**
+
+```css
+p {
+    position:relative;
+    line-height:1.4em;
+    /* 3 times the line-height to show 3 lines */
+    height:4.2em;
+    overflow:hidden;
+}
+p::after {
+    content:"...";
+    font-weight:bold;
+    position:absolute;
+    bottom:0;
+    right:0;
+    padding:0 20px 1px 45px;
+}
+```
+
+## CSS中可继承的属性
+
+
+
+> 可继承的只有：`颜色`、`文字`、`字体间距`、`行高对齐方式`，`列表样式`。
+
+所有元素可继承：`visibility`和`cursor`。
+
+- 内联元素可继承：
+  - letter-spacing
+  - word-spacing
+  - white-space
+  - line-height
+  - color
+  - font
+  - font-family
+  - font-size
+  - font-style
+  - font-variant
+  - font-weight
+  - text-decoration
+  - text-transform
+  - direction
+- 块状：`text-indent`和`text-align`。
+- 列表元素可继承：`list-style`、`list-style-type`、`list-style-position`、`list-style-image`
+
+## inline-block的使用场景
+
+
+
+1. 要设置某些子元素在一行或者多行内显示，尤其是排列方向一致的情况下，应尽量用`inline-block`。
+2. 希望若干个元素平行排列，且在父元素中居中排列，此时可以用`inline-block`，且给父元素设`text-align: center`。
+3. `inline-block`可以用一排`a {display: inline-block}`实现横向导航栏，无论是居左的导航栏还是居右的都适用。
+
+对于第一种和第三种情况虽然都可以使用`float`来实现，不过`inline-block`会比它好一些，原因如下：
+
+- 浮动会脱离文档流，导致父元素高度塌陷
+
+## position: fixed什么时候会失效？
+
+
+
+我们知道，设置了`position: fixed`固定定位属性的元素会脱离文档流，达到“超然脱俗”的境界。
+
+> 也就是说此时给这种元素设置`top, left, right, bottom`等属性是根据**浏览器窗口**定位的，与其上级元素的位置无关。
+
+但是有一种情况例外：
+
+- 若是设置了`position: fixed`属性的元素，它的祖先元素设置了`transform`属性则会导致固定定位属性失效。
+- 只要你的`transform`设置的不是`none`，都会影响到`position: fixed`，因为此时就会相对于祖先元素指定坐标，而不是浏览器窗口。
+
+注意，这个特性表现，目前只在Chrome浏览器/FireFox浏览器下有。IE浏览器，包括IE11, `fixed`还是`fixed`的表现。
+
+### CSS画圆半圆扇形三角梯形
+
+```css
+div{
+    margin: 50px;
+    width: 100px;
+    height: 100px;
+    background: red;
+}
+/* 半圆 */
+.half-circle{
+    height: 50px;
+    border-radius: 50px 50px 0 0;
+}
+/* 扇形 */
+.sector{
+    border-radius: 100px 0 0;
+}
+/* 三角 */
+.triangle{
+    width: 0px;
+    height: 0px;
+    background: none;
+    border: 50px solid red;
+    border-color: red transparent transparent transparent;
+}
+/* 梯形 */
+.ladder{
+    width: 50px;
+    height: 0px;
+    background: none;
+    border: 50px solid red;
+    border-color: red transparent transparent transparent;
+}
+```
+
+### 圆？半圆？椭圆？
+
+```css
+div {
+  width: 100px;
+  height: 100px;
+  background-color: red;
+  margin-top: 20px;
+}
+.box1 { /* 圆 */
+  /* border-radius: 50%; */
+  border-radius: 50px;
+}
+.box2 { /* 半圆 */
+  height: 50px;
+  border-radius: 50px 50px 0 0;
+}
+.box3 { /* 椭圆 */
+  height: 50px;
+  border-radius: 50px/25px; /* x轴/y轴 */
+}
+```

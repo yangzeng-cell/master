@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var obj = {
+      name: "why",
+      age: 18,
+      friend: {
+        name: "kobe"
+      }
+    }
+
+    console.log(obj.name, obj.age)
+
+    // 1.将obj对象进行序列化
+    var objJSONString = JSON.stringify(obj)
+    console.log(objJSONString)
+
+    // 2.将对象存储到localStorage
+    localStorage.setItem("info", objJSONString)
+    
+    var item = localStorage.getItem("info")
+    console.log(item, typeof item)
+
+    // 3.将字符串转回到对象(反序列化)
+    var newObj = JSON.parse(item)
+    console.log(newObj)
+
+  </script>
+
+</body>
+</html>

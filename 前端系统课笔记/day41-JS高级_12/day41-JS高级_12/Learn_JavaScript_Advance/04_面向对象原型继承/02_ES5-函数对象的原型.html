@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var obj = {}
+    function foo() {}
+
+    // 1.将函数看成是一个普通的对象时, 它是具备__proto__(隐式原型)
+    // 作用: 查找key对应的value时, 会找到原型身上
+    // console.log(obj.__proto__)
+    // console.log(foo.__proto__)
+
+
+    // 2.将函数看成是一个函数时, 它是具备prototype(显式原型)
+    // 作用: 用来构建对象时, 给对象设置隐式原型的
+    console.log(foo.prototype)
+    // console.log(obj.prototype) 对象是没有prototype
+
+  </script>
+
+</body>
+</html>

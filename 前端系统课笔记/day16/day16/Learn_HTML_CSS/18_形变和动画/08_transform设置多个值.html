@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      width: 200px;
+      height: 100px;
+      background-color: orange;
+    }
+
+    .box:hover {
+      /* transform: translateX(50px);
+      transform: scale(1.2);
+      transform: rotate(45deg); */
+
+      /* 
+        <transform-function>+
+          +: 一个或者多个, 并且多个之间以空格分隔
+          transform: scale() translate();
+
+        <box-shadow>#
+          #: 一个或者多个, 多个之间以, 分隔
+          box-shadow: 1px 1px 1px 1px #f00, 
+      */
+      transform: translate(50px) scale(1.2) rotate(45deg);
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="box"></div>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div class="box" id="main" 
+       name="why" abc="abc" age="18" height="1.88">
+    哈哈哈哈
+  </div>
+
+  <input class="checkbox" type="checkbox" checked>
+  <button class="toggle">切换</button>
+  
+  <script>
+    var boxEl = document.querySelector('.box')
+
+    var checkBoxInput = document.querySelector(".checkbox")
+    var toggleBtn = document.querySelector(".toggle")
+    toggleBtn.onclick = function() {
+      checkBoxInput.checked = !checkBoxInput.checked
+    }
+
+    console.log(boxEl.id, boxEl.className) // box main
+    console.log(boxEl.abc, boxEl.age, boxEl.height) // undefined...
+
+    // for (var attr of boxEl.attributes) {
+    //   console.log(attr.name, attr.value)
+    // }
+    // console.log(boxEl.hasAttribute("age"))
+    // console.log(boxEl.getAttribute("name"))
+    // boxEl.setAttribute("name", "kobe")
+    // boxEl.removeAttribute("abc")
+
+
+  </script>
+
+</body>
+</html>

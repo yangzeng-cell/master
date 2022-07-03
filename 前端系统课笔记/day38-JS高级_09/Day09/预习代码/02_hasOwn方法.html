@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var obj = {
+      name: "why",
+      age: 18,
+      hasOwnProperty: function() {
+        return false
+      }
+    }
+
+    obj.__proto__ = {
+      address: "广州市"
+    }
+
+    console.log(obj.hasOwnProperty("name"))
+    console.log(Object.hasOwn(obj, "name"))
+
+    var info = Object.create(null)
+    info.name = "why"
+    console.log(info.hasOwnProperty("name")) // 报错
+    console.log(Object.hasOwn(info, "name")) // 可以判断
+
+
+  </script>
+
+</body>
+</html>

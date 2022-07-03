@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var message = "my name is why."
+    var name = "why"
+
+    // 判断一个字符串中是否有另外一个字符串
+    // 1.indexOf(searchString, fromIndex)
+    /*
+      index:
+        情况一: 搜索到, 搜索字符串所在索引位置
+        情况二: 没有搜索到, 返回-1
+    */
+    //  var index = message.indexOf(name)
+    //  if (message.indexOf(name) !== -1) {
+    //    console.log("message中包含name")
+    //  } else {
+    //    console.log("message不包含name")
+    //  }
+
+    // 2.includes: ES6中新增一个方法, 就是用来判断包含关系
+    // if (message.includes(name)) {
+    //   console.log("message中包含name")
+    // }
+
+    // 3.startsWith: 是否以xxx开头
+    // if (message.startsWith("my")) {
+    //   console.log("message以my开头")
+    // }
+
+    // 4.endsWith: 是否以xxx结束
+    // if (message.endsWith("why")) {
+    //   console.log("message以why结尾")
+    // }
+
+    // 5.replace 替换字符串
+    // var newMessage = message.replace("why", "kobe")
+    // console.log(message)
+    // console.log(newMessage)
+    var newName = "kobe"
+    var newMessage = message.replace("why", function() {
+      return newName.toUpperCase()
+    })
+    console.log(newMessage)
+
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      position: relative;
+      display: inline-block;
+    }
+
+    .box img {
+      display: block;
+    }
+
+    .box .cover {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background-color: rgba(0,0,0,.5);
+      backdrop-filter: blur(10px);
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="box">
+    <img src="../media/kobe01.jpg" alt="">
+    <div class="cover"></div>
+  </div>
+
+</body>
+</html>

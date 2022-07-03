@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      border-collapse: collapse;
+      text-align: center;
+    }
+
+    td {
+      border: 1px solid red;
+      padding: 10px 20px;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 
+    1.确定  "谁"  需要跨行或者跨列
+    2.确定是跨"行"还是跨"列"
+    3.跨几行或者几列
+   -->
+  
+  <!-- 跨列演练 -->
+  <!-- <table>
+    <tr>
+      <td colspan="2">1-1</td>
+    </tr>
+    <tr>
+      <td>2-1</td>
+      <td>2-2</td>
+    </tr>
+  </table> -->
+
+  <!-- 跨行演练 -->
+  <table>
+    <tr>
+      <td rowspan="2">1-1</td>
+      <td>1-2</td>
+    </tr>
+    <tr>
+      <td>2-2</td>
+    </tr>
+  </table>
+
+</body>
+</html>

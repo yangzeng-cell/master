@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // console.log(message) // undefined
+    
+    // 1.函数中有自己的message
+    // var message = "Global Message"
+
+    // function foo() {
+    //   console.log(message)
+    //   var message = "foo message"
+    // }
+
+    // foo()
+
+    // 2.函数中没有自己的message
+    var message = "Global Message"
+
+    debugger
+
+    function foo() {
+      console.log(message)
+    }
+
+    foo()
+
+
+    var obj = {
+      name: "obj",
+      bar: function() {
+        var message = "bar message"
+        foo()
+      }
+    }
+
+    obj.bar()
+
+  </script>
+
+</body>
+</html>

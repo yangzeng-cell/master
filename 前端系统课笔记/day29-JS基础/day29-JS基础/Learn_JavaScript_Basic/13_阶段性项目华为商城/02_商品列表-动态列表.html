@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <link rel="stylesheet" href="./css/reset.css">
+  <link rel="stylesheet" href="./css/common.css">
+  <link rel="stylesheet" href="./css/product.css">
+</head>
+<body>
+  <!-- 商品展示的部分 -->
+  <div class="wrapper">
+    <!-- 面包屑的导航 -->
+    <div class="crumbs">
+      <span class="item">首页</span>
+      <span>&gt;</span>
+      <span class="item">笔记本</span>
+    </div>
+
+    <!-- 对内容进行操作 -->
+    <div class="operation">
+      <ul class="row category">
+        <li class="item">分类：</li>
+        <li class="item">笔记本</li>
+        <li class="item">台式机</li>
+        <li class="item">智慧屏</li>
+      </ul>
+      <ul class="row discount">
+        <li class="item">服务优惠：</li>
+        <li class="item">仅看有货</li>
+        <li class="item">分期免息</li>
+        <li class="item">优惠商品</li>
+      </ul>
+      <ul class="row sort">
+        <li class="item">排序：</li>
+        <li class="item active">综合</li>
+        <li class="item">最新</li>
+        <li class="item">评论数</li>
+        <li class="item">价格</li>
+      </ul>
+    </div>
+
+    <!-- 商品列表部分 -->
+    <ul class="products">
+      <!-- <li class="item">
+        <a href="#">
+          <img class="album" src="./img/product_01.webp" alt="">
+          <div class="name">HUAWEI MateBook E 12.6英寸</div>
+          <div class="discount">预订立省300元|12期免息</div>
+          <div class="price">¥6499</div>
+          <div class="service">
+            <span class="tip">分期免息</span>
+            <span class="tip">赠送积分</span>
+          </div>
+          <div class="comment">
+            <span>3190人评论</span>
+            <span>96% 好评</span>
+          </div>
+        </a>
+      </li> -->
+    </ul>
+  </div>
+
+
+  <script src="./json/product_data.js"></script>
+  <script>
+    // 0.资源服务器的地址
+    var serverURL = "https://res.vmallres.com/pimages"
+
+    // 1.动态的展示商品列表
+    var productsEl = document.querySelector(".products")
+    for (var i = 0; i < resultList.length; i++) {
+      // console.log(resultList[i]) // -> item
+      // 获取一条数据
+      var resultItem = resultList[i]
+
+      // 将一条数据转成界面一个item
+      // 1.1. 最外层的item
+      var itemEl = document.createElement("li")
+      itemEl.classList.add("item")
+      productsEl.append(itemEl)
+
+      // 1.2. 创建a元素
+      var aEl = document.createElement("a")
+      aEl.href = "#"
+      itemEl.append(aEl)
+
+      // 1.3. 添加img
+      var albumEl = document.createElement("img")
+      albumEl.classList.add("album")
+      albumEl.src = `${serverURL}${resultItem.photoPath}428_428_${resultItem.photoName}`
+      aEl.append(albumEl)
+
+      // 1.4. 创建name
+      var nameEl = document.createElement("div")
+      nameEl.classList.add("name")
+      nameEl.textContent = resultItem.name
+      aEl.append(nameEl)
+
+      // 1.5. 创建discount
+      var discountEl = document.createElement("div")
+      discountEl.classList.add("discount")
+      discountEl.textContent = resultItem.promotionInfo
+      aEl.append(discountEl)
+
+      // 1.6. 创建price
+      var priceEl = document.createElement("div")
+      priceEl.classList.add("price")
+      priceEl.textContent = "¥" + resultItem.price
+      aEl.append(priceEl)
+
+      // 1.7. 创建service
+      var serviceEl = document.createElement("div")
+      serviceEl.classList.add("service")
+      for (var label of resultItem.promoLabels) {
+        var tipEl = document.createElement("span")
+        tipEl.classList.add("tip")
+        tipEl.textContent = label
+        serviceEl.append(tipEl)
+      }
+      aEl.append(serviceEl)
+
+      // 1.8 创建comment
+      var commentEl = document.createElement("div")
+      commentEl.classList.add("comment")
+      var countEl = document.createElement("span")
+      countEl.textContent = `${resultItem.rateCount}人评论`
+      commentEl.append(countEl)
+      var goodEl = document.createElement("span")
+      goodEl.textContent = `${resultItem.goodRate}% 好评`
+      commentEl.append(goodEl)
+      aEl.append(commentEl)
+    }
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // var arr1 = []
+    // var arr2 = new Array()
+
+    // var arr3 = ["why", "kobe", "james"]
+    // var arr4 = new Array("abc", "cba", "nba")
+
+    // var arr5 = new Array(5)
+    // console.log(arr5)
+
+    var arr = ["why", "kobe", "james"]
+
+    // console.log(arr[0])
+    // console.log(arr.at(-1))
+
+    // arr[0] = "coderwhy"
+
+    // arr.push("abc", "cba")
+    // arr.pop()
+
+    // arr.unshift("curry")
+    // arr.shift()
+
+    // 1.删除一个元素
+    // arr.splice(1, 1)
+    // // 2.新增两个元素
+    // arr.splice(1, 0, "abc", "cba")
+    // // 3.替换两个元素
+    // arr.splice(1, 2, "kobe", "curry")
+
+    // console.log(arr)
+
+    // arr.length = 10
+    // console.log(arr)
+
+    // arr.length = 2
+    // console.log(arr)
+
+    for (var i = 0; i < arr.length; i++) {
+      console.log(arr[i])
+    }
+
+    for (var index in arr) {
+      console.log(arr[index])
+    }
+
+    for (var item of arr) {
+      console.log(item)
+    }
+
+    console.log(arr.slice(1, 2))
+
+    var newArr = arr.concat(["abc", "cba"], "nba")
+    console.log(newArr)
+
+    console.log(arr.join("-"))
+
+    var students = [
+      { id: 100, name: "why", age: 18 },
+      { id: 101, name: "kobe", age: 30 },
+      { id: 102, name: "james", age: 25 }
+    ]
+
+    var stu = students.find(function(item, index, arr) {
+      return item.id === 100
+    })
+    // console.log(stu)
+
+    // students.reduce(function(prevValue, item, index, arr) {
+    //   console.log(prevValue, item)
+    // }, 0)
+    var newStus = students.sort(function(item1, item2) {
+      return item2.age - item1.age
+    })
+    console.log(newStus)
+
+
+  </script>
+
+</body>
+</html>

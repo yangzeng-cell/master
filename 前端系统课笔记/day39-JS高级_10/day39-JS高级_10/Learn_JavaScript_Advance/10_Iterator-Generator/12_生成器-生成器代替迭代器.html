@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 1.对之前的代码进行重构(用生成器函数)
+    const names = ["abc", "cba", "nba"]
+    const nums = [100, 22, 66, 88, 55]
+
+    function* createArrayIterator(arr) {
+      for (let i = 0; i < arr.length; i++) {
+        yield arr[i]
+      }
+      // yield arr[0]
+      // yield arr[1]
+      // yield arr[2]
+      // return undefined
+    }
+
+    // const namesIterator = createArrayIterator(names)
+    // console.log(namesIterator.next())
+    // console.log(namesIterator.next())
+    // console.log(namesIterator.next())
+    // console.log(namesIterator.next())
+
+    // const numsIterator = createArrayIterator(nums)
+    // console.log(numsIterator.next())
+    // console.log(numsIterator.next())
+    // console.log(numsIterator.next())
+    // console.log(numsIterator.next())
+    // console.log(numsIterator.next())
+    // console.log(numsIterator.next())
+
+    // 2.生成器函数, 可以生成某个范围的值
+    // [3, 9)
+    function* createRangeGenerator(start, end) {
+      for (let i = start; i < end; i++) {
+        yield i
+      }
+    }
+
+    const rangeGen = createRangeGenerator(3, 9)
+    console.log(rangeGen.next())
+    console.log(rangeGen.next())
+    console.log(rangeGen.next())
+    console.log(rangeGen.next())
+    console.log(rangeGen.next())
+    console.log(rangeGen.next())
+    console.log(rangeGen.next())
+    console.log(rangeGen.next())
+
+  </script>
+
+</body>
+</html>

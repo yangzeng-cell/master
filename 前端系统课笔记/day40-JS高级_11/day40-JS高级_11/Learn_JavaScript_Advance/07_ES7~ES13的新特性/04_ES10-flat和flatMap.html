@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // 1.flat的使用: 
+    // 将一个数组, 按照制定的深度遍历, 将遍历到的元素和子数组中的元素组成一个新的数组, 进行返回
+    // const nums = [10, 20, [111, 222], [333, 444], [[123, 321], [231, 312]]]
+    // const newNums1 = nums.flat(1)
+    // console.log(newNums1)
+    // const newNums2 = nums.flat(2)
+    // console.log(newNums2)
+
+    // 2.flatMap的使用:
+    // 1> 对数组中每一个元素应用一次传入的map对应的函数
+    const messages = [
+      "Hello World aaaaa",
+      "Hello Coderwhy",
+      "你好啊 李银河"
+    ]
+
+    // 1.for循环的方式:
+    // const newInfos = []
+    // for (const item of messages) {
+    //   const infos = item.split(" ")
+    //   for (const info of infos) {
+    //     newInfos.push(info)
+    //   }
+    // }
+    // console.log(newInfos)
+
+    // 2.先进行map, 再进行flat操作
+    // const newMessages = messages.map(item => item.split(" "))
+    // const finalMessages = newMessages.flat(1)
+    // console.log(finalMessages)
+
+    // 3.flatMap
+    const finalMessages = messages.flatMap(item => item.split(" "))
+    console.log(finalMessages)
+
+
+  </script>
+
+</body>
+</html>

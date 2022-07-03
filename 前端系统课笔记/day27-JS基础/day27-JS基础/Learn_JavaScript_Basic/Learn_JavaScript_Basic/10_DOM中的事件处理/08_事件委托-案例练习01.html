@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active {
+      color: red;
+      font-size: 20px;
+      background-color: orange;
+    }
+  </style>
+</head>
+<body>
+  
+  <ul>
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+    <li>6</li>
+    <li>7</li>
+    <li>8</li>
+    <li>9</li>
+    <li>10</li>
+  </ul>
+
+  <script>
+
+    // 1.每一个li都监听自己的点击, 并且有自己的处理函数(自己的函数)
+    // var liEls = document.querySelectorAll("li")
+    // for (var liEl of liEls) {
+    //   // 监听点击
+    //   liEl.onclick = function(event) {
+    //     event.currentTarget.classList.add("active")
+    //   }
+    // }
+
+    // 2.统一在ul中监听
+    // var ulEl = document.querySelector("ul")
+    // ulEl.onclick = function(event) {
+    //   console.log("点击了某一个li", event.target)
+    //   event.target.classList.add("active")
+    // }
+
+    // 3.新需求: 点击li变成active, 其他的取消active
+    var ulEl = document.querySelector("ul")
+    var activeLiEl = null
+    ulEl.onclick = function(event) {
+      // 1.将之前的active移除掉
+      // for (var i = 0; i < ulEl.children.length; i++) {
+      //   var liEl = ulEl.children[i]
+      //   if (liEl.classList.contains("active")) {
+      //     liEl.classList.remove("active")
+      //   }
+      // }
+
+      // 1.找到active的li, 移除掉active
+      // var activeLiEl = ulEl.querySelector(".active")
+      // if (activeLiEl) {
+      //   activeLiEl.classList.remove("active")
+      // }
+
+      // 1.变量记录的方式
+      // edge case
+      if (activeLiEl) {
+        activeLiEl.classList.remove("active")
+      }
+      
+      // 2.给点击的元素添加active
+      event.target.classList.add("active")
+
+      // 3.记录最新的active对应的li
+      activeLiEl = event.target
+    }
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    table {
+      border-collapse: collapse;
+    }
+
+    thead {
+      background-color: #f5f5f5;
+    }
+
+    td, th {
+      border: 1px solid #ddd;
+      padding: 8px 15px;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  
+  <table>
+    <thead>
+      <tr>
+        <th>编号</th>
+        <th>书籍名词</th>
+        <th>出版日期</th>
+        <th>价格</th>
+        <th>购买数量</th>
+        <th>操作</th>
+      </tr>
+    </thead>
+    <tbody>
+
+    </tbody>
+  </table>
+  <h2>总价格: <span class="total-price"></span> </h2>
+
+  <script>
+    var books = [
+      {
+        id: 1,
+        name: '《算法导论》',
+        date: '2006-09',
+        price: 85.00,
+        count: 3
+      },
+      {
+        id: 2,
+        name: '《UNIX编程艺术》',
+        date: '2006-02',
+        price: 59.00,
+        count: 2
+      },
+      {
+        id: 3,
+        name: '《编程珠玑》',
+        date: '2008-10',
+        price: 39.00,
+        count: 5
+      },
+      {
+        id: 4,
+        name: '《代码大全》',
+        date: '2006-03',
+        price: 128.00,
+        count: 8
+      },
+    ]
+    
+    // 1.获取元素
+    var tbodyEl = document.getElementsByTagName("tbody")[0]
+    var totalPriceEl = document.querySelector(".total-price")
+
+    // 2.遍历books
+    for (var i = 0; i < books.length; i++) {
+      // 1.创建tr
+      var trEl = document.createElement("tr")
+
+      // 2.遍历对象的内容
+      var book = books[i]
+      for (var key in book) {
+        var bookTdEl = document.createElement("td")
+        var textContent = book[key]
+        if (key === "price") {
+          textContent = "¥" + textContent
+        }
+        bookTdEl.textContent = textContent
+        trEl.append(bookTdEl)
+      }
+
+      // 4.操作的元素
+      var checkTdEl = document.createElement("td")
+      var checkboxEl = document.createElement("input")
+      checkboxEl.type = "button"
+      checkboxEl.value = "删除"
+      checkboxEl.onclick = function() {
+        var trEl = this.parentElement.parentElement
+        var index = trEl.sectionRowIndex
+        trEl.remove()
+        books.splice(index, 1)
+        calcTotalPrice()
+      }
+      checkTdEl.append(checkboxEl)
+      trEl.append(checkTdEl)
+
+      tbodyEl.append(trEl)
+    }
+
+    function calcTotalPrice() {
+      console.log(books)
+      var totalPrice = books.reduce(function(preValue, item) {
+        return preValue + item.price * item.count
+      }, 0)
+      totalPriceEl.textContent = "¥" + totalPrice
+    }
+    calcTotalPrice()
+
+
+  </script>
+
+</body>
+</html>

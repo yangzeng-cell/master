@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    /*
+      1.属性的增强
+      2.方法的增强
+      3.计算属性名的写法
+    */
+
+    var name = "why"
+    var age = 18
+
+    var key = "address" + " city"
+
+    var obj = {
+      // 1.属性的增强
+      name,
+      age,
+
+      // 2.方法的增强
+      running: function() {
+        console.log(this)
+      },
+      swimming() {
+        console.log(this)
+      },
+      eating: () => {
+        console.log(this)
+      },
+
+      // 3.计算属性名
+      [key]: "广州"
+    }
+
+    obj.running()
+    obj.swimming()
+    obj.eating()
+
+    function foo() {
+      var message = "Hello World"
+      var info = "my name is why"
+
+      return { message, info }
+    }
+
+    var result = foo()
+    console.log(result.message, result.info)
+
+  </script>
+
+</body>
+</html>

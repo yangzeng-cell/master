@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      const xhr = new XMLHttpRequest();
+      // 监听readyState的变化
+      xhr.onreadystatechange = function () {
+        console.log(xhr.status);
+      };
+      // 监听加载完成
+      xhr.onload = function () {
+        // 获取状态码，状态文本
+        console.log(xhr.status, xhr.statusText);
+        //获取请求的数据
+        console.log(xhr.response);
+        // 返回数据成功的时候
+        if (xhr.status >= 200 && xhr.status < 300) {
+          console.log(xhr.status, xhr.statusText);
+        } else {
+          // 其他数据状态的时候400，500等
+          console.log(xhr.status, xhr.statusText);
+        }
+      };
+      // 监听错误。就是发生连接错误，例如域错误，不会发生404这类错误
+      xhr.onerror = function () {};
+      // 设置响应的数据类型
+      xhr.responseType = "json";
+      // xhr.open("get", "http://123.207.32.32:8000/home/multidata");
+      // get传递参数方式一 query
+      // xhr.open(
+      //   "get",
+      //   "http://123.207.32.32:1888/02_param/get?name=why&age=18&address=guangzhou"
+      // );
+      // 传参方式二：post->urlencoded
+      // xhr.open("post", "http://123.207.32.32:1888/02_param/posturl");
+      // post urlencoded的方式要把参数放到send中，并且需要设置header "Content-Type","application/x-www-form-urlencoded",否则没办法服务器没办法解析
+      // xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+      // xhr.send("name=why&age=18&address=guangzhou");
+
+      // 传参方式三 post->formData 不需要设置header 默认就是这样的方式
+      // xhr.open("post","http://123.207.32.32:1888/02_param/postform")
+      // const formData=new FormData(formEl)
+      // xhr.send(formData)
+
+      // 传参方式四 post->json  需要设置header
+      xhr.open("post", "http://123.207.32.32:1888/02_param/postjson");
+      xhr.setRequestHeader("Content-Type", "application/json");
+      xhr.send(JSON.stringify({ name: "why", age: 18 }));
+    </script>
+  </body>
+</html>

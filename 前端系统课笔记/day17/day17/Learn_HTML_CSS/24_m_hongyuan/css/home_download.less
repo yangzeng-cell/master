@@ -1,0 +1,57 @@
+@import url(./variables.less);
+@import url(./mixins.less);
+
+.download {
+  display: flex;
+  height: 16vw;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e3e3e3;
+  background-color: #fff;
+
+  .left {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex: 1;
+    overflow: hidden;
+    padding: 0 3.2vw;
+
+    .logo {
+      width: 10.6667vw;
+      height: 10.6667vw;
+      border-radius: 2.13333vw;
+      box-shadow: 0 0 0.93333vw 0 rgba(0,0,0,.15);
+    }
+
+    .info {
+      flex: 1;
+      overflow: hidden;
+      margin-left: 2.1333vw;
+
+      .title {
+        color: #333;
+        font-size: @normalFontSize;
+
+        .nowrap();
+      }
+
+      .desc {
+        margin-top: .5333vw;
+        color: #999;
+        font-size: @smallFontSize;
+
+        .nowrap();
+      }
+    }
+  }
+
+  .right {
+    width: 25.2vw;
+    text-align: center;
+    height: 16vw;
+    line-height: 16vw;
+    color: #fff;
+    font-size: @bigFontSize;
+    background-image: linear-gradient(to right, #ff0409,#ff3162);
+  }
+}

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 定义函数
+    function foo(a, b, c) {
+
+    }
+    var bar = function(m, n, ...others) {
+      
+    }
+
+    // var obj = {}
+    // obj.address = "广州市"
+    // console.log(obj.address)
+    
+    // 自定义属性
+    foo.message = "Hello Foo"
+    console.log(foo.message)
+
+    // 默认函数对象中已经有自己的属性
+    // 1.name属性
+    // console.log(foo.name)
+    // console.log(bar.name)
+
+    // // 将两个函数放到数组中(了解)
+    // var fns = [foo, bar]
+    // for (var fn of fns) {
+    //   console.log(fn.name)
+    // }
+
+    // 2.length属性: 参数的个数
+    function test() {
+    }
+    test(111, 222, 333)
+    console.log(foo.length)
+    console.log(bar.length)
+    console.log(test.length)
+
+
+    // 额外补充
+    // function demo(...args) {
+    // }
+    // demo("abc", "cba", "nba")
+
+
+  </script>
+
+</body>
+</html>

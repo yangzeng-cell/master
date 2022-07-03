@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <h1 class="card"></h1>
+  
+  <script>
+    // padStart和padEnd
+    // 1.应用场景一: 对时间进行格式化
+    // const minute = "15".padStart(2, "0")
+    // const second = "6".padStart(2, "0")
+
+    // console.log(`${minute}:${second}`)
+
+    // 2.应用场景二: 对一些敏感数据格式化
+    let cardNumber = "132666200001018899"
+    const sliceNumber = cardNumber.slice(-4)
+    cardNumber = sliceNumber.padStart(cardNumber.length, "*")
+    const cardEl = document.querySelector(".card")
+    cardEl.textContent = cardNumber
+
+  </script>
+
+</body>
+</html>

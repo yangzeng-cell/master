@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    console.log("script start")
+
+    function requestData(url) {
+      console.log("requestData")
+      return new Promise((resolve) => {
+        setTimeout(() => {
+          console.log("setTimeout")
+          resolve(url)
+        }, 2000);
+      })
+    }
+
+    // 2.await/async
+    async function getData() {
+      console.log("getData start")
+      const res = await requestData("why")
+      
+      console.log("then1-res:", res)
+      console.log("getData end")
+    }
+
+    getData()
+    
+    console.log("script end")
+
+    // script start
+    // getData start
+    // requestData
+    // script end
+
+    // setTimeout
+
+    // then1-res: why
+    // getData end
+
+  </script>
+
+</body>
+</html>

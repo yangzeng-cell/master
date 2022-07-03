@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    class Person {
+      constructor(name, age) {
+        this.name = name
+        this.age = age
+      }
+      swimming() {
+        console.log(first)
+      }
+    }
+
+    function mixinRunner(BaseClass) {
+      return class extends BaseClass {
+        running() {
+          console.log(this.name + " running~")
+        }
+      }
+    }
+
+    function mixinEater(BaseClass) {
+      return class extends BaseClass {
+        eating() {
+          console.log(this.name + " eating~")
+        }
+      }
+    }
+
+    class NewPerson extends mixinEater(mixinRunner(Person)) {
+
+    }
+
+  </script>
+
+</body>
+</html>

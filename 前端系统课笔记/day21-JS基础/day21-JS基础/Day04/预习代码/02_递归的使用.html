@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    function pow(a, n) {
+      var result = 1
+      for (var i = 0; i < n; i++) {
+        result *= a
+      }
+      return result
+    }
+
+    // console.log(pow(2, 3))
+    // console.log(pow(3, 3))
+
+
+    function pow(x, n) {
+      if (n === 1) return x
+      return x * pow(n - 1)
+    }
+
+
+
+  </script>
+
+</body>
+</html>

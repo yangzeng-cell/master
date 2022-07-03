@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../css/common.css" />
+    <title>main_item</title>
+    <style>
+      @keyframes fadeinorout{
+        0%{
+          display: block;
+          opacity: 1;
+        }
+        99%{
+          display: block;
+          opacity: 0;
+        }
+        100%{
+          display: none;
+          opacity: 0;
+        }
+      }
+      .tganime-fadein-child{
+        animation: fadeinorout 0.3s ease-in-out;
+      }
+      .a_link_block {
+        display: block;
+      }
+      .item_header {
+        height: 26px;
+        margin-bottom: 16px;
+        display: flex;
+        justify-content: space-between;
+      }
+      .item_title {
+        background: url(../image/index.png) no-repeat;
+        font-size: 22px;
+        text-indent: 33px;
+        line-height: 25px;
+        font-weight: 600;
+        letter-spacing: 1px;
+      }
+      .more_btn {
+        color: #999;
+        background: url(../image/index.png) no-repeat -252px 4px;
+        padding-left: 22px;
+        font-size: 14px;
+        line-height: 22px;
+      }
+      .more_btn:hover {
+        color: #f3c258;
+      }
+      .main_item {
+        display: flex;
+        margin: 0 auto;
+        width: 1200px;
+        justify-content: space-between;
+      }
+      .main_item .strategy_center {
+        width: 872px;
+        overflow: hidden;
+        box-sizing: border-box;
+      }
+      .main_item .skin_center {
+        width: 295px;
+        height: 528px;
+      }
+      .main_item .skin_center .item_header {
+      }
+      .main_item .skin_center .item_header .item_title {
+        width: 140px;
+        height: 25px;
+        background-position: 0 -144px;
+      }
+      .main_item .skin_center .item_subnav {
+        margin-bottom: 19px;
+        width: 100%;
+      }
+      .main_item .skin_center .item_subnav ul {
+        display: flex;
+        background: #f5f5f5;
+      }
+      .main_item .skin_center .item_subnav ul li {
+        width: 98.333px;
+        position: relative;
+      }
+      .main_item .skin_center .item_subnav ul li:nth-child(-n + 2)::after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 20px;
+        right: 0;
+        top: 0;
+        margin-top: 5px;
+        background: #e1e1e1;
+      }
+      .main_item .skin_center .item_subnav ul li a {
+        display: block;
+        height: 32px;
+        line-height: 29px;
+        text-align: center;
+        box-sizing: border-box;
+        color: #999;
+        font-size: 14px;
+      }
+      .main_item .skin_center .item_subnav ul li a:hover,
+      .main_item .skin_center .item_subnav ul li:first-child a {
+        border-bottom: 3px solid #f3c258;
+        color: #333333;
+      }
+      .main_item .skin_center .slide-content .a_link_block{
+        height: 156px;
+      }
+      .main_item .skin_center .slide-content .new_hero_bottom {
+        padding: 10px 15px;
+        height: 47px;
+        border: 1px solid #e5e5e5;
+        border-top: none;
+        border-radius: 0 0 2px 2px;
+      }
+      .main_item .skin_center .slide-content .new_hero_bottom .new_hero_name{
+        font-size: 18px;
+        color: #333333;
+        font-weight: bold;
+      }
+      .main_item .skin_center .slide-content .hero_pic_list{
+        margin: 10px 0 12px 0;
+        height: 173px;
+        display: flex;
+      }
+      .main_item .skin_center .slide-content .hero_pic_list .a_link_block{
+        position: relative;
+        height: 173px;
+      }
+      .main_item .skin_center .slide-content .hero_pic_list .a_link_block img{
+        border-radius: 2px;
+      }
+      .main_item .skin_center .slide-content .hero_pic_list .a_link_block:nth-child(-n+3){
+        margin-right: 7px;
+      }
+      .main_item .skin_center .slide-content .hero_pic_list .a_link_block .hero_name{
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        text-align: center;
+        color: #f3c258;
+        font-size: 14px;
+        letter-spacing: 0.3em;
+        writing-mode: vertical-lr;
+        word-break: break-all;
+        width: 68px;
+        box-sizing: border-box;
+        height: 173px;
+        line-height: 68px;
+      }
+      .main_item .skin_center .slide-content .hero_pic_list .a_link_block:hover .hero_name{
+        display: block;
+        background: rgba(0,0,0,0.88);
+      }
+      .main_item .strategy_center .item_header {
+      }
+      .main_item .strategy_center .item_header .item_title {
+        width: 140px;
+        height: 26px;
+        background-position: 0 -106px;
+      }
+      .main_item .strategy_center .item_header .more_btn {
+      }
+      .main_item .strategy_center .item_header .more_btn:hover {
+        color: #f3c258;
+      }
+      .main_item .strategy_center .item_subnav {
+        margin-bottom: 5px;
+      }
+      .main_item .strategy_center .item_subnav ul {
+        display: flex;
+        background: #f5f5f5;
+      }
+      .main_item .strategy_center .item_subnav ul li {
+        width: 290.667px;
+        position: relative;
+      }
+      .main_item .strategy_center .item_subnav ul li:nth-child(-n + 2)::after {
+        content: "";
+        position: absolute;
+        width: 1px;
+        height: 20px;
+        background: #e1e1e1;
+        right: 0;
+        top: 0;
+        margin-top: 5px;
+      }
+      .main_item .strategy_center .item_subnav ul li a {
+        display: block;
+        height: 32px;
+        overflow: hidden;
+        box-sizing: border-box;
+        color: #999;
+        font-size: 14px;
+        text-align: center;
+        line-height: 29px;
+      }
+      .main_item .strategy_center .item_subnav ul li a:hover,
+      .main_item .strategy_center .item_subnav ul li:nth-child(1) a {
+        border-bottom: 3px solid #f3c258;
+        color: #333333;
+      }
+      .main_item .strategy_center .item-dotting {
+        padding: 8px 0 9px;
+      }
+      .main_item .strategy_center .item-dotting ul {
+        display: flex;
+        overflow: hidden;
+        flex-wrap: wrap;
+      }
+      .main_item .strategy_center .item-dotting ul li {
+        margin-right: 8px;
+      }
+      .main_item .strategy_center .item-dotting ul li a {
+        display: block;
+        height: 24px;
+        line-height: 24px;
+        padding: 0 13px 0 8px;
+        border: 1px solid #e5e5e5;
+        border-radius: 10px;
+        font-size: 14px;
+        background: #f5f5f5;
+        text-indent: 8px;
+      }
+      .main_item .strategy_center .item-dotting ul li:first-child a,
+      .main_item .strategy_center .item-dotting ul li a:hover {
+        background: #f3c258;
+        border-color: #f3c258;
+        color: #fff;
+      }
+      .item-list {
+        display: flex;
+        flex-wrap: wrap;
+      }
+      .item-list li a {
+        display: block;
+        width: 209px;
+        height: 175px;
+        margin-right: 12px;
+        margin-bottom: 30px;
+        overflow: hidden;
+        position: relative;
+      }
+      .item-list li:nth-child(4n) a {
+        margin: 0;
+      }
+      .item-list li a img {
+        width: 209px;
+        height: 125px;
+        display: block;
+      }
+      .item-list li a .video-tit {
+        height: 40px;
+        overflow: hidden;
+        color: #333333;
+        margin-top: 10px;
+      }
+      .item-list li a .play-bar {
+        position: absolute;
+        height: 22px;
+        width: 189px;
+        display: flex;
+        justify-content: space-between;
+        right: 0;
+        left: 0;
+        top: 104px;
+        background: rgba(0, 0, 0, 0.6);
+        font-size: 12px;
+        line-height: 22px;
+        color: #fff;
+        border-radius: 0 0 2px 2px;
+        padding: 0 10px;
+      }
+      .item-list li a .play-bar .icon-play {
+        display: inline-block;
+        padding-left: 15px;
+        background: url(../image/index.png) -256px -59px no-repeat;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="main_item">
+      <div class="strategy_center">
+        <div class="item_header">
+          <div class="item_title">内容中心</div>
+          <a class="more_btn" href="">更多</a>
+        </div>
+        <div class="item_subnav">
+          <ul>
+            <li><a href="">精品栏目</a></li>
+            <li><a href="">赛事精品</a></li>
+            <li><a href="">英雄攻略</a></li>
+          </ul>
+        </div>
+        <div class="item-dotting">
+          <ul>
+            <li><a href="">最新</a></li>
+            <li><a href="">马菠萝奇闻录</a></li>
+            <li><a href="">王者克制论</a></li>
+            <li><a href="">王者视角</a></li>
+            <li><a href="">策见打</a></li>
+            <li><a href="">峡谷460</a></li>
+            <li><a href="">百星王者带你飞</a></li>
+            <li><a href="">狄仁杰封神榜</a></li>
+          </ul>
+        </div>
+        <ul class="item-list">
+          <li>
+            <a
+              href=""
+              title="【马菠萝奇闻录】诸葛上手指南，一个大招贯穿整个峡谷"
+            >
+              <img src="../image/下载8.jpg" alt="" />
+              <div class="play-bar">
+                <em class="icon-play">4225</em><em>2022-05-06</em>
+              </div>
+              <div class="video-tit">
+                【马菠萝奇闻录】诸葛上手指南，一个大招贯穿整个峡谷
+              </div>
+            </a>
+          </li>
+          <li>
+            <a
+              href=""
+              title="【狄仁杰封神榜】第85期 抓获草外狂徒 无视野乱杀疑点重重"
+              ><img src="../image/下载1.jpg" alt="" />
+              <div class="play-bar">
+                <em class="icon-play">4225</em><em>2022-05-06</em>
+              </div>
+              <div class="video-tit">
+                【狄仁杰封神榜】第85期 抓获草外狂徒 无视野乱杀疑点重重
+              </div>
+            </a>
+          </li>
+          <li>
+            <a
+              href=""
+              title="【马菠萝奇闻录】第42期：转职成功，峡谷新晋野王报道！"
+              ><img src="../image/下载2.jpg" alt="" />
+              <div class="play-bar">
+                <em class="icon-play">4225</em><em>2022-05-06</em>
+              </div>
+              <div class="video-tit">
+                【马菠萝奇闻录】第42期：转职成功，峡谷新晋野王报道！
+              </div>
+            </a>
+          </li>
+          <li>
+            <a
+              href=""
+              title="【狄仁杰封神榜】第84期 带着科技送外卖 隔壁典韦都馋哭了！"
+              ><img src="../image/下载3.jpg" alt="" />
+              <div class="play-bar">
+                <em class="icon-play">4225</em><em>2022-05-06</em>
+              </div>
+              <div class="video-tit">
+                【狄仁杰封神榜】第84期 带着科技送外卖 隔壁典韦都馋哭了！
+              </div>
+            </a>
+          </li>
+          <li>
+            <a
+              href=""
+              title="【狄仁杰封神榜】第83期 一个举动 让队友集体锁定安琪拉"
+              ><img src="../image/下载4.jpg" alt="" />
+              <div class="play-bar">
+                <em class="icon-play">4225</em><em>2022-05-06</em>
+              </div>
+              <div class="video-tit">
+                【狄仁杰封神榜】第83期 一个举动 让队友集体锁定安琪拉
+              </div>
+            </a>
+          </li>
+          <li>
+            <a
+              href=""
+              title="【马菠萝奇闻录】第41期：新赛季赢在起跑线，3分钟掌握分路和视野调整"
+              ><img src="../image/下载5.jpg" alt="" />
+              <div class="play-bar">
+                <em class="icon-play">4225</em><em>2022-05-06</em>
+              </div>
+              <div class="video-tit">
+                【狄仁杰封神榜】第83期 一个举动 让队友集体锁定安琪拉
+              </div></a
+            >
+          </li>
+          <li>
+            <a
+              href=""
+              title="【狄仁杰封神榜】第82期 发生什么事了？全局例无虚发又双叒现峡谷"
+              ><img src="../image/下载6.jpg" alt="" />
+              <div class="play-bar">
+                <em class="icon-play">4225</em><em>2022-05-06</em>
+              </div>
+              <div class="video-tit">
+                【狄仁杰封神榜】第83期 一个举动 让队友集体锁定安琪拉
+              </div></a
+            >
+          </li>
+          <li>
+            <a
+              href=""
+              title="【马菠萝奇闻录】第40期：KPL非BAN必选？职业选手教你玩转公孙离！"
+              ><img src="../image/下载7.jpg" alt="" />
+              <div class="play-bar">
+                <em class="icon-play">4225</em><em>2022-05-06</em>
+              </div>
+              <div class="video-tit">
+                【狄仁杰封神榜】第83期 一个举动 让队友集体锁定安琪拉
+              </div></a
+            >
+          </li>
+        </ul>
+      </div>
+      <div class="skin_center">
+        <div class="item_header">
+          <div class="item_title">英雄/皮肤</div>
+          <a class="more_btn" href="">更多</a>
+        </div>
+        <div class="item_subnav">
+          <ul>
+            <li><a href="">最新英雄</a></li>
+            <li><a href="">最新皮肤</a></li>
+            <li><a href="">周免英雄</a></li>
+          </ul>
+        </div>
+        <div class="slide-content">
+          <div class="new_hero">
+            <a
+              class="a_link_block"
+              href="http://"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <img src="../image/534.webp" alt="" />
+            </a>
+          </div>
+          <div class="new_hero_bottom">
+            <p class="new_hero_name">新英雄：桑启</p>
+            <p>上线时间：2022.04.14</p>
+          </div>
+          <div class="hero_pic_list">
+            <a class="a_link_block" href="">
+              <img src="../image/155.webp" alt="">
+              <span class="hero_name tganime-fadein-child">暃</span>
+            </a>
+            <a class="a_link_block" href="">
+              <img src="../image/538.webp" alt="">
+              <span class="hero_name tganime-fadein-child">金蝉</span>
+            </a>
+            <a class="a_link_block" href="">
+              <img src="../image/540.webp" alt="">
+              <span class="hero_name tganime-fadein-child">云樱</span>
+            </a>
+            <a class="a_link_block" href="">
+              <img src="../image/542.webp" alt="">
+              <span class="hero_name tganime-fadein-child">艾琳</span>
+            </a>
+          </div>
+      </div>
+    </div>
+  </body>
+</html>

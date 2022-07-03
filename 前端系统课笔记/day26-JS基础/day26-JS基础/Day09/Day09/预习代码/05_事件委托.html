@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .active {
+      color: red;
+    }
+  </style>
+</head>
+<body>
+
+  <ul class="list">
+    <li>1</li>
+    <li>2</li>
+    <li>3</li>
+    <li>4</li>
+    <li>5</li>
+  </ul>
+  
+  <div class="btn-list">
+    <button data-action="new">新建</button>
+    <button data-action="search">搜索</button>
+    <button data-action="delete">删除</button>
+  </div>
+
+  <script>
+    var btnListEl = document.querySelector(".btn-list")
+    btnListEl.addEventListener("click", function(event) {
+      var action = event.target.dataset.action
+      switch (action) {
+        case "new":
+          console.log("点击了新建~")
+          break
+        case "search":
+          console.log("点击了搜索~")
+          break
+        case "delete":
+          console.log("点击了删除~")
+          break
+        default:
+          console.log("位置action")
+      }
+    })
+
+    var listEl = document.querySelector(".list")
+    var currentActive = null
+    listEl.addEventListener("click", function(event) {
+      if (currentActive) currentActive.classList.remove("active")
+      event.target.classList.add("active")
+      currentActive = event.target
+    })
+
+    // new Array(...listEl.children).forEach(function(item) {
+    //   item.addEventListener("click", function() {
+    //     if (currentLi) currentLi.classList.remove("active")
+    //     this.classList.add("active")
+    //     currentLi = this
+    //   })
+    // })
+
+  </script>
+
+</body>
+</html>

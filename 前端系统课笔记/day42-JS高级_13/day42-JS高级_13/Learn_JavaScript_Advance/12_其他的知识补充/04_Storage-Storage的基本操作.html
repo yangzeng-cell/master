@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // storage基本使用
+    // 1.token的操作
+    let token = localStorage.getItem("token")
+    if (!token) {
+      console.log("从服务器获取token")
+      token = "coderwhytokeninfo"
+      localStorage.setItem("token", token)
+    }
+
+    // 2.username/password的操作
+    let username = localStorage.getItem("username")
+    let password = localStorage.getItem("password")
+    if (!username || !password) {
+      console.log("让用户输入账号和密码")
+      username = "coderwhy"
+      password = "123456"
+      // 将token/username/password保存到storage
+      localStorage.setItem("username", username)
+      localStorage.setItem("password", password)
+    }
+
+    // 3.后续的操作
+    console.log(token)
+    console.log(token.length)
+    console.log(token + " 哈哈哈")
+
+  </script>
+
+</body>
+</html>

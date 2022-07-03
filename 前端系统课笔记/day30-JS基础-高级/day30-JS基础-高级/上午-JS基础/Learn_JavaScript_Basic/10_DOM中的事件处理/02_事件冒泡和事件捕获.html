@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    .box {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 200px;
+      height: 200px;
+      background-color: orange;
+    }
+
+    .box span {
+      width: 100px;
+      height: 100px;
+      background-color: red;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="box">
+    <span></span>
+  </div>
+
+  <script>
+
+    // 1.获取元素
+    var spanEl = document.querySelector("span")
+    var divEl = document.querySelector("div")
+    var bodyEl = document.body
+
+
+    // 2.绑定点击事件
+    // spanEl.onclick = function() {
+    //   console.log("span元素发生了点击~")
+    // }
+    // divEl.onclick = function() {
+    //   console.log("div元素发生了点击~")
+    // }
+    // bodyEl.onclick = function() {
+    //   console.log("body元素发生了点击~")
+    // }
+
+    // 默认情况下是事件冒泡
+    spanEl.addEventListener("click", function() {
+      console.log("span元素发生了点击~冒泡")
+    })
+    divEl.addEventListener("click", function() {
+      console.log("div元素发生了点击~冒泡")
+    })
+    bodyEl.addEventListener("click", function() {
+      console.log("body元素发生了点击~冒泡")
+    })
+
+    // 设置希望监听事件捕获的过程
+    spanEl.addEventListener("click", function() {
+      console.log("span元素发生了点击~捕获")
+    }, true)
+    divEl.addEventListener("click", function() {
+      console.log("div元素发生了点击~捕获")
+    }, true)
+    bodyEl.addEventListener("click", function() {
+      console.log("body元素发生了点击~捕获")
+    }, true)
+
+  </script>
+
+</body>
+</html>

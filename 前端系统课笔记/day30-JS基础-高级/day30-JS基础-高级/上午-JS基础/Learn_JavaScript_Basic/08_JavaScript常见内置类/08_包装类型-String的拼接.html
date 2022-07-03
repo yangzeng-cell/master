@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var str1 = "Hello"
+    var str2 = "World"
+    var str3 = "kobe"
+
+    // 1.字符串拼接
+    // +
+    // var newString = str1 + str2 + str3
+    // console.log(newString)
+    // concat方法: 链式调用
+    var newString2 = str1.concat(str2).concat(str3)
+    var newString3 = str1.concat(str2, str3, "abc", "cba")
+    console.log(newString2)
+    console.log(newString3)
+
+    // 2.删除收尾的空格
+    console.log("    why      abc   ".trim())
+
+    // 3.字符串切割split
+    var message = "abc-cba-nba-mba"
+    var items = message.split("-")
+    var newMessage = items.join("*")
+    console.log(newMessage)
+
+  </script>
+
+</body>
+</html>

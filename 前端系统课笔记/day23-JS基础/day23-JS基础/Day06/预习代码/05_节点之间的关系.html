@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  
+  <div class="box">
+    <!-- 我是注释 -->
+    <h1 class="title">我是标题</h1>
+    <div class="container">我是div元素</div>
+    <div class="desc">我是一个段落</div>
+    我是文本
+  </div>
+  
+  <script>
+    
+    var body = document.body
+    var boxEl = body.firstChild.nextSibling
+
+    // 1.父元素
+    console.log(boxEl.parentNode)
+    console.log(boxEl.previousSibling)
+    console.log(boxEl.nextSibling)
+    console.log(boxEl.firstChild)
+    console.log(boxEl.lastChild)
+    console.log(boxEl.childNodes)
+
+  </script>
+
+</body>
+</html>

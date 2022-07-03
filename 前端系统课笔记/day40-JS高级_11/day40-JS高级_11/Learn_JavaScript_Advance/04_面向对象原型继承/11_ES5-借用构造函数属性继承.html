@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 定义Person构造函数(类)
+    function Person(name, age, height, address) {
+      this.name = name
+      this.age = age
+      this.height = height
+      this.address = address
+    }
+
+    Person.prototype.running = function() {
+      console.log("running~")
+    }
+    Person.prototype.eating = function() {
+      console.log("eating~")
+    }
+
+    // 定义学生类
+    function Student(name, age, height, address, sno, score) {
+      // 重点: 借用构造函数
+      Person.call(this, name, age, height, address)
+      // this.name = name
+      // this.age = age
+      // this.height = height
+      // this.address = address
+
+      this.sno = sno
+      this.score = score
+    }
+
+    // 方式一: 父类的原型直接赋值给子类的原型
+    // 缺点: 父类和子类共享通一个原型对象, 修改了任意一个, 另外一个也被修改
+    // Student.prototype = Person.prototype
+
+    // 方式二: 创建一个父类的实例对象(new Person()), 用这个实例对象来作为子类的原型对象
+    var p = new Person("why", 18)
+    Student.prototype = p
+
+    // Student.prototype.running = function() {
+    //   console.log("running~")
+    // }
+    // Student.prototype.eating = function() {
+    //   console.log("eating~")
+    // }
+    Student.prototype.studying = function() {
+      console.log("studying~")
+    }
+
+    // 创建学生
+    var stu1 = new Student("kobe", 30, 111, 100)
+    var stu2 = new Student("james", 25, 111, 100)
+    stu1.running()
+    stu1.studying()
+
+    console.log(stu1.name, stu1.age)
+    console.log(stu1)
+    console.log(stu2.name, stu2.age)
+
+
+  </script>
+
+</body>
+</html>

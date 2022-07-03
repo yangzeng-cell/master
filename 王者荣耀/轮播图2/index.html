@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
+    <div class="rotation_map">
+      <ul class="ad_pic">
+        <li>
+          <a href="javascript:;"
+            ><img src="./image/image1.jpeg" alt="" srcset=""
+          /></a>
+        </li>
+        <li>
+          <a href="javascript:;"
+            ><img src="./image/image2.jpeg" alt="" srcset=""
+          /></a>
+        </li>
+        <li>
+          <a href="javascript:;"
+            ><img src="./image/image3.jpeg" alt="" srcset=""
+          /></a>
+        </li>
+        <li>
+          <a href="javascript:;"
+            ><img src="./image/image4.jpeg" alt="" srcset=""
+          /></a>
+        </li>
+        <li>
+          <a href="javascript:;"
+            ><img src="./image/image5.jpeg" alt="" srcset=""
+          /></a>
+        </li>
+      </ul>
+      <ul class="ad_btn">
+        <li><a href="javascript:;">520新皮肤</a></li>
+        <li><a href="javascript:;">女子赛开赛</a></li>
+        <li><a href="javascript:;">大招已经好了</a></li>
+        <li><a href="javascript:;">第八届高校联赛</a></li>
+        <li><a href="javascript:;">峡谷CP对对碰</a></li>
+      </ul>
+    </div>
+    <script>
+      const adPic = document.querySelector(".ad_pic");
+      const adBtn = document.querySelector(".ad_btn");
+      const clientWidth = adPic.children[0].clientWidth;
+      const adPicList = adPic.children;
+      adPic.style.width = `${clientWidth * adPicList.length}px`;
+      let currentIndex = 0;
+      let stop = 0;
+      adBtn.children[currentIndex].children[0].classList.add("active");
+      function changeImg(e) {
+        clearInterval(stop);
+        adBtn.children[currentIndex].children[0].classList.remove("active");
+        currentIndex = Array.from(adBtn.children).findIndex(
+          (value) => e.target.innerText === value.innerText
+        );
+        adBtn.children[currentIndex].children[0].classList.add("active");
+        adPic.style.transform = `translate(${-(
+          clientWidth * currentIndex
+        )}px,0)`;
+        adPic.style.transition = `all 300ms ease-in`;
+      }
+
+      function start() {
+        stop = setInterval(() => {
+          adBtn.children[currentIndex].children[0].classList.remove("active");
+          currentIndex =
+            currentIndex === adPicList.length - 1 ? 0 : ++currentIndex;
+          adPic.style.transform = `translate(${-(
+            clientWidth * currentIndex
+          )}px,0)`;
+          adPic.style.transition = `all 300ms ease-in`;
+          adBtn.children[currentIndex].children[0].classList.add("active");
+        }, 2000);
+      }
+      function stopRand(){
+        clearInterval(stop)
+      }
+      start();
+      adBtn.onmouseover = changeImg;
+      adBtn.onmouseout = start;
+      adPic.onmouseenter=stopRand
+      adPic.onmouseleave=start
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    console.log(window.window === window)
+
+    const info = {
+      name: "why",
+      age: 18,
+      friend: {
+        name: "kobe"
+      },
+      running: function() {},
+      [Symbol()]: "abc",
+      // obj: info
+    }
+    info.obj = info
+
+    // 1.操作一: 引用赋值
+    // const obj1 = info
+
+    // 2.操作二: 浅拷贝
+    // const obj2 = { ...info }
+    // // obj2.name = "james"
+    // // obj2.friend.name = "james"
+    // // console.log(info.friend.name)
+
+    // const obj3 = Object.assign({}, info)
+    // // obj3.name = "curry"
+    // obj3.friend.name = "curry"
+    // console.log(info.friend.name)
+
+    // 3.操作三: 深拷贝
+    // 3.1.JSON方法
+    // const obj4 = JSON.parse(JSON.stringify(info))
+    // info.friend.name = "curry"
+    // console.log(obj4.friend.name)
+    // console.log(obj4)
+
+    // 3.2.自己编写一个深拷贝函数(第三方库)
+
+
+  </script>
+
+</body>
+</html>

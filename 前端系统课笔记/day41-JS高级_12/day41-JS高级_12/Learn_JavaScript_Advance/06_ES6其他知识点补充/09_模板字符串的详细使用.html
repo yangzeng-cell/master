@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    const name = "why"
+    const age = 18
+
+    // 1.基本用法
+    // 1.1.ES6之前
+    // const info = "my name is" + name + ", age is " + age
+
+    // 1.2.ES6之后
+    const info = `my name is ${name}, age is ${age}`
+    console.log(info)
+
+
+    // 2.标签模板字符串的用法
+    function foo(...args) {
+      console.log("参数:", args)
+    }
+
+    // foo("why", 18, 1.88)
+    foo`my name is ${name}, age is ${age}, height is ${1.88}`
+
+  </script>
+
+</body>
+</html>

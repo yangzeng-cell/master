@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // eventtarget就可以实现类似于事件总线的效果
+    window.addEventListener("coderwhy", function() {
+      console.log("监听到coderwhy的呼唤~")
+    })
+
+    setTimeout(function() {
+      window.dispatchEvent(new Event("coderwhy"))
+    }, 5000)
+
+  </script>
+
+</body>
+</html>

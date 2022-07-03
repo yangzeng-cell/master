@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var names = ["abc", "cba", "nba"]
+
+    // indexOf/lastIndexOf
+    // find: 查找元素
+
+    // includes
+    // console.log(names.includes("nba"))
+
+    // findIndex: 查找元素的索引
+    var findIndex = names.findIndex(function(item, index, arr) {
+      return item === "nba"
+    })
+    // var findIndex = names.findIndex(item => item === "nba")
+    console.log(findIndex)
+
+  </script>
+
+</body>
+</html>

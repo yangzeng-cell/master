@@ -1,4 +1,5 @@
-shift+alt+f 格式化
-注释 CTRL+K+C
-取消注释 CTRL+K+U
-推出全屏 F11
+1. shift+alt+f 格式化
+2. .注释 CTRL+K+C
+3. 取消注释 CTRL+K+U
+4. 推出全屏 F11
+5. 对这行代码进行复制并粘贴到下一行，将光标放在这一行，然后shift+alt+向上或者向下的箭头

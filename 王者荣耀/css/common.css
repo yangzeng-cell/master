@@ -1,0 +1,140 @@
+p,body,ul,li,h1{
+  margin: 0;
+  padding: 0;
+}
+em{
+  font-style: normal;
+}
+a{
+  text-decoration: none;
+  color: black;
+}
+ul,li{
+  list-style: none;
+}
+body{
+  font: 14px/1.5 "Microsoft YaHei",Tahoma,"simsun",sans-serif;
+  color: #323235
+}
+
+.item-list {
+  display: flex;
+  flex-wrap: wrap;
+}
+.item-list li a {
+  display: block;
+  width: 209px;
+  height: 175px;
+  margin-right: 12px;
+  margin-bottom: 30px;
+  overflow: hidden;
+  position: relative;
+}
+.item-list li:nth-child(4n) a {
+  margin: 0;
+}
+.item-list li a img {
+  width: 209px;
+  height: 125px;
+  display: block;
+}
+.item-list li a .mask{
+  position: absolute;
+  display: none;
+  top: 0;
+  left: 0;
+  right: 0;
+  width: 209px;
+  height: 125px;
+  background: rgba(0,0,0,0.6);
+}
+.item-list li a:hover .mask{
+  display: block;
+}
+.item-list li a .mask .mask-play-ico{
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  height:40px ;
+  width: 40px;
+  background: url(../image/index.png) -192px -64px no-repeat;
+}
+.item-list li a .video-tit {
+  height: 40px;
+  overflow: hidden;
+  color: #333333;
+  margin-top: 10px;
+}
+.item-list li a .play-bar {
+  position: absolute;
+  height: 22px;
+  width: 189px;
+  display: flex;
+  justify-content: space-between;
+  right: 0;
+  left: 0;
+  top: 104px;
+  background: rgba(0, 0, 0, 0.6);
+  font-size: 12px;
+  line-height: 22px;
+  color: #fff;
+  border-radius: 0 0 2px 2px;
+  padding: 0 10px;
+}
+.item-list li a .play-bar .icon-play {
+  display: inline-block;
+  padding-left: 15px;
+  background: url(../image/index.png) -256px -59px no-repeat;
+}
+
+
+.item-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.item-header .item_title {
+  background: url(../image/index.png) no-repeat;
+  font-size: 22px;
+  line-height: 25px;
+  text-indent: 33px;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
+
+.item-header .more_btn {
+  color: #999;
+  background: url(../image/index.png) -252px 4px no-repeat;
+  padding-left: 22px;
+}
+
+.item-header .more_btn:hover{
+  color: #f3c258;
+}
+
+.item-header .buy_ticket{
+  color: #323235;
+  width: 70px;
+  height: 22px;
+  box-sizing: border-box;
+  border:1px solid #f3c258;
+  display: block;
+  background: url(../image/index.png) -243px -85px no-repeat;
+  text-indent: 32px;
+  border-radius: 3px;
+  line-height: 19px;
+}
+.item_subnav{
+  display: flex;
+  background: #f5f5f5;
+  height: 32px;
+  line-height: 29px;
+}
+.col1{
+  width: 83px;
+}
+.col2{
+  width: 43px;
+}

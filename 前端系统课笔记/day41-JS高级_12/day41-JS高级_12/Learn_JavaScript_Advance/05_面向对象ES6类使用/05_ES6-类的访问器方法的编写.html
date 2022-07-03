@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 1.访问器的编写方式
+    // class Person {
+    //   // 程序员之间的约定: 以_开头的属性和方法, 是不在外界访问
+    //   constructor(name, age) {
+    //     this._name = name
+    //   }
+
+    //   set name(value) {
+    //     console.log("设置name")
+    //     this._name = value
+    //   }
+
+    //   get name() {
+    //     console.log("获取name")
+    //     return this._name
+    //   }
+    // }
+
+    // var p1 = new Person("why", 18)
+    // p1.name = "kobe"
+    // console.log(p1.name)
+    // // console.log(p1._name)
+
+    // var p2 = new Person("james", 25)
+    // console.log(p2.name)
+
+
+    // 2.访问器的应用场景
+    class Rectangle {
+      constructor(x, y, width, height) {
+        this.x = x
+        this.y = y
+        this.width = width
+        this.height = height
+      }
+
+      get position() {
+        return { x: this.x, y: this.y }
+      }
+
+      get size() {
+        return { width: this.width, height: this.height }
+      }
+    }
+
+    var rect1 = new Rectangle(10, 20, 100, 200)
+    console.log(rect1.position)
+    console.log(rect1.size)
+
+  </script>
+
+</body>
+</html>

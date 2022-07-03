@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>头部</title>
+    <link rel="stylesheet" href="../css/common.css" />
+    <style>
+      .header {
+        height: 84px;
+        background: rgba(0, 0, 0, 0.8);
+      }
+      .header .header_nav {
+        width: 1300px;
+        display: flex;
+        margin: 0 auto;
+        height: 100%;
+        align-items: center;
+      }
+      .header .header_nav .logo {
+        display: block;
+        text-indent: -9999px;
+        background: url(../image/logo_header.png) center center no-repeat;
+        height: 54px;
+        width: 200px;
+      }
+      .header .header_nav div .login_pannel {
+        display: inline-block;
+        margin-left: 47px;
+      }
+      .header .header_nav .unlogin_info {
+        color: #858792;
+        margin-left: 7px;
+        font-size: 14px;
+      }
+      .header .header_nav .unlogin_info a {
+        color: #ffffff;
+        font-size: 16px;
+      }
+      .header .header_nav div .login_pannel img {
+        border: 1px solid #d9ad50;
+        border-radius: 50%;
+        height: 42px;
+        height: 42px;
+      }
+      .header .header_nav .search {
+        width: 38px;
+      }
+      .header .header_nav .search a {
+        display: block;
+        height: 26px;
+        width: 27px;
+        text-indent: -9999px;
+        margin: 0 auto;
+        background: url(../image/nav_search.png) no-repeat;
+      }
+      .header .header_nav .main_nav {
+        display: flex;
+        padding-left: 30px;
+      }
+      .header .header_nav .main_nav li a {
+        display: block;
+        width: 110px;
+        height: 64px;
+        padding-top: 20px;
+        text-align: center;
+        color: #c9c9dd;
+        font-size: 18px;
+        line-height: 30px;
+        padding-right: 5px;
+      }
+      .header .header_nav .main_nav li a:hover {
+        background: url(../image/index.png) no-repeat;
+        color: #e4b653;
+      }
+      .header .header_nav .main_nav li a:hover p {
+        color: #91763f;
+      }
+      .header .header_nav .main_nav .active {
+        background: url(../image/index.png) no-repeat;
+        color: #e4b653;
+      }
+      .header .header_nav .main_nav .active p {
+        color: #91763f;
+      }
+      .header .header_nav .main_nav li a p {
+        font-size: 12px;
+        color: #858792;
+        padding-top: 5px;
+        transform: scale(0.95);
+        line-height: 16px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="header">
+      <div class="header_nav">
+        <h1>
+          <a
+            class="logo"
+            href="http://"
+            target="_blank"
+            rel="noopener noreferrer"
+            >王者荣耀</a
+          >
+        </h1>
+        <ul class="main_nav">
+          <li>
+            <a class="active" href="#"
+              >游戏中心
+              <p>DATA</p></a
+            >
+          </li>
+          <li>
+            <a href="#"
+              >内容中心
+              <p>CONTENTS</p></a
+            >
+          </li>
+          <li>
+            <a href="#"
+              >赛事中心
+              <p>MATCH</p></a
+            >
+          </li>
+          <li>
+            <a href="#"
+              >百态王者
+              <p>CULTURE</p></a
+            >
+          </li>
+          <li>
+            <a href="#"
+              >社区互动
+              <p>COMMUNITY</p></a
+            >
+          </li>
+          <li>
+            <a href="#"
+              >玩家支持
+              <p>PLAYER</p></a
+            >
+          </li>
+          <li>
+            <a href="#"
+              >IP新游
+              <p>NEW GAMES</p></a
+            >
+          </li>
+        </ul>
+        <div class="search">
+          <a href="javascript:;">搜索</a>
+        </div>
+        <div>
+          <a href="#" class="login_pannel">
+            <img
+              src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAACoAAAAqCAMAAADyHTlpAAAABGdBTUEAALGPC/xhBQAAARpQTFRF88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JY88JYAAAA88JYAMCn0QAAAF10Uk5TZBSP1dYNDujnLPuA3/zQAos0UjmnB8KcgZrNkfGwCdhthtnjysFgCFAZSuQWKYNXh9IbREw+9iRhdyPlZRNdvRwnMRrvNf3F3isBtz+eRfPha+v3O+718Gm0eB4AqcfmkwAAAUBJREFUOMvt1FWTg0AMAOCeu7u71t3dFS+FJv//b9wCnbu5YwI83VPzsBvYb2aRbHzgOXxzartTLbGhVPVAN9Z0NurrXVdaE9GkKNZcaFPBVBJ6kEyh0nSksoqYAVgEyCCqsgMdcIjIpxOYSPMs4wYkHY3RiPwSLufNbDyiqIp/Q6Iob6MqRZ9t9ImiNzZ6R9ELG72k6Dl22q1v1mp38JSiE9SgLpR3mNssC3XQ2DVBD62lBR2zRSPR8JiiR9jIrgDEwhiOAazqDTyjaI7trMQhwqYIxBU2XVH01nibCYTYGGIPzuKBLJdrkwb86A9YVCfpI1uNBkHmZAhGDSqQ9MUspwLkwGcV2StJh9bHn8J09hs+Sfo2/EXFd6ezVZB+aP/D+cQebM+odN9z6wPFvkl3ux66y95WBSr7J/NW/F/0C0EhZNPgBN3FAAAAAElFTkSuQmCC"
+              alt="登录"
+            />
+          </a>
+        </div>
+        <div class="unlogin_info">
+          <a href="#"> 欢迎登录 </a>
+          <p>登陆后查看游戏战绩</p>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

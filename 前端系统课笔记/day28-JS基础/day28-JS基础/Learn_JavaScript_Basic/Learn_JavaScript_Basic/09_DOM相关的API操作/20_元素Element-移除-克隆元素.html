@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <button class="remove-btn">移除box</button>
+  <button class="clone-btn">复制box</button>
+
+  <div class="box">
+    <h2>我是标题</h2>
+    <p>我是文本, 哈哈哈哈哈</p>
+  </div>
+
+  <script>
+
+    // 1.获取元素
+    var boxEl = document.querySelector(".box")
+    var removeBtnEl = document.querySelector(".remove-btn")
+    var cloneBtnEl = document.querySelector(".clone-btn")
+
+    // 2.监听removeBtn的点击
+    removeBtnEl.onclick = function() {
+      boxEl.remove()
+    }
+
+    // 3.复制box
+    var counter = 0
+    cloneBtnEl.onclick = function() {
+      var newNode = boxEl.cloneNode(true)
+      newNode.children[0].textContent = "我是标题" + counter
+      // boxEl.after(newNode)
+      document.body.append(newNode)
+
+      counter++
+    }
+
+  </script>
+
+</body>
+</html>

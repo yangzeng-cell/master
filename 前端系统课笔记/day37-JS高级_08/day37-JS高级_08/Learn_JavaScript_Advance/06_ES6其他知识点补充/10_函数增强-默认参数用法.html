@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 注意: 默认参数是不会对null进行处理的
+    function foo(arg1 = "我是默认值", arg2 = "我也是默认值") {
+      // 1.两种写法不严谨
+      // 默认值写法一:
+      // arg1 = arg1 ? arg1: "我是默认值"
+
+      // 默认值写法二:
+      // arg1 = arg1 || "我是默认值"
+
+      // 2.严谨的写法
+      // 三元运算符
+      // arg1 = (arg1 === undefined || arg1 === null) ? "我是默认值": arg1
+      
+      // ES6之后新增语法: ??
+      // arg1 = arg1 ?? "我是默认值"
+
+      // 3.简便的写法: 默认参数
+      console.log(arg1)
+    }
+
+    foo(123, 321)
+    foo()
+    foo(0)
+    foo("")
+    foo(false)
+    foo(null)
+    foo(undefined)
+
+  </script>
+
+</body>
+</html>

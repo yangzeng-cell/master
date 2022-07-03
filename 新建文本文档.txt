@@ -1,0 +1,65 @@
+// 题目1:
+// 有数据结构如下，请实现一个groupby方法使得可以返回如下结果。
+const userList = [
+    { "name": "lilei", "gender": 'male', "location": "CN" },
+    { "name": "lileilei", "gender": 'male', "location": "US" },
+    { "name": "hanmei", "gender": 'female', "location": "CN" },
+    { "name": "hanmeimei", "gender": 'female', "location": "UK" },
+]
+
+//  groupby(userList, 'gender') 返回
+// {
+//     "male": ['lilei','lileilei'],
+//     "female": ['hanmei','hanmeimei'],
+// }
+
+
+//  groupby(userList, 'location') 返回
+// {
+//     "CN": ['lilei','hanmei'],
+//     "US": ['lileilei'],
+//     "UK": ['hanmeimei'],
+// }
+
+function groupby(arr, key){
+    let keyObj = {}
+    // 你的代码
+    arr.forEach(item=>{
+      if(!(key in keyObj)){
+        keyObj[key]=[]
+      }
+      keyObj[key].push(item.name)
+    })
+    // 你的代码
+    return keyObj
+}
+
+// 题目2: 请用React组件实现一个计时器，每隔一秒+1
+function Count(){
+    const [cnt, setCnt] = useState(0);
+    // 你的代码
+    const click=function(){
+      setInterval(()=>{
+        setCnt(cnt+1)
+      },1000)
+    }
+    useEffect((=>{
+      click()
+    }))
+    // 你的代码
+    return <div>{cnt}</div>;
+}
+
+
+// 题目3: 请实现一个获取cookie的方法
+function getCookie(name) {
+ 	// 你的代码
+   const coo={}
+  const getCookie=document.cookie;
+  const cookieArr=getCookie.split(";")
+  for(let item of cookieArr){
+    const cookieItem=item.split("= ")
+    coo[cookieItem[0]]=cookieItem[1]
+  }
+return coo
+}

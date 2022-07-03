@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    const nums = [10, 22, [123, 321], [111, 222, 333], [[12, 21], [32, 23]]]
+    const newNum1 = nums.flat(1)
+    console.log(newNum1)
+    const newNum2 = nums.flat(2)
+    console.log(newNum2)
+
+    const messages = ["Hello World", "你好啊 李银河", "Hello Coderwhy"]
+    const items = messages.flatMap(item => item.split(" "))
+    console.log(items)
+
+  </script>
+
+</body>
+</html>

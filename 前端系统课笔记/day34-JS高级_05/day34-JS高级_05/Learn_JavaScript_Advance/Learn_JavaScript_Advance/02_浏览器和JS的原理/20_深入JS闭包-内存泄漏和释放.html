@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    function createAdder(count) {
+      function adder(num) {
+        return count + num
+      }
+
+      return adder
+    }
+
+    var adder5 = createAdder(5)
+    adder5(100)
+    adder5(55)
+    adder5(12)
+
+    var adder8 = createAdder(8)
+    adder8(22)
+    adder8(35)
+    adder8(7)
+
+    console.log(adder5(24))
+    console.log(adder8(30))
+
+    // 永远不会再使用adder8
+    // 内存泄漏: 对于那些我们永远不会再使用的对象, 但是对于GC来说, 它不知道要进行释放的对应内存会依然保留着
+    adder8 = null
+
+  </script>
+
+</body>
+</html>

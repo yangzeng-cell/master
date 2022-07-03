@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <div id="box" onclick="alert('box点击')">我是box</div>
+  <script>
+    box.onclick = function() {
+      alert("box点击2")
+    }
+    box.addEventListener("click", function() {
+      console.log("box点击3")
+    })
+  </script>
+
+</body>
+</html>

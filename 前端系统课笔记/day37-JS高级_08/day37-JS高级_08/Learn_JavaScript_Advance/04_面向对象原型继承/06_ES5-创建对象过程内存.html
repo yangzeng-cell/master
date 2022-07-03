@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    function Person(name, age) {
+      this.name = name
+      this.age = age
+    }
+
+    Person.prototype.running = function() {
+      console.log("running~")
+    }
+
+    var p1 = new Person("why", 18)
+    var p2 = new Person("kobe", 30)
+
+    // 进行操作
+    console.log(p1.name)
+    console.log(p2.name)
+
+    p1.running()
+    p2.running()
+
+    // 新增属性
+    Person.prototype.address = "中国"
+    p1.__proto__.info = "中国很美丽!"
+
+    p1.height = 1.88
+    p2.isAdmin = true
+
+    // 获取属性
+    console.log(p1.address)
+    console.log(p2.isAdmin)
+    console.log(p1.isAdmin)
+    console.log(p2.info)
+
+    // 修改address
+    p1.address = "广州市"
+    console.log(p2.address)
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var obj = {
+      name: "why",
+      age: 18,
+      height: 1.88
+    }
+
+    // Object.defineProperty(obj, "name", {})
+    // Object.defineProperty(obj, "age", {})
+    // Object.defineProperty(obj, "height", {})
+
+    // 新增的方法
+    Object.defineProperties(obj, {
+      name: {
+        configurable: true,
+        enumerable: true,
+        writable: false
+      },
+      age: {
+      },
+      height: {
+      }
+    })
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var obj = {
+      name: "why",
+      age: 18
+    }
+    console.log(obj)
+
+    var info = {}
+
+    // 获取对象的原型
+    console.log(obj.name, obj.age)
+    console.log(obj.__proto__)
+    console.log(Object.getPrototypeOf(obj))
+    console.log(obj.__proto__ === Object.getPrototypeOf(obj)) // true
+
+    // 疑问: 这个原型有什么用呢?
+    // 当我们通过[[get]]方式获取一个属性对应的value时
+    // 1> 它会优先在自己的对象中查找, 如果找到直接返回
+    // 2> 如果没有找到, 那么会在原型对象中查找
+    console.log(obj.name)
+
+    obj.__proto__.message = "Hello World"
+    console.log(obj.message)
+
+  </script>
+
+</body>
+</html>

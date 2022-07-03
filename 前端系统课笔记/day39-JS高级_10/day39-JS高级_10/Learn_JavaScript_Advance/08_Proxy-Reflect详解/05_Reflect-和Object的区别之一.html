@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    "use strict"
+
+    const obj = {
+      name: "why",
+      age: 18
+    }
+
+    Object.defineProperty(obj, "name", {
+      configurable: false
+    })
+    // Reflect.defineProperty()
+
+    // 1.用以前的方式进行操作
+    // delete obj.name
+    // if (obj.name) {
+    //   console.log("name没有删除成功")
+    // } else {
+    //   console.log("name删除成功")
+    // }
+
+    // 2.Reflect
+    if (Reflect.deleteProperty(obj, "name")) {
+      console.log("name删除成功")
+    } else {
+      console.log("name没有删除成功")
+    }
+
+  </script>
+
+</body>
+</html>

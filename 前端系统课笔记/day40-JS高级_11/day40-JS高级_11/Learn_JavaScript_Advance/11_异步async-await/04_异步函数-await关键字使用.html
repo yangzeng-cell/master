@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 1.普通函数
+    // function foo1() {
+    //   await 123
+    // }
+    // foo1()
+
+
+    // 2.await关键字
+    // await条件: 必须在异步函数中使用
+    function bar() {
+      console.log("bar function")
+      return new Promise(resolve => {
+        setTimeout(() => {
+          resolve(123)
+        }, 100000)
+      })
+    }
+
+    async function foo() {
+      console.log("-------")
+      // await后续返回一个Promise, 那么会等待Promise有结果之后, 才会继续执行后续的代码
+      const res1 = await bar()
+      console.log("await后面的代码:", res1)
+      const res2 = await bar()
+      console.log("await后面的代码:", res2)
+
+      console.log("+++++++")
+    }
+
+    foo()
+
+  </script>
+
+</body>
+</html>

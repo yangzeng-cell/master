@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var info = {
+      name: "why",
+      age: 18
+    }
+
+    // 访问对象的属性
+    console.log(info.name)
+    var age = info.age
+
+    // 修改对象的属性
+    info.name = "kobe"
+    info.age = 30
+
+    // 添加对象的属性
+    info.height = 1.98
+    info.address = "洛杉矶"
+
+    // 删除对象的属性
+    delete info.age
+
+    // 无法理解的属性
+    // info.good friend = "why"
+
+    var message = "Hello World"
+    var obj = {
+      "good friend": "why",
+      [message]: "你好, 世界"
+    }
+
+    console.log(obj["good friend"])
+    console.log(obj[message])
+
+    var info = {
+      name: "why",
+      age: 18,
+      height: 1.88
+    }
+
+    var infoKeys = Object.keys(info)
+    for (var i = 0; i < infoKeys.length; i++) {
+      var key = infoKeys[i]
+      var value = info[key]
+      console.log(`key: ${key}, value:${value}`)
+    }
+
+    for (var key in info) {
+      var value = info[key]
+      console.log(`key: ${key}, value:${value}`)
+    }
+
+    for (var value of info) {
+      console.log(value)
+    }
+
+    var letters = ["a", "b", "c", "d"]
+
+  </script>
+
+
+</body>
+</html>

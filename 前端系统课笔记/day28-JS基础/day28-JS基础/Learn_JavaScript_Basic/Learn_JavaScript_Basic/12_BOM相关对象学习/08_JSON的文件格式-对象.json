@@ -1,0 +1,8 @@
+{
+  "name": "why",
+  "age": 123,
+  "friend": {
+    "name": "kobe",
+    "age": null
+  }
+}

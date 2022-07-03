@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
+
+    .box {
+      height: 489px;
+      background-color: #f00;
+      overflow: hidden;
+    }
+
+    .box img {
+      position: relative;
+      /* left: 图片的一般 */
+      left: -960px;
+      /* translate中的百分比是相对于自己 */
+      /* transform: translate(-50%); */
+
+      /* 向右边移动div的一般 */
+      margin-left: 50%;
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="box">
+    <img src="../images/mhxy.jpg" alt="">
+  </div>
+
+</body>
+</html>

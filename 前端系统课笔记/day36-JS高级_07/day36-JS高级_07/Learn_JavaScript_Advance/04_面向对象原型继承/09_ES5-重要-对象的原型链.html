@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    // 1.{}的本质
+    // var info = {}
+    // 相当于
+    // var info = new Object()
+    // console.log(info.__proto__ === Object.prototype)
+
+    // 2.原型链
+    var obj = {
+      name: "why",
+      age: 18
+    }
+
+    // 查找顺序
+    // 1.obj上面查找
+    // 2.obj.__proto__上面查找
+    // 3.obj.__proto__.__proto__ -> null 上面查找(undefined)
+    // console.log(obj.message)
+
+
+    // 3.对现有代码进行改造
+    obj.__proto__ = {
+      // message: "Hello aaa"
+    }
+
+    obj.__proto__.__proto__ = {
+      message: "Hello bbbb"
+    }
+
+    obj.__proto__.__proto__.__proto__ = {
+      message: "Hello ccc"
+    }
+
+    console.log(obj.message)
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button>修改history</button>
+  <button class="back">返回上一级</button>
+  
+  <script>
+
+    // 前端路由核心: 修改了URL, 但是页面不刷新
+    // 1> 修改hash值
+    // 2> 修改history
+
+    // 1.history对应的属性
+    console.log(history.length)
+    console.log(history.state)
+
+    // 2.修改history
+    var btnEl = document.querySelector("button")
+    btnEl.onclick = function() {
+      // history.pushState({ name: "why", age: 18 }, "", "/why")
+      history.replaceState({ name: "why", age: 18 }, "", "/why")
+    }
+
+    var backBtnEl = document.querySelector(".back")
+    backBtnEl.onclick = function() {
+      // history.back()
+      // history.forward()
+      // 类似于上面的两个方法, 只是可以传入层级
+      // history.go(-2)
+    }
+
+  </script>
+
+</body>
+</html>

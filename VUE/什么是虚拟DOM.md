@@ -1,0 +1,1 @@
+虚拟DOm就是有vnode组成的vnode树

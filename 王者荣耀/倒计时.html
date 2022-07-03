@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class="time"></div>
+    <script>
+      const time = document.querySelector(".time");
+      var timestamp = new Date().getTime();
+
+      var timer = timestamp + 3600 * 1000;
+      console.log(timer);
+      var deadline = setInterval(() => {
+        let newTime = new Date().getTime();
+        var last = parseInt((timer - newTime) / 1000);
+
+        var sencond = (((last % 3600) % 60) + "").padStart(2, "0");
+        var hour = (Math.floor(last / 3600) + "").padStart(2, "0");
+        var minutes = (Math.floor((last % 3600) / 60) + "").padStart(2, "0");
+        time.innerHTML = `${hour}:${minutes}:${sencond}`;
+      }, 1000);
+
+      const comput = window.getComputedStyle(time);
+      console.log(comput);
+      const bunding = time.getBoundingClientRect();
+      console.log(bunding);
+    </script>
+  </body>
+</html>
