@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    function sum(num1, num2) {
+      return num1 + num2
+    }
+
+    sum(5, 10)
+    sum(5, 15)
+    sum(5, 18)
+
+    // makeAdder函数就是对sum的柯里化
+    function makeAdder(count) {
+      function add(num) {
+        return count + num
+      }
+      return add
+    }
+
+    // 1.数字和5相加
+    var adder5 = makeAdder(5)
+    adder5(10)
+    adder5(15)
+    adder5(18)
+
+    // 2.数组和10相加
+    var adder10 = makeAdder(10)
+    adder10(10)
+    adder10(16)
+    adder10(19)
+
+    // adder5 = null
+    // adder10 = null
+
+  </script>
+
+</body>
+</html>

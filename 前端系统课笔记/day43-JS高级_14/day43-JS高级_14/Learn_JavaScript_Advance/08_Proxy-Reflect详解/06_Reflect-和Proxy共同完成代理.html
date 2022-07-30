@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    const obj = {
+      name: "why",
+      age: 18
+    }
+
+    const objProxy = new Proxy(obj, {
+      set: function(target, key, newValue, receiver) {
+        // target[key] = newValue
+        // 1.好处一: 代理对象的目的: 不再直接操作原对象
+        // 2.好处二: Reflect.set方法有返回Boolean值, 可以判断本次操作是否成功
+        const isSuccess = Reflect.set(target, key, newValue)
+
+        if (!isSuccess) {
+          throw new Error(`set ${key} failure`)
+        }
+      },
+      get: function(target, key, receiver) {
+
+      }
+    })
+
+    // 操作代理对象
+    objProxy.name = "kobe"
+    console.log(obj)
+
+  </script>
+
+</body>
+</html>

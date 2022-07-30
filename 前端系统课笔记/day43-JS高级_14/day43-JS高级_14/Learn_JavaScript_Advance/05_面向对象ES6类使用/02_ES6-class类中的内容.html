@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    var obj = {
+      running: function() {},
+      eating: () => {},
+      swimming() {
+
+      }
+    }
+
+    // function Person() {
+
+    // }
+
+    // Person.prototype.running = function() {
+
+    // }
+
+    // 编程: 高内聚低耦合
+    class Person {
+      // 1.类中的构造函数
+      // 当我们通过new关键字调用一个Person类时, 默认调用class中的constructor方法
+      constructor(name, age) {
+        this.name = name
+        this.age = age
+      }
+
+      // 2.实例方法
+      // 本质上是放在Person.prototype
+      running() {
+        console.log(this.name + " running~")
+      }
+      eating() {
+        console.log(this.name + " eating~")
+      }
+    }
+
+    // 创建实例对象
+    var p1 = new Person("why", 18)
+
+    // 使用实例对象中属性和方法
+    console.log(p1.name, p1.age)
+    p1.running()
+    p1.eating()
+
+    // 研究内容
+    console.log(Person.prototype === p1.__proto__)
+    console.log(Person.running)
+    console.log(Person.prototype.running)
+
+  </script>
+
+</body>
+</html>

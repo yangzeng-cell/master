@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <h2 class="time"></h2>
+
+  <script>
+
+    // timestamp: 1659252290626
+    // yyyy/MM/dd hh:mm:ss
+    // yyyy*MM*dd hh-mm-ss
+    // dayjs/moment
+    function formatTime(timestamp, fmtString) {
+      // 1.将时间戳转成Date
+      const date = new Date(timestamp)
+
+      // // 2.获取到值
+      // const year = date.getFullYear()
+      // const month = date.getMonth() + 1
+      // const day = date.getDate()
+      // const hour = date.getHours()
+      // const minute = date.getMinutes()
+      // const second = date.getSeconds()
+
+      // // 3.创建正则
+      // const yearRe = /y+/
+      // const monthRe = /M+/
+
+      // 2.正则和值匹配起来
+      const dateO = {
+        "y+": date.getFullYear(),
+        "M+": date.getMonth() + 1,
+        "d+": date.getDate(),
+        "h+": date.getHours(),
+        "m+": date.getMinutes(),
+        "s+": date.getSeconds()
+      }
+
+      // 3.for循环进行替换
+      for (const key in dateO) {
+        const keyRe = new RegExp(key)
+        if (keyRe.test(fmtString)) {
+          const value = (dateO[key] + "").padStart(2, "0")
+          fmtString = fmtString.replace(keyRe, value)
+        }
+      }
+
+      return fmtString
+    }
+
+    // 某一个商品上架时间, 活动的结束时间
+    const timeEl = document.querySelector(".time")
+    const productJSON = {
+      name: "iPhone",
+      newPrice: 4999,
+      oldPrice: 5999,
+      endTime: 1659252301637
+    }
+    timeEl.textContent = formatTime(productJSON.endTime, "hh:mm:ss yyyy*MM*dd")
+
+  </script>
+
+</body>
+</html>

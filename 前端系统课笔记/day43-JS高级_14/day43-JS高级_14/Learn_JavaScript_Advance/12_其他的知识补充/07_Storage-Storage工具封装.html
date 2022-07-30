@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script src="./js/cache.js"></script>
+  <script>
+
+    localCache.setCache("sno", 111)
+
+    // storage本身是不能直接存储对象类型的
+    const userInfo = {
+      name: "why",
+      nickname: "coderwhy",
+      level: 100,
+      imgURL: "http://github.com/coderwhy.png"
+    }
+
+    // localStorage.setItem("userInfo", JSON.stringify(userInfo))
+    // console.log(JSON.parse(localStorage.getItem("userInfo")))
+
+    sessionCache.setCache("userInfo", userInfo)
+    console.log(sessionCache.getCache("userInfo"))
+
+  </script>
+
+</body>
+</html>

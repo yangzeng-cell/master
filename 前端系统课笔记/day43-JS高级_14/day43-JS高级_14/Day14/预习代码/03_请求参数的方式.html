@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <form class="info">
+    <input name="name" value="coderwhy">
+    <input name="age" value="18">
+  </form>
+
+  <script>
+
+    const xhr = new XMLHttpRequest()
+
+    xhr.onreadystatechange = function() {
+      if (xhr.readyState !== XMLHttpRequest.DONE) return
+      if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+        console.log(xhr.response)
+      } else {
+
+      }
+    }
+
+    xhr.responseType = "json"
+
+    // 1.get请求传递参数
+    xhr.open("get", "http://192.168.0.110:1888/01_param/get?name=why&age=18")
+    xhr.send()
+
+    // 2.post请求传递参数(form)
+    xhr.open("post", "http://192.168.0.110:1888/02_param/postform")
+    const infoEl = document.querySelector(".info")
+    const form = new FormData(infoEl)
+    form.append("height", 1.88)
+    xhr.send(form)
+
+    // 3.post请求传递参数(json)
+    xhr.open("post", "http://192.168.0.110:1888/02_param/postjson")
+    const jsonParam = JSON.stringify({name: "whycoder", age: 21})
+    xhr.setRequestHeader('Content-type', 'application/json; charset=utf-8')
+    xhr.send(jsonParam)
+
+    // 4.post请求(urlencoded)
+    xhr.open("post", "http://192.168.0.110:1888/02_param/posturl")
+    const urlParam = "name=why&age=18"
+    xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+    xhr.send(urlParam)
+
+  </script>
+
+</body>
+</html>

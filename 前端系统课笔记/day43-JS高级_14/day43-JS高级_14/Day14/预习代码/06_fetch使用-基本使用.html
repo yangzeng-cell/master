@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <img src="http://192.168.0.110:1888/02_param/avatar/1655569372577.jpg" alt="">
+  
+  <script>
+    // 发送fetch请求
+    // async function getData() {
+    //   const response = await fetch("http://192.168.0.110:1888/03_project/products")
+    //   const data = await response.json()
+    //   console.log("data:", data)
+    // }
+
+    // getData()
+
+    async function getData() {
+      const response = await fetch("http://192.168.0.110:1888/02_param/posturl", {
+        method: "post",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded"
+        },
+        body: "name=why&age=18"
+      })
+      const data = await response.json()
+      console.log("data:", data)
+    }
+
+    getData()
+
+  </script>
+
+</body>
+</html>

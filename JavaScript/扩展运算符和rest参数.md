@@ -302,5 +302,47 @@ var mergedObj = { ...obj1, ...obj2 };
 提示: 不能替换或者模拟 Object.assign() 函数:
 ```
 
+#### （9）在 new 表达式中应用
+
+使用 `new` 关键字来调用构造函数时，不能**直接**使用数组 + `apply` 的方式（`apply` 执行的是调用 `[[Call]]` , 而不是构造 `[[Construct]]`）。当然，有了展开语法，将数组展开为构造函数的参数就很简单了：
+
+```
+var dateFields = [1970, 0, 1]; // 1970 年 1 月 1 日
+var d = new Date(...dateFields);
+```
+
+Copy to Clipboard
+
+如果不使用展开语法，想将数组元素传给构造函数，实现方式可能是这样的：
+
+```
+function applyAndNew(constructor, args) {
+   function partial () {
+      return constructor.apply(this, args);
+   };
+   if (typeof constructor.prototype === "object") {
+      partial.prototype = Object.create(constructor.prototype);
+   }
+   return partial;
+}
+
+
+function myConstructor () {
+   console.log("arguments.length: " + arguments.length);
+   console.log(arguments);
+   this.prop1="val1";
+   this.prop2="val2";
+};
+
+var myArguments = ["hi", "how", "are", "you", "mr", null];
+var myConstructorWithArguments = applyAndNew(myConstructor, myArguments);
+
+console.log(new myConstructorWithArguments);
+// (myConstructor 构造函数中):           arguments.length: 6
+// (myConstructor 构造函数中):           ["hi", "how", "are", "you", "mr", null]
+// ("new myConstructorWithArguments"中): {prop1: "val1", prop2: "val2"}
+```
+
 # 剩余参数和扩展语法的区别
 
+剩余语法 (Rest syntax) 看起来和展开语法完全相同，不同点在于，剩余参数用于解构数组和对象。从某种意义上说，剩余语法与展开语法是相反的：展开语法将数组展开为其中的各个元素，而剩余语法则是将多个元素收集起来并“凝聚”为单个元素

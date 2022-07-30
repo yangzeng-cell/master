@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <form class="fileform">
+    <input class="file" type="file">
+  </form>
+  <button class="upload">上传</button>
+  
+  <script>
+    const fileEl = document.querySelector(".file")
+    const uploadBtn = document.querySelector(".upload")
+
+    // uploadBtn.onclick = function() {
+    //   // 1.获取文件
+    //   const files = fileEl.files
+    //   if (!files.length) {
+    //     alert("请选择要上传的文件")
+    //     return
+    //   }
+    //   const avatarFile = files[0]
+    //   const fileForm = new FormData()
+    //   fileForm.append("avatar", avatarFile)
+
+    //   // 2.开始上传
+    //   const xhr = new XMLHttpRequest()
+    //   xhr.upload.onprogress = function(event) {
+    //     console.log(`${event.loaded}/${event.total}`)
+    //   }
+    //   xhr.onload = function() {
+    //     console.log(xhr.response)
+    //   }
+    //   xhr.open("POST", "http://192.168.0.110:1888/02_param/upload")
+    //   xhr.setRequestHeader("Content-Type", "multipart/form-data")
+    //   xhr.send(fileForm)
+    // }
+
+    uploadBtn.onclick = function() {
+      // 1.获取文件
+      const files = fileEl.files
+      if (!files.length) {
+        alert("请选择要上传的文件")
+        return
+      }
+      const avatarFile = files[0]
+      const fileForm = new FormData()
+      fileForm.append("avatar", avatarFile)
+
+      // 2.开始上传
+      fetch("http://123.207.32.32:1888/02_param/upload", {
+        method: "post",
+        body: fileForm
+      }).then(res => {
+        return res.json()
+      }).then(res => {
+        console.log("res:", res)
+      })
+    }
+
+  </script>
+
+</body>
+</html>

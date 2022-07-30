@@ -1,0 +1,54 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    [v-cloak] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  
+  <div id="app">
+    <!-- <div v-once>
+      <h2 v-once>当前计数: {{counter}}</h2>
+      <button @click="increment">+1</button>
+    </div>
+    <div>
+      <h2>{{message}}</h2>
+      <h2 v-text="message"></h2>
+      <h2 v-pre>{{info}}</h2>
+      <h2 v-html="info">{{info}}</h2>
+    </div> -->
+
+    
+    <h2>{{message}}</h2>
+    
+  </div>
+
+  <script src="./js/vue.js"></script>
+  <script>
+    setTimeout(() => {
+      const app = Vue.createApp({
+        data() {
+          return {
+            counter: 0,
+            message: "Hello World",
+            info: `<span style="color: red;">哈哈哈</span>`
+          }
+        },
+        methods: {
+          increment: function() {
+            this.counter++
+          }
+        }
+      })
+      app.mount("#app")
+    }, 2000);
+  </script>
+
+</body>
+</html>

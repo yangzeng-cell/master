@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    const info = { name: "why" }
+    const info2 = { age: 18 }
+
+    // 1.对象类型的局限性: 不可以使用复杂类型作为key
+    // const obj = {
+    //   address: "北京市",
+    //   [info]: "哈哈哈",
+    //   [info2]: "呵呵呵"
+    // }
+    // console.log(obj)
+
+    // 2.Map映射类型
+    const map = new Map()
+    map.set(info, "aaaa")
+    map.set(info2, "bbbb")
+    console.log(map)
+
+    // 3.Map的常见属性和方法
+    // console.log(map.size)
+    // 3.1. set方法, 设置内容
+    map.set(info, "cccc")
+    console.log(map)
+    // 3.2. get方法, 获取内容
+    // console.log(map.get(info))
+    // 3.3. delete方法, 删除内容
+    // map.delete(info)
+    // console.log(map)
+    // 3.4. has方法, 判断内容
+    // console.log(map.has(info2))
+    // 3.5. clear方法, 清空内容
+    // map.clear()
+    // console.log(map)
+    // 3.6. forEach方法
+    // map.forEach(item => console.log(item))
+
+    // 4.for...of遍历
+    for (const item of map) {
+      const [key, value] = item
+      console.log(key, value)
+    }
+
+  </script>
+
+</body>
+</html>

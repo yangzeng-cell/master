@@ -1,0 +1,1 @@
+(()=>{"use strict";function o(o,l){return o*l}console.log("200万"),console.log("2022-10-10"),console.log(50),console.log(o(111,222)),console.log(o(100,200)),console.log(80)})();

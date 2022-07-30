@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    const xhr = new XMLHttpRequest()
+
+    xhr.onreadystatechange = function() {
+      // 1.如果没有数据
+      if (xhr.readyState !== XMLHttpRequest.DONE) return
+
+      // 2.获取到数据
+      console.log(xhr.response)
+      // console.log(xhr.responseText) // 旧的方式
+      console.log(xhr.responseURL)
+
+      console.log(xhr.status)
+      console.log(xhr.statusText)
+      
+      // console.log(xhr.responseText)
+    }
+    xhr.responseType = "json"
+
+    xhr.timeout = 3000
+    xhr.open("get", "http://192.168.0.110:1888/01_basic/hello_json")
+
+    xhr.send()
+
+  </script>
+
+</body>
+</html>

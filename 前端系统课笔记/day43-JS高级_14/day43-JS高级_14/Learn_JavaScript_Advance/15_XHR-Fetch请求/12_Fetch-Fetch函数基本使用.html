@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 1.fetch发送get请求
+    // 1.1.未优化的代码
+    // fetch("http://123.207.32.32:8000/home/multidata").then(res => {
+    //   // 1.获取到response
+    //   const response = res
+
+    //   // 2.获取具体的结果
+    //   response.json().then(res => {
+    //     console.log("res:", res)
+    //   })
+    // }).catch(err => {
+    //   console.log("err:", err)
+    // })
+
+    // 1.2. 优化方式一:
+    // fetch("http://123.207.32.32:8000/home/multidata").then(res => {
+    //   // 1.获取到response
+    //   const response = res
+    //   // 2.获取具体的结果
+    //   return response.json()
+    // }).then(res => {
+    //   console.log("res:", res)
+    // }).catch(err => {
+    //   console.log("err:", err)
+    // })
+
+    // 1.3. 优化方式二:
+    // async function getData() {
+    //   const response = await fetch("http://123.207.32.32:8000/home/multidata")
+    //   const res = await response.json()
+    //   console.log("res:", res)
+    // }
+    // getData()
+
+
+    // 2.post请求并且有参数
+    async function getData() {
+      // const response = await fetch("http://123.207.32.32:1888/02_param/postjson", {
+      //   method: "post",
+      //   // headers: {
+      //   //   "Content-type": "application/json"
+      //   // },
+      //   body: JSON.stringify({
+      //     name: "why",
+      //     age: 18
+      //   })
+      // })
+      
+      const formData = new FormData()
+      formData.append("name", "why")
+      formData.append("age", 18)
+      const response = await fetch("http://123.207.32.32:1888/02_param/postform", {
+        method: "post",
+        body: formData
+      })
+
+      // 获取response状态
+      console.log(response.ok, response.status, response.statusText)
+
+      const res = await response.json()
+      console.log("res:", res)
+    }
+    getData()
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 1.创建XMLHttpReqest对象
+    const xhr = new XMLHttpRequest()
+    // 2.监听对象状态的改变
+    xhr.onload = function() {
+      console.log(xhr.response)
+    }
+    // 3.配置请求的方式/URL
+    xhr.open("get", "http://123.207.32.32:1888/01_basic/hello_text", true)
+    // 4.发送请求
+    xhr.send()
+    // 5.获取数据
+    console.log(xhr.response)
+
+  </script>
+
+</body>
+</html>

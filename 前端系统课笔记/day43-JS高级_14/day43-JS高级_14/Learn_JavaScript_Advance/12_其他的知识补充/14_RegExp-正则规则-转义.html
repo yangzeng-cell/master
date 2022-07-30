@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    // 定义正则: 对.转义
+    const re = /\./ig
+    const message = "abc.why"
+
+    const results = message.match(re)
+    console.log(results)
+
+
+    // 特殊: /
+    // const re2 = /\//
+
+    // 获取到很多的文件名
+    // jsx -> js文件
+    const fileNames = ["abc.html", "Home.jsx", "index.html", "index.js", "util.js", "format.js"]
+    // 获取所有的js的文件名(webpack)
+    // x?: x是0个或者1个
+    const jsfileRe = /\.jsx?$/
+    // 1.for循环做法
+    // const newFileNames = []
+    // for (const filename of fileNames) {
+    //   if (jsfileRe.test(filename)) {
+    //     newFileNames.push(filename)
+    //   }
+    // }
+    // console.log(newFileNames)
+
+    // 2.filter高阶函数
+    // const newFileNames = fileNames.filter(filename => jsfileRe.test(filename))
+    // console.log(newFileNames)
+
+  </script>
+
+</body>
+</html>

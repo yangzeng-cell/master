@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    function hyajax({
+      url,
+      method = "get",
+      data = {},
+      timeout = 5000,
+      headers = {},
+      success,
+      failure
+    } = {}) {
+      // 1.创建xhr对象
+      const xhr = new XMLHttpRequest()
+      xhr.onreadystatechange = function() {
+        if (xhr.readyState !== XMLHttpRequest.DONE) return
+        if (xhr.status >= 200 && xhr.status < 300 || xhr.status === 304) {
+          success && success(xhr.response)
+        } else {
+          failure && failure(xhr.response)
+        }
+      }
+
+      // 2.设置响应的类型
+      xhr.responseType = "json"
+      xhr.timeout = timeout
+
+      // 3.发送请求
+      const params = Object.keys(data).map(key => `${key}=${encodeURIComponent(data[key])}`)
+      const paramsString = params.join("&")
+
+      // 设置header
+      if (method.toLowerCase() === "get") {
+        xhr.open(method, url + "?" + paramsString)
+        Object.keys(headers).forEach(headerKey => xhr.setRequestHeader(headerKey, headers[headerKey]))
+        xhr.send()
+      } else {
+        xhr.open(method, url)
+        xhr.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+        Object.keys(headers).forEach(headerKey => xhr.setRequestHeader(headerKey, headers[headerKey]))
+        xhr.send(paramsString)
+      }
+
+      return xhr
+    }
+
+
+    // 发送网络请求
+    hyajax({
+      url: "http://192.168.0.110:1888/02_param/posturl",
+      method: "post",
+      data: {
+        name: "why",
+        age: 18
+      },
+      headers: {
+        token: "coderwhy"
+      },
+      success: function(res) {
+        console.log("success:", res)
+      }
+    })
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    
+    // 1.创建对象
+    const xhr = new XMLHttpRequest()
+
+    // 2.监听结果
+    xhr.onload = function() {
+      console.log(xhr.status, xhr.statusText)
+      // 根据http的状态码判断是否请求成功
+      if (xhr.status >= 200 && xhr.status < 300) {
+        console.log(xhr.response)
+      } else {
+        console.log(xhr.status, xhr.statusText)
+      }
+    }
+
+    xhr.onerror = function() {
+      console.log("onerror", xhr.status, xhr.statusText)
+    }
+
+    // 3.设置响应类型
+    xhr.responseType = "json"
+
+    // 4.配置网络请求
+    // xhr.open("get", "http://123.207.32.32:8000/abc/cba/aaa")
+    xhr.open("get", "http://123.207.32.32:8000/home/multidata")
+
+    // 5.发送网络请求
+    xhr.send()
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+
+    const xhr = new XMLHttpRequest()
+    // onload监听数据加载完成
+    xhr.onload = function() {
+      console.log("onload")
+    }
+    xhr.open("get", "http://123.207.32.32:8000/home/multidata")
+    xhr.send()
+
+  </script>
+
+</body>
+</html>

@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script>
+    var names = ["abc", "cba", "nba", "mba"]
+
+    // 1.slice: 纯函数
+    var newNames = [].slice.apply(names, [1, 3])
+    console.log(names)
+
+    // 2.splice: 操作数组的利器(不是纯函数)
+    names.splice(2, 2)
+    console.log(names)
+    
+  </script>
+
+</body>
+</html>

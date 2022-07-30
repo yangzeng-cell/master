@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <!-- <script src="./utils/hyajax.js"></script> -->
+  <script src="./utils/hyajax_promise.js"></script>
+  <script>
+    const promise = hyajax({
+      url: "http://123.207.32.32:1888/02_param/get",
+      data: {
+        username: "coderwhy",
+        password: "123456"
+      }
+    })
+
+    promise.then(res => {
+      console.log("res:", res)
+    }).catch(err => {
+      console.log("err:", err)
+    })
+  </script>
+
+</body>
+</html>

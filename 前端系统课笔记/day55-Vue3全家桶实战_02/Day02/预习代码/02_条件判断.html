@@ -1,0 +1,51 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="app">
+    <button @click="toggle">切换</button>
+    <h2 v-if="isShow">{{message}}</h2>
+
+    <div v-if="score > 90">优秀</div>
+    <div v-else-if="score > 80">良好</div>
+    <div v-else-if="score > 60">及格</div>
+    <div v-else>不及格</div>
+
+    <template v-if="isShow">
+      <h2>哈哈哈</h2>
+      <h2>哈哈哈</h2>
+      <h2>哈哈哈</h2>
+    </template>
+    <template v-else>
+      <h2>呵呵呵</h2>
+      <h2>呵呵呵</h2>
+      <h2>呵呵呵</h2>
+    </template>
+  </div>
+
+  <script src="./js/vue.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          message: "Hello World",
+          isShow: true,
+          score: 77
+        }
+      },
+      methods: {
+        toggle: function() {
+          this.isShow = !this.isShow
+        }
+      }
+    })
+    app.mount("#app")
+  </script>
+
+</body>
+</html>

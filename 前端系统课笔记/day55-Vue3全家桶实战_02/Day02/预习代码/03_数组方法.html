@@ -1,0 +1,43 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="app">
+    <div v-for="(item, index) of names">
+      <span>{{index}}</span>
+      <strong>{{item}}</strong>
+    </div>
+    <button @click="addItem">添加元素</button>
+  </div>
+
+  <script src="./js/vue.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          names: ["abc", "cba", "nba", "aaa"]
+        }
+      },
+      methods: {
+        addItem: function() {
+          // this.names.push("why")
+          // this.names.pop()
+          // this.names.shift()
+          // this.names.unshift("111")
+          // this.names.sort()
+          // this.names.reverse()
+
+          this.names = this.names.map(item => item + "aaa")
+        }
+      }
+    })
+    app.mount("#app")
+  </script>
+
+</body>
+</html> 

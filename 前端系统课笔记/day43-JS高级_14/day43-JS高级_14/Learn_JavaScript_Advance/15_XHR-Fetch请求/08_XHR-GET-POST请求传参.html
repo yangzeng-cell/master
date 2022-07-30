@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <form class="info">
+    <input type="text" name="username">
+    <input type="password" name="password">
+  </form>
+  <button class="send">发送请求</button>
+  
+  <script>
+    const formEl = document.querySelector(".info")
+    const sendBtn = document.querySelector(".send")
+    sendBtn.onclick = function() {
+      // 创建xhr对象
+      const xhr = new XMLHttpRequest()
+
+      // 监听数据响应
+      xhr.onload = function() {
+        console.log(xhr.response)
+      }
+
+      // 配置请求
+      xhr.responseType = "json"
+
+      // 1.传递参数方式一: get -> query
+      // xhr.open("get", "http://123.207.32.32:1888/02_param/get?name=why&age=18&address=广州市")
+
+      // 2.传递参数方式二: post -> urlencoded
+      // xhr.open("post", "http://123.207.32.32:1888/02_param/posturl")
+      // // 发送请求(请求体body)
+      // xhr.setRequestHeader("Content-type", "application/x-www-form-urlencoded")
+      // xhr.send("name=why&age=18&address=广州市")
+
+      // 3.传递参数方式三: post -> formdata
+      // xhr.open("post", "http://123.207.32.32:1888/02_param/postform")
+      // // formElement对象转成FormData对象
+      // const formData = new FormData(formEl)
+      // xhr.send(formData)
+
+      // 4.传递参数方式四: post -> json
+      xhr.open("post", "http://123.207.32.32:1888/02_param/postjson")
+      xhr.setRequestHeader("Content-type", "application/json")
+      xhr.send(JSON.stringify({name: "why", age: 18, height: 1.88}))
+    }
+    
+  </script>
+
+</body>
+</html>

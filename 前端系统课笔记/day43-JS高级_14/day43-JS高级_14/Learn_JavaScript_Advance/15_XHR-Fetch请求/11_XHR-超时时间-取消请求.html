@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <button>取消请求</button>
+
+  <script>
+    const xhr = new XMLHttpRequest()
+
+    xhr.onload = function() {
+      console.log(xhr.response)
+    }
+    xhr.onabort = function() {
+      console.log("请求被取消掉了")
+    }
+    
+    xhr.responseType = "json"
+
+    // 1.超市时间的设置
+    xhr.ontimeout = function() {
+      console.log("请求过期: timeout")
+    }
+    // timeout: 浏览器达到过期时间还没有获取到对应的结果时, 取消本次请求
+    // xhr.timeout = 3000
+    xhr.open("get", "http://123.207.32.32:1888/01_basic/timeout")
+
+    xhr.send()
+
+    // 2.手动取消结果
+    const cancelBtn = document.querySelector("button")
+    cancelBtn.onclick = function() {
+      xhr.abort()
+    }
+
+  </script>
+
+</body>
+</html>

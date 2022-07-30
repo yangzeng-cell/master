@@ -1,0 +1,14 @@
+{
+  "0 debug pnpm:scope": {
+    "selected": 1
+  },
+  "1 error pnpm": {
+    "code": "ERR_PNPM_NO_IMPORTER_MANIFEST_FOUND",
+    "err": {
+      "name": "pnpm",
+      "message": "No package.json (or package.yaml, or package.json5) was found in \"C:\\Users\\10152\\Desktop\\study\\memo\\前端系统课笔记\\day30-JS基础-高级\\day30-JS基础-高级\\上午-JS基础\\Learn_JavaScript_Basic\\13_阶段性项目华为商城\".",
+      "code": "ERR_PNPM_NO_IMPORTER_MANIFEST_FOUND",
+      "stack": "pnpm: No package.json (or package.yaml, or package.json5) was found in \"C:\\Users\\10152\\Desktop\\study\\memo\\前端系统课笔记\\day30-JS基础-高级\\day30-JS基础-高级\\上午-JS基础\\Learn_JavaScript_Basic\\13_阶段性项目华为商城\".\n    at readProjectManifest (D:\\nodejs\\node_global\\node_modules\\pnpm\\dist\\pnpm.cjs:20853:13)\n    at async Object.readProjectManifestOnly (D:\\nodejs\\node_global\\node_modules\\pnpm\\dist\\pnpm.cjs:20857:28)\n    at async readProjectManifestOnly (D:\\nodejs\\node_global\\node_modules\\pnpm\\dist\\pnpm.cjs:44022:24)\n    at async Object.handler (D:\\nodejs\\node_global\\node_modules\\pnpm\\dist\\pnpm.cjs:184457:24)\n    at async D:\\nodejs\\node_global\\node_modules\\pnpm\\dist\\pnpm.cjs:192593:21\n    at async run (D:\\nodejs\\node_global\\node_modules\\pnpm\\dist\\pnpm.cjs:192567:34)\n    at async runPnpm (D:\\nodejs\\node_global\\node_modules\\pnpm\\dist\\pnpm.cjs:192785:5)\n    at async D:\\nodejs\\node_global\\node_modules\\pnpm\\dist\\pnpm.cjs:192777:7"
+    }
+  }
+}

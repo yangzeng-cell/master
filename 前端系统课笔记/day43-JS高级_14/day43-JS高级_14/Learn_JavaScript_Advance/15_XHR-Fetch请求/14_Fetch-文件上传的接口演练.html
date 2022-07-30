@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <input class="file" type="file">
+  <button class="upload">上传文件</button>
+  
+  <script>
+
+    // xhr/fetch
+
+    const uploadBtn = document.querySelector(".upload")
+    uploadBtn.onclick = async function() {
+      // 表单
+      const fileEl = document.querySelector(".file")
+      const file = fileEl.files[0]
+
+      const formData = new FormData()
+      formData.append("avatar", file)
+
+      // 发送fetch请求
+      const response = await fetch("http://123.207.32.32:1888/02_param/upload", {
+        method: "post",
+        body: formData
+      })
+      const res = await response.json()
+      console.log("res:", res)
+    }
+
+  </script>
+
+</body>
+</html>

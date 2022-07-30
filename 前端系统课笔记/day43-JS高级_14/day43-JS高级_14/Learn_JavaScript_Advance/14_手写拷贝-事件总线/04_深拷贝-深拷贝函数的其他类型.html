@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <script src="./js/is_object.js"></script>
+  <script>
+    // 深拷贝函数
+    function deepCopy(originValue) {
+      // 0.如果值是Symbol的类型
+      if (typeof originValue === "symbol") {
+        return Symbol(originValue.description)
+      }
+
+      // 1.如果是原始类型, 直接返回
+      if (!isObject(originValue)) {
+        return originValue
+      }
+
+      // 2.如果是set类型
+      if (originValue instanceof Set) {
+        const newSet = new Set()
+        for (const setItem of originValue) {
+          newSet.add(deepCopy(setItem))
+        }
+        return newSet
+      }
+
+      // 3.如果是函数function类型, 不需要进行深拷贝
+      if (typeof originValue === "function") {
+        return originValue
+      }
+
+      // 2.如果是对象类型, 才需要创建对象
+      const newObj = Array.isArray(originValue) ? []: {}
+      // 遍历普通的key
+      for (const key in originValue) {
+        newObj[key] = deepCopy(originValue[key]);
+      }
+      // 单独遍历symbol
+      const symbolKeys = Object.getOwnPropertySymbols(originValue)
+      for (const symbolKey of symbolKeys) {
+        newObj[Symbol(symbolKey.description)] = deepCopy(originValue[symbolKey])
+      }
+
+      return newObj
+    }
+
+    const set = new Set(["abc", "cba", "nba"])
+    const s1 = Symbol("s1")
+    const s2 = Symbol("s2")
+    const info = {
+      name: "why",
+      age: 18,
+      friend: {
+        name: "kobe",
+        address: {
+          name: "洛杉矶",
+          detail: "斯坦普斯中心"
+        }
+      },
+
+      // 1.特殊类型: Set
+      set: set,
+
+      // 2.特性类型: function
+      running: function() {
+        console.log("running~")
+      },
+
+      // 3.值的特殊类型: Symbol
+      symbolKey: Symbol("abc"),
+
+      // 4.key是symbol时
+      [s1]: "aaaa",
+      [s2]: "bbbb"
+    }
+
+    // for (let key in info) {
+    //   console.log(key)
+    // }
+
+    // const symbol = Symbol()
+    // console.log(typeof symbol)
+    // console.log(isObject(symbol))
+
+    const newObj = deepCopy(info)
+    console.log(newObj)
+
+  </script>
+
+</body>
+</html>

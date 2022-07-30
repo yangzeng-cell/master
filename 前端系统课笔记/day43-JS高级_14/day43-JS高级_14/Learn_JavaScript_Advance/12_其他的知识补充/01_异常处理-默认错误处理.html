@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+
+  <button>按钮</button>
+  
+  <script>
+
+    // 1.遇到一个错误, 造成后续的代码全部不能执行
+    // function foo() {
+    //   "abc".filter()
+
+    //   console.log("第15行代码")
+    //   console.log("-------")
+    // }
+
+    // foo()
+    // console.log("+++++++++")
+
+    // const btn = document.querySelector("button")
+    // btn.onclick = function() {
+    //   console.log("监听btn的点击")
+    // }
+
+    // 2.自己封装一些工具
+    function sum(num1, num2) {
+      if (typeof num1 !== "number") {
+        throw "type error: num1传入的类型有问题, 必须是number类型"
+      }
+
+      if (typeof num2 !== "number") {
+        throw "type error: num2传入的类型有问题, 必须是number类型"
+      }
+
+      return num1 + num2
+    }
+
+    // 李四调用
+    const result = sum(123, 321)
+
+  </script>
+
+</body>
+</html>

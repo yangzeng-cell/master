@@ -1,0 +1,68 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  
+  <div id="app">
+    <!-- 1.mustache语法 -->
+    <!-- <h2>{{ firstName + " " + lastName }}</h2>
+    <h2>成绩: {{ score >= 60 ? "合格": "不合格" }}</h2>
+    <h2>{{ message.split(" ").reverse().join(" ") }}</h2> -->
+
+    <!-- 2.method实现 -->
+    <h2>{{ fullname }}</h2>
+    <h2>{{ grade }}</h2>
+    <h2>{{ reverseMessage }}</h2>
+
+    <!-- 3.设置计算属性的值 -->
+    <button @click="setFullname">设置fullname</button>
+  </div>
+
+  <script src="./js/vue.js"></script>
+  <script>
+    const app = Vue.createApp({
+      data() {
+        return {
+          firstName: "Kobe",
+          lastName: "Bryant",
+          score: 78,
+
+          message: "Hello World"
+        }
+      },
+      computed: {
+        // fullname: function() {
+        //   return this.firstName + " " + this.lastName
+        // },
+        fullname: {
+          set: function(value) {
+            const names = value.split(" ")
+            this.firstName = names[0]
+            this.lastName = names[1]
+          },
+          get: function() {
+            return this.firstName + " " + this.lastName
+          }
+        },
+        grade: function() {
+          return this.score >= 60 ? "及格": "不及格"
+        },
+        reverseMessage: function() {
+          return this.message.split(" ").reverse().join(" ")
+        }
+      },
+      methods: {
+        setFullname: function() {
+          this.fullname = "coder why"
+        }
+      }
+    })
+    app.mount("#app")
+  </script>
+
+</body>
+</html>
